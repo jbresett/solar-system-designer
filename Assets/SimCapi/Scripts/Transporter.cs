@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -228,7 +229,7 @@ namespace SimCapi
             string chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
             for (var i = 0; i < 10; i++)
             {
-                uuid += chars[Random.Range((int)0, chars.Length)];
+                uuid += chars[UnityEngine.Random.Range((int)0, chars.Length)];
             }
             return uuid;
         }
@@ -941,6 +942,9 @@ namespace SimCapi
             notifyValueChange();
         }
 
-
+        internal void addInitialSetupCompleteListener(Action<Message> setupComplete)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
