@@ -6,6 +6,10 @@
  	of the ellipse and is used to to calculate the distance a planet is from
  	the foci at any given time. THis class contains a basic tester method
  	to make sure calculations are correct.
+	
+	This file now calculates distance from panet and sun(foci) and also
+	can determine the position of a point on an ellipse
+
 
  	@author Jack Northcutt
  */
@@ -61,40 +65,80 @@ namespace EllipseContruction{
 			return dist;
 		}
 
+		//This takes an x value of an ellipse and 
+		//calculates a y value.
+
+		public double calculatePosition(double x){
+
+			//set up a b x and y values
+			double y = 0;
+			double a = 0;
+			double b = 0;
+
+			a = majorLen;
+			b = minorLen;
+
+			//squrar each of the values
+			a= Math.Pow(a, 2);
+			b = Math.Pow(b, 2);
+			x = Math.Pow(x, 2);
+
+			//use equaltion (x^2)/a^2 + (y^2)/b^2 = 1
+			y = Math.Sqrt((1 - (x/a))*b);
+
+			//return the new why value and combined with
+			//x with give you the coordinates
+			return y;
+		}
+
 		//tester driver
 		public static void Main(String[] args){
+
+			//Set up variables used
 			String majorStr;
 			double major;
 			String minorStr;
 			double minor;
-			Ellipse ellipse;x
+			Ellipse ellipse;
 			double foci;
 			double e;
 			String angleStr;
 			double angle;
+			String xStr;
+			double x;
 
+			//Get input from user
 			Console.WriteLine("What is the major length of your ellipse?: ");
 			majorStr = Console.ReadLine();
 
 			Console.WriteLine("\nWhat is the minor length of your ellipse?: ");
 			minorStr = Console.ReadLine();
 
-			Console.WriteLine("\nWhat is the angle of your planete from sun: ");
+			Console.WriteLine("\nWhat is the angle of your planet from sun?: ");
 			angleStr = Console.ReadLine();
 
+			Console.WriteLine("\nWhat is your x position?: ");
+			xStr = Console.ReadLine();
+
+			//convert user input to doubles
 			major = double.Parse(majorStr);
 			minor = double.Parse(minorStr);
 			angle = double.Parse(angleStr);
+			x = double.Parse(xStr);
 
+			//create ellipse object and set foci and e
 			ellipse = new Ellipse(major,minor);
 			foci = ellipse.calculateFoci();
 			e = ellipse.calculateEccentricity();
 
-
+			//dispay results to user
 			Console.WriteLine("\nYour Foci are " + foci + " from the center!");
+
 			Console.WriteLine("Your eccentricity is " + e);	
 
 			Console.WriteLine("Your planet is " + ellipse.calculateDistance(angle) + (" from the sun!"));
+
+			Console.WriteLine("Your Planets Position is: " + x + "," + ellipse.calculatePosition(x));
 		}
 
 	}
