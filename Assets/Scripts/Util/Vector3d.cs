@@ -9,15 +9,7 @@ public class Vector3d
     /// <summary>
     /// Creates a new vector at (0,0,0).
     /// </summary>
-    public Vector3d() : this(0, 0, 0, 0) { }
-
-    /// <summary>
-    /// Generate a vector at coodinates with 0 magnatude.
-    /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
-    /// <param name="z"></param>
-    public Vector3d(double x, double y, double z) : this(x, y, z, 0) { }
+    public Vector3d() : this(0, 0, 0) { }
 
     /// <summary>
     /// Creates a new vector at choosen coordinates.
@@ -26,12 +18,11 @@ public class Vector3d
     /// <param name="y"></param>
     /// <param name="z"></param>
     /// <param name="magnatude"></param>
-    public Vector3d(double x, double y, double z, double magnatude)
+    public Vector3d(double x, double y, double z)
     {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.magnatude = magnatude;
     }
 
     /// <summary>
@@ -43,7 +34,6 @@ public class Vector3d
         this.x = vector.x;
         this.y = vector.y;
         this.z = vector.z;
-        this.magnatude = vector.magnitude;
     }
 
     /// <summary>
@@ -55,14 +45,18 @@ public class Vector3d
         this.x = vector.x;
         this.y = vector.y;
         this.z = vector.z;
-        this.magnatude = vector.magnatude;
     }
 
     // Position
     public double x { set; get; }
     public double y { set; get; }
     public double z { set; get; }
-    public double magnatude { set; get; }
+    public double magnatude { 
+        get
+        {
+            return Math.Sqrt(x * x + y * y + z * z);
+        }
+    }  
 
     /// <summary>
     /// Moves the vector to another position.
@@ -72,13 +66,13 @@ public class Vector3d
         x = vector.x;
         y = vector.y;
         z = vector.z;
-        magnatude = vector.magnatude;
     }
     /// <summary>
     /// Converts Vector3d to Unity Vector3. Some precision may be lost.
     /// </summary>
     public Vector3 toVector3()
     {
+        Vector3 result = new Vector3((float)x, (float)y, (float)z);
         return new Vector3((float)x, (float)y, (float)z);
     }
 
