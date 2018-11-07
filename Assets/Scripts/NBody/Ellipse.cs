@@ -5,6 +5,7 @@
  *
  *@author Jack Northcutt
  */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,4 +41,15 @@ public class Ellipse{
 		return this.minorAxis;
 	}
 
+    internal static double getX(double degree)
+    {
+        //TODO: Implement
+        throw new NotImplementedException();
+    }
+
+    internal static double getY(double degree)
+    {
+        //tODO: Implement
+        throw new NotImplementedException();
+    }
 }

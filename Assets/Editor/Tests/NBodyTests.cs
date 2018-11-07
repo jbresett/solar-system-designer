@@ -15,43 +15,22 @@ public class NBodyTests {
         // Null Name
         try
         {
-            new Body(null, BodyType.Astroid, null, new Vector3d(), 0.0, 0.0);
+            new Body(null, BodyType.Astroid, null, 0.0, 0.0, 0.0, null);
             Assert.Fail();
         } catch (System.ArgumentException) { /* Assert Pased */ }
-
-        // Null Ellipse
-        try
-        {
-            new Body("TheMoon", BodyType.Astroid, null, null, 0.0, 0.0);
-            Assert.Fail();
-        }
-        catch (System.ArgumentException) { /* Assert Pased */ }
 
     }
 
     [Test]
     public void BodyDistances()
     {
-        Body b1 = new Body("Earth", BodyType.Planet, null, new Vector3d(), 0.0, 0.0);
-        Body b2 = new Body("Moon", BodyType.Moon, null, new Vector3d(), 0.0, 0.0);
-        Vector3d[] Vectors = new Vector3d[] {
-            new Vector3d(0, 0, 0),
-            new Vector3d(0, 0, 0),
-            new Vector3d(3, 4, 0),
-            new Vector3d(-3, -4, 0)
-        };
-        double[] Distance = new double[]
-        {
-            0.0, 5.0, 10.0
-        };
+        Body earth = new Body("Earth", BodyType.Planet, null, 0, 0, 0, null);
 
-        for (int i = 0; i < Vectors.Length - 1; i++)
-        {
-            b1.Ellipse.moveTo(Vectors[i]);
-            b2.Ellipse.moveTo(Vectors[i + 1]);
-            // TODO: Update based on physics calculations.
-            //Assert.AreEqual(b1.getDistance(b2), Distance[i]);
-        }
+        Orbit moonOrbit = new Orbit(earth, new Ellipse(10.0, 5.0), 30.0);
+        Body moon = new Body("Moon", BodyType.Moon, moonOrbit, 0, 0, 0, null);
+        
+        //TODO: Build tests once Ellipse class can calculate x/y locations.
+        
     }
 
 
@@ -64,4 +43,5 @@ public class NBodyTests {
         // yield to skip a frame
         yield return null;
     }
+
 }
