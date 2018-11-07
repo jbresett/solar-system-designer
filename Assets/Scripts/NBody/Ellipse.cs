@@ -6,6 +6,7 @@
  *@author Jack Northcutt
  */
 using System.Collections;
+using System.Math;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +39,19 @@ public class Ellipse{
 	//minor axis getter
 	public double getMinorAxis(){
 		return this.minorAxis;
+	}
+
+	//this method yields a double value that represents
+	//how far the foci are offset from the center of
+	//the ellipse. The foci is where the sun will be placed.
+	public double calcFoci(){
+
+		double a = Math.Pow(this.majorAxis/2, 2);
+		double b = Math.Pow(this.minorAxis/2, 2);
+
+		double foci = Math.Sqrt(a-b);
+
+		return foci;
 	}
 
 }
