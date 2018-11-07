@@ -6,7 +6,6 @@
  *@author Jack Northcutt
  */
 using System.Collections;
-using System.Math;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,12 +45,28 @@ public class Ellipse{
 	//the ellipse. The foci is where the sun will be placed.
 	public double calcFoci(){
 
-		double a = Math.Pow(this.majorAxis/2, 2);
-		double b = Math.Pow(this.minorAxis/2, 2);
+		double a = System.Math.Pow(this.majorAxis/2, 2);
+		double b = System.Math.Pow(this.minorAxis/2, 2);
 
-		double foci = Math.Sqrt(a-b);
+		double foci = System.Math.Sqrt(a-b);
 
 		return foci;
+	}
+
+	//This function calculates the eccentricity of an ellipse,
+	//which is the elongation ratio of an ellipse. The closer
+	//to zero the more circular the ellipse is and the closer
+	//to 1 the more elongated the ellipse is. 
+	public double calcEccentricity(){
+
+		double foci = calcFoci();
+		double aSqr = System.Math.Pow(minorAxis/2, 2);
+		double bSqr = System.Math.Pow(foci, 2);
+		double cSqr = aSqr + bSqr;
+		double c = System.Math.Sqrt(cSqr);
+		double e = foci/c;
+
+		return e;
 	}
 
 }
