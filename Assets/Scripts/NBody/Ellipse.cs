@@ -5,6 +5,7 @@
  *
  *@author Jack Northcutt
  */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,6 +68,28 @@ public class Ellipse{
 		double e = foci/c;
 
 		return e;
+	}
+
+	//This Function takes a double angle and calculates 
+	//the x y and z position of where the point lies 
+	//on the ellipse. THis function returns a Vector3D
+	public Vector3d calcPoint(double theta){
+
+		//converting the angle give to radians
+		theta = (theta * System.Math.PI)/ 180;
+
+		//calculating x y and defaulting z to zero
+		double x = (this.majorAxis/2) * System.Math.Cos(theta);
+
+		double y = (this.minorAxis/2) * System.Math.Sin(theta);
+
+		double z = 0.0;
+
+		//createing a vector and returning
+		Vector3d coords = new Vector3d(x,y,z);
+
+		return coords;
+
 	}
 
 }
