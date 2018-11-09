@@ -29,6 +29,7 @@ public class Body
     public double Radius { get; set; }
     /// <summary>
     /// Time in days that it takes to make a full revoltion.
+    /// Use positive #'s for clockwise, negative for counterclockwise.
     /// </summary>
     public double Rotation { get; set; }
     /// <summary>
@@ -62,14 +63,22 @@ public class Body
         Name = name;
         Type = type;
         Orbits = orbits;
+        if (mass < 0.0)
+        {
+            throw new ArgumentNullException("Must have 0 or positive mass.");
+        }
         Mass = mass;
         Radius = radius;
+        if (mass < 0.0)
+        {
+            throw new ArgumentNullException("Must have 0 or positive radius.");
+        }
         Rotation = rotation;
         Layers = layers;
     }
 
     /// <summary>
-    /// Gets the Body's primary position based on it's orbit and current time.
+    /// Gets the Body's realative position based on it's orbit and current time.
     /// Returns (0,0,0) if the body is not orbiting another body.
     /// </summary>
     /// <param name="days"></param>
@@ -82,6 +91,18 @@ public class Body
         return Orbits.getPosition(days);
     }
 
+    /// <summary>
+    /// Get Distance of any two vectors at N days.
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="days"></param>
+    /// <returns></returns>
+    public double getDistance(Body from, double days) 
+    {
+        Vector3d distance = getPosition(days).subtract(from.getPosition(days));
+        return distance.magnatude;
+    }
+    
     /// <summary>
     /// Retrives the full composition of the planet. 
     /// Read-only: Any changes needs to be made at the individual layer(s). 

@@ -89,4 +89,23 @@ public class Vector3d
         return Math.Sqrt(xPow + yPow + zPow);
     }
 
+    /// <summary>
+    /// Returns a resulting vector of adding another vector to the current one.
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public Vector3d add(Vector3d target)
+    {
+        return new Vector3d(x + target.x, y + target.y, z + target.z);
+    }
+
+    /// <summary>
+    /// Returns the resulting vector of subtracting another vector from the current one.
+    /// </summary>
+    /// <param name="vector3d"></param>
+    /// <returns></returns>
+    public Vector3d subtract(Vector3d target)
+    {
+        return new Vector3d(x - target.x, y - target.y, z - target.z);
+    }
 }

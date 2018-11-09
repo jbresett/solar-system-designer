@@ -39,12 +39,9 @@ public class Orbit {
     public Vector3d getPosition(double days)
     {
         Vector3d result = new Vector3d();
-        // Get theta.
+        // Get theta and return the calculated point.
         double degree = getDegree(days);
-        result.x = Ellipse.getX(degree);
-        result.y = Ellipse.getY(degree);
-        result.z = 0;
-        return result;
+        return Shape.calcPoint(degree);
     }
 
     /// <summary>
