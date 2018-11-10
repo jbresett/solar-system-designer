@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Handles 
+/// Stores all data for the NBody system and handles over-time calculations of body locations.
 /// </summary>
 public class NBody {
 
