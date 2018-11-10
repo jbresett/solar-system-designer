@@ -91,4 +91,38 @@ public class Ellipse{
 
 	}
 
+	//This function is to deterime the y coordinate
+	//when given an x value
+	public double findY(double x){
+
+			//squrar each of the values
+			double a= System.Math.Pow(majorAxis, 2);
+			double b = System.Math.Pow(minorAxis, 2);
+			x = System.Math.Pow(x, 2);
+
+			//use equaltion (x^2)/a^2 + (y^2)/b^2 = 1
+			double y = System.Math.Sqrt((1 - (x/a))*b);
+
+			//return the new why value and combined with
+			//x with give you the coordinates
+			return y;
+	}
+
+	//This function is to determine the x coordinate
+	//when given a y value.
+	public double findx(double y){
+
+			//squrar each of the values
+			double a= System.Math.Pow(majorAxis, 2);
+			double b = System.Math.Pow(minorAxis, 2);
+			y = System.Math.Pow(x, 2);
+
+			//use equaltion (x^2)/a^2 + (y^2)/b^2 = 1
+			double x = System.Math.Sqrt((1 - (y/b))*a);
+
+			//return the new why value and combined with
+			//x with give you the coordinates
+			return x;
+	}
+
 }
