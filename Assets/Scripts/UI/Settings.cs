@@ -30,6 +30,7 @@ public class Settings : MonoBehaviour
 		{
 			var color = background.color;
 			color.a = opacity;
+			background.color = color;
 		}
 	}
 }
