@@ -126,4 +126,16 @@ public class Ellipse{
 			return x;
 	}
 
+	//This Method calculates how many days to complete an
+	//orbit, which is based off of the minorAxis length
+	//and standard definition of days in a year.
+	public double calcDays(){
+		double stdYear = 365.25;
+		double distance = System.Math.Pow(minorAxis, 3);
+		double days = System.Math.Sqrt(distance);
+		days = days * stdYear;
+
+		return days;
+	}
+
 }
