@@ -12,7 +12,8 @@ public class InsertInPlace : MonoBehaviour
     public InputField xVel;
     public InputField yVel;
     public InputField zVel;
-    public Mesh sphereMesh;
+    public InputField radius;
+    public GameObject planetBase;
 
     void Start()
     {
@@ -20,15 +21,16 @@ public class InsertInPlace : MonoBehaviour
     }
     public void insert()
     {
-        Debug.Log("Inserting Object");
-        GameObject body = new GameObject(name.text);
+        var body = planetBase;
         Vector3 pos = new Vector3(float.Parse(xPos.text),float.Parse(yPos.text),float.Parse(zPos.text));
         Quaternion rot = new Quaternion(0,0,0,0);
-        body.AddComponent<MeshFilter>();
-        var mesh= body.GetComponent<MeshFilter>().mesh;
-        mesh = sphereMesh;
-        body.GetComponent<MeshFilter>().mesh = mesh;
-        body.AddComponent<MeshRenderer>();
+        Vector3 size = body.transform.localScale;
+        size.x = float.Parse(radius.text);
+        size.y = float.Parse(radius.text);
+        size.z = float.Parse(radius.text);
+        body.transform.localScale = size;
+        body.SetActive(true);
+        body.name = name.text;
         Instantiate(body, pos, rot);
     }
 }
