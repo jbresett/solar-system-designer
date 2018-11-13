@@ -9,29 +9,34 @@ public enum BodyType
     Unclassified, Sun, Planet, Moon, Astroid
 }
 
-public class Body
+public class Body : MonoBehaviour
 {
     // ** Properites ** //
 
     public string Name { get; set; }
     public BodyType Type { get; set; }
+    
     /// <summary>
     /// Primary orbital body or point. May be null.
     /// </summary>
     public Orbit Orbits { get; set; }
+    
     /// <summary>
     /// Mass in kg.
     /// </summary>
     public double Mass { get; set; }
+    
     /// <summary>
     /// Average radius of the body itself (not orbital radius).
     /// </summary>
     public double Radius { get; set; }
+    
     /// <summary>
     /// Time in days that it takes to make a full revoltion.
     /// Use positive #'s for clockwise, negative for counterclockwise.
     /// </summary>
     public double Rotation { get; set; }
+    
     /// <summary>
     /// Individual Layers, in order from the outside in. Atmosphere, Crust, Mandle, etc.  May contain
     /// limited information and simplified layers based on current knowledge. 
@@ -39,10 +44,19 @@ public class Body
     /// </summary>
     public List<Layer> Layers { get; private set; }
 
-    /// <summary>
-    /// Creates a unclassifed, unnammed body with no orbit, mass, rotation, or layers.
-    /// </summary>
-    public Body() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null) { }
+    public GameObject body;
+    public Vector3 vel;
+
+    void Update()
+    {
+        var pos = body.transform.position;
+        pos.x = (float)(pos.x + vel.x);
+        pos.y = (float)(pos.y + vel.y);
+        pos.z = (float)(pos.z + vel.z);
+        body.transform.position = pos;
+    }
+    
+    //public Body() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null) { }
 
     /// <summary>
     /// Creates a body.
