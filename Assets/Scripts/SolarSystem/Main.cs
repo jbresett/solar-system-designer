@@ -15,6 +15,9 @@ public class Main : MonoBehaviour {
     }
     public States State = States.Startup;
 
+    // NBody Simulator
+    public NBody Bodies { get; private set; }
+
     readonly static public String SIM_ID = "SolarSystemDesigner";
     public ExposedData Exposed;
     public PersistentData Persistent;
@@ -23,9 +26,13 @@ public class Main : MonoBehaviour {
 
     // Initialization
     void Start () {
-        // Create SSDaa 
+        // Create NBody system.
+        Bodies = new NBody();
+
+        // Create SSData 
         Exposed = new ExposedData();
         Exposed.expose();
+        Exposed.setDeligates();
 
         SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
         transporter.addInitialSetupCompleteListener(this.setupComplete);
