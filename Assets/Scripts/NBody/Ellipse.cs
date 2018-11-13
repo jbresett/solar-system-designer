@@ -116,7 +116,7 @@ public class Ellipse{
 			//squrar each of the values
 			double a= System.Math.Pow(majorAxis, 2);
 			double b = System.Math.Pow(minorAxis, 2);
-			y = System.Math.Pow(x, 2);
+			y = System.Math.Pow(y, 2);
 
 			//use equaltion (x^2)/a^2 + (y^2)/b^2 = 1
 			double x = System.Math.Sqrt((1 - (y/b))*a);
