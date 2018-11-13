@@ -9,41 +9,54 @@ public enum BodyType
     Unclassified, Sun, Planet, Moon, Astroid
 }
 
+[Serializable]
 public class Body
 {
-    // ** Properites ** //
 
-    public string Name { get; set; }
-    public BodyType Type { get; set; }
+    // ** Properites ** //
+    public NBody System { get; set; }
+    public string Name;
+    public BodyType Type;
     /// <summary>
     /// Primary orbital body or point. May be null.
     /// </summary>
-    public Orbit Orbits { get; set; }
+    public Orbit Orbits;
     /// <summary>
     /// Mass in kg.
     /// </summary>
-    public double Mass { get; set; }
+    public double Mass;
     /// <summary>
     /// Average radius of the body itself (not orbital radius).
     /// </summary>
-    public double Radius { get; set; }
+    public double Radius;
     /// <summary>
     /// Time in days that it takes to make a full revoltion.
     /// Use positive #'s for clockwise, negative for counterclockwise.
     /// </summary>
-    public double Rotation { get; set; }
+    public double Rotation;
     /// <summary>
     /// Individual Layers, in order from the outside in. Atmosphere, Crust, Mandle, etc.  May contain
     /// limited information and simplified layers based on current knowledge. 
     /// May be null for completly unknown planets.
     /// </summary>
-    public List<Layer> Layers { get; private set; }
+    public List<Layer> Layers;
 
     /// <summary>
     /// Creates a unclassifed, unnammed body with no orbit, mass, rotation, or layers.
     /// </summary>
-    public Body() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null) { }
+    public Body(NBody system) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null) { }
 
+    /// <summary>
+    /// Creates a Body from a json string.
+    /// </summary>
+    public Body(NBody system, String json) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null)
+    {
+        JsonUtility.FromJsonOverwrite(json, this);
+
+        // Serailization does not include orbiting planet object. Find based on name and update accordingly.
+        // TODO: Under construction.
+        
+    }
     /// <summary>
     /// Creates a body.
     /// </summary>
@@ -54,8 +67,15 @@ public class Body
     /// <param name="radius">Average radius from center of the plane to the outer crust.</param>
     /// <param name="rotation">Time (in days) for the planet to make a full rotation.</param>
     /// <param name="layers">Body composition of each layer.  May be null.</param>
-    public Body(string name, BodyType type, Orbit orbits, double mass, double radius, double rotation, List<Layer> layers)
+    public Body(NBody system, string name, BodyType type, Orbit orbits, double mass, double radius, double rotation, List<Layer> layers)
     {
+        if (system == null)
+        {
+            throw new ArgumentNullException("System needs to be included.");
+        }
+        System = system;
+        System.Bodies.Add(this);
+
         if (name == null)
         {
             throw new ArgumentNullException("Name not found.");
@@ -102,7 +122,7 @@ public class Body
         Vector3d distance = getPosition(days).subtract(from.getPosition(days));
         return distance.magnatude;
     }
-    
+
     /// <summary>
     /// Retrives the full composition of the planet. 
     /// Read-only: Any changes needs to be made at the individual layer(s). 
@@ -121,6 +141,15 @@ public class Body
             }
         }
         return result;
+    }
+
+    /// <summary>
+    /// Returns a serialized version of this object.
+    /// </summary>
+    /// <returns></returns>
+    public string ToJson()
+    {
+        return JsonUtility.ToJson(this);
     }
 
 }

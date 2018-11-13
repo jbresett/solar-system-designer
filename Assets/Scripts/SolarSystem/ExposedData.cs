@@ -20,14 +20,14 @@ public class ExposedData {
      */
 
     /// <summary>
-    /// Stores a List of all Bodies in String Format:
-    /// Name Type OrbitType [ Around Paramters ] Mass Radius Rotation [ Composition ]
-    /// Distances are in kilometers, mass in kg.
-    /// Example: "Earth Planet Ellipse [ Sun 156e+6 146e+6 ] 5.972e+24 6371 1.0 [ O .47 Si .27 Al .08 Ca .04 ]"
+    /// Stores a List of all Bodies in JSON Format.
+    /// Example: {"Name":"Earth","Type":2,
+    ///     "Orbits":{"ParentName":"Sun","Shape":{"majorAxis":156.0,"minorAxis":146.0},"Revolution":365.0},
+    ///     "Mass":5.972e24,"Radius":6371.0,"Rotation":1.0}
     ///   Sets the earth circling around the sun in an eliptical orbit btween 146 and 156
     ///   kilometers (no inclination), with a mass of 5.972*10^24 kg, a radius of 6371 kilometers, 
     ///   and a composition of primarally Oxygen, SIlicon, Aliminum, and Calcium (based on %).
-    ///  
+    ///   
     /// Note: NBodies.updateValue() must be called after making changes to the List from getList.
     /// </summary>
     public SimCapiStringArray NBodies;

@@ -11,13 +11,15 @@ public class BodyTests: IPrebuildSetup {
 
     public void Setup()
     {
-        Sun = new Body("Sun", BodyType.Sun, null, 0, 0, 0, null);
+        NBody System = new NBody();
+
+        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0, null);
 
         Orbit earthOrbit = new Orbit(Sun, new Ellipse(100, 50), 365);
-        Earth = new Body("Earth", BodyType.Planet, earthOrbit, 0, 0, 0, null);
+        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0, null);
 
         Orbit moonOrbit = new Orbit(Earth, new Ellipse(10.0, 5.0), 30.0);
-        Moon = new Body("Moon", BodyType.Moon, moonOrbit, 0, 0, 0, null);
+        Moon = new Body(System, "Moon", BodyType.Moon, moonOrbit, 0, 0, 0, null);
     }
 
     /// <summary>
@@ -36,6 +38,19 @@ public class BodyTests: IPrebuildSetup {
             Assert.AreEqual(time[i,1], Math.Round(degree));
         }
 
+    }
+
+    [Test]
+    public void Serial()
+    {
+        NBody System = new NBody();
+
+        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0, null);
+        Orbit earthOrbit = new Orbit(Sun, new Ellipse(156, 146), 365);
+        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 5.972e+24, 6371.0, 1.0, null);
+
+        Debug.Log("Sun JSON: " + Sun.ToJson());
+        Debug.Log("Earth JSON: " + Earth.ToJson());
     }
 
     // A UnityTest behaves like a coroutine in PlayMode

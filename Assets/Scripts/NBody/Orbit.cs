@@ -7,11 +7,28 @@ using UnityEngine;
 /// Creates an simple orbit around a body using a basic ellipse around a parent object.
 /// Simplified model: Constant speed over time, no barycenter calculations.
 /// </summary>
+[Serializable]
 public class Orbit {
 
-    public Body Parent { get; set; }
-    public Ellipse Shape { get; set; }
-    public double RevolutionTime { get; set; }
+    [SerializeField]
+    private string ParentName;
+
+    private Body _parent;
+    public Body Parent {
+        get { return _parent; }
+        set
+        {
+            _parent = value;
+            ParentName = (value == null ? "" : value.Name);
+        }
+    }
+    public Ellipse Shape;
+    public double Revolution;
+
+    public string GetParentName()
+    {
+        return ParentName;
+    }
 
     /// <summary>
     /// Generates orbit around a body, given a shape and revolution Time.
@@ -28,7 +45,11 @@ public class Orbit {
 
         Parent = parent;
         Shape = shape;
-        RevolutionTime = revolutionTime;
+        Revolution = revolutionTime;
+    }
+
+    public Orbit(string orbitString)
+    {
     }
 
     /// <summary>
@@ -38,7 +59,6 @@ public class Orbit {
     /// <returns></returns>
     public Vector3d getPosition(double days)
     {
-        Vector3d result = new Vector3d();
         // Get theta and return the calculated point.
         double degree = getDegree(days);
         return Shape.calcPoint(degree);
@@ -51,7 +71,7 @@ public class Orbit {
     public double getRadian(double days)
     {
         // Gets # of turns based on time of a single revolution.
-        double turns = days / RevolutionTime;
+        double turns = days / Revolution;
 
         // Percent of Turn
         double turn = turns - Math.Truncate(turns);
@@ -66,7 +86,7 @@ public class Orbit {
     public double getDegree(double days)
     {
         // Gets # of turns based on time of a single revolution.
-        double turns = days / RevolutionTime;
+        double turns = days / Revolution;
 
         // Percent of Turn
         double turn = turns - Math.Truncate(turns);
@@ -81,7 +101,7 @@ public class Orbit {
         return orbit != null &&
                EqualityComparer<Body>.Default.Equals(Parent, orbit.Parent) &&
                EqualityComparer<Ellipse>.Default.Equals(Shape, orbit.Shape) &&
-               RevolutionTime == orbit.RevolutionTime;
+               Revolution == orbit.Revolution;
     }
 
     public override int GetHashCode()
@@ -89,7 +109,7 @@ public class Orbit {
         var hashCode = -6172727;
         hashCode = hashCode * -1521134295 + EqualityComparer<Body>.Default.GetHashCode(Parent);
         hashCode = hashCode * -1521134295 + EqualityComparer<Ellipse>.Default.GetHashCode(Shape);
-        hashCode = hashCode * -1521134295 + RevolutionTime.GetHashCode();
+        hashCode = hashCode * -1521134295 + Revolution.GetHashCode();
         return hashCode;
     }
 }

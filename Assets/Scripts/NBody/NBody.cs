@@ -6,7 +6,12 @@ using UnityEngine;
 /// Stores all data for the NBody system and handles over-time calculations of body locations.
 /// </summary>
 public class NBody {
-
+    
+    public NBody()
+    {
+        Bodies = new List<Body>();
+        Speed = 0;
+    }
     /// <summary>
     /// List of all bodies within the system.
     /// </summary>
@@ -22,12 +27,6 @@ public class NBody {
     /// </summary>
     public double Speed { get; set; }
 
-	// Use this for initialization
-	void Start () {
-        Bodies = new List<Body>();
-        Speed = 0;
-	}
-	
 	// Update is called once per frame
 	void Update () {
         Days += Speed;	
