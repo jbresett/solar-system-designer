@@ -22,7 +22,7 @@ public class Body
         get { return name; }
         set {
             if (value == null) throw new InvalidOperationException("Planet name must not be null.");
-            if (System.Bodies.ContainsKey(value)) throw new InvalidOperationException("Planet already exists in system with same name.");
+            if (System.ContainsKey(value)) throw new InvalidOperationException("Planet already exists in system with same name.");
             name = value;
         }
     }
@@ -119,7 +119,7 @@ public class Body
         Radius = radius;
         Rotation = rotation;
 
-        System.Bodies.Add(name, this);
+        System.Add(name, this);
     }
 
     /// <summary>
@@ -157,4 +157,17 @@ public class Body
         return JsonUtility.ToJson(this);
     }
 
+    /// <summary>
+    /// Overwrites the class and all child Serialized data from a json file.
+    /// </summary>
+    /// <param name="json"></param>
+    public void Overwrite(string json)
+    {
+        JsonUtility.FromJsonOverwrite(json, this);
+    }
+
+    public void UpdateCapi()
+    {
+        Main.Instance.Exposed.BodyUpdate(this);
+    }
 }
