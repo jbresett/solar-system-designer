@@ -7,6 +7,11 @@ using UnityEngine;
 /// Main Class for SS Game. Handles SimCapi interface.
 /// </summary>
 public class Main : MonoBehaviour {
+    
+    readonly static public String SIM_ID = "SolarSystemDesigner";
+
+    // Singleton instance. Created at start.
+    static public Main Instance { get; private set; }
 
     // Program states.
     public enum States
@@ -15,10 +20,10 @@ public class Main : MonoBehaviour {
     }
     public States State = States.Startup;
 
+
     // NBody Simulator
     public NBody Bodies { get; private set; }
 
-    readonly static public String SIM_ID = "SolarSystemDesigner";
     public ExposedData Exposed;
     public PersistentData Persistent;
 
@@ -26,6 +31,11 @@ public class Main : MonoBehaviour {
 
     // Initialization
     void Start () {
+
+        // Create singleton instance.
+        if (Instance != null) throw new InvalidOperationException("Process has already been started.");
+        Instance = this;
+
         // Create NBody system.
         Bodies = new NBody();
 
@@ -53,7 +63,7 @@ public class Main : MonoBehaviour {
     }
 
     // Frame Update
-    void Update () {
+    void Update() {
         /// Code that occurs every frame, regardless of state.
         //TODO: Add future frame code here.    
 

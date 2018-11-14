@@ -10,10 +10,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Ellipse{
 
+    [SerializeField]
 	private double majorAxis;
-	private double minorAxis;
+    [SerializeField]
+    private double minorAxis;
 
 	//constructor
 	public Ellipse(double major, double minor){

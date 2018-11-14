@@ -72,7 +72,6 @@ public class Vector3d
     /// </summary>
     public Vector3 toVector3()
     {
-        Vector3 result = new Vector3((float)x, (float)y, (float)z);
         return new Vector3((float)x, (float)y, (float)z);
     }
 

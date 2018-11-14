@@ -7,11 +7,49 @@ using UnityEngine;
 /// Creates an simple orbit around a body using a basic ellipse around a parent object.
 /// Simplified model: Constant speed over time, no barycenter calculations.
 /// </summary>
+[Serializable]
 public class Orbit {
 
-    public Body Parent { get; set; }
-    public Ellipse Shape { get; set; }
-    public double RevolutionTime { get; set; }
+    /// <summary>
+    /// Name of Parent Body (in same system only).
+    /// </summary>
+    public string Parent {
+        get { return parent; }
+        set {
+            if (value == null) throw new InvalidOperationException("Parent can not be null.");
+            parent = value;
+        }
+    }
+    [SerializeField]
+    private string parent;
+
+    /// <summary>
+    /// Elliptical shape
+    /// </summary>
+    public Ellipse Shape
+    {
+        get { return shape; }
+        set
+        {
+            if (value == null) throw new InvalidOperationException("Shape can not be null.");
+            shape = value;
+        }
+
+	}
+    [SerializeField]
+    private Ellipse shape;
+
+    /// <summary>
+    /// Time (in Days) for a full revolution.
+    /// </summary>
+    public double Revolution
+    {
+        get { return revolution; }
+        set { revolution = value; }
+    }
+    [SerializeField]
+    private double revolution;
+
 
     /// <summary>
     /// Generates orbit around a body, given a shape and revolution Time.
@@ -19,16 +57,15 @@ public class Orbit {
     /// <param name="parent">Object's parent.</param>
     /// <param name="shape">Ellipse shape.</param>
     /// <param name="revolutionTime">Time in Days for a full revolution.</param>
-    public Orbit(Body parent, Ellipse shape, double revolutionTime)
+    public Orbit(string parent, Ellipse shape, double revolutionTime)
     {
-        if (parent == null)
-        {
-            throw new ArgumentException("Around is null.");
-        }
-
         Parent = parent;
         Shape = shape;
-        RevolutionTime = revolutionTime;
+        Revolution = revolutionTime;
+    }
+
+    public Orbit(string orbitString)
+    {
     }
 
     /// <summary>
@@ -38,7 +75,6 @@ public class Orbit {
     /// <returns></returns>
     public Vector3d getPosition(double days)
     {
-        Vector3d result = new Vector3d();
         // Get theta and return the calculated point.
         double degree = getDegree(days);
         return Shape.calcPoint(degree);
@@ -51,7 +87,7 @@ public class Orbit {
     public double getRadian(double days)
     {
         // Gets # of turns based on time of a single revolution.
-        double turns = days / RevolutionTime;
+        double turns = days / Revolution;
 
         // Percent of Turn
         double turn = turns - Math.Truncate(turns);
@@ -66,7 +102,7 @@ public class Orbit {
     public double getDegree(double days)
     {
         // Gets # of turns based on time of a single revolution.
-        double turns = days / RevolutionTime;
+        double turns = days / Revolution;
 
         // Percent of Turn
         double turn = turns - Math.Truncate(turns);
@@ -79,17 +115,17 @@ public class Orbit {
     {
         var orbit = obj as Orbit;
         return orbit != null &&
-               EqualityComparer<Body>.Default.Equals(Parent, orbit.Parent) &&
+               EqualityComparer<String>.Default.Equals(Parent, orbit.Parent) &&
                EqualityComparer<Ellipse>.Default.Equals(Shape, orbit.Shape) &&
-               RevolutionTime == orbit.RevolutionTime;
+               Revolution == orbit.Revolution;
     }
 
     public override int GetHashCode()
     {
         var hashCode = -6172727;
-        hashCode = hashCode * -1521134295 + EqualityComparer<Body>.Default.GetHashCode(Parent);
+        hashCode = hashCode * -1521134295 + EqualityComparer<String>.Default.GetHashCode(Parent);
         hashCode = hashCode * -1521134295 + EqualityComparer<Ellipse>.Default.GetHashCode(Shape);
-        hashCode = hashCode * -1521134295 + RevolutionTime.GetHashCode();
+        hashCode = hashCode * -1521134295 + Revolution.GetHashCode();
         return hashCode;
     }
 }
