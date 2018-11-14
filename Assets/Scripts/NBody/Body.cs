@@ -12,50 +12,92 @@ public enum BodyType
 [Serializable]
 public class Body
 {
-
-    // ** Properites ** //
     public NBody System { get; set; }
-    public string Name;
-    public BodyType Type;
+
+    /// <summary>
+    /// Planet Name. Must be non-null and unique for it's system.
+    /// </summary>
+    public string Name
+    {
+        get { return name; }
+        set {
+            if (value == null) throw new InvalidOperationException("Planet name must not be null.");
+            if (System.Bodies.ContainsKey(value)) throw new InvalidOperationException("Planet already exists in system with same name.");
+            name = value;
+        }
+    }
+    [SerializeField]
+    private String name;
+
+    public BodyType Type
+    {
+        get { return type; }
+        set { type = value; }
+    }
+    [SerializeField]
+    private BodyType type;
+
     /// <summary>
     /// Primary orbital body or point. May be null.
     /// </summary>
-    public Orbit Orbits;
+    public Orbit Orbits
+    {
+        get { return orbits; }
+        set { orbits = value; }
+    }
+    [SerializeField]
+    private Orbit orbits;
+
     /// <summary>
     /// Mass in kg.
     /// </summary>
-    public double Mass;
+    public double Mass
+    {
+        get { return mass; }
+        set {
+            if (value < 0.0) throw new InvalidOperationException("Mass can not be negative.");
+            mass = value;
+        }
+    }
+    [SerializeField]
+    private double mass;
+
     /// <summary>
     /// Average radius of the body itself (not orbital radius).
     /// </summary>
-    public double Radius;
+    public double Radius {
+        get { return radius; }
+        set {
+            if (value < 0.0) throw new InvalidOperationException("Radius can not be negative.");
+            radius = value;
+        }
+    }
+    [SerializeField]
+    private double radius;
+
     /// <summary>
     /// Time in days that it takes to make a full revoltion.
     /// Use positive #'s for clockwise, negative for counterclockwise.
     /// </summary>
-    public double Rotation;
-    /// <summary>
-    /// Individual Layers, in order from the outside in. Atmosphere, Crust, Mandle, etc.  May contain
-    /// limited information and simplified layers based on current knowledge. 
-    /// May be null for completly unknown planets.
-    /// </summary>
-    public List<Layer> Layers;
+    public double Rotation
+    {
+        get { return rotation; }
+        set { rotation = value; }
+    }
+    [SerializeField]
+    private double rotation;
 
     /// <summary>
     /// Creates a unclassifed, unnammed body with no orbit, mass, rotation, or layers.
     /// </summary>
-    public Body(NBody system) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null) { }
+    public Body(NBody system) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0) { }
 
     /// <summary>
     /// Creates a Body from a json string.
     /// </summary>
-    public Body(NBody system, String json) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null)
+    public Body(NBody system, String json) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0)
     {
-        JsonUtility.FromJsonOverwrite(json, this);
-
-        // Serailization does not include orbiting planet object. Find based on name and update accordingly.
-        // TODO: Under construction.
-        
+        JsonUtility.FromJsonOverwrite(json, this); 
     }
     /// <summary>
     /// Creates a body.
@@ -67,34 +109,17 @@ public class Body
     /// <param name="radius">Average radius from center of the plane to the outer crust.</param>
     /// <param name="rotation">Time (in days) for the planet to make a full rotation.</param>
     /// <param name="layers">Body composition of each layer.  May be null.</param>
-    public Body(NBody system, string name, BodyType type, Orbit orbits, double mass, double radius, double rotation, List<Layer> layers)
+    public Body(NBody system, string name, BodyType type, Orbit orbits, double mass, double radius, double rotation)
     {
-        if (system == null)
-        {
-            throw new ArgumentNullException("System needs to be included.");
-        }
         System = system;
-        System.Bodies.Add(this);
-
-        if (name == null)
-        {
-            throw new ArgumentNullException("Name not found.");
-        }
         Name = name;
         Type = type;
         Orbits = orbits;
-        if (mass < 0.0)
-        {
-            throw new ArgumentNullException("Must have 0 or positive mass.");
-        }
         Mass = mass;
         Radius = radius;
-        if (mass < 0.0)
-        {
-            throw new ArgumentNullException("Must have 0 or positive radius.");
-        }
         Rotation = rotation;
-        Layers = layers;
+
+        System.Bodies.Add(name, this);
     }
 
     /// <summary>
@@ -102,7 +127,7 @@ public class Body
     /// Returns (0,0,0) if the body is not orbiting another body.
     /// </summary>
     /// <param name="days"></param>
-    public Vector3d getPosition(double days)
+    public Vector3d GetPosition(double days)
     {
         if (Orbits == null)
         {
@@ -117,30 +142,10 @@ public class Body
     /// <param name="from"></param>
     /// <param name="days"></param>
     /// <returns></returns>
-    public double getDistance(Body from, double days) 
+    public double GetDistance(Body from, double days) 
     {
-        Vector3d distance = getPosition(days).subtract(from.getPosition(days));
+        Vector3d distance = GetPosition(days).subtract(from.GetPosition(days));
         return distance.magnatude;
-    }
-
-    /// <summary>
-    /// Retrives the full composition of the planet. 
-    /// Read-only: Any changes needs to be made at the individual layer(s). 
-    /// </summary>
-    public Dictionary<Compound, double> getComposition()
-    {
-        Dictionary<Compound, double> result = new Dictionary<Compound, double>();
-        foreach (Layer layer in Layers)
-        {
-            foreach (Compound compound in layer.Composition.Keys)
-            {
-                // Adds the new compound ammounts to the current one.
-                result.Add(compound, layer.Composition[compound] +
-                    (result.ContainsKey(compound) ? result[compound] : 0)
-                    );
-            }
-        }
-        return result;
     }
 
     /// <summary>

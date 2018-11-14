@@ -14,13 +14,13 @@ public class NBodyTests {
     public void Setup()
     {
         NBody System = new NBody();
-        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0, null);
+        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
 
-        Orbit earthOrbit = new Orbit(Sun, new Ellipse(100, 50), 365);
-        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0, null);
+        Orbit earthOrbit = new Orbit("Sun", new Ellipse(100, 50), 365);
+        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
 
-        Orbit moonOrbit = new Orbit(Earth, new Ellipse(10.0, 5.0), 30.0);
-        Moon = new Body(System, "Moon", BodyType.Moon, moonOrbit, 0, 0, 0, null);
+        Orbit moonOrbit = new Orbit("Earth", new Ellipse(10.0, 5.0), 30.0);
+        Moon = new Body(System, "Moon", BodyType.Moon, moonOrbit, 0, 0, 0);
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class NBodyTests {
 
         for (int i = 0; i < time.GetLength(0); i++)
         {
-            Vector3d Position = Earth.getPosition(time[i, 0]);
+            Vector3d Position = Earth.GetPosition(time[i, 0]);
             Assert.AreEqual(time[i, 1], Math.Round(Position.x));
             Assert.AreEqual(time[i, 2], Math.Round(Position.y));
         }

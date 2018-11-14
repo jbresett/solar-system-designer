@@ -9,13 +9,14 @@ public class NBody {
     
     public NBody()
     {
-        Bodies = new List<Body>();
+        Bodies = new Dictionary<string, Body>();
         Speed = 0;
     }
+
     /// <summary>
     /// List of all bodies within the system.
     /// </summary>
-    public List<Body> Bodies { get; private set; }
+    public Dictionary<string, Body> Bodies { get; private set; }
 
     /// <summary>
     /// Current time for the simulation, in N days from starting points.
@@ -40,7 +41,7 @@ public class NBody {
     /// <returns></returns>
     public double getCurrentDistance(Body body1, Body body2)
     {
-        return body1.getDistance(body2, Days);
+        return body1.GetDistance(body2, Days);
     }
 
     /// <summary>
@@ -50,8 +51,7 @@ public class NBody {
     /// <returns></returns>
     public Vector3d getCurrentPosition(Body body)
     {
-        return body.getPosition(Days);
+        return body.GetPosition(Days);
     }
-
 
 }

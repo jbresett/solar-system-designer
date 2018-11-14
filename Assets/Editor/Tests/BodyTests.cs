@@ -3,6 +3,7 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class BodyTests: IPrebuildSetup {
     private Body Sun;
@@ -13,13 +14,13 @@ public class BodyTests: IPrebuildSetup {
     {
         NBody System = new NBody();
 
-        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0, null);
+        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
 
-        Orbit earthOrbit = new Orbit(Sun, new Ellipse(100, 50), 365);
-        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0, null);
+        Orbit earthOrbit = new Orbit("Sun", new Ellipse(100, 50), 365);
+        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
 
-        Orbit moonOrbit = new Orbit(Earth, new Ellipse(10.0, 5.0), 30.0);
-        Moon = new Body(System, "Moon", BodyType.Moon, moonOrbit, 0, 0, 0, null);
+        Orbit moonOrbit = new Orbit("Earth", new Ellipse(10.0, 5.0), 30.0);
+        Moon = new Body(System, "Moon", BodyType.Moon, moonOrbit, 0, 0, 0);
     }
 
     /// <summary>
@@ -45,9 +46,9 @@ public class BodyTests: IPrebuildSetup {
     {
         NBody System = new NBody();
 
-        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0, null);
-        Orbit earthOrbit = new Orbit(Sun, new Ellipse(156, 146), 365);
-        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 5.972e+24, 6371.0, 1.0, null);
+        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
+        Orbit earthOrbit = new Orbit("Sun", new Ellipse(156, 146), 365);
+        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 5.972e+24, 6371.0, 1.0);
 
         Debug.Log("Sun JSON: " + Sun.ToJson());
         Debug.Log("Earth JSON: " + Earth.ToJson());
