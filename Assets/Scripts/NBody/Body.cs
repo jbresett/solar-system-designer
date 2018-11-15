@@ -92,6 +92,7 @@ public class Body
     /// </summary>
     public Body(NBody system) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0) { }
 
+    /*
     void Update()
     {
         var pos = body.transform.position;
@@ -99,7 +100,7 @@ public class Body
         pos.y = (float)(pos.y + vel.y);
         pos.z = (float)(pos.z + vel.z);
         body.transform.position = pos;
-    }
+    } */
     
     //public Body() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null) { }
 
@@ -110,6 +111,7 @@ public class Body
     {
         JsonUtility.FromJsonOverwrite(json, this); 
     }
+
     /// <summary>
     /// Creates a body.
     /// </summary>
