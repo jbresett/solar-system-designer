@@ -2788,6 +2788,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
   m_IsPrefabAsset: 0
@@ -7967,96 +7971,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 290590814}
   m_CullTransparentMesh: 0
---- !u!1001 &302473968
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1310222996}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -9.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2f3a8a918196593478a3cd598f1c1751, type: 2}
-    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_Name
-      value: Sun Model
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.83393
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.0013115
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.0091447
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.065328
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.065328
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.065328
-      objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
-  m_IsPrefabAsset: 0
 --- !u!1 &305250050
 GameObject:
   m_ObjectHideFlags: 0
@@ -8289,6 +8203,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dd7e896a14610484ca604d0421981546, type: 2}
+    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
   m_IsPrefabAsset: 0
@@ -9111,6 +9029,10 @@ Prefab:
     - target: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
@@ -10498,6 +10420,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 53eea352fa7fc604f9c68873c1fac004, type: 2}
+    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
   m_IsPrefabAsset: 0
@@ -14728,6 +14654,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 93a1dc39b5771b74da143ab155f5aef1, type: 2}
+    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
   m_IsPrefabAsset: 0
@@ -16428,6 +16358,82 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1295292703}
   m_CullTransparentMesh: 0
+--- !u!1 &1306727583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 0c002e7e1ec939f4288e6f15010d3c6c,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1306727584}
+  - component: {fileID: 1306727586}
+  - component: {fileID: 1306727585}
+  m_Layer: 0
+  m_Name: pSphere1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1306727584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 0c002e7e1ec939f4288e6f15010d3c6c,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1306727583}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0013115, y: -0.83393, z: -0.0091447}
+  m_LocalScale: {x: 1.065328, y: 1.065328, z: 1.065328}
+  m_Children: []
+  m_Father: {fileID: 1783027545}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1306727585
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 0c002e7e1ec939f4288e6f15010d3c6c,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1306727583}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 2f3a8a918196593478a3cd598f1c1751, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1306727586
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 3300000, guid: 0c002e7e1ec939f4288e6f15010d3c6c,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1306727583}
+  m_Mesh: {fileID: 4300000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
 --- !u!1 &1310222993
 GameObject:
   m_ObjectHideFlags: 0
@@ -17805,6 +17811,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cf1fb0309d5c0654381c233794dad88d, type: 2}
+    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
   m_IsPrefabAsset: 0
@@ -17867,6 +17877,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6f302f53e81c7af44b89abfdabef7222, type: 2}
+    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
   m_IsPrefabAsset: 0
@@ -21949,16 +21963,39 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1774357646}
   m_CullTransparentMesh: 0
---- !u!1 &1783027544 stripped
+--- !u!1 &1783027544
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c,
     type: 3}
-  m_PrefabInternal: {fileID: 302473968}
---- !u!4 &1783027545 stripped
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1783027545}
+  - component: {fileID: 1783027546}
+  m_Layer: 0
+  m_Name: Sun
+  m_TagString: Star
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1783027545
 Transform:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0c002e7e1ec939f4288e6f15010d3c6c,
     type: 3}
-  m_PrefabInternal: {fileID: 302473968}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1783027544}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -9.84, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 244503594}
+  - {fileID: 1306727584}
+  m_Father: {fileID: 1310222996}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1783027546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21970,8 +22007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c527e7472761f340b74aa4425b70a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpd: 0
-  dampAmt: 0
+  rotSpd: 20
+  dampAmt: 0.5
 --- !u!1 &1783150401
 GameObject:
   m_ObjectHideFlags: 0
@@ -22383,6 +22420,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c85d96fa2412ede4cb1bc84d02cdf81d, type: 2}
+    - target: {fileID: 100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c002e7e1ec939f4288e6f15010d3c6c, type: 3}
   m_IsPrefabAsset: 0
