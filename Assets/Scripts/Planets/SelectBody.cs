@@ -25,6 +25,17 @@ namespace Planets
                 if (hitInfo.collider.gameObject.tag == "OrbitalBody")
                 {
                     body = hitInfo.collider.gameObject;
+                    Text[] comps = selectMenu.GetComponentsInChildren<Text>();
+                    foreach (var v in comps)
+                    {
+                        Debug.Log(v.name);
+                    }
+
+                    comps[1].text = body.GetComponent<OrbitalBody>().type;
+                    comps[3].text = body.GetComponent<OrbitalBody>().name;
+                    comps[5].text = body.GetComponent<OrbitalBody>().vel.x.ToString();
+                    comps[7].text = body.GetComponent<OrbitalBody>().vel.y.ToString();
+                    comps[9].text = body.GetComponent<OrbitalBody>().vel.z.ToString();
                 }
             }
             
