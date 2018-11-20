@@ -15,6 +15,7 @@ public class InsertInPlace : MonoBehaviour
     public InputField yVel;
     public InputField zVel;
     public InputField radius;
+    public InputField mass;
     public GameObject planetBase;
 
     void Start()
@@ -27,14 +28,13 @@ public class InsertInPlace : MonoBehaviour
         Vector3 pos = new Vector3(float.Parse(xPos.text),float.Parse(yPos.text),float.Parse(zPos.text));
         Quaternion rot = new Quaternion(0,0,0,0);
         GameObject body = Instantiate(planetBase, pos, rot);
-        Vector3 size = body.transform.localScale;
-        size.x = float.Parse(radius.text);
-        size.y = float.Parse(radius.text);
-        size.z = float.Parse(radius.text);
-        body.transform.localScale = size;
         body.SetActive(true);
         body.name = name.text;
-        body.AddComponent<UpdatePlanet>();
-        body.GetComponent<UpdatePlanet>().vel = new Vector3(float.Parse(xVel.text),float.Parse(yVel.text),float.Parse(zVel.text));
+        OrbitalBody script = body.AddComponent<OrbitalBody>();
+        script.vel = new Vector3(float.Parse(xVel.text),float.Parse(yVel.text),float.Parse(zVel.text));
+        script.setRadius(int.Parse(radius.text));
+        script.mass = int.Parse(mass.text);
+        script.type = type.options[type.value].text;
     }
+
 }
