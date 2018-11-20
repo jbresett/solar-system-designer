@@ -9,7 +9,7 @@ public class BodyCnvsn : MonoBehaviour {
     } else {
         Orbit("Sun", new Ellipse(...magnitude* 2,...magnitude* 2), double revolutionTime);
     }*/
-
+    /*
     public void toBody(UnityBody o)
     {
 
@@ -21,4 +21,5 @@ public class BodyCnvsn : MonoBehaviour {
     {
         //UnityBody uBody= new UnityBody(Main.Instance.Bodies, b.Name, b.Type, null, (float)0.0, (float)0.0, (float)0.0);
     }
+    */
 }
