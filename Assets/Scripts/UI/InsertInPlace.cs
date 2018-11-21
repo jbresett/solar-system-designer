@@ -1,3 +1,4 @@
+using System;
 using Planets;
 using UnityEditor;
 using UnityEngine;
@@ -24,12 +25,23 @@ public class InsertInPlace : MonoBehaviour
     }
     public void insert()
     {
-        
+        GameObject[] bodies = GameObject.FindGameObjectsWithTag("OrbitalBody");
+        Debug.Log(bodies);
+        String bodyName = name.text;
+        int id = 1;
+        foreach (var b in bodies)
+        {
+            if (b.name == bodyName)
+            {
+                bodyName = name.text + id;
+                id++;
+            }
+        }
         Vector3 pos = new Vector3(float.Parse(xPos.text),float.Parse(yPos.text),float.Parse(zPos.text));
         Quaternion rot = new Quaternion(0,0,0,0);
         GameObject body = Instantiate(planetBase, pos, rot);
         body.SetActive(true);
-        body.name = name.text;
+        body.name = bodyName;
         OrbitalBody script = body.AddComponent<OrbitalBody>();
         script.vel = new Vector3(float.Parse(xVel.text),float.Parse(yVel.text),float.Parse(zVel.text));
         script.setRadius(int.Parse(radius.text));
