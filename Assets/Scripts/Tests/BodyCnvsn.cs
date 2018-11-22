@@ -13,7 +13,7 @@ public class BodyCnvsn : MonoBehaviour {
     public void toBody(UnityBody o)
     {
 
-        //Body body = new Body(Main.Instance.Bodies,o.name,o.type,null,0.0,0.0,0.0);
+        Body body = new Body(Main.Instance.Bodies,o.name,o.type,null,0.0,0.0,0.0);
 
     }
 
