@@ -6,40 +6,50 @@ namespace Planets
     public class OrbitalBody : MonoBehaviour
     {
 
-        public Vector3 vel;
-        public int mass;
-        public int radius;
+        public double[] vel;
+        public double mass;
+        public double radius;
         public string type;
+        private double[] pos;
 
-        public OrbitalBody(Vector3 vel, int mass, int radius)
-        {
-            this.vel = vel;
-            this.mass = mass;
-            
-            
-        }
-
-        public void setRadius(int radius)
+        public void setRadius(double radius)
         {
             this.radius = radius;
             Vector3 size = gameObject.transform.localScale;
-            float aRadius = adjustRadius(radius);
-            size.x = aRadius;
-            size.y = aRadius;
-            size.z = aRadius;
+            size.x = 2*(float)radius;
+            size.y = 2*(float)radius;
+            size.z = 2*(float)radius;
             gameObject.transform.localScale = size;
         }
 
-        private void Update()
+        public void setPos(double[] pos)
         {
-            Vector3 pos = gameObject.transform.position;
-            pos += vel;
-            gameObject.transform.position = pos;
+            this.pos = pos;
+            updatePos();
+        }
+        public void setVel(double[] vel)
+        {
+            this.vel = vel;
+            
         }
 
-        private float adjustRadius(float radius)
+        private void updatePos()
         {
-            return radius;
+            Vector3 newPos = new Vector3((float)pos[0],(float)pos[1],(float)pos[2]);
+            gameObject.transform.position = newPos;
+        }
+
+        public void setMass(double mass)
+        {
+            this.mass = mass;
+        }
+        private void Update()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                pos[i] += vel[i];
+            }
+            updatePos();
         }
     }
 }

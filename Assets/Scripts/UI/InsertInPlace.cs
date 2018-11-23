@@ -37,16 +37,33 @@ public class InsertInPlace : MonoBehaviour
                 id++;
             }
         }
-        Vector3 pos = new Vector3(float.Parse(xPos.text),float.Parse(yPos.text),float.Parse(zPos.text));
+        Vector3 pos = new Vector3();
         Quaternion rot = new Quaternion(0,0,0,0);
-        GameObject body = Instantiate(planetBase, pos, rot);
+        GameObject body = Instantiate(planetBase);
         body.SetActive(true);
         body.name = bodyName;
         OrbitalBody script = body.AddComponent<OrbitalBody>();
-        script.vel = new Vector3(float.Parse(xVel.text),float.Parse(yVel.text),float.Parse(zVel.text));
-        script.setRadius(int.Parse(radius.text));
-        script.mass = int.Parse(mass.text);
+        script.setVel(new []{double.Parse(xVel.text),double.Parse(yVel.text),double.Parse(zVel.text)});
+        script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
+        script.setRadius(convertRadiUnits(double.Parse(radius.text)));
+        script.setMass(convertMassUnits(double.Parse(mass.text)));
         script.type = type.options[type.value].text;
     }
 
+    private double convertRadiUnits(double value)
+    {
+        return value * 6.3781;
+    }
+
+    private double[] convertPosUnits(double x, double y, double z)
+    {
+        double au = 14959.78707;
+        double[] pos = {x * au, y * au, z * au};
+        return pos;
+    }
+
+    private double convertMassUnits(double mass)
+    {
+        return mass * (5.9736 * Math.Pow(10, 24));
+    }
 }
