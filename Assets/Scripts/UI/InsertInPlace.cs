@@ -1,3 +1,4 @@
+using System;
 using Planets;
 using UnityEditor;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class InsertInPlace : MonoBehaviour
     public InputField yVel;
     public InputField zVel;
     public InputField radius;
+    public InputField mass;
     public GameObject planetBase;
 
     void Start()
@@ -23,18 +25,45 @@ public class InsertInPlace : MonoBehaviour
     }
     public void insert()
     {
-        
-        Vector3 pos = new Vector3(float.Parse(xPos.text),float.Parse(yPos.text),float.Parse(zPos.text));
+        GameObject[] bodies = GameObject.FindGameObjectsWithTag("OrbitalBody");
+        Debug.Log(bodies);
+        String bodyName = name.text;
+        int id = 1;
+        foreach (var b in bodies)
+        {
+            if (b.name == bodyName)
+            {
+                bodyName = name.text + id;
+                id++;
+            }
+        }
+        Vector3 pos = new Vector3();
         Quaternion rot = new Quaternion(0,0,0,0);
-        GameObject body = Instantiate(planetBase, pos, rot);
-        Vector3 size = body.transform.localScale;
-        size.x = float.Parse(radius.text);
-        size.y = float.Parse(radius.text);
-        size.z = float.Parse(radius.text);
-        body.transform.localScale = size;
+        GameObject body = Instantiate(planetBase);
         body.SetActive(true);
-        body.name = name.text;
-        body.AddComponent<UpdatePlanet>();
-        body.GetComponent<UpdatePlanet>().vel = new Vector3(float.Parse(xVel.text),float.Parse(yVel.text),float.Parse(zVel.text));
+        body.name = bodyName;
+        OrbitalBody script = body.AddComponent<OrbitalBody>();
+        script.setVel(new []{double.Parse(xVel.text),double.Parse(yVel.text),double.Parse(zVel.text)});
+        script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
+        script.setRadius(convertRadiUnits(double.Parse(radius.text)));
+        script.setMass(convertMassUnits(double.Parse(mass.text)));
+        script.type = type.options[type.value].text;
+    }
+
+    private double convertRadiUnits(double value)
+    {
+        return value * 6.3781;
+    }
+
+    private double[] convertPosUnits(double x, double y, double z)
+    {
+        double au = 14959.78707;
+        double[] pos = {x * au, y * au, z * au};
+        return pos;
+    }
+
+    private double convertMassUnits(double mass)
+    {
+        return mass * (5.9736 * Math.Pow(10, 24));
     }
 }
