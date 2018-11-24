@@ -11,6 +11,8 @@ public class CameraControls : MonoBehaviour {
 
     // Basic Contants
     const float KEYBOARD_MOVE = 1000F;
+    private const float FOVAdjust = .1f;
+    private const float rotateSpeed = 1f;
 
 	// Use this for initialization
 	void Start () {
@@ -71,13 +73,22 @@ public class CameraControls : MonoBehaviour {
         // Zoom In
         if (Input.GetKey(KeyCode.G))
         {
-            Camera.main.fieldOfView += 1;
+            Camera.main.fieldOfView += FOVAdjust;
         }
 
         // Move Backward
         if (Input.GetKey(KeyCode.V))
         {
-            Camera.main.fieldOfView -= 1;
+            Camera.main.fieldOfView -= FOVAdjust;
         }
+        // Rotate Camera (note, the vectors are correct despite not matching the key)
+        if (Input.GetKey(KeyCode.LeftArrow))
+            Camera.main.transform.Rotate(Vector3.down,rotateSpeed*Time.deltaTime);
+        if (Input.GetKey(KeyCode.RightArrow))
+            Camera.main.transform.Rotate(Vector3.up,rotateSpeed*Time.deltaTime);
+        if (Input.GetKey(KeyCode.UpArrow))
+            Camera.main.transform.Rotate(Vector3.left,rotateSpeed*Time.deltaTime);
+        if (Input.GetKey(KeyCode.DownArrow))
+            Camera.main.transform.Rotate(Vector3.right,rotateSpeed*Time.deltaTime);
     }
 }
