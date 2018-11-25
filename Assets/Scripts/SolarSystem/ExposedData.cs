@@ -43,6 +43,8 @@ public class ExposedData {
     /// </summary>
     public SimCapiString FocusedBody;
 
+    public SimCapiStringArray Perms;
+
     /// <summary>
     /// Sets initial values.
     /// </summary>
@@ -50,6 +52,7 @@ public class ExposedData {
         NBodies = new SimCapiStringArray();
         Time = new SimCapiNumber(0F);
         FocusedBody = new SimCapiString("");
+        Perms = new SimCapiStringArray();
     }
 
     /// <summary>
@@ -83,6 +86,7 @@ public class ExposedData {
         NBodies.expose("N Body", false, false);
         Time.expose("Time", false, false);
         FocusedBody.expose("Focused", false, false);
+        Perms.expose("Perm", false, false);
     }
 
     /// <summary>
