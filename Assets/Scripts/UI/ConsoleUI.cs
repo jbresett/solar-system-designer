@@ -22,7 +22,6 @@ public class ConsoleUI : MonoBehaviour {
         TextOutput = GameObject.Find("ConsoleOutput").GetComponent<Text>();
 
         // Hide Console at start.
-        ConsolePanel.SetActive(false);
 
         // Add "test" command processor and output. 
         Debugger.AddProcessor(processTest);
@@ -31,12 +30,6 @@ public class ConsoleUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        // Check for ~ to toggle console.
-        if (Input.GetKeyUp(KeyCode.BackQuote))
-        {
-            ConsolePanel.SetActive(!ConsolePanel.activeSelf);
-        }
 
         // Input text field.
         // CHeck if text field is visible and enter is pushed.

@@ -33,9 +33,9 @@ namespace Planets
 
                     comps[1].text = body.GetComponent<OrbitalBody>().type;
                     comps[3].text = body.GetComponent<OrbitalBody>().name;
-                    comps[5].text = body.GetComponent<OrbitalBody>().vel.x.ToString();
-                    comps[7].text = body.GetComponent<OrbitalBody>().vel.y.ToString();
-                    comps[9].text = body.GetComponent<OrbitalBody>().vel.z.ToString();
+                    comps[5].text = body.GetComponent<OrbitalBody>().vel[0].ToString();
+                    comps[7].text = body.GetComponent<OrbitalBody>().vel[1].ToString();
+                    comps[9].text = body.GetComponent<OrbitalBody>().vel[2].ToString();
                 }
             }
             
