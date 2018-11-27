@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.041295424, g: 0.04216122, b: 0.041295424, a: 1}
+  m_IndirectSpecularColor: {r: 0.041625842, g: 0.042219758, b: 0.041625842, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -537,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &31319561
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10030,7 +10030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &475076433
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11931,7 +11931,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseEnabled: 1
   dragSpeed: 2
-  dragOrigin: {x: 0, y: 0, z: 0}
 --- !u!1 &720854070
 GameObject:
   m_ObjectHideFlags: 0
@@ -22896,7 +22895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.034665957, y: 0.85}
   m_AnchorMax: {x: 0.14533192, y: 0.9}
-  m_AnchoredPosition: {x: 14.9999695, y: 0}
+  m_AnchoredPosition: {x: 14.999939, y: 0}
   m_SizeDelta: {x: 30, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1650705158
@@ -28069,6 +28068,8 @@ GameObject:
   - component: {fileID: 2028422267}
   - component: {fileID: 2028422266}
   - component: {fileID: 2028422265}
+  - component: {fileID: 2028422268}
+  - component: {fileID: 2028422269}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -28106,7 +28107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
+  m_sendNavigationEvents: 0
   m_DragThreshold: 10
 --- !u!4 &2028422267
 Transform:
@@ -28121,6 +28122,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2028422268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2028422264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63261dd7fa67f314ebff6a3135b9451b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2028422269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2028422264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e677c732cf800459f08b07a48780d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  State: 0
 --- !u!1 &2037575906
 GameObject:
   m_ObjectHideFlags: 0

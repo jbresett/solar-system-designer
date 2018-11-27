@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,60 @@ using UnityEngine;
 /// Permissions can be changed by the instructor in the case of a live session.
 /// Permissions are checked by the software prior to any action that could require a permission. 
 /// </summary>
-public class Perm {
+public class Perm: MonoBehaviour {
+
+    private static string[] INVALID_COMMAND = { "Invalid Command. Use: perm (add/remove/list) [name]." };
+
+    private void Start()
+    {
+        Debugger.AddProcessor(ProcessCmd);
+    }
+
+    // Processes 
+    static private string[] ProcessCmd(string[] args)
+    {
+        // Ignores non-"perm" commands.
+        if (!args[0].Equals("perm", StringComparison.InvariantCultureIgnoreCase)) return new string[0];
+
+
+        // Perm commands must have at least 2 arguments for lists.
+        if (args.Length < 2) return INVALID_COMMAND;
+
+        // Lists Permissions
+        if (args[1].Equals("list", StringComparison.InvariantCultureIgnoreCase))
+        {
+            string[] results = { "Permissions:" };
+        
+            if (getList().Count == 0) results[0] += " (None).";
+
+            foreach (string perm in getList())
+            {
+                results[0] += "  " + perm;
+            }
+            return results;
+        }
+
+        // Perm commands must have at least 3 arguments for non-lists.
+        if (args.Length < 3) return INVALID_COMMAND;
+
+        string[] result = new string[1];
+
+        // Adds and removes permissions.
+        switch (args[1].ToLower())
+        {
+            case "add":
+                result[0] = "Perm \"" + args[2] + "\" " + (Perm.Add(args[2]) ? "added." : "already exists.");
+                break;
+            case "remove":
+                result[0] = "Perm \"" + args[2] + "\" " + (Perm.Remove(args[2]) ? "removed." : "does not exist.");
+                break;
+            default:
+                result[0] = "Invalid Command. 2nd Command must be either \"add\" or \"remove.\"";
+                break;
+        }
+        return result;
+
+    }
     
     /// <summary>
     /// Checks for user permission.
@@ -62,6 +116,16 @@ public class Perm {
         }
 
         return result;
+    }
+
+    /// <summary>
+    /// Retrives a copy of the list. Changes to this will not affect the
+    /// actual permissions.
+    /// </summary>
+    /// <returns></returns>
+    static public List<string> getList()
+    {
+        return new List<string>(Main.Instance.Exposed.Perms.getList());
     }
 
     /// <summary>
