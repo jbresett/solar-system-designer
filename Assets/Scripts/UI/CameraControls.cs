@@ -7,25 +7,25 @@ using UnityEngine;
 /// </summary>
 public class CameraControls : MonoBehaviour {
     public bool EnableKeyboard = true;
-
+    public bool EnableMouse = true;
 
     // Basic Contants
     const float KEYBOARD_MOVE = 1000F;
     private const float FOVAdjust = .1f;
     private const float rotateSpeed = 1f;
-
-	// Use this for initialization
-	void Start () {
-
-    }
+    
+    private float dragSpeed = 10f;
+    private Vector3 dragOriginRot;
+    private Vector3 dragOriginPos;
+    private float mouseZoomFactor = 1f;
 
     // Update is called once per frame
     void Update()
     {
         if (EnableKeyboard)
-        {
             UpdateKeyboard();
-        }
+        if(EnableMouse)
+            UpdateMouse();
     }
 
     // Updates movement position based on the keyboard.
@@ -90,5 +90,36 @@ public class CameraControls : MonoBehaviour {
             Camera.main.transform.Rotate(Vector3.left,rotateSpeed*Time.deltaTime);
         if (Input.GetKey(KeyCode.DownArrow))
             Camera.main.transform.Rotate(Vector3.right,rotateSpeed*Time.deltaTime);
+    }
+
+    private void UpdateMouse()
+    {
+        Camera.main.transform.position += Camera.main.transform.forward*Input.mouseScrollDelta.y*mouseZoomFactor;
+        
+        if (Input.GetMouseButtonDown(0))
+        {
+            dragOriginPos = Input.mousePosition;
+            return;
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            dragOriginRot = Input.mousePosition;
+            return;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginPos);
+            transform.Translate(pos*dragSpeed);
+            return;
+        }
+        if (Input.GetMouseButton(1))
+        {
+            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginRot);
+            float x = pos.x;
+            float y = pos.y;
+            pos.x = y;
+            pos.y = -x;
+            transform.Rotate(pos);
+        }
     }
 }
