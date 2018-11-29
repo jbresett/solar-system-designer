@@ -8,20 +8,13 @@ using UnityEngine.UI;
 /// </summary>
 public class ConsoleUI : MonoBehaviour {
     
-    // References to UI elements.
-    private GameObject ConsolePanel;
-    private InputField TextInput;
-    private Text TextOutput;
+    // Set in Unity
+    public GameObject ConsolePanel;
+    public InputField TextInput;
+    public Text TextOutput;
 
     // Use this for initialization
     void Start () {
-
-        // Set references to UI elements.
-        ConsolePanel = GameObject.Find("ConsolePanel");
-        TextInput = GameObject.Find("ConsoleInput").GetComponent<InputField>();
-        TextOutput = GameObject.Find("ConsoleOutput").GetComponent<Text>();
-
-        // Hide Console at start.
 
         // Add "test" command processor and output. 
         Debugger.AddProcessor(processTest);
@@ -38,7 +31,8 @@ public class ConsoleUI : MonoBehaviour {
             Debugger.send(TextInput.text);
         }
 
-	}
+        gameObject.GetComponent<CameraControls>().EnableKeyboard = !TextInput.isFocused;
+    }
 
     /// <summary>
     /// Processes any command output to the UI console.

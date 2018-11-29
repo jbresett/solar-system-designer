@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// Handles all Camera Controls.
@@ -12,7 +15,7 @@ public class CameraControls : MonoBehaviour {
     // Basic Contants
     const float KEYBOARD_MOVE = 1000F;
     private const float FOVAdjust = .1f;
-    private const float rotateSpeed = 1f;
+    private const float rotateSpeed = 10f;
     
     private float dragSpeed = 10f;
     private Vector3 dragOriginRot;
@@ -22,9 +25,15 @@ public class CameraControls : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (EnableKeyboard)
+        // Automatically disable Cemera controls if the current object is an InputField.
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+        
+        if (EnableKeyboard && (selected == null || !selected.GetComponent<InputField>()))
+        {
             UpdateKeyboard();
-        if(EnableMouse)
+        }
+
+        if (EnableMouse)
             UpdateMouse();
     }
 
@@ -81,6 +90,7 @@ public class CameraControls : MonoBehaviour {
         {
             Camera.main.fieldOfView -= FOVAdjust;
         }
+
         // Rotate Camera (note, the vectors are correct despite not matching the key)
         if (Input.GetKey(KeyCode.LeftArrow))
             Camera.main.transform.Rotate(Vector3.down,rotateSpeed*Time.deltaTime);

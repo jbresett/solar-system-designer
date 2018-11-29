@@ -604,6 +604,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abae775432dd9cd42a0f9522e2dc2643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConsolePanel: {fileID: 0}
+  TextInput: {fileID: 0}
+  TextOutput: {fileID: 0}
 --- !u!1 &38199551
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &40618787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,6 +830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnableKeyboard: 1
+  EnableMouse: 1
 --- !u!1 &47090251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &170076734
 Light:
   m_ObjectHideFlags: 0
@@ -11857,7 +11861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &718099191
 AudioListener:
   m_ObjectHideFlags: 0
@@ -28076,7 +28080,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2028422265
 MonoBehaviour:
   m_ObjectHideFlags: 0
