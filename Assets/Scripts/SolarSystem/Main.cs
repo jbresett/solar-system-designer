@@ -27,7 +27,7 @@ public class Main : MonoBehaviour {
     public ExposedData Exposed;
     public PersistentData Persistent;
 
-    SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
+    //SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
 
     // Initialization
     void Start () {
@@ -45,7 +45,7 @@ public class Main : MonoBehaviour {
         Exposed.setDeligates();
 
         SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
-        transporter.addInitialSetupCompleteListener(this.setupComplete);
+        //transporter.addInitialSetupCompleteListener(this.setupComplete);
         transporter.notifyOnReady();
     }
 
