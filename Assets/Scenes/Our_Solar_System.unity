@@ -2458,10 +2458,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Fluid
+  bodyName: Uranus
   mass: 0
-  radius: 0
-  type: 
+  radius: 4
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 97.77
+  bodyRotSpd: 14.794
+  bodyDampAmt: 0
 --- !u!1 &221809762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,10 +3932,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: 
+  type: Star
+  bodyName: 
   mass: 333060
   radius: 109
-  type: Star
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 0
+  bodyRotSpd: 0
+  bodyDampAmt: 0
 --- !u!1 &361268705
 GameObject:
   m_ObjectHideFlags: 0
@@ -6228,10 +6240,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Norm
+  bodyName: Earth
   mass: 0
-  radius: 0
-  type: 
+  radius: 1
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 23.26
+  bodyRotSpd: 1.674
+  bodyDampAmt: 0
 --- !u!1 &567385744
 GameObject:
   m_ObjectHideFlags: 0
@@ -13661,10 +13679,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Fluid
+  bodyName: Neptune
   mass: 0
-  radius: 0
-  type: 
+  radius: 3.8
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 28.32
+  bodyRotSpd: 9.719
+  bodyDampAmt: 0
 --- !u!1 &792485749
 GameObject:
   m_ObjectHideFlags: 0
@@ -15104,10 +15128,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Fluid
+  bodyName: Jupiter
   mass: 0
-  radius: 0
-  type: 
+  radius: 10.9
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 3.13
+  bodyRotSpd: 45.583
+  bodyDampAmt: 0
 --- !u!1 &914553590
 GameObject:
   m_ObjectHideFlags: 0
@@ -18235,10 +18265,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Norm
+  bodyName: Mecury
   mass: 0
-  radius: 0
-  type: 
+  radius: 0.38
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 0.01
+  bodyRotSpd: 10.83
+  bodyDampAmt: 0
 --- !u!1 &1216493656
 GameObject:
   m_ObjectHideFlags: 0
@@ -21781,10 +21817,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Fluid
+  bodyName: Venus
   mass: 0
-  radius: 0
-  type: 
+  radius: 0.94
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 177.3
+  bodyRotSpd: 6.52
+  bodyDampAmt: 0
 --- !u!1 &1558836263
 GameObject:
   m_ObjectHideFlags: 0
@@ -23782,10 +23824,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Fluid
+  bodyName: Saturn
   mass: 0
-  radius: 0
-  type: 
+  radius: 9.1
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 26.73
+  bodyRotSpd: 36.84
+  bodyDampAmt: 0
 --- !u!4 &1830949419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
@@ -24809,10 +24857,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Norm
+  bodyName: Mars
   mass: 0
-  radius: 0
-  type: 
+  radius: 0.53
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 25.19
+  bodyRotSpd: 866
+  bodyDampAmt: 0
 --- !u!1 &1972185373
 GameObject:
   m_ObjectHideFlags: 0
@@ -26619,10 +26673,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80341d2637612f047bb5f602b2e298ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: {x: 0, y: 0, z: 0}
+  system: Sample
+  type: Star
+  bodyName: Sun
   mass: 0
-  radius: 0
-  type: 
+  radius: 108.6
+  revTime: 0
+  vel: {x: 0, y: 0, z: 0}
+  bodyRotAxis: 0
+  bodyRotSpd: 0
+  bodyDampAmt: 0
 --- !u!1 &2134695853
 GameObject:
   m_ObjectHideFlags: 0
