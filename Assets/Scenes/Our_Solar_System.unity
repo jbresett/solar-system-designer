@@ -18744,6 +18744,7 @@ GameObject:
   - component: {fileID: 1216493658}
   - component: {fileID: 1216493657}
   - component: {fileID: 1216493660}
+  - component: {fileID: 1216493661}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18824,6 +18825,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnableKeyboard: 1
   EnableMouse: 1
+--- !u!114 &1216493661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1216493656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abae775432dd9cd42a0f9522e2dc2643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConsolePanel: {fileID: 1636448462}
+  TextInput: {fileID: 732545291}
+  TextOutput: {fileID: 1426152101}
 --- !u!1 &1224205899
 GameObject:
   m_ObjectHideFlags: 0
@@ -24193,7 +24208,6 @@ GameObject:
   - component: {fileID: 1693280891}
   - component: {fileID: 1693280890}
   - component: {fileID: 1693280889}
-  - component: {fileID: 1693280888}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -24201,20 +24215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1693280888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1693280886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abae775432dd9cd42a0f9522e2dc2643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConsolePanel: {fileID: 1636448462}
-  TextInput: {fileID: 732545291}
-  TextOutput: {fileID: 1426152101}
 --- !u!114 &1693280889
 MonoBehaviour:
   m_ObjectHideFlags: 0
