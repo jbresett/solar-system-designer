@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Planets
 {
-    public class OrbitalBody : MonoBehaviour
+    public class _OrbitalBody : MonoBehaviour
     {
 
         public double[] vel;
@@ -29,8 +29,7 @@ namespace Planets
         }
         public void setVel(double[] vel)
         {
-            this.vel = vel;
-            
+            this.vel = vel; 
         }
 
         private void updatePos()

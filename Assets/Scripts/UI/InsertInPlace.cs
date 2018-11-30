@@ -43,10 +43,10 @@ public class InsertInPlace : MonoBehaviour
         body.SetActive(true);
         body.name = bodyName;
         OrbitalBody script = body.AddComponent<OrbitalBody>();
-        script.setVel(new []{double.Parse(xVel.text),double.Parse(yVel.text),double.Parse(zVel.text)});
-        script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
-        script.setRadius(convertRadiUnits(double.Parse(radius.text)));
-        script.setMass(convertMassUnits(double.Parse(mass.text)));
+        script.vel = new Vector3(float.Parse(xVel.text), float.Parse(yVel.text), float.Parse(zVel.text));
+        //script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
+        script.radius = (float)convertRadiUnits(double.Parse(radius.text));
+        script.mass = (float)convertMassUnits(double.Parse(mass.text));
         script.type = type.options[type.value].text;
     }
 

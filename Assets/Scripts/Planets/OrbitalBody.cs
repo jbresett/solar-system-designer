@@ -40,6 +40,7 @@ namespace Planets
             gameObject.transform.localScale = size;
         }
 
+
         private void Update()
         {
             Vector3 pos = gameObject.transform.position;

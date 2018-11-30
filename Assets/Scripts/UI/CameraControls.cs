@@ -105,25 +105,30 @@ public class CameraControls : MonoBehaviour {
     private void UpdateMouse()
     {
         Camera.main.transform.position += Camera.main.transform.forward*Input.mouseScrollDelta.y*mouseZoomFactor;
-        
+
+
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("mouse0");
             dragOriginPos = Input.mousePosition;
             return;
         }
         if (Input.GetMouseButtonDown(1))
         {
+            Debug.Log("mouse1");
             dragOriginRot = Input.mousePosition;
             return;
         }
         if (Input.GetMouseButton(0))
         {
+            Debug.Log("mouse0 Drag");
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginPos);
             transform.Translate(pos*dragSpeed);
             return;
         }
         if (Input.GetMouseButton(1))
         {
+            Debug.Log("mouse1 Drag");
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginRot);
             float x = pos.x;
             float y = pos.y;
