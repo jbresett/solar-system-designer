@@ -18641,7 +18641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c527e7472761f340b74aa4425b70a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpd: 20
+  rotSpd: 10
   dampAmt: 2
 --- !u!114 &1212762463
 MonoBehaviour:
@@ -26645,7 +26645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c527e7472761f340b74aa4425b70a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpd: 20
+  rotSpd: 200
   dampAmt: 2
 --- !u!114 &1830092576
 MonoBehaviour:
