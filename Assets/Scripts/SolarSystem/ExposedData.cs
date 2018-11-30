@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using Planets;
 using SimCapi;
 using System;
 using System.Collections;
@@ -96,7 +97,7 @@ public class ExposedData {
     /// </summary>
     /// <param name="body"></param>
     /// <returns></returns>
-    public bool BodyUpdate(Body body)
+    public bool BodyUpdate(OrbitalBody body)
     {
         int index = GetBodyIndex(body.Name);
         
@@ -105,7 +106,7 @@ public class ExposedData {
 
         // Update Capi
         List<string> bodies = NBodies.getList();
-        bodies[index] = body.ToJson();
+        bodies[index] = JsonUtility.ToJson(body);
         NBodies.updateValue();
         return true;
     }
@@ -140,7 +141,7 @@ public class ExposedData {
                         // If Body is shown visually (exists in NBody system), overwrite from json string.
                         if (Main.Instance.Bodies.ContainsKey(name))
                         {
-                            Main.Instance.Bodies[name].Overwrite(values[i]);
+                            JsonUtility.FromJsonOverwrite(values[i], Main.Instance.Bodies[name]);
                         }
                     }
                 }

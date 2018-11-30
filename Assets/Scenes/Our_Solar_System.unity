@@ -3361,7 +3361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -3544,15 +3544,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.043619405
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9990483
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
       propertyPath: m_RootOrder
@@ -3578,6 +3578,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cf1fb0309d5c0654381c233794dad88d, type: 2}
+    - target: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
   m_IsPrefabAsset: 0
@@ -4531,7 +4535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -6557,7 +6561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -13196,7 +13200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -14817,7 +14821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -18641,7 +18645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c527e7472761f340b74aa4425b70a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpd: 10
+  rotSpd: 20
   dampAmt: 2
 --- !u!114 &1212762463
 MonoBehaviour:
@@ -18655,8 +18659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   system: 
-  type: 
-  bodyName: 
+  type: Sun
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -18805,13 +18809,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1216493656}
-  m_LocalRotation: {x: 0.15304591, y: -0.6903456, z: 0.15304591, w: 0.6903456}
-  m_LocalPosition: {x: 4500, y: 1500, z: 0}
+  m_LocalRotation: {x: 0.24184473, y: -0.66446304, z: 0.24184473, w: 0.66446304}
+  m_LocalPosition: {x: 3500, y: 2000, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 25, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 40, y: -90, z: 0}
 --- !u!114 &1216493660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22676,7 +22680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -26660,7 +26664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -27836,7 +27840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0
@@ -29655,7 +29659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system: 
   type: 
-  bodyName: 
+  name: 
   mass: 0
   radius: 0
   revTime: 0

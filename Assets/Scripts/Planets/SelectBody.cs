@@ -11,6 +11,7 @@ namespace Planets
         public GameObject body;
         public Button selectArea;
         public Camera camera;
+
         private void Start()
         {
             selectArea.onClick.AddListener(select);
@@ -31,11 +32,11 @@ namespace Planets
                         Debug.Log(v.name);
                     }
 
-                    comps[1].text = body.GetComponent<OrbitalBody>().type;
-                    comps[3].text = body.GetComponent<OrbitalBody>().name;
-                    comps[5].text = body.GetComponent<OrbitalBody>().vel[0].ToString();
-                    comps[7].text = body.GetComponent<OrbitalBody>().vel[1].ToString();
-                    comps[9].text = body.GetComponent<OrbitalBody>().vel[2].ToString();
+                    comps[1].text = body.GetComponent<OrbitalBody>().Type;
+                    comps[3].text = body.GetComponent<OrbitalBody>().Name;
+                    comps[5].text = body.GetComponent<OrbitalBody>().Vel[0].ToString();
+                    comps[7].text = body.GetComponent<OrbitalBody>().Vel[1].ToString();
+                    comps[9].text = body.GetComponent<OrbitalBody>().Vel[2].ToString();
                 }
             }
             

@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using Planets;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Stores all data for the NBody system and handles over-time calculations of body locations.
 /// </summary>
-public class NBody: Dictionary<string, Body> {
+public class NBody: Dictionary<string, OrbitalBody> {
 
     public NBody() : base() { } 
 
@@ -55,25 +56,4 @@ public class NBody: Dictionary<string, Body> {
         time += Speed;	
 	}
     
-    /// <summary>
-    /// Returns the current distance between two bodies.
-    /// </summary>
-    /// <param name="body1"></param>
-    /// <param name="body2"></param>
-    /// <returns></returns>
-    public double getCurrentDistance(Body body1, Body body2)
-    {
-        return body1.GetDistance(body2, Time);
-    }
-
-    /// <summary>
-    /// Returns the current position of a body.
-    /// </summary>
-    /// <param name="body"></param>
-    /// <returns></returns>
-    public Vector3d getCurrentPosition(Body body)
-    {
-        return body.GetPosition(Time);
-    }
-
 }

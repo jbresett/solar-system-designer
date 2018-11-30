@@ -5,10 +5,10 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 public class BodyTests: IPrebuildSetup {
     private Body Sun;
     private Body Earth;
-    private Body Moon;
 
     public void Setup()
     {
@@ -18,9 +18,6 @@ public class BodyTests: IPrebuildSetup {
 
         Orbit earthOrbit = new Orbit("Sun", new Ellipse(100, 50), 365);
         Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
-
-        Orbit moonOrbit = new Orbit("Earth", new Ellipse(10.0, 5.0), 30.0);
-        Moon = new Body(System, "Moon", BodyType.Moon, moonOrbit, 0, 0, 0);
     }
 
     /// <summary>

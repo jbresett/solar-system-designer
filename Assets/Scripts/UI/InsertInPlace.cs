@@ -37,17 +37,17 @@ public class InsertInPlace : MonoBehaviour
                 id++;
             }
         }
-        Vector3 pos = new Vector3();
-        Quaternion rot = new Quaternion(0,0,0,0);
+        //Vector3 pos = new Vector3();
+        //Quaternion rot = new Quaternion(0,0,0,0);
         GameObject body = Instantiate(planetBase);
         body.SetActive(true);
         body.name = bodyName;
         OrbitalBody script = body.AddComponent<OrbitalBody>();
-        script.vel = new Vector3(float.Parse(xVel.text), float.Parse(yVel.text), float.Parse(zVel.text));
+        script.Vel = new Vector3(float.Parse(xVel.text), float.Parse(yVel.text), float.Parse(zVel.text));
         //script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
-        script.radius = (float)convertRadiUnits(double.Parse(radius.text));
-        script.mass = (float)convertMassUnits(double.Parse(mass.text));
-        script.type = type.options[type.value].text;
+        script.Radius = (float)convertRadiUnits(double.Parse(radius.text));
+        script.Mass = (float)convertMassUnits(double.Parse(mass.text));
+        script.Type = type.options[type.value].text;
     }
 
     private double convertRadiUnits(double value)

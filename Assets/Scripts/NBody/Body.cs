@@ -10,6 +10,7 @@ public enum BodyType
 }
 
 [Serializable]
+[Obsolete("Use OrbitalBody")]
 public class Body
 {
     public NBody System { get; set; }
@@ -132,7 +133,7 @@ public class Body
         Radius = radius;
         Rotation = rotation;
 
-        System.Add(name, this);
+        //System.Add(name, this);
     }
 
     /// <summary>
@@ -181,6 +182,6 @@ public class Body
 
     public void UpdateCapi()
     {
-        Main.Instance.Exposed.BodyUpdate(this);
+        //Main.Instance.Exposed.BodyUpdate(this);
     }
 }

@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+[Obsolete]
+/// Disabled per Sol System system loaded at default through Unity Scenes.
 public class SolarSystemModel{
 
 	[SerializeField]
@@ -32,6 +34,7 @@ public class SolarSystemModel{
 	//the bodies will be loaded into our system and values will be tweaked as
 	//needed
 	public void loadDefault(){
+        /* Disabled per Sol System system loaded at default through Unity Scenes.
 		Body sun = new Body(system, "Sun", BodyType.Sun, null, 500, 500, 500);
 		system.Add("Sun",sun);
 		Body mercury = new Body(system, "Mercury", BodyType.Planet, null, 500, 500, 500);
@@ -50,13 +53,14 @@ public class SolarSystemModel{
 		system.Add("Neptune",neptune);
 		Body earthMoon = new Body(system, "Earth Moon", BodyType.Moon, null, 500, 500, 500);
 		system.Add("Earth Moon", earthMoon);
+        */
 	}
 
 	//this method will be used to add additional bodies to the
 	//list of bodies if we want to further testing.
 	public void addBody(Body body){
-		string name = body.Name;
-		system.Add(name, body);
+		//string name = body.Name;
+		//system.Add(name, body);
 	}
 
 	//this method will be used to remove a body from

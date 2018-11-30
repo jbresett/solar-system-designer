@@ -80,7 +80,6 @@ public class Perm: MonoBehaviour {
     static public bool Has(string perm, bool exact = false)
     {
         ExposedData exp = Main.Instance.Exposed;
-        List<string> list = exp.Perms.getList();
         
         // Loop for checking upper level permission as well.
         while (true)

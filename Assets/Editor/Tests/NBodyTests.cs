@@ -5,16 +5,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 public class NBodyTests {
 
-    private Body Sun;
     private Body Earth;
     private Body Moon;
 
     public void Setup()
     {
         NBody System = new NBody();
-        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
+        Body Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
 
         Orbit earthOrbit = new Orbit("Sun", new Ellipse(100, 50), 365);
         Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
