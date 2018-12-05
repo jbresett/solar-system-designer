@@ -15,11 +15,11 @@ public class KeyboardShortcut : MonoBehaviour {
 		// Check for ~ to toggle console.
 		if (Input.GetKeyUp(KeyCode.BackQuote))
 		{
-			EditorUtility.DisplayDialog("Test", "test", "ok");
+			//EditorUtility.DisplayDialog("Test", "test", "ok");
 			foreach (GameObject obj in GameObject.Find("Canvas").GetComponentsInChildren<GameObject>(true))
 			{
 				if (obj.name == "ConsoleInput") obj.SetActive(true);
-				EditorUtility.DisplayDialog("Test", name, "ok");
+				//EditorUtility.DisplayDialog("Test", name, "ok");
 			}
 			//ConsolePanel.SetActive(!ConsolePanel.activeSelf);
 		}

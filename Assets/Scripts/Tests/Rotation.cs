@@ -12,6 +12,8 @@ public class Rotation : MonoBehaviour
     void Update()
     {
         transform.Rotate((Vector3.up * rotSpd) * (Time.deltaTime * dampAmt), Space.Self);
+        //transform.Rotate((Vector3.up * rotSpd) * (Time.deltaTime * dampAmt), Space.World);
+        transform.RotateAround(Vector3.zero, transform.up, Time.deltaTime * dampAmt);
     }
 }
 
