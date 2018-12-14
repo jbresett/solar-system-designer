@@ -33,7 +33,7 @@ namespace Planets
         [SerializeField]
         private new string name;
 
-        public float Mass
+        public double Mass
         {
             get { return mass; }
             set {
@@ -42,25 +42,25 @@ namespace Planets
             }
         }
         [SerializeField]
-        private float mass;
+        private double mass;
 
-        public float Radius
+        public double Radius
         {
             get { return radius; }
             set
             {
                 radius = value;
                 Vector3 size = gameObject.transform.localScale;
-                float aRadius = radius;
-                size.x = aRadius;
-                size.y = aRadius;
-                size.z = aRadius;
+                double aRadius = radius;
+                size.x = (float)aRadius;
+                size.y = (float)aRadius;
+                size.z = (float)aRadius;
                 gameObject.transform.localScale = size;
                 Main.Instance.Exposed.BodyUpdate(this);
             }
         }
         [SerializeField]
-        private float radius;
+        private double radius;
 
         public float RevTime
         {
@@ -74,7 +74,7 @@ namespace Planets
         [SerializeField]
         public float revTime;
 
-        public Vector3 Vel
+        public Vector3d Vel
         {
             get { return vel; }
             set
@@ -84,9 +84,9 @@ namespace Planets
             }
         }
         [SerializeField]
-        private Vector3 vel;
+        private Vector3d vel;
 
-        public float BodyRotAxis
+        public double BodyRotAxis
         {
             get { return bodyRotAxis; }
             set
@@ -96,10 +96,10 @@ namespace Planets
             }
         }
         [SerializeField]
-        private float bodyRotAxis;
+        private double bodyRotAxis;
 
 
-        public float BodyRotSpd
+        public double BodyRotSpd
         {
             get { return bodyRotSpd; }
             set
@@ -109,9 +109,9 @@ namespace Planets
             }
         }
         [SerializeField]
-        public float bodyRotSpd;
+        public double bodyRotSpd;
 
-        public float BodyDampAmt
+        public double BodyDampAmt
         {
             get { return bodyDampAmt; }
             set
@@ -121,9 +121,9 @@ namespace Planets
             }
         }
         [SerializeField]
-        public float bodyDampAmt;
+        public double bodyDampAmt;
 
-        public OrbitalBody(string system, string type, string name, float mass, float radius, float revTime, Vector3 vel, float bodyRotAxis, float bodyRotSpd, float bodyDampAmt)
+        public OrbitalBody(string system, string type, string name, double mass, float radius, float revTime, Vector3d vel, float bodyRotAxis, float bodyRotSpd, float bodyDampAmt)
         {
             this.system = system;
             this.type = type;
@@ -142,10 +142,12 @@ namespace Planets
 
         private void Update()
         {
+            /* Motion handled by seperate Rotation script
             Vector3 pos = gameObject.transform.position;
-            pos += vel;
+            pos += vel.Vec3;
             gameObject.transform.position = pos;
-            transform.Rotate((Vector3.up * bodyRotSpd) * (Time.deltaTime * bodyDampAmt), Space.Self);
+            transform.Rotate((Vector3.up * (float)bodyRotSpd) * (Time.deltaTime * (float)bodyDampAmt), Space.Self);
+            */
         }
 
     }

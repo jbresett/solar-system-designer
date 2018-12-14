@@ -9,8 +9,22 @@ using UnityEngine.UI;
 /// Handles all Camera Controls.
 /// </summary>
 public class CameraControls : MonoBehaviour {
-    public bool EnableKeyboard = true;
-    public bool EnableMouse = true;
+    public bool EnableKeyboard
+    {
+        get { return enableKeyboard; }
+        set { enableKeyboard = value; }
+    }
+    [SerializeField]
+    private bool enableKeyboard = true;
+
+
+    public bool EnableMouse
+    {
+        get { return enableMouse;  }
+        set { enableMouse = value; }
+    }
+    [SerializeField]
+    private bool enableMouse = true;
 
     // Basic Contants
     const float KEYBOARD_MOVE = 1000F;

@@ -13,35 +13,34 @@ using UnityEngine;
 [Serializable]
 public class Ellipse{
 
+    public double MajorAxis
+    {
+        get { return majorAxis; }
+        set { majorAxis = value; }
+    }
     [SerializeField]
 	private double majorAxis;
+
+    public double MinorAxis
+    {
+        get
+        {
+            return minorAxis;
+        }
+
+        set
+        {
+            minorAxis = value;
+        }
+    }
     [SerializeField]
     private double minorAxis;
 
-	//constructor
-	public Ellipse(double major, double minor){
-		this.majorAxis = major;
-		this.minorAxis = minor;
-	}
 
-	//major axis setter
-	public void setMajorAxis(double major){
-		this.majorAxis = major;
-	}
-
-	//minor axis setter
-	public void setMinorAxis(double minor){
-		this.minorAxis = minor;
-	}
-
-	//major axis getter;
-	public double getMajorAxis(){
-		return this.majorAxis;
-	}
-
-	//minor axis getter
-	public double getMinorAxis(){
-		return this.minorAxis;
+    //constructor
+    public Ellipse(double major, double minor){
+		this.MajorAxis = major;
+		this.MinorAxis = minor;
 	}
 
 	//this method yields a double value that represents
@@ -49,8 +48,8 @@ public class Ellipse{
 	//the ellipse. The foci is where the sun will be placed.
 	public double calcFoci(){
 
-		double a = System.Math.Pow(this.majorAxis/2, 2);
-		double b = System.Math.Pow(this.minorAxis/2, 2);
+		double a = System.Math.Pow(this.MajorAxis/2, 2);
+		double b = System.Math.Pow(this.MinorAxis/2, 2);
 
 		double foci = System.Math.Sqrt(a-b);
 
@@ -64,7 +63,7 @@ public class Ellipse{
 	public double calcEccentricity(){
 
 		double foci = calcFoci();
-		double aSqr = System.Math.Pow(minorAxis/2, 2);
+		double aSqr = System.Math.Pow(MinorAxis/2, 2);
 		double bSqr = System.Math.Pow(foci, 2);
 		double cSqr = aSqr + bSqr;
 		double c = System.Math.Sqrt(cSqr);
@@ -82,9 +81,9 @@ public class Ellipse{
 		theta = (theta * System.Math.PI)/ 180;
 
 		//calculating x y and defaulting z to zero
-		double x = (this.majorAxis/2) * System.Math.Cos(theta);
+		double x = (this.MajorAxis/2) * System.Math.Cos(theta);
 
-		double y = (this.minorAxis/2) * System.Math.Sin(theta);
+		double y = (this.MinorAxis/2) * System.Math.Sin(theta);
 
 		double z = 0.0;
 
@@ -100,8 +99,8 @@ public class Ellipse{
 	public double findY(double x){
 
 			//squrar each of the values
-			double a= System.Math.Pow(majorAxis, 2);
-			double b = System.Math.Pow(minorAxis, 2);
+			double a= System.Math.Pow(MajorAxis, 2);
+			double b = System.Math.Pow(MinorAxis, 2);
 			x = System.Math.Pow(x, 2);
 
 			//use equaltion (x^2)/a^2 + (y^2)/b^2 = 1
@@ -117,8 +116,8 @@ public class Ellipse{
 	public double findx(double y){
 
 			//squrar each of the values
-			double a= System.Math.Pow(majorAxis, 2);
-			double b = System.Math.Pow(minorAxis, 2);
+			double a= System.Math.Pow(MajorAxis, 2);
+			double b = System.Math.Pow(MinorAxis, 2);
 			y = System.Math.Pow(y, 2);
 
 			//use equaltion (x^2)/a^2 + (y^2)/b^2 = 1

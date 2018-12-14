@@ -10,7 +10,7 @@ namespace Planets
         public GameObject editMenu;
         public GameObject body;
         public Button selectArea;
-        public Camera camera;
+        public new Camera camera;
 
         private void Start()
         {

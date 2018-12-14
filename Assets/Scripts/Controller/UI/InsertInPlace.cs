@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class InsertInPlace : MonoBehaviour
 {
     public Button button;
-    public InputField name;
+    new public InputField name;
     public Dropdown type;
     public InputField xPos;
     public InputField yPos;
@@ -43,7 +43,7 @@ public class InsertInPlace : MonoBehaviour
         body.SetActive(true);
         body.name = bodyName;
         OrbitalBody script = body.AddComponent<OrbitalBody>();
-        script.Vel = new Vector3(float.Parse(xVel.text), float.Parse(yVel.text), float.Parse(zVel.text));
+        script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
         //script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
         script.Radius = (float)convertRadiUnits(double.Parse(radius.text));
         script.Mass = (float)convertMassUnits(double.Parse(mass.text));

@@ -6,8 +6,8 @@ using UnityEngine;
 /// <summary>
 /// Main Class for SS Game. Handles SimCapi interface.
 /// </summary>
-public class Main : MonoBehaviour {
-    
+public class Main: MonoBehaviour {
+
     readonly static public String SIM_ID = "SolarSystemDesigner";
 
     // Singleton instance. Created at start.
@@ -24,8 +24,8 @@ public class Main : MonoBehaviour {
     // NBody Simulator
     public NBody Bodies { get; private set; }
 
-    public ExposedData Exposed;
-    public PersistentData Persistent;
+    public ExposedData Exposed { get; private set; }
+    public PersistentData Persistent { get; private set; }
 
     //SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
 

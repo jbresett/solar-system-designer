@@ -20,10 +20,24 @@ public class Vector3d
     /// <param name="magnatude"></param>
     public Vector3d(double x, double y, double z)
     {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        axis[0] = x;
+        axis[1] = y;
+        axis[2] = z;
     }
+
+    public double this[int index]
+    {
+        get
+        {
+            return axis[index];
+        }
+        set
+        {
+            axis[index] = value;
+        }
+    }
+    [SerializeField]
+    private double[] axis = new double[3] { 0, 0, 0 };
 
     /// <summary>
     /// Creates a vector, duplicating the coordinates of a Unity vector.
@@ -47,35 +61,56 @@ public class Vector3d
         this.z = vector.z;
     }
 
+    /// <summary>
+    /// Converts Vector3d to Unity Vector3. Some precision may be lost.
+    /// </summary>
+    public Vector3 Vec3 {
+        get
+        {
+            return new Vector3((float)x, (float)y, (float)z);
+        }
+        set
+        {
+            x = value.x;
+            y = value.y;
+            z = value.z;
+        }
+    }
+
     // Position
-    public double x { set; get; }
-    public double y { set; get; }
-    public double z { set; get; }
+    public double x {
+        set { axis[0] = value; }
+        get { return axis[0]; }
+    }
+    public double y {
+        set { axis[1] = value; }
+        get { return axis[1]; }
+    }
+    public double z {
+        set { axis[2] = value; }
+        get { return axis[2]; }
+    }
+
     public double magnatude { 
         get
         {
             return Math.Sqrt(x * x + y * y + z * z);
         }
-    }  
+    }
 
     /// <summary>
     /// Moves the vector to another position.
     /// </summary>
     /// <param name="vector"></param>
-    public void moveTo(Vector3d vector) {
+    public void moveTo(Vector3d vector)
+    {
         x = vector.x;
         y = vector.y;
         z = vector.z;
     }
-    /// <summary>
-    /// Converts Vector3d to Unity Vector3. Some precision may be lost.
-    /// </summary>
-    public Vector3 toVector3()
-    {
-        return new Vector3((float)x, (float)y, (float)z);
-    }
 
-    /// <summary>
+
+     /// <summary>
     /// Returns distance between this vector and another one.
     /// </summary>
     /// <param name="target"></param>
