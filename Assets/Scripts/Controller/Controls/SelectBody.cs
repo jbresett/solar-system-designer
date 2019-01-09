@@ -5,7 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// This class is used to display information on a celestial object
 /// when the celestial object is selected via mouse click.
-/// <summary>
+/// </summary>
 namespace Planets
 {
 
@@ -20,7 +20,7 @@ namespace Planets
         /// <summary> 
         /// This function initializes the class and begins listening for
         /// mouse clicks.
-        /// <summary>
+        /// </summary>
         private void Start()
         {
             selectArea.onClick.AddListener(select);
@@ -29,7 +29,7 @@ namespace Planets
         /// <summary> 
         /// This function looks for what celestial object was clicked and records
         /// the current data on that celestial object.
-        /// <summary>
+        /// </summary>
         private void select()
         {
             RaycastHit hitInfo = new RaycastHit();

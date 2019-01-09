@@ -4,6 +4,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class places an orbital body a specified postion
+/// </summary>
 public class InsertInPlace : MonoBehaviour
 {
     public Button button;
@@ -19,10 +22,17 @@ public class InsertInPlace : MonoBehaviour
     public InputField mass;
     public GameObject planetBase;
 
+    /// <summary>
+    /// initializes class and begins listening for mouse click
+    /// </summary>
     void Start()
     {
         button.onClick.AddListener(insert);
     }
+
+    /// <summary>
+    /// This function places each body in the array in its correct position
+    /// </summary>
     public void insert()
     {
         GameObject[] bodies = GameObject.FindGameObjectsWithTag("OrbitalBody");
@@ -50,11 +60,17 @@ public class InsertInPlace : MonoBehaviour
         script.Type = type.options[type.value].text;
     }
 
+    /// <summary>
+    /// scales radius
+    /// </summary>
     private double convertRadiUnits(double value)
     {
         return value * 6.3781;
     }
 
+    /// <summary>
+    /// scales position
+    /// </summary>
     private double[] convertPosUnits(double x, double y, double z)
     {
         double au = 14959.78707;
@@ -62,6 +78,9 @@ public class InsertInPlace : MonoBehaviour
         return pos;
     }
 
+    /// <summary>
+    /// scales mass
+    /// </summary>
     private double convertMassUnits(double mass)
     {
         return mass * (5.9736 * Math.Pow(10, 24));

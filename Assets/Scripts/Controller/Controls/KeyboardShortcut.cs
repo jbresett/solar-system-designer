@@ -6,12 +6,12 @@ using UnityEngine;
 /// <summary>
 /// This class is used to check for keyboard shortcuts and is used to enable 
 /// and disable the debug console.
-/// <summary>
+/// </summary>
 public class KeyboardShortcut : MonoBehaviour {
 
 	/// <summary>
 	/// Function intializes the class and begins update function.
-	/// <summary>
+	/// </summary>
 	void Start () {
 		
 	}
@@ -19,7 +19,7 @@ public class KeyboardShortcut : MonoBehaviour {
 	/// <summary>
 	/// Each frame the function checks for the ~ shortcut key to open the console
 	/// window.
-	/// <summary>
+	/// </summary>
 	void Update () {
 		// Check for ~ to toggle console.
 		if (Input.GetKeyUp(KeyCode.BackQuote))

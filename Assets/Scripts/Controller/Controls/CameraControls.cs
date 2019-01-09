@@ -12,7 +12,7 @@ public class CameraControls : MonoBehaviour {
 
     /// <summary>
     /// Method used to enable and disable the keyboard
-    /// <summary>
+    /// </summary>
     public bool EnableKeyboard
     {
         get { return enableKeyboard; }
@@ -24,7 +24,7 @@ public class CameraControls : MonoBehaviour {
     /// <summary>
     /// This method is used to enable and disable the
     /// mouse functionality
-    /// <summary>
+    /// </summary>
     public bool EnableMouse
     {
         get { return enableMouse;  }
@@ -46,7 +46,7 @@ public class CameraControls : MonoBehaviour {
     /// <summary>
     /// This function is used to update the frame once
     /// per second.
-    /// <summary>
+    /// </summary>
     void Update()
     {
         // Automatically disable Cemera controls if the current object is an InputField.
@@ -63,7 +63,7 @@ public class CameraControls : MonoBehaviour {
 
     /// <summary>
     /// This function Updates movement position based on the keyboard.
-    /// <summary>
+    /// </summary>
     void UpdateKeyboard()
     { 
         // Move Factor is based on Base movement speed * User Preferences.
@@ -130,7 +130,7 @@ public class CameraControls : MonoBehaviour {
 
     /// <summary>
     /// This function Updates movement position based on the mouse.
-    /// <summary>
+    /// </summary>
     private void UpdateMouse()
     {
         Camera.main.transform.position += Camera.main.transform.forward*Input.mouseScrollDelta.y*mouseZoomFactor;
