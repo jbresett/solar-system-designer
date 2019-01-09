@@ -1,13 +1,13 @@
-﻿/**
- * This class utilizes the laws of orbital mechanics
- * to simulate orbit based on a planet and a stars mass
- * along with their distance from eachother.
- *
- * The formulas for this class were obtained from
- * https://evgenii.com/blog/earth-orbit-simulation
- * 
- * @author Jack Northcutt
- */
+﻿/// <summary>
+/// This class utilizes the laws of orbital mechanics
+/// to simulate orbit based on a planet and a stars mass
+/// along with their distance from eachother.
+///
+/// The formulas for this class were obtained from
+/// https://evgenii.com/blog/earth-orbit-simulation
+///
+/// @author Jack Northcutt
+/// </summary>
 
 using System.Collections;
 using System.Collections.Generic;
@@ -15,11 +15,13 @@ using UnityEngine;
 
 public class Gravity{
 
-	//our simulation utilizes number of earths or number
-	//of suns for mass and utilizes au for distance, but 
-	//for accuracy in calculations theses values must be 
-	//converted for to Km, so the following constants are
-	//added.
+	/// <summary>
+	/// our simulation utilizes number of earths or number
+	/// of suns for mass and utilizes au for distance, but 
+	/// for accuracy in calculations theses values must be 
+	/// converted for to Km, so the following constants are
+	/// added.
+	/// </summary>
 	private const double earthMass = 5.972e24;
 	private const double sunMass = 1.989e30;
 	private const double au = 1.496e8;
@@ -46,8 +48,10 @@ public class Gravity{
 	//the current angular velocity
 	private double currentAngularVel;
 
-	//constructor will intialize values and convert to Km using
-	//constants defined.
+	/// <summary>
+	/// constructor will intialize values and convert to Km using
+	/// constants defined.
+	/// </summary>
 	public Gravity(double starMass, double planetMass, double dist){
 
 		this.starMass = starMass * sunMass;
@@ -59,10 +63,12 @@ public class Gravity{
 		this.currentAngularVel = 0;
 	}
 
-	//partial derivative of the angle of the Lagrangian equation
-	//L = (m/2)* ((r^2) + (r^2)(theta^2)) + (GMm)/r
-	//with respect to the anglet theta. Derived becomes
-	//distance = rDist * thetaVelocity^2 - GM/rDist^2
+	/// <summary>
+	/// partial derivative of the angle of the Lagrangian equation
+	/// L = (m/2)* ((r^2) + (r^2)(theta^2)) + (GMm)/r
+	/// with respect to the anglet theta. Derived becomes
+	/// distance = rDist * thetaVelocity^2 - GM/rDist^2
+	/// </summary>
 	public double calcDist(){
 
 		double rThetaSqr = 0.0;
@@ -75,10 +81,12 @@ public class Gravity{
 		return val;
 	}
 
-	//partial derivative of the angle of the Lagrangian equation
-	//L = (m/2)* ((r^2) + (r^2)(theta^2)) + (GMm)/r
-	//with respect to the anglet theta. Derived becomes
-	//angle = -(2*(rVelocity)*(angularVelocity)/rDistance
+	/// <summary>
+	/// partial derivative of the angle of the Lagrangian equation
+	/// L = (m/2)* ((r^2) + (r^2)(theta^2)) + (GMm)/r
+	/// with respect to the anglet theta. Derived becomes
+	/// angle = -(2*(rVelocity)*(angularVelocity)/rDistance
+	/// </summary>
 	public double calcAngle(){
 
 		double val = 0.0;
@@ -87,8 +95,9 @@ public class Gravity{
 		return val;
 	}
 
-
-	//Simple method to conver polar coordinates to cartesian
+	/// <summary>
+	/// Simple method to conver polar coordinates to cartesian
+	/// </summary>
 	public Vector3d convertToCartesian(double r, double theta){
 
 		double x = r * System.Math.Cos(theta);
@@ -103,9 +112,11 @@ public class Gravity{
 
 	}
 
-	//This method will run the calculations to create new
-	//x, y, z positions of the planet as it orbits around the
-	// sun.
+	/// <summary>
+	/// This method will run the calculations to create new
+	/// x, y, z positions of the planet as it orbits around the
+	/// sun.
+	/// </summary>
 	public Vector3d calcPosition(){
 
 		Vector3d coords;

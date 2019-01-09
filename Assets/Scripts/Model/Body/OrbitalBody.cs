@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class defines an orbital body that is placed in an
+/// n-body system collection
+/// </summary>
 namespace Planets
 {
     public class OrbitalBody : MonoBehaviour
@@ -8,6 +12,9 @@ namespace Planets
 
         public string system;
 
+        /// <summary>
+        /// This function gets and sets the type of body defined
+        /// </summary>
         public string Type
         {
             get { return type; }
@@ -20,6 +27,9 @@ namespace Planets
         [SerializeField]
         private string type;
 
+        /// <summary>
+        /// This function gets and sets the name of the defined body
+        /// </summary>
         public string Name
         {
             get { return name; }
@@ -33,6 +43,9 @@ namespace Planets
         [SerializeField]
         private new string name;
 
+        /// <summary>
+        /// This function gets and sets the mass of the body defined
+        /// </summary>
         public double Mass
         {
             get { return mass; }
@@ -44,6 +57,9 @@ namespace Planets
         [SerializeField]
         private double mass;
 
+        /// <summary>
+        /// This function gets and sets the radius of the body defined
+        /// </summary>
         public double Radius
         {
             get { return radius; }
@@ -62,6 +78,9 @@ namespace Planets
         [SerializeField]
         private double radius;
 
+        /// <summary>
+        /// This function gets and sets the revolution time of the body defined
+        /// </summary>
         public float RevTime
         {
             get { return revTime; }
@@ -74,6 +93,9 @@ namespace Planets
         [SerializeField]
         public float revTime;
 
+        /// <summary>
+        /// This function gets and sets the velocity of the body defined
+        /// </summary>
         public Vector3d Vel
         {
             get { return vel; }
@@ -86,6 +108,9 @@ namespace Planets
         [SerializeField]
         private Vector3d vel;
 
+        /// <summary>
+        /// This function gets and sets the rotation axis of the body defined
+        /// </summary>
         public double BodyRotAxis
         {
             get { return bodyRotAxis; }
@@ -98,7 +123,9 @@ namespace Planets
         [SerializeField]
         private double bodyRotAxis;
 
-
+        /// <summary>
+        /// This function gets and sets the rotation speed of the body defined
+        /// </summary>
         public double BodyRotSpd
         {
             get { return bodyRotSpd; }
@@ -111,6 +138,9 @@ namespace Planets
         [SerializeField]
         public double bodyRotSpd;
 
+        /// <summary>
+        /// This function gets and sets the body Damp Amount of the body defined
+        /// </summary>
         public double BodyDampAmt
         {
             get { return bodyDampAmt; }
@@ -123,6 +153,9 @@ namespace Planets
         [SerializeField]
         public double bodyDampAmt;
 
+        /// <summary>
+        /// This function is the constructor for the class
+        /// </summary>
         public OrbitalBody(string system, string type, string name, double mass, float radius, float revTime, Vector3d vel, float bodyRotAxis, float bodyRotSpd, float bodyDampAmt)
         {
             this.system = system;
@@ -139,7 +172,9 @@ namespace Planets
             this.bodyDampAmt = bodyDampAmt;
         }
 
-
+        /// <summary>
+        /// This function updates once per frame
+        /// </summary>
         private void Update()
         {
             /* Motion handled by seperate Rotation script

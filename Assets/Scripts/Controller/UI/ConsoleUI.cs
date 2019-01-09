@@ -13,7 +13,9 @@ public class ConsoleUI : MonoBehaviour {
     public InputField TextInput;
     public Text TextOutput;
 
-    // Use this for initialization
+    /// <summary>
+    /// This function initializes the class
+    /// </summary>
     void Start () {
 
         // Add "test" command processor and output. 
@@ -21,7 +23,9 @@ public class ConsoleUI : MonoBehaviour {
         Debugger.AddOutput(output);
     }
 	
-	// Update is called once per frame
+	/// <summary> 
+    /// Updates console once per frame
+    /// </summary>
 	void Update () {
 
         // Input text field.

@@ -4,17 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Ha
+/// This class is used to set different preferences in
+/// the simulation.
 /// </summary>
 public class PreferencesUI : MonoBehaviour {
 
-	// Use this for initialization
+	/// <summary>
+    /// Use this for initialization
+    /// </summary>
 	void Start () {
 		// Nothing needed here at this time.
         // TODO: When preferences are saved between runs, we'll need to load the values here.
 	}
 	
-	// Update is called once per frame
+	/// <summary>
+    /// Update is called once per frame
+    /// </summary>
 	void Update () {
 
         // While the Preferences UI window is visible, updates all preferences.
@@ -23,6 +28,9 @@ public class PreferencesUI : MonoBehaviour {
         updateSpeeds(Preferences.Mouse, "Mouse");
     }
 
+    /// <summary>
+    /// this function adjusts speed of slider rotation, movement and zoom
+    /// </summary>
     private void updateSpeeds(Preferences.Speed speed, string name)
     {
         speed.Movement = GameObject.Find(name + "Movement/Slider").GetComponent<Slider>().value;
