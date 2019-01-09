@@ -1,10 +1,10 @@
-﻿/** 
- * This Class is used for the creation of an Ellipse object
- * This class contains setters and getter methods for an
- * ellipse object.
- *
- *@author Jack Northcutt
- */
+﻿/// <summary>
+/// This Class is used for the creation of an Ellipse object
+/// This class contains setters and getter methods for an
+/// ellipse object.
+///
+/// @author Jack Northcutt
+/// </summary>
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +13,9 @@ using UnityEngine;
 [Serializable]
 public class Ellipse{
 
+	/// <summary>
+	/// gets and sets the major axis length of the ellipse
+	/// </summary>
     public double MajorAxis
     {
         get { return majorAxis; }
@@ -21,6 +24,9 @@ public class Ellipse{
     [SerializeField]
 	private double majorAxis;
 
+	/// <summary>
+	/// gets and sets minor axis length of the ellipse
+	/// <summary>
     public double MinorAxis
     {
         get
@@ -37,15 +43,19 @@ public class Ellipse{
     private double minorAxis;
 
 
-    //constructor
+    /// <summary>
+    /// constructor
+    /// </summary>
     public Ellipse(double major, double minor){
 		this.MajorAxis = major;
 		this.MinorAxis = minor;
 	}
 
-	//this method yields a double value that represents
-	//how far the foci are offset from the center of
-	//the ellipse. The foci is where the sun will be placed.
+	/// <summary>
+	/// this method yields a double value that represents
+	/// how far the foci are offset from the center of
+	/// the ellipse. The foci is where the sun will be placed.
+	/// </summary>
 	public double calcFoci(){
 
 		double a = System.Math.Pow(this.MajorAxis/2, 2);
@@ -56,10 +66,12 @@ public class Ellipse{
 		return foci;
 	}
 
-	//This function calculates the eccentricity of an ellipse,
-	//which is the elongation ratio of an ellipse. The closer
-	//to zero the more circular the ellipse is and the closer
-	//to 1 the more elongated the ellipse is. 
+	/// <summary>
+	/// This function calculates the eccentricity of an ellipse,
+	/// which is the elongation ratio of an ellipse. The closer
+	/// to zero the more circular the ellipse is and the closer
+	/// to 1 the more elongated the ellipse is. 
+	/// </summary>
 	public double calcEccentricity(){
 
 		double foci = calcFoci();
@@ -72,9 +84,11 @@ public class Ellipse{
 		return e;
 	}
 
-	//This Function takes a double angle and calculates 
-	//the x y and z position of where the point lies 
-	//on the ellipse. THis function returns a Vector3D
+	/// <summary>
+	/// This Function takes a double angle and calculates 
+	/// the x y and z position of where the point lies 
+	/// on the ellipse. THis function returns a Vector3D
+	/// </summary>
 	public Vector3d calcPoint(double theta){
 
 		//converting the angle give to radians
@@ -94,8 +108,10 @@ public class Ellipse{
 
 	}
 
-	//This function is to deterime the y coordinate
-	//when given an x value
+	/// <summary>
+	/// This function is to deterime the y coordinate
+	/// when given an x value
+	/// </summary>
 	public double findY(double x){
 
 			//squrar each of the values
@@ -111,8 +127,10 @@ public class Ellipse{
 			return y;
 	}
 
-	//This function is to determine the x coordinate
-	//when given a y value.
+	/// <summary>
+	/// This function is to determine the x coordinate
+	/// when given a y value.
+	/// </summary>
 	public double findx(double y){
 
 			//squrar each of the values

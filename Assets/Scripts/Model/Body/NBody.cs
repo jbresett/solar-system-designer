@@ -50,7 +50,9 @@ public class NBody: Dictionary<string, OrbitalBody> {
     }
     private string focused;
 
-	// Update is called once per frame.
+	/// <summary>
+    /// Updates once per frame
+    /// </summary>
 	void Update () {
         // Time is updated internally so Capi doesn't require an update on every frame. 
         time += Speed;	
