@@ -27,7 +27,11 @@ public class Main: MonoBehaviour {
     public ExposedData Exposed { get; private set; }
     public PersistentData Persistent { get; private set; }
 
-    //SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
+    SimCapi.Transporter transporter;
+
+    private void Awake()
+    {
+    }
 
     // Initialization
     void Start () {
@@ -35,6 +39,8 @@ public class Main: MonoBehaviour {
         // Create singleton instance.
         if (Instance != null) throw new InvalidOperationException("Process has already been started.");
         Instance = this;
+
+        transporter = SimCapi.Transporter.getInstance();
 
         // Create NBody system.
         Bodies = new NBody();
@@ -44,8 +50,6 @@ public class Main: MonoBehaviour {
         Exposed.expose();
         Exposed.setDeligates();
 
-        SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
-        //transporter.addInitialSetupCompleteListener(this.setupComplete);
         transporter.notifyOnReady();
     }
 
@@ -59,6 +63,7 @@ public class Main: MonoBehaviour {
         //TODO: Add future init code here.
 
         // Move to ready state.
+        Debugger.send("SimCapi Setup Complete.");
         State = States.Active;
     }
 

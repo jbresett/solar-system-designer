@@ -3381,7 +3381,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -4555,7 +4554,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -6581,7 +6579,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -13220,7 +13217,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -14841,7 +14837,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -18680,7 +18675,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -18843,8 +18837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c27bd17fa828924c94cd3a78b80a0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableKeyboard: 1
-  EnableMouse: 1
+  enableKeyboard: 1
+  enableMouse: 1
 --- !u!114 &1216493661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22700,7 +22694,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -24228,6 +24221,7 @@ GameObject:
   - component: {fileID: 1693280891}
   - component: {fileID: 1693280890}
   - component: {fileID: 1693280889}
+  - component: {fileID: 1693280887}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -24235,6 +24229,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1693280887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1693280886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c130faead0ef542a70308c2a53f20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1693280889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26684,7 +26689,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -27860,7 +27864,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -29679,7 +29682,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
