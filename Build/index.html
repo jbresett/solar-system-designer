@@ -5,8 +5,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>solar-system-designer</title>
 	<script src="Build/UnityLoader.js"></script>
+	<link rel="stylesheet" href="TemplateData/style.css">
+	<script src="TemplateData/UnityProgress.js"></script>
 	<script>
-		var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Build.json");
+		var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Build.json", {onProgress: UnityProgress});
 		window.gameInstance = gameInstance;
 		window.onresize = function(){
 			var canvas = gameInstance.Module.canvas;
@@ -51,6 +53,8 @@
 	</style>
 </head>
 <body onload="window.onresize();">
-	<div id="gameContainer"></div>
+	<div class="webgl-content">
+		<div id="gameContainer"></div>
+	</div>
 </body>
 </html>
