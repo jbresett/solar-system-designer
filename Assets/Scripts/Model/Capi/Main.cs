@@ -27,12 +27,7 @@ public class Main: MonoBehaviour {
     public ExposedData Exposed { get; private set; }
     public PersistentData Persistent { get; private set; }
 
-    SimCapi.Transporter transporter;
-
-    private void Awake()
-    {
-        transporter = SimCapi.Transporter.getInstance();
-    }
+    //SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
 
     // Initialization
     void Start () {
@@ -50,7 +45,6 @@ public class Main: MonoBehaviour {
         Exposed.setDeligates();
 
         SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
-        // Feature not implemented by Capi at this time.
         //transporter.addInitialSetupCompleteListener(this.setupComplete);
         transporter.notifyOnReady();
     }
