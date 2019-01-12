@@ -3381,7 +3381,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -4555,7 +4554,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -6581,7 +6579,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -13220,7 +13217,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -14841,7 +14837,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -18680,7 +18675,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -18843,8 +18837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c27bd17fa828924c94cd3a78b80a0cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableKeyboard: 1
-  EnableMouse: 1
+  enableKeyboard: 1
+  enableMouse: 1
 --- !u!114 &1216493661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22700,7 +22694,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -26684,7 +26677,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -27860,7 +27852,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0
@@ -29679,7 +29670,6 @@ MonoBehaviour:
   mass: 0
   radius: 0
   revTime: 0
-  vel: {x: 0, y: 0, z: 0}
   bodyRotAxis: 0
   bodyRotSpd: 0
   bodyDampAmt: 0

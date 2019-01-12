@@ -79,6 +79,11 @@ public class ExposedData {
         return -1;
     }
 
+    internal void BodyUpdate(PhysicsBody physicsBody)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Exposes all data. Called by the Main processing class after instance is created.
     /// </summary>

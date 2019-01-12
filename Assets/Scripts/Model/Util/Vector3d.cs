@@ -123,6 +123,24 @@ public class Vector3d
         return Math.Sqrt(xPow + yPow + zPow);
     }
 
+    //
+    /// <summary>
+    /// Linearly interpolates between two vectors.
+    /// </summary>
+    /// <param name="target">Target Vector.</param>
+    /// <param name="distance">Fractional distance to target. Negative values will calculate in the opposite
+    ///     direciton. Values over 1 will result in positions past the target.</param>
+    /// <returns></returns>
+    public Vector3d Leap(Vector3d target, double distance)
+    {
+        double rx, ry, rz; //resulting axes 
+
+        rx = (target.x - x) * distance + x;
+        ry = (target.y - y) * distance + y;
+        rz = (target.z - z) * distance + z;
+        return new Vector3d(rx, ry, rz);
+    }
+
     /// <summary>
     /// Returns a resulting vector of adding another vector to the current one.
     /// </summary>
@@ -141,5 +159,19 @@ public class Vector3d
     public Vector3d subtract(Vector3d target)
     {
         return new Vector3d(x - target.x, y - target.y, z - target.z);
+    }
+
+    public override string ToString() {
+        return String.Format("({0},{1},{2})", x, y, z);
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (obj is Vector3d)
+        {
+            Vector3d target = (Vector3d)obj;
+            return (x == target.x && y == target.y && z == target.z);
+        }
+        return false;
     }
 }
