@@ -5,6 +5,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// This class is used to test the nbody system class in order
+/// to verify an nbody collection can be properly created
+/// </summary>
 #pragma warning disable CS0618 // Type or member is obsolete
 public class NBodyTests {
 
@@ -43,8 +47,10 @@ public class NBodyTests {
 
     }
 
-    // A UnityTest behaves like a coroutine in PlayMode
-    // and allows you to yield null to skip a frame in EditMode
+    /// <summary>
+    /// A UnityTest behaves like a coroutine in PlayMode
+    /// and allows you to yield null to skip a frame in EditMode
+    /// </summary>
     [UnityTest]
     public IEnumerator NBodyTestsWithEnumeratorPasses() {
         // Use the Assert class to test conditions.
