@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class is used to construct rings around a
+/// celestial object such as the planet saturn
+/// </summary>
 public class GenerateRings : MonoBehaviour {
 
     //Manual Settings
@@ -17,8 +21,10 @@ public class GenerateRings : MonoBehaviour {
     MeshFilter ringMFilter;
     MeshRenderer ringMRenderer;
 
-	// Use this for initialization
-	void Start () {
+    /// <summary>
+    /// Initializes ring generation
+    /// </summary>
+    void Start () {
 
         //Create Ring
         ring = new GameObject(name + " Ring");
@@ -66,9 +72,11 @@ public class GenerateRings : MonoBehaviour {
         ringMesh.uv = uv;
         ringMesh.RecalculateNormals();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    
+    /// <summary>
+    /// Updates once per frame
+    /// </summary>
+    void Update () {
+        
+    }
 }

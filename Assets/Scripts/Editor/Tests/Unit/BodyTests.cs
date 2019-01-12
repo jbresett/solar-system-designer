@@ -38,6 +38,9 @@ public class BodyTests: IPrebuildSetup {
 
     }
 
+    /// <summary>
+    /// Tests json serialization
+    /// </summary>
     [Test]
     public void Serial()
     {
@@ -51,8 +54,10 @@ public class BodyTests: IPrebuildSetup {
         Debug.Log("Earth JSON: " + Earth.ToJson());
     }
 
-    // A UnityTest behaves like a coroutine in PlayMode
-    // and allows you to yield null to skip a frame in EditMode
+    /// <summary>
+    /// A UnityTest behaves like a coroutine in PlayMode
+    /// and allows you to yield null to skip a frame in EditMode
+    /// </summary>
     [UnityTest]
     public IEnumerator BodyTestsWithEnumeratorPasses() {
         // Use the Assert class to test conditions.
