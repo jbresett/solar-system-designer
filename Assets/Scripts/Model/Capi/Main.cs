@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using SimCapi;
 using UnityEngine;
 
 /// <summary>
@@ -31,13 +32,6 @@ public class Main: MonoBehaviour {
 
     private void Awake()
     {
-    }
-
-    // Initialization
-    void Start () {
-
-        // Create singleton instance.
-        if (Instance != null) throw new InvalidOperationException("Process has already been started.");
         Instance = this;
 
         transporter = SimCapi.Transporter.getInstance();
@@ -50,7 +44,15 @@ public class Main: MonoBehaviour {
         Exposed.expose();
         Exposed.setDeligates();
 
+        Debugger.log("Initializing Transporter");
+        transporter.addInitialSetupCompleteListener(setupComplete);
+        transporter.addHandshakeCompleteListener(handshakeComplete);
         transporter.notifyOnReady();
+    }
+
+    // Initialization
+    void Start () {
+
     }
 
     /// <summary>
@@ -58,13 +60,17 @@ public class Main: MonoBehaviour {
     /// Starts project initalization (objects/etc).
     /// </summary>
     /// <param name="message"></param>
-    public void setupComplete(SimCapi.Message message)
+    public void setupComplete()
     {
-        //TODO: Add future init code here.
-
+        Debugger.log("SimCapi Setup Complete.");
         // Move to ready state.
-        Debugger.send("SimCapi Setup Complete.");
         State = States.Active;
+    }
+
+
+    private void handshakeComplete(SimCapiHandshake handshake)
+    {
+        Debugger.log("SimCapi Handshake Complete.");
     }
 
     // Frame Update
