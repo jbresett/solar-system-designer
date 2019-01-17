@@ -158,8 +158,8 @@ public class Body
     /// <returns></returns>
     public double GetDistance(Body from, double days) 
     {
-        Vector3d distance = GetPosition(days).subtract(from.GetPosition(days));
-        return distance.magnatude;
+        Vector3d distance = GetPosition(days) - from.GetPosition(days);
+        return distance.magnitude;
     }
 
     /// <summary>

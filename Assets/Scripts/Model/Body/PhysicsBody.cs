@@ -210,9 +210,9 @@ namespace Planets
         public Vector3d getBaycenter(PhysicsBody withBody)
         {
             // distance to BaryCenter.
-            double baryDistance = (Position.getDistance(withBody.Position) * withBody.Mass) / (Mass + withBody.Mass);
+            double baryDistance = (Vector3d.Distance(position, withBody.Position) * withBody.Mass) / (Mass + withBody.Mass);
 
-            return Position.Leap(withBody.Position, baryDistance);
+            return Vector3d.LerpUnclamped(position, withBody.Position, baryDistance);
         }
 
         /// <summary>

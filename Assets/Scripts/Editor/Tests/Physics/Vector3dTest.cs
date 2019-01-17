@@ -19,9 +19,9 @@ public class Vector3dTest {
         Vector3d a = new Vector3d(1, 5, 5);
         Vector3d b = new Vector3d(2, -10, 15);
 
-        Assert.AreEqual(a.Leap(b, 0), a);
-        Assert.AreEqual(a.Leap(b, 1), b);
-        Assert.AreEqual(a.Leap(b, 0.75), b.Leap(a, 0.25));
+        Assert.AreEqual(Vector3d.LerpUnclamped(a, b, 0), a);
+        Assert.AreEqual(Vector3d.LerpUnclamped(a, b, 1), b);
+        Assert.AreEqual(Vector3d.LerpUnclamped(a, b, 0.75), Vector3d.LerpUnclamped(b, a, 0.25));
     }
 
     // A UnityTest behaves like a coroutine in PlayMode
