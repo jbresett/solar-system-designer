@@ -202,22 +202,45 @@ public class Vector3d
     }
 
     /// <summary>
+    /// Returns a cross product of two vectors.
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    static public Vector3d Cross(Vector3d a, Vector3d b)
+    {
+        double x = (a.y * b.z) - (a.z * b.y);
+        double y = (a.z * b.x) - (a.x * b.z);
+        double z = (a.x * b.y) - (a.y * b.x);
+        return new Vector3d(x, y, z);
+    }
+
+    /// <summary>
     /// Returns distance between this vector and another one.
     /// </summary>
     /// <returns></returns>
     static public double Distance(Vector3d vecA, Vector3d vecB)
     {
+        return Math.Sqrt(DistanceSqr(vecA, vecB));
+    }
+
+    static public double DistanceSqr(Vector3d vecA, Vector3d vecB)
+    {
         double xPow = Math.Pow(vecA.x - vecB.x, 2);
         double yPow = Math.Pow(vecA.y - vecB.y, 2);
         double zPow = Math.Pow(vecA.z - vecB.z, 2);
-        return Math.Sqrt(xPow + yPow + zPow);
+        return xPow + yPow + zPow;
     }
 
-
+    /// <summary>
+    /// Returns the Dot product between two vectors.
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
+    /// <returns></returns>
     private static double Dot(Vector3d from, Vector3d to)
     {
-        //[TODO]
-        throw new NotImplementedException();
+        return from.x * to.x + from.y * to.y + from.z * to.z;
     }
 
     //
@@ -262,6 +285,19 @@ public class Vector3d
     public static Vector3d Min(Vector3d vecA, Vector3d vecB)
     {
         return new Vector3d(Math.Min(vecA.x, vecB.x), Math.Min(vecA.y, vecB.y), Math.Min(vecA.z, vecB.z));
+    }
+
+    /// <summary>
+    /// Moves a vector towards a point.
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
+    /// <param name="maxDistance"></param>
+    /// <returns></returns>
+    public static Vector3d MoveTowards(Vector3d from, Vector3d to, double maxDistance)
+    {
+        // Limits distance via ClampMagnitude.
+        return from + ClampMagnitude(to, maxDistance);
     }
 
     /// <summary>
@@ -331,4 +367,12 @@ public class Vector3d
         return false;
     }
 
+    public override int GetHashCode()
+    {
+        var hashCode = 373119288;
+        hashCode = hashCode * -1521134295 + x.GetHashCode();
+        hashCode = hashCode * -1521134295 + y.GetHashCode();
+        hashCode = hashCode * -1521134295 + z.GetHashCode();
+        return hashCode;
+    }
 }

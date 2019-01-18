@@ -17,7 +17,7 @@ namespace Planets
     {
         public BodyType Type
         {
-            get { return Type; }
+            get { return type; }
             set { type = value; }
         }
         [SerializeField]
@@ -118,7 +118,7 @@ namespace Planets
             set
             {
                 position = value;
-                gameObject.transform.position = value.Vec3;
+                gameObject.transform.position = (value * DISTANCE_MULT).Vec3;
                 Main.Instance.Exposed.BodyUpdate(this);
             }
         }
@@ -130,7 +130,7 @@ namespace Planets
         /// </summary>
         public Vector3d InitialPosition
         {
-            get { return position; }
+            get { return inititialPosition; }
             set
             {
                 inititialPosition = value;
@@ -199,7 +199,7 @@ namespace Planets
         // Resets the body to it's initial position.
         public void resetPosition()
         {
-            Position = InitialPosition;
+            Position = inititialPosition;
         }
 
         /// <summary>
@@ -213,6 +213,17 @@ namespace Planets
             double baryDistance = (Vector3d.Distance(position, withBody.Position) * withBody.Mass) / (Mass + withBody.Mass);
 
             return Vector3d.LerpUnclamped(position, withBody.Position, baryDistance);
+        }
+
+        /// <summary>
+        /// Gets interacting force between this body and another.
+        /// Resultsa are in: [N * AU^2 / EM^2] (AU = Astraomical Units, EM = earth Masses).
+        /// </summary>
+        /// <param name="withBody"></param>
+        /// <returns></returns>
+        public double force(PhysicsBody withBody)
+        {
+            return Mathd.G * mass * withBody.mass / Vector3d.DistanceSqr(position, withBody.Position);
         }
 
         /// <summary>

@@ -8,7 +8,14 @@ using UnityEngine;
 /// 
 /// Partial code based on Unity's Mathf: https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Mathf.cs
 /// </summary>
-public class Mathd {
+public class Mathd
+{
+
+    // Gravity Constant, in N * m^2 / kg^2
+    public const double G_STANDARD = 6.674E-11;
+
+    // Gravity Constant, in N * AU^2 / EM^2 [AU = Astraomical Units, EM = earth Masses]
+    public const double G = 2619.330922459893048128342;
 
     // Degrees-to-radians conversion constant (RO).
     public const double Deg2Rad = Math.PI * 2.0 / 360.0;
