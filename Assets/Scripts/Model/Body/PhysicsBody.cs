@@ -226,6 +226,11 @@ namespace Planets
             return Mathd.G * mass * withBody.mass / Vector3d.DistanceSqr(position, withBody.Position);
         }
 
+        public Vector3d getPosition(PhysicsBody withBody, double distance){
+            Gravity grav = new Gravity(withBody.KG, this.KG, distance);
+            return grav.calcPosition();
+        }
+
         /// <summary>
         /// This function updates once per frame.
         /// </summary>
