@@ -1,0 +1,2 @@
+Archived files not in use by current project state.
+Can be commented out if causing errors during compile.
