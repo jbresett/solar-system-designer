@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7aa59384a3d537549855c7a4c88124d7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - button: {instanceID: 0}
+  - name: {instanceID: 0}
+  - type: {instanceID: 0}
+  - xPos: {instanceID: 0}
+  - yPos: {instanceID: 0}
+  - zPos: {instanceID: 0}
+  - xVel: {instanceID: 0}
+  - yVel: {instanceID: 0}
+  - zVel: {instanceID: 0}
+  - sphereMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
