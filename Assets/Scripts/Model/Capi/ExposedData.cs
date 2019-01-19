@@ -1,15 +1,17 @@
-﻿using Newtonsoft.Json.Linq;
-using Planets;
+﻿using Planets;
 using SimCapi;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Extensions;
+
 
 /// <summary>
 /// Handles top-level data exposed to SimCapi.
 /// </summary>
 public class ExposedData {
+    public const int MAX_BODY_COUNT = 50;
 
     /* Data Types:
      * SimCapi.SimCapiNumber
@@ -22,17 +24,12 @@ public class ExposedData {
      */
 
     /// <summary>
-    /// Stores a List of all Bodies in JSON Format.
-    /// Example: {"Name":"Earth","Type":2,
-    ///     "Orbits":{"ParentName":"Sun","Shape":{"majorAxis":156.0,"minorAxis":146.0},"Revolution":365.0},
-    ///     "Mass":5.972e24,"Radius":6371.0,"Rotation":1.0}
-    ///   Sets the earth circling around the sun in an eliptical orbit btween 146 and 156
-    ///   kilometers (no inclination), with a mass of 5.972*10^24 kg, a radius of 6371 kilometers, 
-    ///   and a composition of primarally Oxygen, SIlicon, Aliminum, and Calcium (based on %).
-    ///   
+    /// Stores a List of all Bodies.
+    /// Each is stored in an array: Name, Type, Mass, Radius, Initial Position, 
+    /// Example: [Earth, Planet, 5.972e24, 6371.0 kg, 1 AU]
     /// Note: NBodies.updateValue() must be called after making changes to the List from getList.
     /// </summary>
-    public SimCapiStringArray NBodies;
+    public SimCapiStringArray[] Bodies;
 
     /// <summary>
     /// Current simulation time in days from starting point.
@@ -46,14 +43,37 @@ public class ExposedData {
 
     public SimCapiStringArray Perms;
 
+    // Permission switch for "create" perm.
+    public SimCapiBoolean CanCreate;
+
     /// <summary>
     /// Sets initial values.
     /// </summary>
     public ExposedData() {
-        NBodies = new SimCapiStringArray();
         Time = new SimCapiNumber(0F);
         FocusedBody = new SimCapiString("");
+
+        CanCreate = new SimCapiBoolean(false);
         Perms = new SimCapiStringArray();
+        for (int i = 0; i < MAX_BODY_COUNT; i++)
+        {
+            Bodies[i] = new SimCapiStringArray();
+        }
+    }
+
+    /// <summary>
+    /// Exposes all data. Called by the Main processing class after instance is created.
+    /// </summary>
+    public void expose()
+    {
+        Time.expose("Time", false, false);
+        FocusedBody.expose("Focused", false, false);
+        CanCreate.expose("Can Create", false, false);
+        Perms.expose("Perm", true, false);
+        for (int i = 0; i < MAX_BODY_COUNT; i++)
+        {
+            Bodies[i].expose("Body [{0:D2}]".Format(i), false, false);
+        }
     }
 
     /// <summary>
@@ -65,30 +85,36 @@ public class ExposedData {
     {
 
         // Search through NBodies List.
-        List<String> Lines = NBodies.getList();
-        for (int i = 0; i < Lines.Count; i++)
+        for (int i = 0; i < MAX_BODY_COUNT; i++)
         {
-
-            // Parse each item in json, finding by name.
-            JObject obj = JObject.Parse(Lines[i]);
-            if (name == (string)obj["name"])
+            SimCapiStringArray body = Bodies[i];
+            if (body.getList().Count > 0 && body.getList()[0] == name)
             {
                 return i;
-            } 
+            }
         }
         return -1;
     }
 
     /// <summary>
-    /// Exposes all data. Called by the Main processing class after instance is created.
+    /// Returns a body based on the body's name.
     /// </summary>
-    public void expose()
+    /// <param name="name"></param>
+    /// <returns>Body, or null if not found.</returns>
+    public SimCapiStringArray GetBody(string name)
     {
-        NBodies.expose("N Body", false, false);
-        Time.expose("Time", false, false);
-        FocusedBody.expose("Focused", false, false);
-        Perms.expose("Perm", false, false);
+
+        // Search through NBodies List.
+        foreach (SimCapiStringArray body in Bodies)
+        {
+            if (body.getList().Count > 0 && body.getList()[0] == name)
+            {
+                return body;
+            }
+        }
+        return null;
     }
+
 
     /// <summary>
     /// Update the SimCapiStringArray NBodies once a change to the Body has been invoked.
@@ -99,15 +125,13 @@ public class ExposedData {
     /// <returns></returns>
     public bool BodyUpdate(OrbitalBody body)
     {
-        int index = GetBodyIndex(body.Name);
-        
-        // If planet is not being tracked by exposed data, ignore changes.
-        if (index == -1) return false;
-
-        // Update Capi
-        List<string> bodies = NBodies.getList();
-        bodies[index] = JsonUtility.ToJson(body);
-        NBodies.updateValue();
+        SimCapiStringArray Ary = GetBody(body.Name);
+        if (Ary == null) return false;
+        Ary.getList().Clear();
+        Ary.getList().Add(body.Name);
+        Ary.getList().Add(body.Type);
+        Ary.getList().Add(body.Mass.ToString());
+        Ary.updateValue();
         return true;
     }
 
@@ -119,34 +143,36 @@ public class ExposedData {
     /// </summary>
     public void setDeligates()
     {
+        foreach (SimCapiStringArray Body in Bodies)
+        {
 
-        NBodies.setChangeDelegate(
-            delegate (string[] values, ChangedBy changedBy)
-            {
-                // Any changes done by the SIM go through the NBody system first, which updates the Exposed Data.
-                if (changedBy == ChangedBy.SIM)
+            Body.setChangeDelegate(
+                delegate (string[] values, ChangedBy changedBy)
                 {
-                    // Not further effects here at this time.
-                }
-                else
-                {
-                    // Cycle through each body
-                    for (int i = 0; i < values.Length; i++)
+                    // Any changes done by the SIM go through the NBody system first, which updates the Exposed Data.
+                    if (changedBy == ChangedBy.SIM)
                     {
-
-                        // Get the body's name.
-                        JObject obj = JObject.Parse(values[i]);
-                        string name = (String)obj["name"]; 
-
-                        // If Body is shown visually (exists in NBody system), overwrite from json string.
-                        if (Main.Instance.Bodies.ContainsKey(name))
+                        // Not further effects here at this time.
+                    }
+                    else
+                    {
+                        // Cycle through each body
+                        for (int i = 0; i < values.Length; i++)
                         {
-                            JsonUtility.FromJsonOverwrite(values[i], Main.Instance.Bodies[name]);
+
+                            // Get the body's name.
+                            string name = Body.getList()[0];
+
+                            // If Body is shown visually (exists in NBody system), overwrite from json string.
+                            if (Main.Instance.Bodies.ContainsKey(name))
+                            {
+                                // [TODO] Update for Physics Body.
+                            }
                         }
                     }
                 }
-            }
-        );
+            );
+        }
 
         Time.setChangeDelegate(
             delegate (float value, ChangedBy changedBy)
