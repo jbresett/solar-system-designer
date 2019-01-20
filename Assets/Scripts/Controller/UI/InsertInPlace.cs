@@ -36,16 +36,16 @@ public class InsertInPlace : MonoBehaviour
     /// </summary>
     public void insert()
     {
-        String bodyName;
+        //String bodyName;
         double result = 0.0;
         planetBase = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Models/Planet_in_AU_Units.obj", typeof(GameObject));
         GameObject[] bodies = GameObject.FindGameObjectsWithTag("OrbitalBody");
         Debug.Log(bodies);
-        if(name.text == ""){
-            bodyName = name.text;
-        } else {
-            bodyName = "UnnamedBody";
-        }
+        //if(name.text == ""){
+        String bodyName = name.text;
+        //} else {
+          //  bodyName = "UnnamedBody";
+        //}
         int id = 1;
         foreach (var b in bodies)
         {
