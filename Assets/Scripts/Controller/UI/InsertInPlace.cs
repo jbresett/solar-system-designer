@@ -35,6 +35,8 @@ public class InsertInPlace : MonoBehaviour
     /// </summary>
     public void insert()
     {
+        double result = 0.0;
+        planetBase = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Models/Planet_in_AU_Units.obj", typeof(GameObject));
         GameObject[] bodies = GameObject.FindGameObjectsWithTag("OrbitalBody");
         Debug.Log(bodies);
         String bodyName = name.text;
@@ -53,8 +55,20 @@ public class InsertInPlace : MonoBehaviour
         body.SetActive(true);
         body.name = bodyName;
         OrbitalBody script = body.AddComponent<OrbitalBody>();
-        script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
-        //script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
+        if(double.TryParse(xVel.text,out result) == true && double.TryParse(yVel.text,out result) && double.TryParse(zVel.text,out result)){
+            script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
+        } else {
+            script.Vel = new Vector3d(0.0,0.0,0.0);
+        }
+        /*
+        if(double.TryParse(xPos.text,out result) == true && double.TryParse(yPos.text,out result) && double.TryParse(zPos.text,out result)){
+            script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
+        } else {
+            foreach(var body in bodies){
+                if(pos)
+                script.setPos = new Vector3d(0.0,0.0,0.0);
+            }
+        }*/
         script.Radius = (float)convertRadiUnits(double.Parse(radius.text));
         script.Mass = (float)convertMassUnits(double.Parse(mass.text));
         script.Type = type.options[type.value].text;
