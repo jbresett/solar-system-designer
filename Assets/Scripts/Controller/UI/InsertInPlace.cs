@@ -1,5 +1,6 @@
 using System;
 using Planets;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,16 +11,16 @@ using UnityEngine.UI;
 public class InsertInPlace : MonoBehaviour
 {
     public Button button;
-    new public InputField name;
-    public Dropdown type;
-    public InputField xPos;
-    public InputField yPos;
-    public InputField zPos;
-    public InputField xVel;
-    public InputField yVel;
-    public InputField zVel;
-    public InputField radius;
-    public InputField mass;
+    public TMP_InputField name;
+    public TMP_Dropdown type;
+    public TMP_InputField xPos;
+    public TMP_InputField yPos;
+    public TMP_InputField zPos;
+    public TMP_InputField xVel;
+    public TMP_InputField yVel;
+    public TMP_InputField zVel;
+    public TMP_InputField radius;
+    public TMP_InputField mass;
     public GameObject planetBase;
 
     /// <summary>

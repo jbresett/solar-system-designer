@@ -185,5 +185,9 @@ namespace Planets
             */
         }
 
+        private void Start()
+        {
+            
+        }
     }
 }
