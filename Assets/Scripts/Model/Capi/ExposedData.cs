@@ -96,6 +96,11 @@ public class ExposedData {
         return -1;
     }
 
+    internal void BodyUpdate(PhysicsBody physicsBody)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Returns a body based on the body's name.
     /// </summary>

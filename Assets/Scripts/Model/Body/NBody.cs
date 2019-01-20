@@ -48,6 +48,26 @@ public class NBody: Dictionary<string, OrbitalBody> {
             Main.Instance.Exposed.FocusedBody.setValue(value);
         }
     }
+
+    /// <summary>
+    /// adds an orbital body to the nbody system
+    public void addOrbitalBody(OrbitalBody body){
+
+    }
+
+    /// <summary>
+    /// removes an orbital body from the nbody system
+    /// </summary>
+    public void removeOrbitalBody(OrbitalBody body){
+
+    }
+
+    /// <summary>
+    /// updates positions of orbital bodies
+    /// </summmary>
+    public void updatePositions(){
+
+    }
     private string focused;
 
 	/// <summary>
@@ -56,6 +76,7 @@ public class NBody: Dictionary<string, OrbitalBody> {
 	void Update () {
         // Time is updated internally so Capi doesn't require an update on every frame. 
         time += Speed;	
+        updatePositions();
 	}
     
 }
