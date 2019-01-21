@@ -13,7 +13,6 @@ public enum BodyType
 [Obsolete("Use OrbitalBody")]
 public class Body
 {
-    public NBody System { get; set; }
 
     /// <summary>
     /// Planet Name. Must be non-null and unique for it's system.
@@ -23,7 +22,6 @@ public class Body
         get { return name; }
         set {
             if (value == null) throw new InvalidOperationException("Planet name must not be null.");
-            if (System.ContainsKey(value)) throw new InvalidOperationException("Planet already exists in system with same name.");
             name = value;
         }
     }
@@ -91,7 +89,7 @@ public class Body
     /// <summary>
     /// Creates a unclassifed, unnammed body with no orbit, mass, rotation, or layers.
     /// </summary>
-    public Body(NBody system) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0) { }
+    public Body() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0) { }
 
     /*
     void Update()
@@ -105,13 +103,6 @@ public class Body
     
     //public Body() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0, null) { }
 
-    /// <summary>
-    /// Creates a Body from a json string.
-    /// </summary>
-    public Body(NBody system, String json) : this(system, "", BodyType.Unclassified, null, 0.0, 0.0, 0.0)
-    {
-        JsonUtility.FromJsonOverwrite(json, this); 
-    }
 
     /// <summary>
     /// Creates a body.
@@ -123,9 +114,8 @@ public class Body
     /// <param name="radius">Average radius from center of the plane to the outer crust.</param>
     /// <param name="rotation">Time (in days) for the planet to make a full rotation.</param>
     /// <param name="layers">Body composition of each layer.  May be null.</param>
-    public Body(NBody system, string name, BodyType type, Orbit orbits, double mass, double radius, double rotation)
+    public Body(string name, BodyType type, Orbit orbits, double mass, double radius, double rotation)
     {
-        System = system;
         Name = name;
         Type = type;
         Orbits = orbits;

@@ -6,19 +6,9 @@ using System;
 using System.Collections.Generic;
 
 #pragma warning disable CS0618 // Type or member is obsolete
-public class BodyTests: IPrebuildSetup {
+public class BodyTests {
     private Body Sun;
     private Body Earth;
-
-    public void Setup()
-    {
-        NBody System = new NBody();
-
-        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
-
-        Orbit earthOrbit = new Orbit("Sun", new Ellipse(100, 50), 365);
-        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
-    }
 
     /// <summary>
     /// Tests the degrees at any given time.
@@ -26,7 +16,6 @@ public class BodyTests: IPrebuildSetup {
     [Test]
     public void DegreeOverTime()
     {
-        Setup();
 
         // Expected degrees at each given time interval.
         double[,] time = new double[,] { { 0, 0 }, { 91.25, 90}, { 182.5, 180 }, { 273.75, 270 }, { 365.0, 0 }};
@@ -36,19 +25,6 @@ public class BodyTests: IPrebuildSetup {
             Assert.AreEqual(time[i,1], Math.Round(degree));
         }
 
-    }
-
-    [Test]
-    public void Serial()
-    {
-        NBody System = new NBody();
-
-        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
-        Orbit earthOrbit = new Orbit("Sun", new Ellipse(156, 146), 365);
-        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 5.972e+24, 6371.0, 1.0);
-
-        Debug.Log("Sun JSON: " + Sun.ToJson());
-        Debug.Log("Earth JSON: " + Earth.ToJson());
     }
 
     // A UnityTest behaves like a coroutine in PlayMode

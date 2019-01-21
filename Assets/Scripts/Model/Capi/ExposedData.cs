@@ -11,7 +11,7 @@ using Extensions;
 /// Handles top-level data exposed to SimCapi.
 /// </summary>
 public class ExposedData {
-    public const int MAX_BODY_COUNT = 50;
+
 
     /* Data Types:
      * SimCapi.SimCapiNumber
@@ -55,7 +55,8 @@ public class ExposedData {
 
         CanCreate = new SimCapiBoolean(false);
         Perms = new SimCapiStringArray();
-        for (int i = 0; i < MAX_BODY_COUNT; i++)
+        Bodies = new SimCapiStringArray[NBody.MAX_BODY_COUNT];
+        for (int i = 0; i < NBody.MAX_BODY_COUNT; i++)
         {
             Bodies[i] = new SimCapiStringArray();
         }
@@ -64,13 +65,13 @@ public class ExposedData {
     /// <summary>
     /// Exposes all data. Called by the Main processing class after instance is created.
     /// </summary>
-    public void expose()
+    public void exposeAll()
     {
         Time.expose("Time", false, false);
         FocusedBody.expose("Focused", false, false);
         CanCreate.expose("Can Create", false, false);
         Perms.expose("Perm", true, false);
-        for (int i = 0; i < MAX_BODY_COUNT; i++)
+        for (int i = 0; i < NBody.MAX_BODY_COUNT; i++)
         {
             Bodies[i].expose("Body [{0:D2}]".Format(i), false, false);
         }
@@ -85,7 +86,7 @@ public class ExposedData {
     {
 
         // Search through NBodies List.
-        for (int i = 0; i < MAX_BODY_COUNT; i++)
+        for (int i = 0; i < NBody.MAX_BODY_COUNT; i++)
         {
             SimCapiStringArray body = Bodies[i];
             if (body.getList().Count > 0 && body.getList()[0] == name)
@@ -168,11 +169,7 @@ public class ExposedData {
                             // Get the body's name.
                             string name = Body.getList()[0];
 
-                            // If Body is shown visually (exists in NBody system), overwrite from json string.
-                            if (Main.Instance.Bodies.ContainsKey(name))
-                            {
-                                // [TODO] Update for Physics Body.
-                            }
+
                         }
                     }
                 }
@@ -190,7 +187,7 @@ public class ExposedData {
                 // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
                 else
                 {
-                    Main.Instance.Bodies.Time = value;
+                    NBody.Time = value;
                 }
 
             }
@@ -207,7 +204,7 @@ public class ExposedData {
                // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
                else
                {
-                   Main.Instance.Bodies.Focused = value;
+                   NBody.Focused = value;
                }
            }
        );

@@ -21,10 +21,6 @@ public class Main: MonoBehaviour {
     }
     public States State = States.Startup;
 
-
-    // NBody Simulator
-    public NBody Bodies { get; private set; }
-
     public ExposedData Exposed { get; private set; }
     public PersistentData Persistent { get; private set; }
 
@@ -36,12 +32,9 @@ public class Main: MonoBehaviour {
 
         transporter = SimCapi.Transporter.getInstance();
 
-        // Create NBody system.
-        Bodies = new NBody();
-
         // Create SSData 
         Exposed = new ExposedData();
-        Exposed.expose();
+        Exposed.exposeAll();
         Exposed.setDeligates();
 
         Debugger.log("Initializing Transporter");
