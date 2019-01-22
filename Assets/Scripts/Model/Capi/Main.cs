@@ -40,12 +40,12 @@ public class Main: MonoBehaviour {
         Debugger.log("Initializing Transporter");
         transporter.addInitialSetupCompleteListener(setupComplete);
         transporter.addHandshakeCompleteListener(handshakeComplete);
-        transporter.notifyOnReady();
+
     }
 
     // Initialization
     void Start () {
-
+        transporter.notifyOnReady();
     }
 
     /// <summary>
@@ -56,6 +56,7 @@ public class Main: MonoBehaviour {
     public void setupComplete()
     {
         Debugger.log("SimCapi Setup Complete.");
+        Debugger.log("SimCapi Context: " + SimCapi.Transporter.getInstance().getConfig().context);
         // Move to ready state.
         State = States.Active;
     }
