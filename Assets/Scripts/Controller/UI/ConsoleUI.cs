@@ -16,7 +16,7 @@ public class ConsoleUI : MonoBehaviour {
     /// <summary>
     /// This function initializes the class
     /// </summary>
-    void Start () {
+    void Awake() {
 
         // Add "test" command processor and output. 
         Debugger.AddProcessor(processTest);
@@ -35,7 +35,7 @@ public class ConsoleUI : MonoBehaviour {
             Debugger.send(TextInput.text);
         }
 
-        gameObject.GetComponent<CameraControls>().EnableKeyboard = !TextInput.isFocused;
+        Camera.main.GetComponent<CameraControls>().EnableKeyboard = !TextInput.isFocused;
     }
 
     /// <summary>
@@ -51,7 +51,7 @@ public class ConsoleUI : MonoBehaviour {
         {
             result += line + "\n";
         }
-        TextOutput.text = result;
+        TextOutput.text += result;
     }
     
     /// <summary>

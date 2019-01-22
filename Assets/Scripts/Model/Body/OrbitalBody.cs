@@ -21,7 +21,7 @@ namespace Planets
             set
             {
                 this.type = value;
-                //Main.Instance.Exposed.BodyUpdate(this);
+               
             }
         }
         [SerializeField]
@@ -37,7 +37,7 @@ namespace Planets
             {
                 name = value;
                 gameObject.name = value;
-                //Main.Instance.Exposed.BodyUpdate(this);
+               
             }
         }
         [SerializeField]
@@ -51,7 +51,7 @@ namespace Planets
             get { return mass; }
             set {
                 mass = value;
-                //Main.Instance.Exposed.BodyUpdate(this);
+                
             }
         }
         [SerializeField]
@@ -72,7 +72,7 @@ namespace Planets
                 size.y = (float)aRadius;
                 size.z = (float)aRadius;
                 gameObject.transform.localScale = size;
-                //Main.Instance.Exposed.BodyUpdate(this);
+    
             }
         }
         [SerializeField]
@@ -87,7 +87,7 @@ namespace Planets
             set
             {
                 revTime = value;
-                //Main.Instance.Exposed.BodyUpdate(this);
+        
             }
         }
         [SerializeField]
@@ -117,7 +117,7 @@ namespace Planets
             set
             {
                 vel = value;
-                //Main.Instance.Exposed.BodyUpdate(this);
+ 
             }
         }
         [SerializeField]
@@ -132,7 +132,7 @@ namespace Planets
             set
             {
                 bodyRotAxis = value;
-                //Main.Instance.Exposed.BodyUpdate(this);
+      
             }
         }
         [SerializeField]
@@ -147,7 +147,7 @@ namespace Planets
             set
             {
                 bodyRotSpd = value;
-                //Main.Instance.Exposed.BodyUpdate(this);
+
             }
         }
         [SerializeField]
@@ -162,7 +162,7 @@ namespace Planets
             set
             {
                 bodyDampAmt = value;
-                //Main.Instance.Exposed.BodyUpdate(this);
+
             }
         }
         [SerializeField]
