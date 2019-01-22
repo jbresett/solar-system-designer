@@ -6,6 +6,8 @@ using Newtonsoft.Json.Linq;
 namespace SimCapi
 {
 
+
+
     public class SimCapiValue
     {
         protected string _key;

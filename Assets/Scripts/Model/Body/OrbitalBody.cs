@@ -21,7 +21,7 @@ namespace Planets
             set
             {
                 this.type = value;
-                Main.Instance.Exposed.BodyUpdate(this);
+               
             }
         }
         [SerializeField]
@@ -37,7 +37,7 @@ namespace Planets
             {
                 name = value;
                 gameObject.name = value;
-                Main.Instance.Exposed.BodyUpdate(this);
+               
             }
         }
         [SerializeField]
@@ -51,7 +51,7 @@ namespace Planets
             get { return mass; }
             set {
                 mass = value;
-                Main.Instance.Exposed.BodyUpdate(this);
+                
             }
         }
         [SerializeField]
@@ -72,7 +72,7 @@ namespace Planets
                 size.y = (float)aRadius;
                 size.z = (float)aRadius;
                 gameObject.transform.localScale = size;
-                Main.Instance.Exposed.BodyUpdate(this);
+    
             }
         }
         [SerializeField]
@@ -87,11 +87,26 @@ namespace Planets
             set
             {
                 revTime = value;
-                Main.Instance.Exposed.BodyUpdate(this);
+        
             }
         }
         [SerializeField]
         public float revTime;
+
+        /// <summary>
+        /// This function gets and sets the position of the body defined
+        /// </summary>
+        public Vector3d Pos
+        {
+            get { return pos; }
+            set
+            {
+                pos = value;
+                //Main.Instance.Exposed.BodyUpdate(this);
+            }
+        }
+        [SerializeField]
+        private Vector3d pos;
 
         /// <summary>
         /// This function gets and sets the velocity of the body defined
@@ -102,7 +117,7 @@ namespace Planets
             set
             {
                 vel = value;
-                Main.Instance.Exposed.BodyUpdate(this);
+ 
             }
         }
         [SerializeField]
@@ -117,7 +132,7 @@ namespace Planets
             set
             {
                 bodyRotAxis = value;
-                Main.Instance.Exposed.BodyUpdate(this);
+      
             }
         }
         [SerializeField]
@@ -132,7 +147,7 @@ namespace Planets
             set
             {
                 bodyRotSpd = value;
-                Main.Instance.Exposed.BodyUpdate(this);
+
             }
         }
         [SerializeField]
@@ -147,7 +162,7 @@ namespace Planets
             set
             {
                 bodyDampAmt = value;
-                Main.Instance.Exposed.BodyUpdate(this);
+
             }
         }
         [SerializeField]
@@ -156,7 +171,7 @@ namespace Planets
         /// <summary>
         /// This function is the constructor for the class
         /// </summary>
-        public OrbitalBody(string system, string type, string name, double mass, float radius, float revTime, Vector3d vel, float bodyRotAxis, float bodyRotSpd, float bodyDampAmt)
+        public OrbitalBody(string system, string type, string name, double mass, float radius, float revTime, Vector3d pos, Vector3d vel, float bodyRotAxis, float bodyRotSpd, float bodyDampAmt)
         {
             this.system = system;
             this.type = type;
@@ -166,6 +181,7 @@ namespace Planets
 
             this.mass = mass;
             this.revTime = revTime;
+            this.pos = pos;
             this.vel = vel;
             this.bodyRotAxis = bodyRotAxis;
             this.bodyRotSpd = bodyRotSpd;
@@ -185,5 +201,9 @@ namespace Planets
             */
         }
 
+        private void Start()
+        {
+            
+        }
     }
 }
