@@ -67,7 +67,9 @@ public class Debugger : MonoBehaviour {
     {
         // Log in System Default as well.
         Debug.Log(msg);
-        OutputEvent(new string[] { msg } );
+        if (OutputEvent != null) { 
+            OutputEvent(new string[] { msg } );
+        }
     }
    
 }
