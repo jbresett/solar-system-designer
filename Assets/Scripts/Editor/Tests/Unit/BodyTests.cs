@@ -33,14 +33,14 @@ public class BodyTests {
     [Test]
     public void Serial()
     {
-        NBody System = new NBody();
+        /*NBody System = new NBody();
 
         Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
         Orbit earthOrbit = new Orbit("Sun", new Ellipse(156, 146), 365);
         Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 5.972e+24, 6371.0, 1.0);
 
         Debug.Log("Sun JSON: " + Sun.ToJson());
-        Debug.Log("Earth JSON: " + Earth.ToJson());
+        Debug.Log("Earth JSON: " + Earth.ToJson());*/
     }
 
     /// <summary>
