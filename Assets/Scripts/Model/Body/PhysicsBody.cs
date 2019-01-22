@@ -327,7 +327,7 @@ namespace Planets
                 }
              );
 
-            capiDiameter.setChangeDelegate(
+            capiRotation.setChangeDelegate(
                 delegate (float value, SimCapi.ChangedBy changeBy)
                 {
                     Rotation = value;
