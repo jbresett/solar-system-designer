@@ -1,10 +1,10 @@
-/**
- * This Class tests out a formual to find the time it takes
- * a planet ino our soloar system to orbit the sun, when given
- * a distance from the sun
- * 
- * @author Jack Northcutt
- */
+/// <summary>
+/// This Class tests out a formual to find the time it takes
+/// a planet ino our soloar system to orbit the sun, when given
+/// a distance from the sun
+/// 
+/// @author Jack Northcutt
+/// </summary>
 
 using System;
 namespace ThirdLawTest

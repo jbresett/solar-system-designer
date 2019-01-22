@@ -33,8 +33,10 @@ public class EllipseTests {
         Assert.AreEqual(-25, Math.Round(pt.y));
     }
 
-    // A UnityTest behaves like a coroutine in PlayMode
-    // and allows you to yield null to skip a frame in EditMode
+    /// <summary>
+    /// A UnityTest behaves like a coroutine in PlayMode
+    /// and allows you to yield null to skip a frame in EditMode
+    /// </summary>
     [UnityTest]
     public IEnumerator EllipseTestsWithEnumeratorPasses() {
         // Use the Assert class to test conditions.
