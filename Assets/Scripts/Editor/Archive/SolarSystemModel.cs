@@ -15,18 +15,9 @@ using UnityEngine;
 /// Disabled per Sol System system loaded at default through Unity Scenes.
 public class SolarSystemModel{
 
-	[SerializeField]
-	private NBody system;
 
 	public SolarSystemModel(){
-		system = new NBody();
 		loadDefault();
-	}
-
- 	//This method returns the NBody system, which should contain a defualt
- 	//dictionary filled with our solar system.
-	public NBody getModel(){
-		return system;
 	}
 
 	//This method loads an NBody system with a default list of bodies
@@ -63,16 +54,4 @@ public class SolarSystemModel{
 		//system.Add(name, body);
 	}
 
-	//this method will be used to remove a body from
-	//the system.
-	public void removeModel(Body body){
-		string name = body.Name;
-
-		if (system.ContainsKey(name)){
-			system.Remove(name);
-		}
-		else{
-			throw new InvalidOperationException("Body is not contained in the current N-Body system!");
-		}
-	}
 }

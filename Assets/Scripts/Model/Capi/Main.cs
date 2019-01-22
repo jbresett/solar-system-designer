@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using SimCapi;
 using UnityEngine;
 
 /// <summary>
@@ -20,32 +21,30 @@ public class Main: MonoBehaviour {
     }
     public States State = States.Startup;
 
-
-    // NBody Simulator
-    public NBody Bodies { get; private set; }
-
     public ExposedData Exposed { get; private set; }
     public PersistentData Persistent { get; private set; }
 
-    //SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
+    SimCapi.Transporter transporter;
 
-    // Initialization
-    void Start () {
-
-        // Create singleton instance.
-        if (Instance != null) throw new InvalidOperationException("Process has already been started.");
+    private void Awake()
+    {
         Instance = this;
 
-        // Create NBody system.
-        Bodies = new NBody();
+        transporter = SimCapi.Transporter.getInstance();
 
         // Create SSData 
         Exposed = new ExposedData();
-        Exposed.expose();
+        Exposed.exposeAll();
         Exposed.setDeligates();
 
-        SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
-        //transporter.addInitialSetupCompleteListener(this.setupComplete);
+        Debugger.log("Initializing Transporter");
+        transporter.addInitialSetupCompleteListener(setupComplete);
+        transporter.addHandshakeCompleteListener(handshakeComplete);
+
+    }
+
+    // Initialization
+    void Start () {
         transporter.notifyOnReady();
     }
 
@@ -54,12 +53,18 @@ public class Main: MonoBehaviour {
     /// Starts project initalization (objects/etc).
     /// </summary>
     /// <param name="message"></param>
-    public void setupComplete(SimCapi.Message message)
+    public void setupComplete()
     {
-        //TODO: Add future init code here.
-
+        Debugger.log("SimCapi Setup Complete.");
+        Debugger.log("SimCapi Context: " + SimCapi.Transporter.getInstance().getConfig().context);
         // Move to ready state.
         State = States.Active;
+    }
+
+
+    private void handshakeComplete(SimCapiHandshake handshake)
+    {
+        Debugger.log("SimCapi Handshake Complete.");
     }
 
     // Frame Update
