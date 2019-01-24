@@ -140,13 +140,15 @@ namespace SimCapi
             string[] stringArray = subString.Split(',');
 
             // Remove the front and back quotation marks on the array
-            foreach (string value in stringArray)
+            //changed from value to value1 due to errors being thrown.
+            //change made by Jack Northcutt
+            foreach (string value1 in stringArray)
             {
-                if (value.Length > 0 && value[0] == '"')
-                    value.Remove(0, 1);
+                if (value1.Length > 0 && value1[0] == '"')
+                    value1.Remove(0, 1);
 
-                if (value.Length > 0 && value[value.Length - 1] == '"')
-                    value.Remove(value.Length - 1, 1);
+                if (value1.Length > 0 && value1[value1.Length - 1] == '"')
+                    value1.Remove(value1.Length - 1, 1);
             }
 
             return stringArray;

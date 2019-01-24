@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b09e62cb-5961-486e-a92d-c8016b6589f9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Newtonsoft.Json.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Newtonsoft.Json.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UnityPackages/JsonNet/Newtonsoft.Json.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UnityPackages/JsonNet/Newtonsoft.Json.dll.meta" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding>
+                <marker date="1548310247211" expanded="false" signature="6:69" ph="..." />
+                <marker date="1548310247211" expanded="true" signature="71:213" ph="/* This class defines an orbital body that is placed in an ... */" />
+                <marker date="1548310247211" expanded="true" signature="231:11841" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="258:306" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="352:11839" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="367:462" ph="/// Returns the unique Id / Index Number of Nbody. ... " />
+                <marker date="1548310247211" expanded="true" signature="591:748" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="651:738" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="1207:1300" ph="/// Body name. Should be unique for it's system. ... " />
+                <marker date="1548310247211" expanded="true" signature="1327:1496" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="1386:1486" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="1505:1604" ph="/* [SerializeField] &quot;name&quot; not needed: Name part of the MonoBehavior. ... */" />
+                <marker date="1548310247211" expanded="true" signature="1654:1730" ph="/// Mass of the body in Earths. ... " />
+                <marker date="1548310247211" expanded="true" signature="1757:2036" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="1816:2026" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="2045:2119" ph="/// Mass of the body in Suns. ... " />
+                <marker date="1548310247211" expanded="true" signature="2151:2280" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="2289:2361" ph="/// Mass of the Body in kg. ... " />
+                <marker date="1548310247211" expanded="true" signature="2386:2509" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="2653:2721" ph="/// Diameter in Earths. ... " />
+                <marker date="1548310247211" expanded="true" signature="2752:3356" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="2815:3346" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="3468:3588" ph="/// Current Position of the object. Any changes will be reflected in Unity. ... " />
+                <marker date="1548310247211" expanded="true" signature="3621:4118" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="3684:4108" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="4237:4387" ph="/// Initial position of the Body. Using resetPosition() will move the Body back to it's initial position. ... " />
+                <marker date="1548310247211" expanded="true" signature="4427:4899" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="4499:4889" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="5034:5124" ph="/// Planet's rotational speed, in earth days. ... " />
+                <marker date="1548310247211" expanded="true" signature="5155:5343" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="5218:5333" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="5455:5947" ph="/// Creates a PhysicsBody on the x and y axis. ... " />
+                <marker date="1548310247211" expanded="true" signature="6067:6176" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="6186:6688" ph="/// Creates an PhysicsBody. ... " />
+                <marker date="1548310247211" expanded="true" signature="6809:7196" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="6983:7040" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="7057:7119" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="7294:7356" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="7366:7583" ph="/// Calculates the Barycenter between two objects. ... " />
+                <marker date="1548310247211" expanded="true" signature="7642:7913" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="7923:8193" ph="/// Gets interacting force between this body and another. ... " />
+                <marker date="1548310247211" expanded="true" signature="8243:8366" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="8376:8619" ph="///  ... " />
+                <marker date="1548310247211" expanded="true" signature="8694:8817" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="8848:11595" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="11628:11685" ph="{...}" />
+                <marker date="1548310247211" expanded="true" signature="11695:11781" ph="/// This function updates once per frame. ... " />
+                <marker date="1548310247211" expanded="true" signature="11811:11832" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="riderModule/invalid/Default Android Facet" />
+    </ignored-facets>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="3" />
+    <option name="y" value="38" />
+    <option name="width" value="1400" />
+    <option name="height" value="776" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="UnityExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controller" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Model" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Model" type="1045f7f1:UnityExplorerNode" />
+              <item name="Body" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="SimCapi" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+      </pane>
+      <pane id="AssemblyExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b09e62cb-5961-486e-a92d-c8016b6589f9" name="Default Changelist" comment="" />
+      <created>1548309242757</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1548309242757</updated>
+      <workItem from="1548309246774" duration="988000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="988000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="3" y="38" width="1400" height="776" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Android Profiler" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Logcat" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unity" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Device File Explorer" side_tool="true" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="151" column="13" lean-forward="true" selection-start-line="151" selection-start-column="13" selection-end-line="151" selection-end-column="13" />
+          <folding>
+            <marker date="1548309562543" expanded="false" signature="6:78" ph="..." />
+            <marker date="1548309562543" expanded="true" signature="97:6741" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="138:1769" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="247:1309" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="303:585" ph="/* Edge case for Number, ... */" />
+            <marker date="1548309562543" expanded="true" signature="633:1075" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="1352:1397" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="1447:1492" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="1532:1577" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="1622:1667" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="1717:1762" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="1812:2244" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="1886:1938" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="1986:2048" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="2091:2148" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="2192:2238" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="2289:4081" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="2365:2417" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="2465:2527" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="2570:2616" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="2660:2847" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="2898:3798" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="3271:3443" ph="/* Remove the front and back quotation marks on the array ... */" />
+            <marker date="1548309562543" expanded="true" signature="3494:3755" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="3840:4074" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4122:4546" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4192:4244" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4292:4352" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4395:4452" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4493:4539" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4593:6738" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4672:4724" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4772:4833" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="4876:5379" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="5065:5282" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="5430:5476" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="5524:6312" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="6363:6731" ph="{...}" />
+            <marker date="1548309562543" expanded="true" signature="6486:6689" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <marker date="1548310247211" expanded="false" signature="6:69" ph="..." />
+            <marker date="1548310247211" expanded="true" signature="71:213" ph="/* This class defines an orbital body that is placed in an ... */" />
+            <marker date="1548310247211" expanded="true" signature="231:11841" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="258:306" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="352:11839" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="367:462" ph="/// Returns the unique Id / Index Number of Nbody. ... " />
+            <marker date="1548310247211" expanded="true" signature="591:748" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="651:738" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="1207:1300" ph="/// Body name. Should be unique for it's system. ... " />
+            <marker date="1548310247211" expanded="true" signature="1327:1496" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="1386:1486" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="1505:1604" ph="/* [SerializeField] &quot;name&quot; not needed: Name part of the MonoBehavior. ... */" />
+            <marker date="1548310247211" expanded="true" signature="1654:1730" ph="/// Mass of the body in Earths. ... " />
+            <marker date="1548310247211" expanded="true" signature="1757:2036" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="1816:2026" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="2045:2119" ph="/// Mass of the body in Suns. ... " />
+            <marker date="1548310247211" expanded="true" signature="2151:2280" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="2289:2361" ph="/// Mass of the Body in kg. ... " />
+            <marker date="1548310247211" expanded="true" signature="2386:2509" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="2653:2721" ph="/// Diameter in Earths. ... " />
+            <marker date="1548310247211" expanded="true" signature="2752:3356" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="2815:3346" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="3468:3588" ph="/// Current Position of the object. Any changes will be reflected in Unity. ... " />
+            <marker date="1548310247211" expanded="true" signature="3621:4118" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="3684:4108" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="4237:4387" ph="/// Initial position of the Body. Using resetPosition() will move the Body back to it's initial position. ... " />
+            <marker date="1548310247211" expanded="true" signature="4427:4899" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="4499:4889" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="5034:5124" ph="/// Planet's rotational speed, in earth days. ... " />
+            <marker date="1548310247211" expanded="true" signature="5155:5343" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="5218:5333" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="5455:5947" ph="/// Creates a PhysicsBody on the x and y axis. ... " />
+            <marker date="1548310247211" expanded="true" signature="6067:6176" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="6186:6688" ph="/// Creates an PhysicsBody. ... " />
+            <marker date="1548310247211" expanded="true" signature="6809:7196" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="6983:7040" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="7057:7119" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="7294:7356" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="7366:7583" ph="/// Calculates the Barycenter between two objects. ... " />
+            <marker date="1548310247211" expanded="true" signature="7642:7913" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="7923:8193" ph="/// Gets interacting force between this body and another. ... " />
+            <marker date="1548310247211" expanded="true" signature="8243:8366" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="8376:8619" ph="///  ... " />
+            <marker date="1548310247211" expanded="true" signature="8694:8817" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="8848:11595" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="11628:11685" ph="{...}" />
+            <marker date="1548310247211" expanded="true" signature="11695:11781" ph="/// This function updates once per frame. ... " />
+            <marker date="1548310247211" expanded="true" signature="11811:11832" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

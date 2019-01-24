@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// This class defines an orbital body that is placed in an
-/// n-body system collection
+/// This class defines handles all of the physics for the
+/// celestial objects supplied by the OrbitalBody clas.
 /// </summary>
 namespace Planets
 {
@@ -246,6 +246,12 @@ namespace Planets
             return Mathd.G * mass * withBody.mass / Vector3d.DistanceSqr(position, withBody.Position);
         }
 
+        /// <summary>
+        /// This method uses the gravity class to calculate the position of an object.
+        /// </summary>
+        /// <param name="withBody"></param>
+        /// <param name="distance"></param>
+        /// <returns></returns>
         public Vector3d getPosition(PhysicsBody withBody, double distance){
             Gravity grav = new Gravity(withBody.KG, this.KG, distance);
             return grav.calcPosition();
