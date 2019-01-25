@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This class defines a Fluid based planet or body
+/// </summary>
 namespace Planets
 {
     /*

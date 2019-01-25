@@ -1,4 +1,5 @@
 ﻿using Planets;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,39 @@ using UnityEngine;
 /// <summary>
 /// Stores all data for the NBody system and handles over-time calculations of body locations.
 /// </summary>
-public class NBody: Dictionary<string, OrbitalBody> {
+static public class NBody {
+    
+    public const int MAX_BODY_COUNT = 30;
 
-    public NBody() : base() { } 
+    static Planets.PhysicsBody[] Bodies = new Planets.PhysicsBody[MAX_BODY_COUNT];
+
+    static public int register(Planets.PhysicsBody body)
+    {
+
+        for (int i = 0; i < MAX_BODY_COUNT; i++)
+        {
+            if (Bodies[i] == null) {
+                Bodies[i] = body;
+                return i;
+            }
+        }
+        throw new OverflowException("Already at max body count.");
+    }
+
+    static public bool unregister(Planets.PhysicsBody body)
+    {
+        for (int i = 0; i < MAX_BODY_COUNT; i++)
+        {
+            if (Bodies[i] == body)
+            {
+                Bodies[i] = null;
+                return true;
+            }
+        }
+        // Not Found.
+        return false;
+    }
+
 
     /// <summary>
     /// List of all bodies within the system.
@@ -18,7 +49,7 @@ public class NBody: Dictionary<string, OrbitalBody> {
     /// <summary>
     /// Current time for the simulation, in N days from starting points.
     /// </summary>
-    public double Time
+    static public double Time
     {
         get { return time; }
         set
@@ -27,19 +58,19 @@ public class NBody: Dictionary<string, OrbitalBody> {
             Main.Instance.Exposed.Time.setValue((float)value);
         }
     }
-    private double time;
+    static private double time;
 
     /// <summary>
     /// Amount of days that pass every frame. Intially starts at 0.
     /// </summary>
-    public double Speed { get; set; }
+    static public double Speed { get; set; }
 
     /// <summary>
     /// Name of the body that currently has focus.
     /// 
     /// If Null or empty string, focus is on coordinates (0,0,0).
     /// </summary>
-    public string Focused {
+    static public string Focused {
         get { return focused; }
         set
         {
@@ -48,12 +79,23 @@ public class NBody: Dictionary<string, OrbitalBody> {
             Main.Instance.Exposed.FocusedBody.setValue(value);
         }
     }
-    private string focused;
+    static private string focused;
 
-	// Update is called once per frame.
-	void Update () {
+	/// <summary>
+    /// Updates once per frame
+    /// </summary>
+	static void Update () {
         // Time is updated internally so Capi doesn't require an update on every frame. 
         time += Speed;	
+        updatePositions();
 	}
-    
+
+    /// <summary>
+    /// updates positions of orbital bodies
+    /// </summmary>
+    static public void updatePositions()
+    {
+
+    }
+
 }

@@ -58,5 +58,18 @@ public class Debugger : MonoBehaviour {
     {
         OutputEvent += new OutputDelegate(odelegate);
     }
+
+    /// <summary>
+    /// Logs a message in the debugger, sending the results to the system logger.
+    /// </summary>
+    /// <param name="msg"></param>
+    static public void log(string msg)
+    {
+        // Log in System Default as well.
+        Debug.Log(msg);
+        if (OutputEvent != null) { 
+            OutputEvent(new string[] { msg } );
+        }
+    }
    
 }

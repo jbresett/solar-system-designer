@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class is used to alter the display settings of the UI
+/// </summary> 
 public class Settings : MonoBehaviour
 {
 
 	public float opacity = .9f;
 	private List<Image> backgrounds = new List<Image>();
 	public Slider opacitySlider;
+
+	/// <summary>
+	/// This function initializes the class
+	/// </summary>
 	private void Start ()
 	{
 		var images = Resources.FindObjectsOfTypeAll<Image>();
@@ -23,6 +30,9 @@ public class Settings : MonoBehaviour
 		updateOpacity();
 	}
 
+	/// <summary>
+	/// Function updates the opacity and background color of the UI
+	/// </summary>
 	private void updateOpacity()
 	{
 		opacity = opacitySlider.value;

@@ -6,9 +6,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
-/// Handles all Camera Controls.
+/// This class handles all movement and control of the camera
 /// </summary>
 public class CameraControls : MonoBehaviour {
+
+    /// <summary>
+    /// Method used to enable and disable the keyboard
+    /// </summary>
     public bool EnableKeyboard
     {
         get { return enableKeyboard; }
@@ -17,7 +21,10 @@ public class CameraControls : MonoBehaviour {
     [SerializeField]
     private bool enableKeyboard = true;
 
-
+    /// <summary>
+    /// This method is used to enable and disable the
+    /// mouse functionality
+    /// </summary>
     public bool EnableMouse
     {
         get { return enableMouse;  }
@@ -36,7 +43,10 @@ public class CameraControls : MonoBehaviour {
     private Vector3 dragOriginPos;
     private float mouseZoomFactor = 1f;
 
-    // Update is called once per frame
+    /// <summary>
+    /// This function is used to update the frame once
+    /// per second.
+    /// </summary>
     void Update()
     {
         // Automatically disable Cemera controls if the current object is an InputField.
@@ -51,7 +61,9 @@ public class CameraControls : MonoBehaviour {
             UpdateMouse();
     }
 
-    // Updates movement position based on the keyboard.
+    /// <summary>
+    /// This function Updates movement position based on the keyboard.
+    /// </summary>
     void UpdateKeyboard()
     { 
         // Move Factor is based on Base movement speed * User Preferences.
@@ -116,6 +128,9 @@ public class CameraControls : MonoBehaviour {
             Camera.main.transform.Rotate(Vector3.right,rotateSpeed*Time.deltaTime);
     }
 
+    /// <summary>
+    /// This function Updates movement position based on the mouse.
+    /// </summary>
     private void UpdateMouse()
     {
         Camera.main.transform.position += Camera.main.transform.forward*Input.mouseScrollDelta.y*mouseZoomFactor;

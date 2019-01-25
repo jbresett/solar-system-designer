@@ -1,33 +1,58 @@
 using System;
 using Planets;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class places an orbital body a specified postion
+/// </summary>
 public class InsertInPlace : MonoBehaviour
 {
     public Button button;
-    new public InputField name;
-    public Dropdown type;
-    public InputField xPos;
-    public InputField yPos;
-    public InputField zPos;
-    public InputField xVel;
-    public InputField yVel;
-    public InputField zVel;
-    public InputField radius;
-    public InputField mass;
+    public TMP_InputField name;
+    public TMP_Dropdown type;
+    public TMP_InputField xPos;
+    public TMP_InputField yPos;
+    public TMP_InputField zPos;
+    public TMP_InputField xVel;
+    public TMP_InputField yVel;
+    public TMP_InputField zVel;
+    public TMP_InputField radius;
+    public TMP_InputField mass;
     public GameObject planetBase;
+    int x = 0;
 
+    /// <summary>
+    /// initializes class and begins listening for mouse click
+    /// </summary>
     void Start()
     {
         button.onClick.AddListener(insert);
     }
+
+    /// <summary>
+    /// This function places each body in the array in its correct position
+    /// </summary>
     public void insert()
     {
+        string bodyName;
+        double result = 0.0;
+        
+        //planetBase = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Models/Planet_in_AU_Units.obj", typeof(GameObject));
+        planetBase = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        planetBase.transform.localScale = new Vector3(5,5,5);
+        planetBase.transform.localPosition = new Vector3(x,0,0);
+        x -= 10;
         GameObject[] bodies = GameObject.FindGameObjectsWithTag("OrbitalBody");
         Debug.Log(bodies);
-        String bodyName = name.text;
+        if(name.text == ""){
+            bodyName = name.text;
+        } else {
+            bodyName = "UnnamedBody";
+        }
+
         int id = 1;
         foreach (var b in bodies)
         {
@@ -37,24 +62,44 @@ public class InsertInPlace : MonoBehaviour
                 id++;
             }
         }
+
         //Vector3 pos = new Vector3();
         //Quaternion rot = new Quaternion(0,0,0,0);
-        GameObject body = Instantiate(planetBase);
+        GameObject body = Instantiate(planetBase) as GameObject;
         body.SetActive(true);
         body.name = bodyName;
         OrbitalBody script = body.AddComponent<OrbitalBody>();
-        script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
-        //script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
+
+        
+        /*if(double.TryParse(xPos.text,out result) == true && double.TryParse(yPos.text,out result) && double.TryParse(zPos.text,out result)){
+            script.Pos = new Vector3d(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text));
+        } else {
+            script.Pos = new Vector3d(x, 0.0, 0.0);
+            x  += 10.0;
+        }*/
+
+        if (double.TryParse(xVel.text,out result) == true && double.TryParse(yVel.text,out result) && double.TryParse(zVel.text,out result)){
+            script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
+        } else {
+            script.Vel = new Vector3d(0.0,0.0,0.0);
+        }
+       
         script.Radius = (float)convertRadiUnits(double.Parse(radius.text));
         script.Mass = (float)convertMassUnits(double.Parse(mass.text));
         script.Type = type.options[type.value].text;
     }
 
+    /// <summary>
+    /// scales radius
+    /// </summary>
     private double convertRadiUnits(double value)
     {
         return value * 6.3781;
     }
 
+    /// <summary>
+    /// scales position
+    /// </summary>
     private double[] convertPosUnits(double x, double y, double z)
     {
         double au = 14959.78707;
@@ -62,6 +107,9 @@ public class InsertInPlace : MonoBehaviour
         return pos;
     }
 
+    /// <summary>
+    /// scales mass
+    /// </summary>
     private double convertMassUnits(double mass)
     {
         return mass * (5.9736 * Math.Pow(10, 24));

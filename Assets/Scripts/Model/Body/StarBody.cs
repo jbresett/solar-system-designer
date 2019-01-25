@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// This class extends orbital body to define the body of
+/// a star
+/// </summary>
 namespace Planets
 {
     /*
@@ -10,12 +15,17 @@ namespace Planets
         /*
         public ParticleSystem flare;
         public float size;
-
+        
+        /// <summary>
+        /// constructor
+        /// </summary>
         public StarBody() : base(system, type, name, mass, radius, revTime, vel, bodyRotAxis, bodyRotSpd, bodyDampAmt)
         {
         }
 
-        // Use this for initialization
+        /// <summary>
+        /// start function for initialization
+        /// </summary>
         void Start()
         {
             flare = gameObject.GetComponent<ParticleSystem>();
@@ -29,7 +39,9 @@ namespace Planets
             flare.Play();
         }
 
-        // Update is called once per frame
+        /// <summary> 
+        /// updates once per frame
+        /// </summary>
         void Update()
         {
 
