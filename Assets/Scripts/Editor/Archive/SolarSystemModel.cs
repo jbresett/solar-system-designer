@@ -49,7 +49,7 @@ public class SolarSystemModel{
 
 	//this method will be used to add additional bodies to the
 	//list of bodies if we want to further testing.
-	public void addBody(Body body){
+	public void addBody(OldBody body){
 		//string name = body.Name;
 		//system.Add(name, body);
 	}

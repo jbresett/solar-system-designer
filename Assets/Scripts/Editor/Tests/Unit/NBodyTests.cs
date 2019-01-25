@@ -12,18 +12,18 @@ using System;
 #pragma warning disable CS0618 // Type or member is obsolete
 public class NBodyTests {
 
-    private Body Earth;
-    private Body Moon;
+    private OldBody Earth;
+    private OldBody Moon;
 
     public void Setup()
     {
-        Body Sun = new Body("Sun", BodyType.Sun, null, 0, 0, 0);
+        OldBody Sun = new OldBody("Sun", BodyType.Sun, null, 0, 0, 0);
 
         Orbit earthOrbit = new Orbit("Sun", new Ellipse(100, 50), 365);
-        Earth = new Body("Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
+        Earth = new OldBody("Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
 
         Orbit moonOrbit = new Orbit("Earth", new Ellipse(10.0, 5.0), 30.0);
-        Moon = new Body("Moon", BodyType.Moon, moonOrbit, 0, 0, 0);
+        Moon = new OldBody("Moon", BodyType.Moon, moonOrbit, 0, 0, 0);
     }
 
     /// <summary>

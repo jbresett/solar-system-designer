@@ -11,7 +11,7 @@ public enum BodyType
 
 [Serializable]
 [Obsolete("Use OrbitalBody")]
-public class Body
+public class OldBody
 {
 
     /// <summary>
@@ -89,7 +89,7 @@ public class Body
     /// <summary>
     /// Creates a unclassifed, unnammed body with no orbit, mass, rotation, or layers.
     /// </summary>
-    public Body() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0) { }
+    public OldBody() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0) { }
 
     /*
     void Update()
@@ -114,7 +114,7 @@ public class Body
     /// <param name="radius">Average radius from center of the plane to the outer crust.</param>
     /// <param name="rotation">Time (in days) for the planet to make a full rotation.</param>
     /// <param name="layers">Body composition of each layer.  May be null.</param>
-    public Body(string name, BodyType type, Orbit orbits, double mass, double radius, double rotation)
+    public OldBody(string name, BodyType type, Orbit orbits, double mass, double radius, double rotation)
     {
         Name = name;
         Type = type;
@@ -146,7 +146,7 @@ public class Body
     /// <param name="from"></param>
     /// <param name="days"></param>
     /// <returns></returns>
-    public double GetDistance(Body from, double days) 
+    public double GetDistance(OldBody from, double days) 
     {
         Vector3d distance = GetPosition(days) - from.GetPosition(days);
         return distance.magnitude;
