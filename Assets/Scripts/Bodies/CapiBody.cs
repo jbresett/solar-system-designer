@@ -108,31 +108,31 @@ public class CapiBody : VisualBody {
     new public void Awake()
     {
         base.Awake();
-        // Get Id
-        //id = NBody.register(this);
-        int id = 0;
+
+        // Get Top-Level Body Component.
+        Bodies.add(this.gameObject.GetComponent<Body>());
 
         // Create Capi values and expose.
         capiName = new SimCapiString(name);
-        capiName.expose(id + " Name", false, false);
+        capiName.expose(Id + " Name", false, false);
 
         capiType = new SimCapiEnum<BodyType>(type);
-        capiType.expose(id + " Type", false, false);
+        capiType.expose(Id + " Type", false, false);
 
         capiPosition = new SimCapiStringArray();
-        capiPosition.expose(id + " Position", false, false);
+        capiPosition.expose(Id + " Position", false, false);
 
         capiInitialPosition = new SimCapiStringArray();
-        capiInitialPosition.expose(id + " InitialPosition", false, false);
+        capiInitialPosition.expose(Id + " InitialPosition", false, false);
 
         capiMass = new SimCapiNumber((float)mass);
-        capiMass.expose(id + " Mass", false, false);
+        capiMass.expose(Id + " Mass", false, false);
 
         capiDiameter = new SimCapiNumber((float)diameter);
-        capiDiameter.expose(id + " Diameter", false, false);
+        capiDiameter.expose(Id + " Diameter", false, false);
 
         capiRotation = new SimCapiNumber((float)rotation);
-        capiRotation.expose(id + " Rotation", false, false);
+        capiRotation.expose(Id + " Rotation", false, false);
 
         // Set Deligates
 

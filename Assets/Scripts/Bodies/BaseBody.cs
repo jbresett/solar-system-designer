@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class BaseBody : MonoBehaviour {
 
+    public int Id {
+        get { return id; }
+        set { id = value; }
+    }
+    [SerializeField]
+    protected int id = -1;
+
+    public bool Active
+    {
+        get { return active; }
+        set { active = value; }
+    }
+    [SerializeField]
+    protected bool active = true;
+    
+
     /// <summary>
     /// Body Type.
     /// </summary>
@@ -95,16 +111,16 @@ public class BaseBody : MonoBehaviour {
 
     public void Awake()
     {
-
+        // Leave in to ensure no issues with extended classes.
     }
 
     public void Start()
     {
-
+        // Leave in to ensure no issues with extended classes.
     }
 
     public void Update()
     {
-
+        // Leave in to ensure no issues with extended classes.
     }
 }

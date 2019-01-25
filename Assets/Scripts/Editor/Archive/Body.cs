@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public enum BodyType
+public enum OldBodyType
 {
     Unclassified, Sun, Planet, Moon, Astroid
 }
@@ -28,13 +28,13 @@ public class OldBody
     [SerializeField]
     private String name;
 
-    public BodyType Type
+    public OldBodyType Type
     {
         get { return type; }
         set { type = value; }
     }
     [SerializeField]
-    private BodyType type;
+    private OldBodyType type;
 
     /// <summary>
     /// Primary orbital body or point. May be null.
@@ -89,7 +89,7 @@ public class OldBody
     /// <summary>
     /// Creates a unclassifed, unnammed body with no orbit, mass, rotation, or layers.
     /// </summary>
-    public OldBody() : this("", BodyType.Unclassified, null, 0.0, 0.0, 0.0) { }
+    public OldBody() : this("", OldBodyType.Unclassified, null, 0.0, 0.0, 0.0) { }
 
     /*
     void Update()
@@ -114,7 +114,7 @@ public class OldBody
     /// <param name="radius">Average radius from center of the plane to the outer crust.</param>
     /// <param name="rotation">Time (in days) for the planet to make a full rotation.</param>
     /// <param name="layers">Body composition of each layer.  May be null.</param>
-    public OldBody(string name, BodyType type, Orbit orbits, double mass, double radius, double rotation)
+    public OldBody(string name, OldBodyType type, Orbit orbits, double mass, double radius, double rotation)
     {
         Name = name;
         Type = type;
