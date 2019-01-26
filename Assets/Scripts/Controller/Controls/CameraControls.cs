@@ -85,6 +85,7 @@ public class CameraControls : MonoBehaviour {
     private KeyCode moveOut = KeyCode.C;
     
     // Camera FOV
+    
     public KeyCode ViewIn
     {
         get { return viewIn;  }
@@ -98,10 +99,11 @@ public class CameraControls : MonoBehaviour {
         get { return viewOut;  }
         set { viewOut = value; }
     }
-
     [SerializeField]
     private KeyCode viewOut = KeyCode.V;
+    
     // Camera Rotation
+    
     public KeyCode RotUp
     {
         get { return rotUp;  }
@@ -134,7 +136,7 @@ public class CameraControls : MonoBehaviour {
     [SerializeField]
     private KeyCode rotRight = KeyCode.RightArrow;
 
-    // Basic Contants
+    // Basic Constants
     const float KEYBOARD_MOVE = 1000F;
     private const float FOVAdjust = .1f;
     private const float rotateSpeed = 10f;
@@ -143,6 +145,20 @@ public class CameraControls : MonoBehaviour {
     private Vector3 dragOriginRot;
     private Vector3 dragOriginPos;
     private float mouseZoomFactor = 1f;
+    
+    private List<Image> backgrounds = new List<Image>();
+
+    private void Start()
+    {
+        var images = Resources.FindObjectsOfTypeAll<Image>();
+        foreach (var image in images)
+        {
+            if (image.tag == "UIMenu")
+            {
+                backgrounds.Add(image);
+            }
+        }
+    }
 
     /// <summary>
     /// This function is used to update the frame once
@@ -152,6 +168,17 @@ public class CameraControls : MonoBehaviour {
     {
         // Automatically disable Cemera controls if the current object is an InputField.
         GameObject selected = EventSystem.current.currentSelectedGameObject;
+        enableKeyboard = true;
+        enableMouse = true;
+        foreach(Image i in backgrounds)
+        {
+            if (i.isActiveAndEnabled)
+            {
+                enableKeyboard = false;
+                enableMouse = false;
+                break;
+            }
+        }
         
         if (EnableKeyboard && (selected == null || !selected.GetComponent<InputField>()))
         {
