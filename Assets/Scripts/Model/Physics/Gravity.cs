@@ -15,22 +15,12 @@ using UnityEngine;
 
 public class Gravity{
 
-	/// <summary>
-	/// our simulation utilizes number of earths or number
-	/// of suns for mass and utilizes au for distance, but 
-	/// for accuracy in calculations theses values must be 
-	/// converted for to Km, so the following constants are
-	/// added.
-	/// </summary>
-	private const double earthMass = 5.972e24;
-	private const double sunMass = 1.989e30;
-	private const double au = 1.496e8;
 	private const double g = 6.67408e-11;
 	private const double time = 100;
 
 	//mass
-	private double starMass;
-	private double planetMass;
+	private double stillBody;
+	private double moveBody;
 
 	//distance and angle
 	private double distance;
@@ -52,11 +42,11 @@ public class Gravity{
 	/// constructor will intialize values and convert to Km using
 	/// constants defined.
 	/// </summary>
-	public Gravity(double starMass, double planetMass, double dist){
+	public Gravity(double stillBody, double moveBody, double baryDist){
 
-		this.starMass = starMass * sunMass;
-		this.planetMass = planetMass * earthMass;
-		this.distance = dist *au;
+		this.stillBody = stillBody;
+		this.moveBody = moveBody;
+		this.distance = baryDist;
 		this.currentDistance = distance;
 		this.currentDistVel = 0;
 		this.currentAngle = System.Math.PI/2;
@@ -75,7 +65,7 @@ public class Gravity{
 		double gMassRSqr = 0.0;
 		double val = 0.0;
 		rThetaSqr = currentDistance * System.Math.Pow(currentAngularVel, 2);
-		gMassRSqr = (g * starMass)/ System.Math.Pow(currentDistance, 2);
+		gMassRSqr = (g * stillBody)/ System.Math.Pow(currentDistance, 2);
 		val = rThetaSqr - gMassRSqr;
 
 		return val;
@@ -96,7 +86,7 @@ public class Gravity{
 	}
 
 	/// <summary>
-	/// Simple method to conver polar coordinates to cartesian
+	/// Simple method to convert polar coordinates to cartesian
 	/// </summary>
 	public Vector3d convertToCartesian(double r, double theta){
 

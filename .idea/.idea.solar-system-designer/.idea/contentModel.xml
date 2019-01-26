@@ -16,6 +16,14 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Bodies" t="Include">
+            <e p="BaseBody.cs" t="Include" />
+            <e p="Bodies.cs" t="Include" />
+            <e p="Body.cs" t="Include" />
+            <e p="CapiBody.cs" t="Include" />
+            <e p="PhysicsBody.cs" t="Include" />
+            <e p="VisualBody.cs" t="Include" />
+          </e>
           <e p="Controller" t="Include">
             <e p="Controls" t="Include">
               <e p="CameraControls.cs" t="Include" />
