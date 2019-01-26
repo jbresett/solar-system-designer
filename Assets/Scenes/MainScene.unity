@@ -809,22 +809,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 2037593666}
---- !u!114 &44941858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 44941856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 1
-  mass: 95.2
-  diameter: 9.45
-  rotation: 0.445
 --- !u!114 &44941859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,22 +1145,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 1365344246}
---- !u!114 &77116512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 77116510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 1
-  mass: 0.815
-  diameter: 0.949
-  rotation: -244
 --- !u!114 &77116513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,6 +2878,7 @@ GameObject:
   - component: {fileID: 158890213}
   - component: {fileID: 158890217}
   - component: {fileID: 158890216}
+  - component: {fileID: 158890218}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2985,6 +2954,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
+--- !u!114 &158890218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 158890212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3054a5afb6d57d642937963c31b1d7f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &166046194
 GameObject:
   m_ObjectHideFlags: 0
@@ -9622,22 +9602,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 1321990292}
---- !u!114 &448795613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 448795611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 0
-  mass: 330000
-  diameter: 109
-  rotation: 0
 --- !u!114 &448795614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26682,22 +26646,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 1769966715}
---- !u!114 &1337880003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1337880001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 1
-  mass: 0.107
-  diameter: 0.532
-  rotation: 1.03
 --- !u!114 &1337880004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26741,22 +26689,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 1050056686}
---- !u!114 &1338025387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338025385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 1
-  mass: 317.8
-  diameter: 11.21
-  rotation: 0.415
 --- !u!114 &1338025388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35715,22 +35647,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 1176750230}
---- !u!114 &1576986302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1576986300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 1
-  mass: 14.5
-  diameter: 4.01
-  rotation: -0.72
 --- !u!114 &1576986303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40205,22 +40121,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 826318522}
---- !u!114 &1802746021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802746019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 1
-  mass: 1
-  diameter: 1
-  rotation: 1
 --- !u!114 &1802746022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41718,22 +41618,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 1005427317}
---- !u!114 &1876782890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1876782888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 1
-  mass: 17.1
-  diameter: 3.88
-  rotation: 0.673
 --- !u!114 &1876782891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45754,22 +45638,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: a332066915af94b4b98e0e1ff3152166,
     type: 3}
   m_PrefabInternal: {fileID: 1531096019}
---- !u!114 &1986974916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1986974914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645f6227dbe4d1941bff15221b8a72d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  type: 1
-  mass: 0.0553
-  diameter: 0.383
-  rotation: 58.8
 --- !u!114 &1986974917
 MonoBehaviour:
   m_ObjectHideFlags: 0

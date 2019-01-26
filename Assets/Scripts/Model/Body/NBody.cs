@@ -11,9 +11,9 @@ static public class NBody {
     
     public const int MAX_BODY_COUNT = 30;
 
-    static PhysicsBody[] Bodies = new PhysicsBody[MAX_BODY_COUNT];
+    static Planets.PhysicsBody[] Bodies = new Planets.PhysicsBody[MAX_BODY_COUNT];
 
-    static public int register(PhysicsBody body)
+    static public int register(Planets.PhysicsBody body)
     {
 
         for (int i = 0; i < MAX_BODY_COUNT; i++)
@@ -26,7 +26,7 @@ static public class NBody {
         throw new OverflowException("Already at max body count.");
     }
 
-    static public bool unregister(PhysicsBody body)
+    static public bool unregister(Planets.PhysicsBody body)
     {
         for (int i = 0; i < MAX_BODY_COUNT; i++)
         {
