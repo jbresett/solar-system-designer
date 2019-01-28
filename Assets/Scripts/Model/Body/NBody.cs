@@ -55,7 +55,7 @@ static public class NBody {
         set
         {
             time = value;
-            Main.Instance.Exposed.Time.setValue((float)value);
+            Capi.Exposed.Time.setValue((float)value);
         }
     }
     static private double time;
@@ -76,7 +76,7 @@ static public class NBody {
         {
             focused = value;
             // Instantly updates Exposed value.
-            Main.Instance.Exposed.FocusedBody.setValue(value);
+            Capi.Exposed.FocusedBody.setValue(value);
         }
     }
     static private string focused;

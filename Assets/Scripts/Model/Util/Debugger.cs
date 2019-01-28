@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Debugger : MonoBehaviour {
+public class Debugger {
     public delegate string[] ProcessDelegate(string[] arguments);
     public delegate void OutputDelegate(string[] lines);
 
