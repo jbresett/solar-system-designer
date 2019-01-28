@@ -23,6 +23,18 @@ public class PhysicsBody : CapiBody {
         get { return mass * KG_MASS_CONVERT; }
         set { Mass = value / KG_MASS_CONVERT; }
     }
+    
+    /// <summary>
+    /// Set and get initial velocity for the body
+    /// </summary>
+    public Vector3d initialVelocity
+    {
+        get { return initialVel; }
+        set { initialVel = value; }
+    }
+
+    [SerializeField]
+    protected Vector3d initialVel;
 
     new public void Awake()
     {

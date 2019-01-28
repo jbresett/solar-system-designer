@@ -67,7 +67,7 @@ public class BaseBody : MonoBehaviour {
     [SerializeField]
     protected double diameter;
 
-    /// <summary>
+    /// <summary>x
     /// Current Position in AUs.
     /// </summary>
     public Vector3d Position
