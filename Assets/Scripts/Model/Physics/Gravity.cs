@@ -100,6 +100,51 @@ public class Gravity{
 			}
 		}
 	}
+	
+	/// <summary>
+	/// This method calculates force applied by each body to
+	/// each body in the nbody system.
+	/// </summary>
+	/// <returns></returns>
+	public double[] distCalulation()
+	{
+		List<Body> bodyList = Bodies.getActive();
+
+		foreach (Body body in bodyList)
+		{
+			
+		}
+		return null;
+	}
+	
+	/// <summary>
+	/// This method uses the distance calculation in order
+	/// to calculate the force applied to the nbodies
+	/// </summary>
+	/// <returns></returns>
+	public double[] calculateForce()
+	{
+		return null;
+	}
+	
+	/// <summary>
+	/// This method uses the force calculated to
+	/// update the momentum of the nbodies
+	/// </summary>
+	public void updateMomentum()
+	{
+		
+	}
+	
+	/// <summary>
+	/// This method utilizes the momentum in order to
+	/// determine the nbodies new positions.
+	/// </summary>
+	public void calcPosition()
+	{
+		
+	}
+	
 //
 //	/// <summary>
 //	/// partial derivative of the angle of the Lagrangian equation
