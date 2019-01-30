@@ -5,6 +5,9 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
+// Old Body Tests not in use. Can rebuild later with Physics Body.
+#if false
+
 #pragma warning disable CS0618 // Type or member is obsolete
 public class BodyTests {
     private OldBody Sun;
@@ -54,3 +57,5 @@ public class BodyTests {
         yield return null;
     }
 }
+
+#endif

@@ -11,10 +11,10 @@ public class CapiBody : VisualBody {
         set
         {
             base.Type = value;
-            capiType.setValue(type);
+            capiType[Id].setValue(type);
         }
     }
-    private SimCapiEnum<BodyType> capiType;
+    static private SimCapiEnum<BodyType>[] capiType;
     
     new public string Name
     {
@@ -22,10 +22,10 @@ public class CapiBody : VisualBody {
         set
         {
             base.Name = value;
-            capiName.setValue(value);
+            capiName[Id].setValue(value);
         }
     }
-    private SimCapiString capiName;
+    static private SimCapiString[] capiName;
 
     /// <summary>
     /// Mass of the body in Earths.
@@ -36,10 +36,10 @@ public class CapiBody : VisualBody {
         set
         {
             base.Mass = value;
-            capiMass.setValue((float)value);
+            capiMass[Id].setValue((float)value);
         }
     }
-    private SimCapiNumber capiMass;
+    static private SimCapiNumber[] capiMass;
 
     /// <summary>
     /// Diameter in Earths.
@@ -50,10 +50,10 @@ public class CapiBody : VisualBody {
         set
         {
             base.Diameter = value;
-            capiDiameter.setValue((float)value);
+            capiDiameter[Id].setValue((float)value);
         }
     }
-    private SimCapiNumber capiDiameter;
+    static private SimCapiNumber[] capiDiameter;
 
     /// <summary>
     /// Current Position of the object. Any changes will be reflected in Unity.
@@ -64,14 +64,14 @@ public class CapiBody : VisualBody {
         set
         {
             base.Position = value;
-            capiPosition.getList().Clear();
-            capiPosition.getList().Add(value.x.ToString());
-            capiPosition.getList().Add(value.y.ToString());
-            capiPosition.getList().Add(value.z.ToString());
-            capiPosition.updateValue();
+            capiPosition[Id].getList().Clear();
+            capiPosition[Id].getList().Add(value.x.ToString());
+            capiPosition[Id].getList().Add(value.y.ToString());
+            capiPosition[Id].getList().Add(value.z.ToString());
+            capiPosition[Id].updateValue();
         }
     }
-    private SimCapiStringArray capiPosition;
+    static private SimCapiStringArray[] capiPosition;
 
     /// <summary>
     /// Initial position of the Body. Using resetPosition() will move the Body back to it's initial position.
@@ -82,14 +82,14 @@ public class CapiBody : VisualBody {
         set
         {
             base.InitialPosition = value;
-            capiInitialPosition.getList().Clear();
-            capiInitialPosition.getList().Add(value.x.ToString());
-            capiInitialPosition.getList().Add(value.y.ToString());
-            capiInitialPosition.getList().Add(value.z.ToString());
-            capiInitialPosition.updateValue();
+            capiInitialPosition[Id].getList().Clear();
+            capiInitialPosition[Id].getList().Add(value.x.ToString());
+            capiInitialPosition[Id].getList().Add(value.y.ToString());
+            capiInitialPosition[Id].getList().Add(value.z.ToString());
+            capiInitialPosition[Id].updateValue();
         }
     }
-    private SimCapiStringArray capiInitialPosition;
+    static private SimCapiStringArray[] capiInitialPosition;
 
     /// <summary>
     /// Planet's rotational speed, in earth days.
@@ -100,56 +100,89 @@ public class CapiBody : VisualBody {
         set
         {
             base.Rotation = value;
-            capiRotation.setValue((float)value);
+            capiRotation[Id].setValue((float)value);
         }
     }
-    private SimCapiNumber capiRotation;
+    static private SimCapiNumber[] capiRotation;
+
+    // Checks if CapiBody has been initated.
+    static private bool hasInit = false;
+
+    /// <summary>
+    /// Initiates CapiBody, exposing all variables to the main Capi system.
+    /// </summary>
+    static public void Init()
+    {
+        // Prevent double initiation.
+        if (hasInit) return;
+        hasInit = true;
+
+        capiName = new SimCapiString[Bodies.MAX];
+        capiType = new SimCapiEnum<BodyType>[Bodies.MAX];
+        capiPosition = new SimCapiStringArray[Bodies.MAX];
+        capiInitialPosition = new SimCapiStringArray[Bodies.MAX];
+        capiMass = new SimCapiNumber[Bodies.MAX];
+        capiDiameter = new SimCapiNumber[Bodies.MAX];
+        capiRotation = new SimCapiNumber[Bodies.MAX];
+
+        for (int i = 0; i < Bodies.MAX; i++)
+        {
+
+            // Create Capi values and expose.
+
+            capiName[i] = new SimCapiString("");
+            capiName[i].expose(i + " Name", false, false);
+            
+            capiType[i] = new SimCapiEnum<BodyType>(BodyType.Undefined);
+            capiType[i].expose(i + " Type", false, false);
+            
+            capiPosition[i] = new SimCapiStringArray();
+            capiPosition[i].expose(i + " Position", false, false);
+
+            capiInitialPosition[i] = new SimCapiStringArray();
+            capiInitialPosition[i].expose(i + " InitialPosition", false, false);
+
+            capiMass[i] = new SimCapiNumber(0);
+            capiMass[i].expose(i + " Mass", false, false);
+
+            capiDiameter[i] = new SimCapiNumber(0);
+            capiDiameter[i].expose(i + " Diameter", false, false);
+
+            capiRotation[i] = new SimCapiNumber(0);
+            capiRotation[i].expose(i + " Rotation", false, false);
+
+        }
+
+        Debugger.log("Body elements exposed.");
+    }
 
     new public void Awake()
     {
         base.Awake();
 
+        if (!hasInit)
+        {
+            throw new System.InvalidOperationException("CapiBody Awake() occured before Init.");
+        }
+
         // Get Top-Level Body Component.
         Bodies.add(this.gameObject.GetComponent<Body>());
 
-        // Create Capi values and expose.
-        capiName = new SimCapiString(name);
-        capiName.expose(Id + " Name", false, false);
-
-        capiType = new SimCapiEnum<BodyType>(type);
-        capiType.expose(Id + " Type", false, false);
-
-        capiPosition = new SimCapiStringArray();
-        capiPosition.expose(Id + " Position", false, false);
-
-        capiInitialPosition = new SimCapiStringArray();
-        capiInitialPosition.expose(Id + " InitialPosition", false, false);
-
-        capiMass = new SimCapiNumber((float)mass);
-        capiMass.expose(Id + " Mass", false, false);
-
-        capiDiameter = new SimCapiNumber((float)diameter);
-        capiDiameter.expose(Id + " Diameter", false, false);
-
-        capiRotation = new SimCapiNumber((float)rotation);
-        capiRotation.expose(Id + " Rotation", false, false);
-
         // Set Deligates
-
-        capiName.setChangeDelegate(
+        capiName[Id].setChangeDelegate(
             delegate (string value, SimCapi.ChangedBy changedBy)
             {
                 Name = value;
             }
         );
-        capiType.setChangeDelegate(
+        capiType[Id].setChangeDelegate(
             delegate (BodyType value, SimCapi.ChangedBy changedBy)
             {
                 Type = value;
             }
         );
 
-        capiPosition.setChangeDelegate(
+        capiPosition[Id].setChangeDelegate(
             delegate (string[] values, SimCapi.ChangedBy changedBy)
             {
                 Position = new Vector3d(
@@ -160,7 +193,7 @@ public class CapiBody : VisualBody {
             }
         );
 
-        capiInitialPosition.setChangeDelegate(
+        capiInitialPosition[Id].setChangeDelegate(
             delegate (string[] values, SimCapi.ChangedBy changedBy)
             {
                 InitialPosition = new Vector3d(
@@ -171,26 +204,39 @@ public class CapiBody : VisualBody {
             }
         );
 
-        capiMass.setChangeDelegate(
+        capiMass[Id].setChangeDelegate(
             delegate (float value, SimCapi.ChangedBy changeBy)
             {
                 Mass = value;
             }
         );
 
-        capiDiameter.setChangeDelegate(
+        capiDiameter[Id].setChangeDelegate(
             delegate (float value, SimCapi.ChangedBy changeBy)
             {
                 Diameter = value;
             }
         );
 
-        capiRotation.setChangeDelegate(
+        capiRotation[Id].setChangeDelegate(
             delegate (float value, SimCapi.ChangedBy changeBy)
             {
                 Rotation = value;
             }
         );
+
+        //Check for pre-defined values to populate fields.
+        if (Name == null)
+        {
+            // Populate Capi fields by re-setting all values.
+            Name = name;
+            Type = type;
+            Mass = mass;
+            Diameter = diameter;
+            Position = Position;
+            InitialPosition = initialPosition;
+            Rotation = rotation;
+        }
 
     }
     

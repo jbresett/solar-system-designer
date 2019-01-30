@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum BodyType
 {
-    Star, Planet, Moon, Astroid
+    Star, Planet, Moon, Astroid, Undefined
 }
 
 public class Body : PhysicsBody {

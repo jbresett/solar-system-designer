@@ -5,6 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+// NBody no longer used.
+#if false
+
 /// <summary>
 /// This class is used to test the nbody system class in order
 /// to verify an nbody collection can be properly created
@@ -58,3 +61,5 @@ public class NBodyTests {
     }
 
 }
+
+#endif

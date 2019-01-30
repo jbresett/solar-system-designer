@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bodies : MonoBehaviour {
+public class Bodies {
     public const int MAX = 30;
 
     static private Body[] bodies = new Body[MAX];
@@ -31,7 +31,10 @@ public class Bodies : MonoBehaviour {
         return null;
     }
 
-    static public void add(Body body)
+    /// <summary>
+    /// Called by CapiBody.cs when the Body script is attached to an object.
+    /// </summary>
+    static public int add(Body body)
     {
         for (int i = 0; i < MAX; i++)
         {
@@ -39,10 +42,25 @@ public class Bodies : MonoBehaviour {
             {
                 bodies[i] = body;
                 body.Id = i;
-                return;
+                return i;
             }
         }
         Debugger.log("Too many bodies added.");
+        return -1;
+    }
+
+    static public bool remove(Body body)
+    {
+        for (int i = 0; i < MAX; i++)
+        {
+            if (bodies[i] == body)
+            {
+                bodies[i] = null;
+                body.Id = -1;
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>
@@ -68,9 +86,4 @@ public class Bodies : MonoBehaviour {
         return active;
     }
 
-
-    private void Awake()
-    {
-        
-    }
 }
