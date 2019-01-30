@@ -26782,23 +26782,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotSpd: 10
   dampAmt: 1.6
---- !u!114 &1338025390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1338025385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca0592f8b682da45ba3e3cfff625b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: -1
-  active: 1
-  type: 0
-  mass: 0
-  diameter: 0
-  rotation: 0
 --- !u!1 &1344499015
 GameObject:
   m_ObjectHideFlags: 0
