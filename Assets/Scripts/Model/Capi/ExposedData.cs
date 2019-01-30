@@ -34,8 +34,6 @@ public class ExposedData {
 
     public SimCapiStringArray Perms;
 
-    private int priorCount = NBody.MAX_BODY_COUNT;
-
     // Permission switch for "create" perm.
     public SimCapiBoolean CanCreate;
 
