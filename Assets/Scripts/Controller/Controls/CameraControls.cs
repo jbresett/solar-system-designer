@@ -200,25 +200,25 @@ public class CameraControls : MonoBehaviour {
         //Up
         if (Input.GetKey(moveUp))
         {
-            Camera.main.transform.position += Camera.main.transform.up * MoveFactor;
+            Camera.main.transform.position -= Camera.main.transform.up * MoveFactor;
         }
 
         //Down
         if (Input.GetKey(moveDown))
         {
-            Camera.main.transform.position -= Camera.main.transform.up * MoveFactor;
+            Camera.main.transform.position += Camera.main.transform.up * MoveFactor;
         }
 
         //Left
         if (Input.GetKey(moveRight))
         {
-            Camera.main.transform.position += Camera.main.transform.right * MoveFactor;
+            Camera.main.transform.position -= Camera.main.transform.right * MoveFactor;
         }
 
         //Right
         if (Input.GetKey(moveLeft))
         {
-            Camera.main.transform.position -= Camera.main.transform.right * MoveFactor;
+            Camera.main.transform.position += Camera.main.transform.right * MoveFactor;
         }
 
         // Move Foward
@@ -262,32 +262,45 @@ public class CameraControls : MonoBehaviour {
     private void UpdateMouse()
     {
         Camera.main.transform.position += Camera.main.transform.forward*Input.mouseScrollDelta.y*mouseZoomFactor;
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            dragOriginPos = Input.mousePosition;
-            return;
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            dragOriginRot = Input.mousePosition;
-            return;
-        }
-        if (Input.GetMouseButton(0))
+        
+        if (Input.GetMouseButton(0) && !dragOriginPos.Equals(Vector3.negativeInfinity))
         {
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginPos);
-            transform.Translate(pos*dragSpeed);
+            pos.y = -pos.y;
+            pos.x = -pos.x;
+            Camera.main.transform.Translate(pos*dragSpeed);
+            Debug.Log(pos);
             return;
         }
-        if (Input.GetMouseButton(1))
+        else
+        {
+            dragOriginPos = Vector3.negativeInfinity;
+        }
+        if (Input.GetMouseButton(1) && !dragOriginRot.Equals(Vector3.negativeInfinity))
         {
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginRot);
             float x = pos.x;
             float y = pos.y;
             pos.x = y;
             pos.y = -x;
-            transform.Rotate(pos);
+            Debug.Log(pos);
+            Camera.main.transform.Rotate(pos);
+            return;
         }
+        else
+        {
+            dragOriginRot = Vector3.negativeInfinity;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            dragOriginPos = Input.mousePosition;
+            Debug.Log(dragOriginPos);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            dragOriginRot = Input.mousePosition;
+        }
+        
     }
 }
