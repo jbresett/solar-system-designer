@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Sim : MonoBehaviour {
 
+    // Location for the Active and Inactive body containers.
+    public GameObject BodyContainer;
+
     /// <summary>
     /// Main Simulation Initiation
     /// </summary>
     private void Awake()
     {
-        Perm.Awake();
-        Capi.Awake();
+        Perm.Init();
+        Bodies.Init(BodyContainer);
+        Capi.Init();
         CapiBody.Init();
+        
     }
 
     void Start () {
@@ -23,4 +28,5 @@ public class Sim : MonoBehaviour {
 	void Update () {
 		
 	}
+
 }

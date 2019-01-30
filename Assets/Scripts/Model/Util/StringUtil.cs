@@ -17,6 +17,17 @@ public static class StringUtil
         return string.Format(input, args);
     }
 
+    /// <summary>
+    /// Returns the Enum value based on the string.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static T Enum<T>(this string input)
+    {
+        return (T)System.Enum.Parse(typeof(T), input);
+    }
+
 }
 
 
