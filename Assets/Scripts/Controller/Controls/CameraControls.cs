@@ -221,7 +221,7 @@ public class CameraControls : MonoBehaviour {
             Camera.main.transform.position += Camera.main.transform.right * MoveFactor;
         }
 
-        // Move Foward
+        // Move Forward
         if (Input.GetKey(moveIn))
         {
             Camera.main.transform.position += Camera.main.transform.forward * MoveFactor;
