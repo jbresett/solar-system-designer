@@ -5,7 +5,7 @@
 ///
 /// The formulas for this class were obtained from
 /// https://evgenii.com/blog/earth-orbit-simulation
-///
+/// https://www.wired.com/2016/06/way-solve-three-body-problem/
 /// @author Jack Northcutt
 /// </summary>
 
@@ -16,7 +16,7 @@ using UnityEngine;
 
 public class Gravity{
 
-	private const double g = 6.67408e-11;
+	private const double g = -6.67408e-11;
 	private const double time = 100;
 
 	private Bodies bodyArray;
@@ -122,16 +122,28 @@ public class Gravity{
 	/// to calculate the force applied to the nbodies
 	/// </summary>
 	/// <returns></returns>
-	public double[] calculateForce()
+	public double calculateForce()
 	{
-		return null;
+		List<Body> bodyList = Bodies.getActive();
+		int numBodies = bodyList.Count;
+		double forceApplied = 0;
+		Vector3d positionDiff;
+		
+		for (int i = 0; i < numBodies-1; i++)
+		{
+			positionDiff = bodyList[i].Position - bodyList[i+1].Position;
+			forceApplied += g * bodyList[i].Mass * bodyList[i + 1].Mass 
+			               / (positionDiff.magnitude * positionDiff.magnitude );
+		}
+
+		return forceApplied;
 	}
 	
 	/// <summary>
 	/// This method uses the force calculated to
 	/// update the momentum of the nbodies
 	/// </summary>
-	public void updateMomentum()
+	public void updateMomentum(double force)
 	{
 		
 	}

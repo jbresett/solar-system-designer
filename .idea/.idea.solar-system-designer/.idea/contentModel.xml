@@ -69,8 +69,8 @@
               <e p="StarBody.cs" t="Include" />
             </e>
             <e p="Capi" t="Include">
+              <e p="Capi.cs" t="Include" />
               <e p="ExposedData.cs" t="Include" />
-              <e p="Main.cs" t="Include" />
               <e p="PersistentData.cs" t="Include" />
             </e>
             <e p="Physics" t="Include">
@@ -87,6 +87,7 @@
               <e p="Vector3d.cs" t="Include" />
             </e>
           </e>
+          <e p="Sim.cs" t="Include" />
           <e p="View" t="Include">
             <e p="Effects" t="Include">
               <e p="GenerateRings.cs" t="Include" />
