@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class InsertParticle : MonoBehaviour {
     // Starting Minimal size for the InsertParticleSystem.
-    const float MIN_SIZE = 20;
+    const float MIN_SIZE = 2;
 
     // Time in seconds before Particle Object is removed.
     const float KEEP_ALIVE_TIME = 3.5F;

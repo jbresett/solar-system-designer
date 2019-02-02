@@ -23,7 +23,6 @@ public class InsertInPlace : MonoBehaviour
     public TMP_InputField mass;
     public GameObject planetBase;
 
-    int x = 0;
     public GameObject UseParticleSystem;
 
     /// <summary>
@@ -70,7 +69,7 @@ public class InsertInPlace : MonoBehaviour
         //obj.AddComponent<InsertParticleSystem>();
         //Instantiate(InsertParticleSystem);
         //InsertParticleSystem.
-        var particleSystem = Instantiate(UseParticleSystem, obj.transform);
+        Instantiate(UseParticleSystem, obj.transform);
         //particleSystem.transform.parent = obj.transform;
         //particleSystem.SetActive(true);
     }

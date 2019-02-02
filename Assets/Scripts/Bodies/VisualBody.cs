@@ -5,7 +5,7 @@ using UnityEngine;
 public class VisualBody : BaseBody {
 
     // Multiplers for standard Earths -> Unity
-    static public float POSITION_MULT = 1000;   // 1 AU = 1,000 Unity units.
+    static public float POSITION_MULT = 25;   // 1 AU = 25 Unity units.
     static public float SIZE_MULT = 5;          // 1 Earth = 5 Unity units.
 
     new public Vector3d Position {

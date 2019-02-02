@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c20bb0abcafb544b26d0afff847b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinimumSize: {x: 10, y: 10, z: 10}
+  MinimumSize: {x: 1, y: 1, z: 1}
 --- !u!198 &198643895758538036
 ParticleSystem:
   m_ObjectHideFlags: 1
