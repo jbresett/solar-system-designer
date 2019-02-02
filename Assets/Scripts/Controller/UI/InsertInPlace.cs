@@ -22,7 +22,9 @@ public class InsertInPlace : MonoBehaviour
     public TMP_InputField radius;
     public TMP_InputField mass;
     public GameObject planetBase;
+
     int x = 0;
+    public GameObject UseParticleSystem;
 
     /// <summary>
     /// initializes class and begins listening for mouse click
@@ -64,6 +66,13 @@ public class InsertInPlace : MonoBehaviour
         script.Mass = convertMassUnits(double.Parse(mass.text));
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
         script.Type = type.options[type.value].text.Enum<BodyType>();
+
+        //obj.AddComponent<InsertParticleSystem>();
+        //Instantiate(InsertParticleSystem);
+        //InsertParticleSystem.
+        var particleSystem = Instantiate(UseParticleSystem, obj.transform);
+        //particleSystem.transform.parent = obj.transform;
+        //particleSystem.SetActive(true);
     }
 
     /// <summary>
