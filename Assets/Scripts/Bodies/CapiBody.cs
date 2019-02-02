@@ -151,6 +151,64 @@ public class CapiBody : VisualBody {
             capiRotation[i] = new SimCapiNumber(0);
             capiRotation[i].expose(i + " Rotation", false, false);
 
+            // Set Deligates
+            /* [TODO] Deligates don't work as is: to fix on later task.
+            capiName[i].setChangeDelegate(
+                delegate (string value, SimCapi.ChangedBy changedBy)
+                {
+                    Bodies.get(i).Name = value;
+                }
+            );
+            capiType[i].setChangeDelegate(
+                delegate (BodyType value, SimCapi.ChangedBy changedBy)
+                {
+                    Bodies.get(i).Type = value;
+                }
+            );
+
+            capiPosition[i].setChangeDelegate(
+                delegate (string[] values, SimCapi.ChangedBy changedBy)
+                {
+                    Bodies.get(i).Position = new Vector3d(
+                            System.Convert.ToDouble(values[0]),
+                            System.Convert.ToDouble(values[1]),
+                            System.Convert.ToDouble(values[2])
+                    );
+                }
+            );
+
+            capiInitialPosition[i].setChangeDelegate(
+                delegate (string[] values, SimCapi.ChangedBy changedBy)
+                {
+                    Bodies.get(i).InitialPosition = new Vector3d(
+                            System.Convert.ToDouble(values[0]),
+                            System.Convert.ToDouble(values[1]),
+                            System.Convert.ToDouble(values[2])
+                    );
+                }
+            );
+
+            capiMass[i].setChangeDelegate(
+                delegate (float value, SimCapi.ChangedBy changeBy)
+                {
+                    Bodies.get(i).Mass = value;
+                }
+            );
+
+            capiDiameter[i].setChangeDelegate(
+                delegate (float value, SimCapi.ChangedBy changeBy)
+                {
+                    Bodies.get(i).Diameter = value;
+                }
+            );
+
+            capiRotation[i].setChangeDelegate(
+                delegate (float value, SimCapi.ChangedBy changeBy)
+                {
+                    Bodies.get(i).Rotation = value;
+                }
+            );
+            */
         }
 
         Debugger.log("Body elements exposed.");
@@ -159,85 +217,6 @@ public class CapiBody : VisualBody {
     new public void Awake()
     {
         base.Awake();
-
-        if (!hasInit)
-        {
-            throw new System.InvalidOperationException("CapiBody Awake() occured before Init.");
-        }
-
-        // Get Top-Level Body Component.
-        Bodies.add(this.gameObject.GetComponent<Body>());
-
-        // Set Deligates
-        capiName[Id].setChangeDelegate(
-            delegate (string value, SimCapi.ChangedBy changedBy)
-            {
-                Name = value;
-            }
-        );
-        capiType[Id].setChangeDelegate(
-            delegate (BodyType value, SimCapi.ChangedBy changedBy)
-            {
-                Type = value;
-            }
-        );
-
-        capiPosition[Id].setChangeDelegate(
-            delegate (string[] values, SimCapi.ChangedBy changedBy)
-            {
-                Position = new Vector3d(
-                        System.Convert.ToDouble(values[0]),
-                        System.Convert.ToDouble(values[1]),
-                        System.Convert.ToDouble(values[2])
-                );
-            }
-        );
-
-        capiInitialPosition[Id].setChangeDelegate(
-            delegate (string[] values, SimCapi.ChangedBy changedBy)
-            {
-                InitialPosition = new Vector3d(
-                        System.Convert.ToDouble(values[0]),
-                        System.Convert.ToDouble(values[1]),
-                        System.Convert.ToDouble(values[2])
-                );
-            }
-        );
-
-        capiMass[Id].setChangeDelegate(
-            delegate (float value, SimCapi.ChangedBy changeBy)
-            {
-                Mass = value;
-            }
-        );
-
-        capiDiameter[Id].setChangeDelegate(
-            delegate (float value, SimCapi.ChangedBy changeBy)
-            {
-                Diameter = value;
-            }
-        );
-
-        capiRotation[Id].setChangeDelegate(
-            delegate (float value, SimCapi.ChangedBy changeBy)
-            {
-                Rotation = value;
-            }
-        );
-
-        //Check for pre-defined values to populate fields.
-        if (Name == null)
-        {
-            // Populate Capi fields by re-setting all values.
-            Name = name;
-            Type = type;
-            Mass = mass;
-            Diameter = diameter;
-            Position = Position;
-            InitialPosition = initialPosition;
-            Rotation = rotation;
-        }
-
     }
     
 

@@ -27,7 +27,7 @@ public class Capi {
 
     static SimCapi.Transporter transporter;
 
-    static public void Awake()
+    static public void Init()
     {
 
         transporter = SimCapi.Transporter.getInstance();

@@ -31,36 +31,37 @@ public class Bodies {
         return null;
     }
 
-    /// <summary>
-    /// Called by CapiBody.cs when the Body script is attached to an object.
-    /// </summary>
-    static public int add(Body body)
+    static private bool hasInit = false;
+    static public void Init(GameObject bodyContainer)
     {
-        for (int i = 0; i < MAX; i++)
+        if (hasInit) return;
+        hasInit = true;
+
+        // Id pre-existing bodies.
+        int i = 0;
+        foreach (Body body in Object.FindObjectsOfType<Body>())
         {
-            if (bodies[i] == null)
-            {
-                bodies[i] = body;
-                body.Id = i;
-                return i;
-            }
+            body.Id = i;
+            bodies[i] = body;
+            i++;
         }
-        Debugger.log("Too many bodies added.");
-        return -1;
+
+        // Generate new bodies.
+        for (  ; i < MAX; i++)
+        {
+            GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            obj.transform.SetParent(bodyContainer.transform);
+            obj.name = "";
+            obj.SetActive(false);
+            Body body = obj.AddComponent<Body>();
+            body.Id = i;
+            bodies[i] = body;
+        }
     }
 
-    static public bool remove(Body body)
+    static public GameObject add()
     {
-        for (int i = 0; i < MAX; i++)
-        {
-            if (bodies[i] == body)
-            {
-                bodies[i] = null;
-                body.Id = -1;
-                return true;
-            }
-        }
-        return false;
+        return null;
     }
 
     /// <summary>
@@ -86,4 +87,20 @@ public class Bodies {
         return active;
     }
 
+    static public GameObject activateNext()
+    {
+        foreach (Body body in bodies)
+        {
+            if (body != null && body.gameObject.activeSelf == false) {
+                body.gameObject.SetActive(true);
+                return body.gameObject;
+            }
+        }
+        return null;
+    }
+
+    static public void deactivate(Body body)
+    {
+        body.gameObject.SetActive(false);
+    }
 }

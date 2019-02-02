@@ -19,7 +19,7 @@ public class Perm {
 
     private static string[] INVALID_COMMAND = { "Invalid Command. Use: perm (add/remove/list) [name]." };
 
-    static public void Awake()
+    static public void Init()
     {
         Debugger.AddProcessor(ProcessCmd);
     }
