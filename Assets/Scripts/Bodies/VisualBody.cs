@@ -28,17 +28,22 @@ public class VisualBody : BaseBody {
         }
     }
 
-    new void Awake()
+    new public void Awake()
     {
         base.Awake();
+        
+        if (Position == null)
+        {
+            base.Position = new Vector3d(transform.localPosition / POSITION_MULT);
+        }
     }
 
-	new void Start ()
+	new public void Start ()
     {
         base.Start();
 	}
 
-	new void Update ()
+	new public void Update ()
     {
         base.Update();
         transform.Rotate((Vector3.up * (float)rotation) * Time.deltaTime, Space.Self);

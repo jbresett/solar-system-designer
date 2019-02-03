@@ -131,6 +131,7 @@ public class Gravity{
  
 		for (int i = 0; i < numBodies-1; i++)
 		{
+            //Debugger.log("Comparing " + i + " " + bodyList[i].name + bodyList[i].Position + " " + bodyList[i+1].name + bodyList[i + 1].Position);
 			positionDiff = bodyList[i].Position - bodyList[i+1].Position;
 			combinedMass = g * bodyList[i].Mass * bodyList[i + 1].Mass / positionDiff.magnitude * positionDiff.magnitude;
 

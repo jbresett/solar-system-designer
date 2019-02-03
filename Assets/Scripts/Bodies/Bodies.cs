@@ -82,7 +82,11 @@ public class Bodies {
         List<Body> active = new List<Body>();
         foreach (Body body in bodies)
         {
-            if (body != null && body.Active) active.Add(body);
+            if (body != null && body.name != "" && body.gameObject.activeSelf)
+            {
+                active.Add(body);
+            }
+            
         }
         return active;
     }
