@@ -45,9 +45,9 @@ public class Gravity{
 //	/// constructor will intialize values and convert to Km using
 //	/// constants defined.
 //	/// </summary>
-	public Gravity(Bodies bodyArray)
+	public Gravity()
 	{
-		this.bodyArray = bodyArray;
+
 	}
 	
 	/// <summary>
@@ -169,7 +169,13 @@ public class Gravity{
 	/// </summary>
 	public void calcPosition()
 	{
+		List<Body> bodyList = Bodies.getActive();
 		
+		updateMomentum(calculateForce());
+		foreach (Body body in bodyList)
+		{
+			body.Position = (body.Position + body.momentumVector) / body.Mass;
+		}
 	}
 	
 //

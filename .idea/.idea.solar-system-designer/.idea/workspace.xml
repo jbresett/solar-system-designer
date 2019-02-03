@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Util/Vector3d.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-380">
-              <caret line="328" column="65" selection-start-line="328" selection-start-column="60" selection-end-line="328" selection-end-column="65" />
+            <state relative-caret-position="4134">
+              <caret line="320" selection-start-line="320" selection-end-line="320" />
               <folding>
                 <marker date="1548267901766" expanded="false" signature="6:104" ph="..." />
                 <marker date="1548267901766" expanded="true" signature="106:335" ph="/// Double preceision representation of vectors and points. ... " />
@@ -90,63 +90,137 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Physics/Gravity.cs">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UI/InsertInPlace.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1341">
-              <caret line="156" column="13" lean-forward="true" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
+            <state relative-caret-position="-829">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
-                <marker date="1549153340672" expanded="true" signature="0:383" ph="/* This class utilizes the laws of orbital mechanics ... */" />
-                <marker date="1549153340672" expanded="false" signature="391:477" ph="..." />
-                <marker date="1549153340672" expanded="true" signature="499:6181" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="605:1219" ph="/*&#9;/// constructor will intialize values and convert to Km using ... */" />
-                <marker date="1549153340672" expanded="true" signature="1253:1289" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="1293:1775" ph="/// This calculates the initial velocities of all the bodies. ... " />
-                <marker date="1549153340672" expanded="true" signature="1812:2626" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="2068:2137" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="2107:2133" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="2214:2623" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="2253:2526" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="2561:2619" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="2630:2778" ph="/// This method calculates force applied by each body to ... " />
-                <marker date="1549153340672" expanded="true" signature="2812:2924" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="2894:2906" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="2928:3089" ph="/// This method uses the distance calculation in order ... " />
-                <marker date="1549153340672" expanded="true" signature="3123:3614" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="3341:3587" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="3618:3733" ph="/// This method uses the force calculated to ... " />
-                <marker date="1549153340672" expanded="true" signature="3777:4080" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="3860:4077" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="3900:3999" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="4007:4072" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="4084:4206" ph="/// This method utilizes the momentum in order to ... " />
-                <marker date="1549153340672" expanded="true" signature="4234:4243" ph="{...}" />
-                <marker date="1549153340672" expanded="true" signature="4246:6177" ph="/*&#9;/// partial derivative of the angle of the Lagrangian equation ... */" />
+                <marker date="1548998714034" expanded="false" signature="6:101" ph="..." />
+                <marker date="1548998714034" expanded="true" signature="103:189" ph="/// This class places an orbital body a specified postion ... " />
+                <marker date="1548998714034" expanded="true" signature="232:2660" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="635:730" ph="/// initializes class and begins listening for mouse click ... " />
+                <marker date="1548998714034" expanded="true" signature="747:803" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="809:917" ph="/// This function places each body in the array in its correct position ... " />
+                <marker date="1548998714034" expanded="true" signature="942:2092" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="1090:1236" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="1262:1428" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="1491:1626" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="1645:1788" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="2098:2152" ph="/// scales radius ... " />
+                <marker date="1548998714034" expanded="true" signature="2202:2245" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="2251:2307" ph="/// scales position ... " />
+                <marker date="1548998714034" expanded="true" signature="2374:2488" ph="{...}" />
+                <marker date="1548998714034" expanded="true" signature="2494:2546" ph="/// scales mass ... " />
+                <marker date="1548998714034" expanded="true" signature="2595:2658" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/OrbitalBody.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+            <state relative-caret-position="-159">
               <folding>
-                <marker date="1549152686808" expanded="false" signature="6:78" ph="..." />
-                <marker date="1549152686808" expanded="true" signature="116:2048" ph="{...}" />
-                <marker date="1549152686808" expanded="true" signature="289:355" ph="/// Mass of the Body in Sols. ... " />
-                <marker date="1549152686808" expanded="true" signature="383:496" ph="{...}" />
-                <marker date="1549152686808" expanded="true" signature="501:565" ph="/// Mass of the Body in kg. ... " />
-                <marker date="1549152686808" expanded="true" signature="586:693" ph="{...}" />
-                <marker date="1549152686808" expanded="true" signature="703:785" ph="/// Set and get initial velocity for the body ... " />
-                <marker date="1549152686808" expanded="true" signature="821:904" ph="{...}" />
-                <marker date="1549152686808" expanded="true" signature="1000:1081" ph="{...}" />
-                <marker date="1549152686808" expanded="true" signature="1165:1313" ph="{...}" />
-                <marker date="1549152686808" expanded="true" signature="1344:1487" ph="{...}" />
-                <marker date="1549152686808" expanded="true" signature="1558:1585" ph="{...}" />
-                <marker date="1549152686808" expanded="true" signature="1591:1739" ph="/// &lt;summary&gt; ... " />
-                <marker date="1549152686808" expanded="true" signature="1794:2045" ph="{...}" />
+                <marker date="1548267901762" expanded="false" signature="6:40" ph="..." />
+                <marker date="1548267901762" expanded="true" signature="42:159" ph="/* This class defines an orbital body that is placed in an ... */" />
+                <marker date="1548267901762" expanded="true" signature="177:5343" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="224:5341" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="271:372" ph="/// This function gets and sets the type of body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="399:547" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="458:537" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="611:716" ph="/// This function gets and sets the name of the defined body ... " />
+                <marker date="1548267901762" expanded="true" signature="743:927" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="802:917" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="995:1100" ph="/// This function gets and sets the mass of the body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="1127:1259" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="1187:1249" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="1323:1430" ph="/// This function gets and sets the radius of the body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="1459:1879" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="1520:1869" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="1945:2061" ph="/// This function gets and sets the revolution time of the body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="2090:2232" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="2152:2222" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="2297:2406" ph="/// This function gets and sets the position of the body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="2434:2617" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="2492:2607" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="2682:2791" ph="/// This function gets and sets the velocity of the body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="2819:2946" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="2877:2936" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="3011:3125" ph="/// This function gets and sets the rotation axis of the body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="3159:3307" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="3225:3297" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="3378:3493" ph="/// This function gets and sets the rotation speed of the body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="3526:3666" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="3591:3656" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="3735:3852" ph="/// This function gets and sets the body Damp Amount of the body defined ... " />
+                <marker date="1548267901762" expanded="true" signature="3886:4028" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="3952:4018" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="4098:4193" ph="/// This function is the constructor for the class ... " />
+                <marker date="1548267901762" expanded="true" signature="4387:4803" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="4813:4898" ph="/// This function updates once per frame ... " />
+                <marker date="1548267901762" expanded="true" signature="4928:5272" ph="{...}" />
+                <marker date="1548267901762" expanded="true" signature="4951:5262" ph="/* Motion handled by seperate Rotation script ... */" />
+                <marker date="1548267901762" expanded="true" signature="5302:5335" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/View/Motion/Rotation.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <marker date="1548267901766" expanded="false" signature="6:78" ph="..." />
+                <marker date="1548267901766" expanded="true" signature="80:316" ph="/// This class is the rotation script for ... " />
+                <marker date="1548267901766" expanded="true" signature="354:1176" ph="{...}" />
+                <marker date="1548267901766" expanded="true" signature="362:435" ph="/// gets and sets the rotation speed ... " />
+                <marker date="1548267901766" expanded="true" signature="459:534" ph="{...}" />
+                <marker date="1548267901766" expanded="true" signature="587:656" ph="/// gets and sets the Dam amount ... " />
+                <marker date="1548267901766" expanded="true" signature="681:758" ph="{...}" />
+                <marker date="1548267901766" expanded="true" signature="812:875" ph="/// Updates once per frame ... " />
+                <marker date="1548267901766" expanded="true" signature="893:1174" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Physics/Gravity.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1105">
+              <caret line="54" column="58" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+              <folding>
+                <marker date="1549154560788" expanded="true" signature="0:383" ph="/* This class utilizes the laws of orbital mechanics ... */" />
+                <marker date="1549154560788" expanded="false" signature="391:477" ph="..." />
+                <marker date="1549154560788" expanded="true" signature="499:6328" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="605:1219" ph="/*&#9;/// constructor will intialize values and convert to Km using ... */" />
+                <marker date="1549154560788" expanded="true" signature="1237:1244" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="1248:1730" ph="/// This calculates the initial velocities of all the bodies. ... " />
+                <marker date="1549154560788" expanded="true" signature="1767:2581" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="2023:2092" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="2062:2088" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="2169:2578" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="2208:2481" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="2516:2574" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="2585:2733" ph="/// This method calculates force applied by each body to ... " />
+                <marker date="1549154560788" expanded="true" signature="2767:2879" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="2849:2861" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="2883:3044" ph="/// This method uses the distance calculation in order ... " />
+                <marker date="1549154560788" expanded="true" signature="3078:3569" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="3296:3542" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="3573:3688" ph="/// This method uses the force calculated to ... " />
+                <marker date="1549154560788" expanded="true" signature="3732:4035" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="3815:4032" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="3855:3954" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="3962:4027" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="4039:4161" ph="/// This method utilizes the momentum in order to ... " />
+                <marker date="1549154560788" expanded="true" signature="4189:4390" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="4309:4387" ph="{...}" />
+                <marker date="1549154560788" expanded="true" signature="4393:6324" ph="/*&#9;/// partial derivative of the angle of the Lagrangian equation ... */" />
               </folding>
             </state>
           </provider>
@@ -155,7 +229,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/BaseBody.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-12">
+            <state relative-caret-position="-235">
               <caret line="109" column="41" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="41" />
               <folding>
                 <marker date="1548998714033" expanded="false" signature="6:78" ph="..." />
@@ -189,10 +263,41 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Bodies.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="84" column="62" selection-start-line="84" selection-start-column="62" selection-end-line="84" selection-end-column="62" />
+              <folding>
+                <marker date="1548998714033" expanded="false" signature="6:78" ph="..." />
+                <marker date="1548998714033" expanded="true" signature="100:2595" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="189:346" ph="/// Returns a body by id. ... " />
+                <marker date="1548998714033" expanded="true" signature="381:420" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="426:590" ph="/// Returns a Body by name, or null if the body does not exist. ... " />
+                <marker date="1548998714033" expanded="true" signature="630:790" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="674:763" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="886:1553" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="1064:1156" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="1220:1547" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="1589:1622" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="1628:1760" ph="/// Returns a set of all body values, including empty(null) bodies. ... " />
+                <marker date="1548998714033" expanded="true" signature="1794:1829" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="1835:1940" ph="/// Returns a list of all active bodies. ... " />
+                <marker date="1548998714033" expanded="true" signature="1981:2183" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="2071:2154" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="2228:2493" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="2272:2466" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="2352:2456" ph="{...}" />
+                <marker date="1548998714033" expanded="true" signature="2539:2593" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/CapiBody.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+            <state relative-caret-position="240">
+              <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
               <folding>
                 <marker date="1548998714033" expanded="false" signature="6:93" ph="..." />
                 <marker date="1548998714033" expanded="true" signature="130:6941" ph="{...}" />
@@ -227,10 +332,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Body.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="75">
               <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
               <folding>
                 <marker date="1548998714033" expanded="false" signature="6:92" ph="..." />
@@ -244,7 +349,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Tests/Physics/ThirdLawTest.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="330">
               <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
               <folding>
                 <marker date="1548267901760" expanded="true" signature="0:213" ph="/* This Class tests out a formual to find the time it takes ... */" />
@@ -270,6 +375,7 @@
       <find>norma</find>
       <find>m</find>
       <find>multi</find>
+      <find>bodies</find>
     </findStrings>
     <replaceStrings>
       <replace>moveBody</replace>
@@ -282,10 +388,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/StarBody.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/FluidBody.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/NBody.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiMono.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/OrbitalBody.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Capi/ExposedData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UI/InsertInPlace.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Body.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Tests/Physics/ThirdLawTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/View/Motion/Rotation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/VisualBody.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Util/Vector3d.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs" root0="FORCE_HIGHLIGHTING" />
@@ -301,8 +411,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/Body/NBody.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bodies/BaseBody.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Model/Physics/Gravity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs" />
       </list>
     </option>
   </component>
@@ -311,9 +421,9 @@
       <facet id="riderModule/invalid/Default Android Facet" />
     </ignored-facets>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="9" />
-    <option name="y" value="29" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="65" />
+    <option name="y" value="434" />
     <option name="width" value="1400" />
     <option name="height" value="776" />
   </component>
@@ -325,17 +435,37 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
-      <pane id="SolutionExplorer">
-        <option name="show-all-files" value="false" />
-      </pane>
-      <pane id="FileSystemExplorer" />
       <pane id="UnityExplorer">
         <subPane>
           <expand>
             <path>
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Editor" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Fonts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Models" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scenes" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
@@ -352,48 +482,51 @@
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Editor" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controller" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controller" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controls" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controller" type="1045f7f1:UnityExplorerNode" />
+              <item name="UI" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
               <item name="Editor" type="1045f7f1:UnityExplorerNode" />
-              <item name="Tests" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Editor" type="1045f7f1:UnityExplorerNode" />
-              <item name="Tests" type="1045f7f1:UnityExplorerNode" />
-              <item name="Physics" type="1045f7f1:UnityExplorerNode" />
+              <item name="View" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="Project" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Model" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="Project" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Model" type="1045f7f1:UnityExplorerNode" />
-              <item name="Physics" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="Project" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Model" type="1045f7f1:UnityExplorerNode" />
-              <item name="Util" type="1045f7f1:UnityExplorerNode" />
+              <item name="View" type="1045f7f1:UnityExplorerNode" />
+              <item name="Motion" type="1045f7f1:UnityExplorerNode" />
             </path>
           </expand>
           <select />
         </subPane>
         <option name="show-hidden-items" value="false" />
       </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="AssemblyExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -441,12 +574,13 @@
       <workItem from="1548532974894" duration="11826000" />
       <workItem from="1548828257674" duration="2524000" />
       <workItem from="1548998840898" duration="2801000" />
-      <workItem from="1549140333712" duration="6566000" />
+      <workItem from="1549140333712" duration="7749000" />
+      <workItem from="1549155076181" duration="1040000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24809000" />
+    <option name="totallyTimeSpent" value="27032000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -458,10 +592,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="9" y="29" width="1400" height="776" extended-state="0" />
+    <frame x="65" y="434" width="1400" height="776" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19734904" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19734904" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -575,31 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Bodies.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
-          <folding>
-            <marker date="1548532798796" expanded="false" signature="6:78" ph="..." />
-            <marker date="1548532798796" expanded="true" signature="116:1724" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="205:362" ph="/// Returns a body by id. ... " />
-            <marker date="1548532798796" expanded="true" signature="397:436" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="442:606" ph="/// Returns a Body by name, or null if the body does not exist. ... " />
-            <marker date="1548532798796" expanded="true" signature="646:806" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="690:779" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="845:1113" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="889:1059" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="934:1049" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="1119:1251" ph="/// Returns a set of all body values, including empty(null) bodies. ... " />
-            <marker date="1548532798796" expanded="true" signature="1285:1320" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="1326:1431" ph="/// Returns a list of all active bodies. ... " />
-            <marker date="1548532798796" expanded="true" signature="1472:1674" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="1562:1645" ph="{...}" />
-            <marker date="1548532798796" expanded="true" signature="1701:1722" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/NBody.cs">
       <provider selected="true" editor-type-id="text-editor">
@@ -678,22 +787,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Body.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state relative-caret-position="810">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
           <folding>
-            <marker date="1548998714033" expanded="false" signature="6:92" ph="..." />
-            <marker date="1548998714033" expanded="true" signature="114:161" ph="{...}" />
-            <marker date="1548998714033" expanded="true" signature="195:199" ph="{...}" />
+            <marker date="1549154583873" expanded="false" signature="6:78" ph="..." />
+            <marker date="1549154583873" expanded="true" signature="116:2142" ph="{...}" />
+            <marker date="1549154583873" expanded="true" signature="318:384" ph="/// Mass of the Body in Sols. ... " />
+            <marker date="1549154583873" expanded="true" signature="412:525" ph="{...}" />
+            <marker date="1549154583873" expanded="true" signature="530:594" ph="/// Mass of the Body in kg. ... " />
+            <marker date="1549154583873" expanded="true" signature="615:722" ph="{...}" />
+            <marker date="1549154583873" expanded="true" signature="732:814" ph="/// Set and get initial velocity for the body ... " />
+            <marker date="1549154583873" expanded="true" signature="850:933" ph="{...}" />
+            <marker date="1549154583873" expanded="true" signature="1029:1110" ph="{...}" />
+            <marker date="1549154583873" expanded="true" signature="1194:1342" ph="{...}" />
+            <marker date="1549154583873" expanded="true" signature="1373:1549" ph="{...}" />
+            <marker date="1549154583873" expanded="true" signature="1620:1679" ph="{...}" />
+            <marker date="1549154583873" expanded="true" signature="1685:1833" ph="/// &lt;summary&gt; ... " />
+            <marker date="1549154583873" expanded="true" signature="1888:2139" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/CapiBody.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="240">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding>
             <marker date="1548998714033" expanded="false" signature="6:93" ph="..." />
             <marker date="1548998714033" expanded="true" signature="130:6941" ph="{...}" />
@@ -727,10 +847,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Tests/Physics/ThirdLawTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+          <folding>
+            <marker date="1548267901760" expanded="true" signature="0:213" ph="/* This Class tests out a formual to find the time it takes ... */" />
+            <marker date="1548267901760" expanded="true" signature="251:744" ph="{...}" />
+            <marker date="1548267901760" expanded="true" signature="269:742" ph="{...}" />
+            <marker date="1548267901760" expanded="true" signature="293:739" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/View/Motion/Rotation.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <marker date="1548267901766" expanded="false" signature="6:78" ph="..." />
+            <marker date="1548267901766" expanded="true" signature="80:316" ph="/// This class is the rotation script for ... " />
+            <marker date="1548267901766" expanded="true" signature="354:1176" ph="{...}" />
+            <marker date="1548267901766" expanded="true" signature="362:435" ph="/// gets and sets the rotation speed ... " />
+            <marker date="1548267901766" expanded="true" signature="459:534" ph="{...}" />
+            <marker date="1548267901766" expanded="true" signature="587:656" ph="/// gets and sets the Dam amount ... " />
+            <marker date="1548267901766" expanded="true" signature="681:758" ph="{...}" />
+            <marker date="1548267901766" expanded="true" signature="812:875" ph="/// Updates once per frame ... " />
+            <marker date="1548267901766" expanded="true" signature="893:1174" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Util/Vector3d.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-380">
-          <caret line="328" column="65" selection-start-line="328" selection-start-column="60" selection-end-line="328" selection-end-column="65" />
+        <state relative-caret-position="4134">
+          <caret line="320" selection-start-line="320" selection-end-line="320" />
           <folding>
             <marker date="1548267901766" expanded="false" signature="6:104" ph="..." />
             <marker date="1548267901766" expanded="true" signature="106:335" ph="/// Double preceision representation of vectors and points. ... " />
@@ -801,22 +952,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Tests/Physics/ThirdLawTest.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiMono.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        <state>
           <folding>
-            <marker date="1548267901760" expanded="true" signature="0:213" ph="/* This Class tests out a formual to find the time it takes ... */" />
-            <marker date="1548267901760" expanded="true" signature="251:744" ph="{...}" />
-            <marker date="1548267901760" expanded="true" signature="269:742" ph="{...}" />
-            <marker date="1548267901760" expanded="true" signature="293:739" ph="{...}" />
+            <marker date="1546974706849" expanded="false" signature="6:78" ph="..." />
+            <marker date="1546974706849" expanded="true" signature="120:416" ph="{...}" />
+            <marker date="1546974706849" expanded="true" signature="214:288" ph="{...}" />
+            <marker date="1546974706849" expanded="true" signature="314:414" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Bodies.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="84" column="62" selection-start-line="84" selection-start-column="62" selection-end-line="84" selection-end-column="62" />
+          <folding>
+            <marker date="1548998714033" expanded="false" signature="6:78" ph="..." />
+            <marker date="1548998714033" expanded="true" signature="100:2595" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="189:346" ph="/// Returns a body by id. ... " />
+            <marker date="1548998714033" expanded="true" signature="381:420" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="426:590" ph="/// Returns a Body by name, or null if the body does not exist. ... " />
+            <marker date="1548998714033" expanded="true" signature="630:790" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="674:763" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="886:1553" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="1064:1156" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="1220:1547" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="1589:1622" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="1628:1760" ph="/// Returns a set of all body values, including empty(null) bodies. ... " />
+            <marker date="1548998714033" expanded="true" signature="1794:1829" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="1835:1940" ph="/// Returns a list of all active bodies. ... " />
+            <marker date="1548998714033" expanded="true" signature="1981:2183" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="2071:2154" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="2228:2493" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="2272:2466" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="2352:2456" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="2539:2593" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/BaseBody.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
+        <state relative-caret-position="-235">
           <caret line="109" column="41" selection-start-line="109" selection-start-column="41" selection-end-line="109" selection-end-column="41" />
           <folding>
             <marker date="1548998714033" expanded="false" signature="6:78" ph="..." />
@@ -848,60 +1027,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Physics/Gravity.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        <state relative-caret-position="-1105">
+          <caret line="54" column="58" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
           <folding>
-            <marker date="1549152686808" expanded="false" signature="6:78" ph="..." />
-            <marker date="1549152686808" expanded="true" signature="116:2048" ph="{...}" />
-            <marker date="1549152686808" expanded="true" signature="289:355" ph="/// Mass of the Body in Sols. ... " />
-            <marker date="1549152686808" expanded="true" signature="383:496" ph="{...}" />
-            <marker date="1549152686808" expanded="true" signature="501:565" ph="/// Mass of the Body in kg. ... " />
-            <marker date="1549152686808" expanded="true" signature="586:693" ph="{...}" />
-            <marker date="1549152686808" expanded="true" signature="703:785" ph="/// Set and get initial velocity for the body ... " />
-            <marker date="1549152686808" expanded="true" signature="821:904" ph="{...}" />
-            <marker date="1549152686808" expanded="true" signature="1000:1081" ph="{...}" />
-            <marker date="1549152686808" expanded="true" signature="1165:1313" ph="{...}" />
-            <marker date="1549152686808" expanded="true" signature="1344:1487" ph="{...}" />
-            <marker date="1549152686808" expanded="true" signature="1558:1585" ph="{...}" />
-            <marker date="1549152686808" expanded="true" signature="1591:1739" ph="/// &lt;summary&gt; ... " />
-            <marker date="1549152686808" expanded="true" signature="1794:2045" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="0:383" ph="/* This class utilizes the laws of orbital mechanics ... */" />
+            <marker date="1549154560788" expanded="false" signature="391:477" ph="..." />
+            <marker date="1549154560788" expanded="true" signature="499:6328" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="605:1219" ph="/*&#9;/// constructor will intialize values and convert to Km using ... */" />
+            <marker date="1549154560788" expanded="true" signature="1237:1244" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="1248:1730" ph="/// This calculates the initial velocities of all the bodies. ... " />
+            <marker date="1549154560788" expanded="true" signature="1767:2581" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="2023:2092" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="2062:2088" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="2169:2578" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="2208:2481" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="2516:2574" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="2585:2733" ph="/// This method calculates force applied by each body to ... " />
+            <marker date="1549154560788" expanded="true" signature="2767:2879" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="2849:2861" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="2883:3044" ph="/// This method uses the distance calculation in order ... " />
+            <marker date="1549154560788" expanded="true" signature="3078:3569" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="3296:3542" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="3573:3688" ph="/// This method uses the force calculated to ... " />
+            <marker date="1549154560788" expanded="true" signature="3732:4035" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="3815:4032" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="3855:3954" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="3962:4027" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="4039:4161" ph="/// This method utilizes the momentum in order to ... " />
+            <marker date="1549154560788" expanded="true" signature="4189:4390" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="4309:4387" ph="{...}" />
+            <marker date="1549154560788" expanded="true" signature="4393:6324" ph="/*&#9;/// partial derivative of the angle of the Lagrangian equation ... */" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Physics/Gravity.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UI/InsertInPlace.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1341">
-          <caret line="156" column="13" lean-forward="true" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
+        <state relative-caret-position="-829">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding>
-            <marker date="1549153340672" expanded="true" signature="0:383" ph="/* This class utilizes the laws of orbital mechanics ... */" />
-            <marker date="1549153340672" expanded="false" signature="391:477" ph="..." />
-            <marker date="1549153340672" expanded="true" signature="499:6181" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="605:1219" ph="/*&#9;/// constructor will intialize values and convert to Km using ... */" />
-            <marker date="1549153340672" expanded="true" signature="1253:1289" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="1293:1775" ph="/// This calculates the initial velocities of all the bodies. ... " />
-            <marker date="1549153340672" expanded="true" signature="1812:2626" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="2068:2137" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="2107:2133" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="2214:2623" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="2253:2526" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="2561:2619" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="2630:2778" ph="/// This method calculates force applied by each body to ... " />
-            <marker date="1549153340672" expanded="true" signature="2812:2924" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="2894:2906" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="2928:3089" ph="/// This method uses the distance calculation in order ... " />
-            <marker date="1549153340672" expanded="true" signature="3123:3614" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="3341:3587" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="3618:3733" ph="/// This method uses the force calculated to ... " />
-            <marker date="1549153340672" expanded="true" signature="3777:4080" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="3860:4077" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="3900:3999" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="4007:4072" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="4084:4206" ph="/// This method utilizes the momentum in order to ... " />
-            <marker date="1549153340672" expanded="true" signature="4234:4243" ph="{...}" />
-            <marker date="1549153340672" expanded="true" signature="4246:6177" ph="/*&#9;/// partial derivative of the angle of the Lagrangian equation ... */" />
+            <marker date="1548998714034" expanded="false" signature="6:101" ph="..." />
+            <marker date="1548998714034" expanded="true" signature="103:189" ph="/// This class places an orbital body a specified postion ... " />
+            <marker date="1548998714034" expanded="true" signature="232:2660" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="635:730" ph="/// initializes class and begins listening for mouse click ... " />
+            <marker date="1548998714034" expanded="true" signature="747:803" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="809:917" ph="/// This function places each body in the array in its correct position ... " />
+            <marker date="1548998714034" expanded="true" signature="942:2092" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="1090:1236" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="1262:1428" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="1491:1626" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="1645:1788" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="2098:2152" ph="/// scales radius ... " />
+            <marker date="1548998714034" expanded="true" signature="2202:2245" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="2251:2307" ph="/// scales position ... " />
+            <marker date="1548998714034" expanded="true" signature="2374:2488" ph="{...}" />
+            <marker date="1548998714034" expanded="true" signature="2494:2546" ph="/// scales mass ... " />
+            <marker date="1548998714034" expanded="true" signature="2595:2658" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/OrbitalBody.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-159">
+          <folding>
+            <marker date="1548267901762" expanded="false" signature="6:40" ph="..." />
+            <marker date="1548267901762" expanded="true" signature="42:159" ph="/* This class defines an orbital body that is placed in an ... */" />
+            <marker date="1548267901762" expanded="true" signature="177:5343" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="224:5341" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="271:372" ph="/// This function gets and sets the type of body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="399:547" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="458:537" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="611:716" ph="/// This function gets and sets the name of the defined body ... " />
+            <marker date="1548267901762" expanded="true" signature="743:927" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="802:917" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="995:1100" ph="/// This function gets and sets the mass of the body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="1127:1259" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="1187:1249" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="1323:1430" ph="/// This function gets and sets the radius of the body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="1459:1879" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="1520:1869" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="1945:2061" ph="/// This function gets and sets the revolution time of the body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="2090:2232" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="2152:2222" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="2297:2406" ph="/// This function gets and sets the position of the body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="2434:2617" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="2492:2607" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="2682:2791" ph="/// This function gets and sets the velocity of the body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="2819:2946" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="2877:2936" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="3011:3125" ph="/// This function gets and sets the rotation axis of the body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="3159:3307" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="3225:3297" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="3378:3493" ph="/// This function gets and sets the rotation speed of the body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="3526:3666" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="3591:3656" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="3735:3852" ph="/// This function gets and sets the body Damp Amount of the body defined ... " />
+            <marker date="1548267901762" expanded="true" signature="3886:4028" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="3952:4018" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="4098:4193" ph="/// This function is the constructor for the class ... " />
+            <marker date="1548267901762" expanded="true" signature="4387:4803" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="4813:4898" ph="/// This function updates once per frame ... " />
+            <marker date="1548267901762" expanded="true" signature="4928:5272" ph="{...}" />
+            <marker date="1548267901762" expanded="true" signature="4951:5262" ph="/* Motion handled by seperate Rotation script ... */" />
+            <marker date="1548267901762" expanded="true" signature="5302:5335" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Body.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding>
+            <marker date="1548998714033" expanded="false" signature="6:92" ph="..." />
+            <marker date="1548998714033" expanded="true" signature="114:161" ph="{...}" />
+            <marker date="1548998714033" expanded="true" signature="195:199" ph="{...}" />
           </folding>
         </state>
       </provider>

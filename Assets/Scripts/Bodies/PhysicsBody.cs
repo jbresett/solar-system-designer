@@ -7,6 +7,7 @@ public class PhysicsBody : CapiBody {
     private static double SOLAR_MASS_CONVERT = 334672.021419; // Solar Mass in Earths.
     private static double KG_MASS_CONVERT = 5.9722E24; // Earth's Mass in KG.
 
+    private Gravity gravity;
     /// <summary>
     /// Mass of the Body in Sols.
     /// </summary>
@@ -51,12 +52,14 @@ public class PhysicsBody : CapiBody {
     }
 
     new public void Start () {
+        gravity = new Gravity();
         base.Start();
         // Can delete function if not needed in this class: next level down will automatically be called instead.
     }
 
     // Update is called once per frame
     new public void Update () {
+        gravity.calcPosition();
         base.Update();
 	}
 
