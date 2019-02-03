@@ -32,9 +32,17 @@ public class PhysicsBody : CapiBody {
         get { return initialVel; }
         set { initialVel = value; }
     }
-
+    
     [SerializeField]
     protected Vector3d initialVel;
+    public Vector3d momentumVector
+    {
+        get { return momentum; }
+        set { momentum = value; }  
+    }
+
+    [SerializeField]
+    protected Vector3d momentum;
 
     new public void Awake()
     {

@@ -90,8 +90,7 @@ public class Gravity{
 				years = Math.Sqrt(dist);
 				days = years * 360;
 				kmSec = (dist * 2 * Math.PI) / (days * 24 * 60 * 60);
-				initialVel = new Vector3d(0,kmSec,0);
-				body.initialVelocity = initialVel;
+				body.initialVelocity = new Vector3d(0,kmSec,0);
 			}
 			//else for case of star
 			else
@@ -122,18 +121,20 @@ public class Gravity{
 	/// to calculate the force applied to the nbodies
 	/// </summary>
 	/// <returns></returns>
-	public double calculateForce()
+	public Vector3d calculateForce()
 	{
 		List<Body> bodyList = Bodies.getActive();
 		int numBodies = bodyList.Count;
-		double forceApplied = 0;
+		Vector3d forceApplied = new Vector3d();;
 		Vector3d positionDiff;
-		
+		double combinedMass = 0;
+ 
 		for (int i = 0; i < numBodies-1; i++)
 		{
 			positionDiff = bodyList[i].Position - bodyList[i+1].Position;
-			forceApplied += g * bodyList[i].Mass * bodyList[i + 1].Mass 
-			               / (positionDiff.magnitude * positionDiff.magnitude );
+			combinedMass = g * bodyList[i].Mass * bodyList[i + 1].Mass / positionDiff.magnitude * positionDiff.magnitude;
+
+			forceApplied += positionDiff.normalized * combinedMass;
 		}
 
 		return forceApplied;
@@ -143,9 +144,23 @@ public class Gravity{
 	/// This method uses the force calculated to
 	/// update the momentum of the nbodies
 	/// </summary>
-	public void updateMomentum(double force)
+	public void updateMomentum(Vector3d force)
 	{
-		
+		List<Body> bodyList = Bodies.getActive();
+	
+		foreach (Body body in bodyList)
+		{
+			if (body.momentumVector == null)
+			{
+				calcInitialVelocities();
+				body.momentumVector = body.initialVelocity * body.Mass;
+			}
+			else
+			{
+				body.momentumVector = body.momentumVector + force;
+			}
+
+		}
 	}
 	
 	/// <summary>
