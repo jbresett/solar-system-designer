@@ -14,7 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gravity{
+public class Gravity : MonoBehaviour{
 
 	private const double g = -6.67408e-11;
 	private const double time = 100;
@@ -178,7 +178,16 @@ public class Gravity{
 			body.Position = (body.Position + body.momentumVector) / body.Mass;
 		}
 	}
-	
+	new public void Start () {
+		Start();
+		// Can delete function if not needed in this class: next level down will automatically be called instead.
+	}
+
+	// Update is called once per frame
+	new public void Update () {
+		calcPosition();
+
+	}
 //
 //	/// <summary>
 //	/// partial derivative of the angle of the Lagrangian equation

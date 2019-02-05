@@ -52,15 +52,13 @@ public class PhysicsBody : CapiBody {
     }
 
     new public void Start () {
-        gravity = new Gravity();
-        base.Start();
+
         // Can delete function if not needed in this class: next level down will automatically be called instead.
     }
 
     // Update is called once per frame
     new public void Update () {
-        gravity.calcPosition();
-        base.Update();
+
 	}
 
     /// <summary>
