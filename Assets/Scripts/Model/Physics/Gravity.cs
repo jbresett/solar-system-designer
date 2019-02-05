@@ -16,7 +16,7 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour{
 
-	private const double g = -6.67408e-11;
+	private const double g = 6.67408e-11;
 	private const double time = 100;
 
 	private Bodies bodyArray;
@@ -90,12 +90,12 @@ public class Gravity : MonoBehaviour{
 				years = Math.Sqrt(dist);
 				days = years * 360;
 				kmSec = (dist * 2 * Math.PI) / (days * 24 * 60 * 60);
-				body.initialVelocity = new Vector3d(0,kmSec,0);
+				body.initialVelocity = new Vector3d(0,kmSec*1000,0);
 			}
 			//else for case of star
 			else
 			{
-				body.initialVelocity = new Vector3d(0,0,0);
+				body.initialVelocity = new Vector3d(0.01,0,0);
 			}
 		}
 	}
@@ -179,7 +179,6 @@ public class Gravity : MonoBehaviour{
 		}
 	}
 	new public void Start () {
-		Start();
 		// Can delete function if not needed in this class: next level down will automatically be called instead.
 	}
 
