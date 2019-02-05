@@ -6,7 +6,7 @@ public class Bodies {
     public const int MAX = 30;
 
     static private Body[] bodies = new Body[MAX];
-
+         
     /// <summary>
     /// Returns a body by id.
     /// </summary>
@@ -32,11 +32,11 @@ public class Bodies {
     }
 
     static private bool hasInit = false;
-    static public void Init(GameObject bodyContainer)
+    static public void Init(GameObject bodyContainer, GameObject bodyPrefab)
     {
         if (hasInit) return;
         hasInit = true;
-
+        
         // Id pre-existing bodies.
         int i = 0;
         foreach (Body body in Object.FindObjectsOfType<Body>())
@@ -49,8 +49,9 @@ public class Bodies {
         // Generate new bodies.
         for (  ; i < MAX; i++)
         {
-            GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            obj.transform.SetParent(bodyContainer.transform);
+            //GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            //obj.transform.SetParent(bodyContainer.transform);
+            GameObject obj = Object.Instantiate(bodyPrefab, bodyContainer.transform);
             obj.name = "";
             obj.SetActive(false);
             Body body = obj.AddComponent<Body>();

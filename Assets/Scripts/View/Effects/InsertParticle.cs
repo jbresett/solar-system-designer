@@ -8,17 +8,14 @@ using UnityEngine;
 /// </summary>
 public class InsertParticle : MonoBehaviour {
     // Starting Minimal size for the InsertParticleSystem.
-    const float MIN_SIZE = 2;
-
-    // Time in seconds before Particle Object is removed.
-    const float KEEP_ALIVE_TIME = 3.5F;
+    const float MIN_SIZE = 1;
 
     /// <summary>
     ///  
     /// Defines the minimal size of the burst. Used for smaller bodies to keep
     /// visualization working. 
     /// </summary>
-    public Vector3 MinimumSize;
+    public Vector3 MinimumSize = new Vector3(MIN_SIZE, MIN_SIZE, MIN_SIZE);
 
     // Game Object destroy time.
     private float endTime;
@@ -26,20 +23,11 @@ public class InsertParticle : MonoBehaviour {
 
 	void Start () {
         // Sets localScale to greater of parent-scale or minimum size.
-        Transform parent = transform.parent;
-        transform.localScale = Vector3.Max(parent.localScale, MinimumSize);
+        transform.localScale = Vector3.Max(transform.parent.localScale, MinimumSize);
 
-        // Set Game Object destroy time to start time + #.
-        endTime = Time.time + KEEP_ALIVE_TIME;
 	}
 
 	void Update () {
-        
-        // Destroy game object on time out.
-        if (Time.time >= endTime)
-        {
-            Destroy(gameObject);
-        }
-        	
+ 
 	}
 }

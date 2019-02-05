@@ -28,17 +28,32 @@ public class VisualBody : BaseBody {
         }
     }
 
-    new void Awake()
+    new public string Material
     {
-        base.Awake();
+        get { return material; }
+        set
+        {
+            base.Material = value;
+            Material mat = (Material)Resources.Load(value, typeof(Material));
+            gameObject.GetComponent<MeshRenderer>().material = mat;
+        }
     }
 
-	new void Start ()
+    new public void Awake()
+    {
+        base.Awake();
+        if (material != "")
+        {
+            Material = material;
+        }
+    }
+
+	new public void Start ()
     {
         base.Start();
 	}
 
-	new void Update ()
+	new public void Update ()
     {
         base.Update();
         transform.Rotate((Vector3.up * (float)rotation) * Time.deltaTime, Space.Self);

@@ -117,6 +117,14 @@ public class BaseBody : MonoBehaviour {
     [SerializeField]
     protected Vector3d velocity;
 
+    public string Material
+    {
+        get { return material; }
+        set { material = value; }
+    }
+    [SerializeField]
+    protected string material;
+
     public void Awake()
     {
         // Leave in to ensure no issues with extended classes.
