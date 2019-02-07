@@ -15,13 +15,18 @@ using UnityEngine;
 /// Permissions can be changed by the instructor in the case of a live session.
 /// Permissions are checked by the software prior to any action that could require a permission. 
 /// </summary>
-public class Perm: MonoBehaviour {
+public class Perm {
 
     private static string[] INVALID_COMMAND = { "Invalid Command. Use: perm (add/remove/list) [name]." };
 
-    private void Start()
+    static public void Init()
     {
         Debugger.AddProcessor(ProcessCmd);
+    }
+
+    static public void Start()
+    {
+        
     }
 
     // Processes 
@@ -79,7 +84,7 @@ public class Perm: MonoBehaviour {
     /// <returns>True if the user has the permission set.</returns>
     static public bool Has(string perm, bool exact = false)
     {
-        ExposedData exp = Main.Instance.Exposed;
+        ExposedData exp = Capi.Exposed;
         
         // Loop for checking upper level permission as well.
         while (true)
@@ -124,7 +129,7 @@ public class Perm: MonoBehaviour {
     /// <returns></returns>
     static public List<string> getList()
     {
-        return new List<string>(Main.Instance.Exposed.Perms.getList());
+        return new List<string>(Capi.Exposed.Perms.getList());
     }
 
     /// <summary>
@@ -134,7 +139,7 @@ public class Perm: MonoBehaviour {
     /// <returns>True if the permission is added, false if it already exists.</returns>
     static public bool Add(string perm)
     {
-        ExposedData exp = Main.Instance.Exposed;
+        ExposedData exp = Capi.Exposed;
         List<string> list = exp.Perms.getList();
 
         // Check if permission already exists.
@@ -155,7 +160,7 @@ public class Perm: MonoBehaviour {
     /// <returns>True if any permission was removed, false if the node (or any children for removeChilden) did not exist to begin with.</returns>
     static public bool Remove(string perm, bool removeChildren = false)
     {
-        ExposedData exp = Main.Instance.Exposed;
+        ExposedData exp = Capi.Exposed;
         List<string> list = exp.Perms.getList();
 
         // Gets initial size to later check for any changes.
@@ -179,7 +184,7 @@ public class Perm: MonoBehaviour {
     /// <returns>True if cleared, false if nothing to clear.</returns>
     static public bool Clear()
     {
-        ExposedData exp = Main.Instance.Exposed;
+        ExposedData exp = Capi.Exposed;
         List<string> list = exp.Perms.getList();
 
         if (list.Count == 0) return false;
@@ -189,5 +194,6 @@ public class Perm: MonoBehaviour {
 
         return true;
     }
+
 
 }

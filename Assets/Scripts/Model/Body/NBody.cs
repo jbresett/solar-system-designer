@@ -11,34 +11,34 @@ static public class NBody {
     
     public const int MAX_BODY_COUNT = 30;
 
-    static PhysicsBody[] Bodies = new PhysicsBody[MAX_BODY_COUNT];
+    //static Planets.PhysicsBody[] Bodies = new Planets.PhysicsBody[MAX_BODY_COUNT];
 
-    static public int register(PhysicsBody body)
-    {
+//    static public int register(Planets.PhysicsBody body)
+//    {
+//
+////        for (int i = 0; i < MAX_BODY_COUNT; i++)
+////        {
+////            if (Bodies[i] == null) {
+////                Bodies[i] = body;
+////                return i;
+////            }
+////        }
+//        throw new OverflowException("Already at max body count.");
+//    }
 
-        for (int i = 0; i < MAX_BODY_COUNT; i++)
-        {
-            if (Bodies[i] == null) {
-                Bodies[i] = body;
-                return i;
-            }
-        }
-        throw new OverflowException("Already at max body count.");
-    }
-
-    static public bool unregister(PhysicsBody body)
-    {
-        for (int i = 0; i < MAX_BODY_COUNT; i++)
-        {
-            if (Bodies[i] == body)
-            {
-                Bodies[i] = null;
-                return true;
-            }
-        }
-        // Not Found.
-        return false;
-    }
+//    static public bool unregister(Planets.PhysicsBody body)
+//    {
+//        for (int i = 0; i < MAX_BODY_COUNT; i++)
+//        {
+//            if (Bodies[i] == body)
+//            {
+//                Bodies[i] = null;
+//                return true;
+//            }
+//        }
+//        // Not Found.
+//        return false;
+//    }
 
 
     /// <summary>
@@ -55,7 +55,7 @@ static public class NBody {
         set
         {
             time = value;
-            Main.Instance.Exposed.Time.setValue((float)value);
+            Capi.Exposed.Time.setValue((float)value);
         }
     }
     static private double time;
@@ -76,7 +76,7 @@ static public class NBody {
         {
             focused = value;
             // Instantly updates Exposed value.
-            Main.Instance.Exposed.FocusedBody.setValue(value);
+            Capi.Exposed.FocusedBody.setValue(value);
         }
     }
     static private string focused;

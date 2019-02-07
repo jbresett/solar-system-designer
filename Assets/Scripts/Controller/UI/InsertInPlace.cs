@@ -1,5 +1,6 @@
 using System;
 using Planets;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,17 +11,19 @@ using UnityEngine.UI;
 public class InsertInPlace : MonoBehaviour
 {
     public Button button;
-    new public InputField name;
-    public Dropdown type;
-    public InputField xPos;
-    public InputField yPos;
-    public InputField zPos;
-    public InputField xVel;
-    public InputField yVel;
-    public InputField zVel;
-    public InputField radius;
-    public InputField mass;
+    public TMP_InputField name;
+    public TMP_Dropdown type;
+    public TMP_InputField xPos;
+    public TMP_InputField yPos;
+    public TMP_InputField zPos;
+    public TMP_InputField xVel;
+    public TMP_InputField yVel;
+    public TMP_InputField zVel;
+    public TMP_InputField radius;
+    public TMP_InputField mass;
     public GameObject planetBase;
+
+    public GameObject UseParticleSystem;
 
     /// <summary>
     /// initializes class and begins listening for mouse click
@@ -35,29 +38,40 @@ public class InsertInPlace : MonoBehaviour
     /// </summary>
     public void insert()
     {
-        GameObject[] bodies = GameObject.FindGameObjectsWithTag("OrbitalBody");
-        Debug.Log(bodies);
-        String bodyName = name.text;
-        int id = 1;
-        foreach (var b in bodies)
+        GameObject obj = Bodies.activateNext();
+        Body script = obj.GetComponent<Body>();
+        script.Name = name.text;
+
+        try
         {
-            if (b.name == bodyName)
-            {
-                bodyName = name.text + id;
-                id++;
-            }
+            script.InitialPosition = new Vector3d(double.Parse(xPos.text), double.Parse(yPos.text), double.Parse(zPos.text));
         }
-        //Vector3 pos = new Vector3();
-        //Quaternion rot = new Quaternion(0,0,0,0);
-        GameObject body = Instantiate(planetBase);
-        body.SetActive(true);
-        body.name = bodyName;
-        OrbitalBody script = body.AddComponent<OrbitalBody>();
-        script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
-        //script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
-        script.Radius = (float)convertRadiUnits(double.Parse(radius.text));
-        script.Mass = (float)convertMassUnits(double.Parse(mass.text));
-        script.Type = type.options[type.value].text;
+        catch (Exception)
+        {
+            script.InitialPosition = new Vector3d(0.0, 0.0, 0.0);
+            Debugger.log("Invalid Position for Insert. Using base of (0,0,0)");
+        }
+        script.Position = script.InitialPosition;
+
+        try
+        { 
+            script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
+        } catch (Exception) {
+            script.Vel = new Vector3d(0.0,0.0,0.0);
+            Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
+        }
+       
+        script.Diameter = double.Parse(radius.text);
+        script.Mass = convertMassUnits(double.Parse(mass.text));
+        //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
+        script.Type = type.options[type.value].text.Enum<BodyType>();
+
+        //obj.AddComponent<InsertParticleSystem>();
+        //Instantiate(InsertParticleSystem);
+        //InsertParticleSystem.
+        Instantiate(UseParticleSystem, obj.transform);
+        //particleSystem.transform.parent = obj.transform;
+        //particleSystem.SetActive(true);
     }
 
     /// <summary>

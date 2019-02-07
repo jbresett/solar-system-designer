@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Extensions;
 
 
 /// <summary>
@@ -34,8 +33,6 @@ public class ExposedData {
     public SimCapiString FocusedBody;
 
     public SimCapiStringArray Perms;
-
-    private int priorCount = NBody.MAX_BODY_COUNT;
 
     // Permission switch for "create" perm.
     public SimCapiBoolean CanCreate;

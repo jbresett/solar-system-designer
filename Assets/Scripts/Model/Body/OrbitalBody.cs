@@ -94,6 +94,21 @@ namespace Planets
         public float revTime;
 
         /// <summary>
+        /// This function gets and sets the position of the body defined
+        /// </summary>
+        public Vector3d Pos
+        {
+            get { return pos; }
+            set
+            {
+                pos = value;
+                //Main.Instance.Exposed.BodyUpdate(this);
+            }
+        }
+        [SerializeField]
+        private Vector3d pos;
+
+        /// <summary>
         /// This function gets and sets the velocity of the body defined
         /// </summary>
         public Vector3d Vel
@@ -156,7 +171,7 @@ namespace Planets
         /// <summary>
         /// This function is the constructor for the class
         /// </summary>
-        public OrbitalBody(string system, string type, string name, double mass, float radius, float revTime, Vector3d vel, float bodyRotAxis, float bodyRotSpd, float bodyDampAmt)
+        public OrbitalBody(string system, string type, string name, double mass, float radius, float revTime, Vector3d pos, Vector3d vel, float bodyRotAxis, float bodyRotSpd, float bodyDampAmt)
         {
             this.system = system;
             this.type = type;
@@ -166,6 +181,7 @@ namespace Planets
 
             this.mass = mass;
             this.revTime = revTime;
+            this.pos = pos;
             this.vel = vel;
             this.bodyRotAxis = bodyRotAxis;
             this.bodyRotSpd = bodyRotSpd;
@@ -185,5 +201,9 @@ namespace Planets
             */
         }
 
+        private void Start()
+        {
+            
+        }
     }
 }

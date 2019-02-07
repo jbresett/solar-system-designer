@@ -5,10 +5,13 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
+// Old Body Tests not in use. Can rebuild later with Physics Body.
+#if false
+
 #pragma warning disable CS0618 // Type or member is obsolete
 public class BodyTests {
-    private Body Sun;
-    private Body Earth;
+    private OldBody Sun;
+    private OldBody Earth;
 
     /// <summary>
     /// Tests the degrees at any given time.
@@ -54,3 +57,5 @@ public class BodyTests {
         yield return null;
     }
 }
+
+#endif

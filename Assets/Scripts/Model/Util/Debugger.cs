@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Debugger : MonoBehaviour {
+public class Debugger {
     public delegate string[] ProcessDelegate(string[] arguments);
     public delegate void OutputDelegate(string[] lines);
 
@@ -67,7 +67,9 @@ public class Debugger : MonoBehaviour {
     {
         // Log in System Default as well.
         Debug.Log(msg);
-        OutputEvent(new string[] { msg } );
+        if (OutputEvent != null) { 
+            OutputEvent(new string[] { msg } );
+        }
     }
    
 }
