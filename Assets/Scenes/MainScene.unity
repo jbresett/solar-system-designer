@@ -16723,6 +16723,62 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 765939683}
   m_CullTransparentMesh: 0
+--- !u!1001 &788508641
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1479952175}
+    m_Modifications:
+    - target: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835317294241454, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+      propertyPath: m_Name
+      value: Planet
+      objectReference: {fileID: 0}
+    - target: {fileID: 23922857776590058, guid: df8d36286c0018b47b808d29000608cd,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dd7e896a14610484ca604d0421981546, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df8d36286c0018b47b808d29000608cd, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &788508642 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4273283828206422, guid: df8d36286c0018b47b808d29000608cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 788508641}
 --- !u!1 &789922901
 GameObject:
   m_ObjectHideFlags: 0
@@ -30790,6 +30846,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 352976050}
+  - {fileID: 788508642}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

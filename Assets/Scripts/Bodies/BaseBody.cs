@@ -17,7 +17,7 @@ public class BaseBody : MonoBehaviour {
         set { active = value; }
     }
     [SerializeField]
-    protected bool active = true;
+    protected bool active;
     
 
     /// <summary>

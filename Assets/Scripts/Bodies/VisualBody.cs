@@ -46,6 +46,11 @@ public class VisualBody : BaseBody {
         {
             Material = material;
         }
+        
+        if (Position == null)
+        {
+            base.Position = new Vector3d(transform.localPosition / POSITION_MULT);
+        }
     }
 
 	new public void Start ()

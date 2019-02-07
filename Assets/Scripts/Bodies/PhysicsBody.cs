@@ -7,6 +7,7 @@ public class PhysicsBody : CapiBody {
     private static double SOLAR_MASS_CONVERT = 334672.021419; // Solar Mass in Earths.
     private static double KG_MASS_CONVERT = 5.9722E24; // Earth's Mass in KG.
 
+    private Gravity gravity;
     /// <summary>
     /// Mass of the Body in Sols.
     /// </summary>
@@ -32,9 +33,17 @@ public class PhysicsBody : CapiBody {
         get { return initialVel; }
         set { initialVel = value; }
     }
-
+    
     [SerializeField]
     protected Vector3d initialVel;
+    public Vector3d momentumVector
+    {
+        get { return momentum; }
+        set { momentum = value; }  
+    }
+
+    [SerializeField]
+    protected Vector3d momentum;
 
     new public void Awake()
     {
@@ -43,13 +52,13 @@ public class PhysicsBody : CapiBody {
     }
 
     new public void Start () {
-        base.Start();
+
         // Can delete function if not needed in this class: next level down will automatically be called instead.
     }
 
     // Update is called once per frame
     new public void Update () {
-        base.Update();
+
 	}
 
     /// <summary>

@@ -345,6 +345,10 @@ public class Vector3d
 
     public static bool operator== (Vector3d vecA, Vector3d vecB)
     {
+        if (object.ReferenceEquals(vecA, null))
+        {
+            return object.ReferenceEquals(vecB, null);
+        }
         return vecA.Equals(vecB);
     }
 

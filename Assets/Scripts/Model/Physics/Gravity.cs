@@ -14,9 +14,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gravity{
+public class Gravity : MonoBehaviour{
 
-	private const double g = -6.67408e-11;
+	private const double g = 6.67408e-11;
 	private const double time = 100;
 
 	private Bodies bodyArray;
@@ -45,9 +45,9 @@ public class Gravity{
 //	/// constructor will intialize values and convert to Km using
 //	/// constants defined.
 //	/// </summary>
-	public Gravity(Bodies bodyArray)
+	public Gravity()
 	{
-		this.bodyArray = bodyArray;
+
 	}
 	
 	/// <summary>
@@ -90,13 +90,12 @@ public class Gravity{
 				years = Math.Sqrt(dist);
 				days = years * 360;
 				kmSec = (dist * 2 * Math.PI) / (days * 24 * 60 * 60);
-				initialVel = new Vector3d(0,kmSec,0);
-				body.initialVelocity = initialVel;
+				body.initialVelocity = new Vector3d(0,kmSec*1000,0);
 			}
 			//else for case of star
 			else
 			{
-				body.initialVelocity = new Vector3d(0,0,0);
+				body.initialVelocity = new Vector3d(0.01,0,0);
 			}
 		}
 	}
@@ -122,18 +121,21 @@ public class Gravity{
 	/// to calculate the force applied to the nbodies
 	/// </summary>
 	/// <returns></returns>
-	public double calculateForce()
+	public Vector3d calculateForce()
 	{
 		List<Body> bodyList = Bodies.getActive();
 		int numBodies = bodyList.Count;
-		double forceApplied = 0;
+		Vector3d forceApplied = new Vector3d();;
 		Vector3d positionDiff;
-		
+		double combinedMass = 0;
+ 
 		for (int i = 0; i < numBodies-1; i++)
 		{
+            //Debugger.log("Comparing " + i + " " + bodyList[i].name + bodyList[i].Position + " " + bodyList[i+1].name + bodyList[i + 1].Position);
 			positionDiff = bodyList[i].Position - bodyList[i+1].Position;
-			forceApplied += g * bodyList[i].Mass * bodyList[i + 1].Mass 
-			               / (positionDiff.magnitude * positionDiff.magnitude );
+			combinedMass = g * bodyList[i].Mass * bodyList[i + 1].Mass / positionDiff.magnitude * positionDiff.magnitude;
+
+			forceApplied += positionDiff.normalized * combinedMass;
 		}
 
 		return forceApplied;
@@ -143,9 +145,23 @@ public class Gravity{
 	/// This method uses the force calculated to
 	/// update the momentum of the nbodies
 	/// </summary>
-	public void updateMomentum(double force)
+	public void updateMomentum(Vector3d force)
 	{
-		
+		List<Body> bodyList = Bodies.getActive();
+	
+		foreach (Body body in bodyList)
+		{
+			if (body.momentumVector == null)
+			{
+				calcInitialVelocities();
+				body.momentumVector = body.initialVelocity * body.Mass;
+			}
+			else
+			{
+				body.momentumVector = body.momentumVector + force;
+			}
+
+		}
 	}
 	
 	/// <summary>
@@ -154,9 +170,24 @@ public class Gravity{
 	/// </summary>
 	public void calcPosition()
 	{
+		List<Body> bodyList = Bodies.getActive();
 		
+		updateMomentum(calculateForce());
+		foreach (Body body in bodyList)
+		{
+			body.Position = (body.Position + body.momentumVector) / body.Mass;
+		}
 	}
-	
+
+	public void Start () {
+		// Can delete function if not needed in this class: next level down will automatically be called instead.
+	}
+
+	// Update is called once per frame
+	public void Update () {
+		calcPosition();
+
+	}
 //
 //	/// <summary>
 //	/// partial derivative of the angle of the Lagrangian equation
