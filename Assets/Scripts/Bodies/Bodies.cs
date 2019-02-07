@@ -54,7 +54,8 @@ public class Bodies {
             GameObject obj = Object.Instantiate(bodyPrefab, bodyContainer.transform);
             obj.name = "";
             obj.SetActive(false);
-            Body body = obj.AddComponent<Body>();
+
+            Body body = obj.GetComponent<Body>();
             body.Id = i;
             bodies[i] = body;
         }
