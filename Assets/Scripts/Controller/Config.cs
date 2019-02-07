@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Config : MonoBehaviour {
 
-    string versionNum = "1.0.0";
-
-    public string updateVersion()
+    public string Version
     {
         get { return versionNum; }
         //set {versionNum = placeholder;}
