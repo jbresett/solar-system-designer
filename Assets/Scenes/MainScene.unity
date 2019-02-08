@@ -10404,7 +10404,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
+  m_fontSize: 20.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11080,7 +11080,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
+  m_fontSize: 20.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16771,6 +16771,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dd7e896a14610484ca604d0421981546, type: 2}
+    - target: {fileID: 114458855037137440, guid: df8d36286c0018b47b808d29000608cd,
+        type: 2}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df8d36286c0018b47b808d29000608cd, type: 2}
   m_IsPrefabAsset: 0
@@ -21125,6 +21130,11 @@ Prefab:
     - target: {fileID: 1835317294241454, guid: df8d36286c0018b47b808d29000608cd, type: 2}
       propertyPath: m_Name
       value: Sun
+      objectReference: {fileID: 0}
+    - target: {fileID: 114458855037137440, guid: df8d36286c0018b47b808d29000608cd,
+        type: 2}
+      propertyPath: mass
+      value: 1300000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df8d36286c0018b47b808d29000608cd, type: 2}
@@ -30827,6 +30837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1479952175}
+  - component: {fileID: 1479952176}
   m_Layer: 0
   m_Name: BodyContainer
   m_TagString: Untagged
@@ -30850,6 +30861,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479952176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1479952174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ec25f55de49412796ea316fa04cb4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1495975067
 GameObject:
   m_ObjectHideFlags: 0
@@ -39133,7 +39155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.95, y: 0.9}
-  m_AnchoredPosition: {x: 0, y: -14.999939}
+  m_AnchoredPosition: {x: 0, y: -15}
   m_SizeDelta: {x: 0, y: -15}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1892804626
@@ -39927,7 +39949,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
+  m_fontSize: 20.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -44630,7 +44652,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
+  m_fontSize: 20.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
