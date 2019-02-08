@@ -9,7 +9,7 @@ public class BaseBody : MonoBehaviour {
         set { id = value; }
     }
     [SerializeField]
-    protected int id = -1;
+    protected int id;
 
     public bool Active
     {
