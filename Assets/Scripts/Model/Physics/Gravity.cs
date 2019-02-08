@@ -4,7 +4,6 @@
 /// along with their distance from eachother.
 ///
 /// The formulas for this class were obtained from
-/// https://evgenii.com/blog/earth-orbit-simulation
 /// https://www.wired.com/2016/06/way-solve-three-body-problem/
 /// @author Jack Northcutt
 /// </summary>
@@ -82,21 +81,21 @@ public class Gravity : MonoBehaviour{
 		// checking distance and calculating.
 		foreach (Body body in bodyList)
 		{
-			if (body.Type != BodyType.Star)
-			{
-				baryDistVec = body.GetBaycenter(sun);
-				dist = baryDistVec[2];
-				dist = dist * dist * dist;
-				years = Math.Sqrt(dist);
-				days = years * 360;
-				kmSec = (dist * 2 * Math.PI) / (days * 24 * 60 * 60);
-				body.initialVelocity = new Vector3d(0,kmSec*1000,0);
-			}
-			//else for case of star
-			else
-			{
-				body.initialVelocity = new Vector3d(0.01,0,0);
-			}
+//			if (body.Type != BodyType.Star)
+//			{
+//				baryDistVec = body.GetBaycenter(sun);
+//				dist = baryDistVec[2];
+//				dist = dist * dist * dist;
+//				years = Math.Sqrt(dist);
+//				days = years * 360;
+//				kmSec = (dist * 2 * Math.PI) / (days * 24 * 60 * 60);
+//				body.initialVelocity = new Vector3d(0,kmSec/1000,0);
+//			}
+//			//else for case of star
+//			else
+//			{
+				body.initialVelocity = new Vector3d(0,0,0.01);
+//			}
 		}
 	}
 	
@@ -177,10 +176,6 @@ public class Gravity : MonoBehaviour{
 		{
 			body.Position = (body.Position + body.momentumVector) / body.Mass;
 		}
-	}
-
-	public void Start () {
-		// Can delete function if not needed in this class: next level down will automatically be called instead.
 	}
 
 	// Update is called once per frame
