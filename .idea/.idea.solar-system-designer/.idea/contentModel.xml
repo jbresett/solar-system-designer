@@ -25,6 +25,7 @@
             <e p="VisualBody.cs" t="Include" />
           </e>
           <e p="Controller" t="Include">
+            <e p="Config.cs" t="Include" />
             <e p="Controls" t="Include">
               <e p="CameraControls.cs" t="Include" />
               <e p="KeyboardShortcut.cs" t="Include" />
@@ -91,6 +92,7 @@
           <e p="View" t="Include">
             <e p="Effects" t="Include">
               <e p="GenerateRings.cs" t="Include" />
+              <e p="InsertParticle.cs" t="Include" />
             </e>
             <e p="Motion" t="Include">
               <e p="Rotation.cs" t="Include" />
