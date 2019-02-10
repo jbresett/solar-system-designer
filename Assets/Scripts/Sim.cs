@@ -4,25 +4,42 @@ using UnityEngine;
 
 public class Sim : MonoBehaviour {
 
+    static public Config Config {
+        get { return Config.Instance; }
+    }
     /// <summary>
     /// Time Ratios for Speed.  Used by the Capi interface default options (can be manually set in Capi as well).
     /// </summary>
     public enum SpeedRatio
-    {   
+    {
         Custom = int.MinValue, // For Capi Interface.
         Paused = 0,
         Second = 1,
         Minute = 60,
-        Hour =   360,
-        Day =    86400,
-        Month =  2629800,
+        Hour = 360,
+        Day = 86400,
+        Month = 2629800,
         Year = 31557600,
     }
 
     // Location for the Active and Inactive body containers.
     public GameObject BodyContainer;
-
     public GameObject BodyPrefab;
+
+    public string version;
+
+    // Instance for Sim
+    static private Sim instance;
+    static public Sim Instance {
+       get
+       {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<Sim>();
+            }
+            return instance;
+       }
+    }
 
     [SerializeField]
     /// <summary>

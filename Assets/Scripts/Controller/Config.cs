@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Config : MonoBehaviour {
+public class Config : Singleton<Config> {
 
     public string Version
     {
-        get { return versionNum; }
-        //set {versionNum = placeholder;}
+        get { return FindObjectOfType<Sim>().version; }
+        set { FindObjectOfType<Sim>().version = value; }
     }
-    private string versionNum = "1.1.0";
+
 }
