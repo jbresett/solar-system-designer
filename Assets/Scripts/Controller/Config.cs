@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Config : MonoBehaviour {
+public class Config : Singleton<Config> {
 
     public string version = "1.0.0";
     public TextMeshProUGUI versionNumText;
@@ -15,11 +15,8 @@ public class Config : MonoBehaviour {
 
     public TextMeshProUGUI getVersionNum()
     {
-        return versionNumText.text;
+        get { return FindObjectOfType<Sim>().version; }
+        set { FindObjectOfType<Sim>().version = value; }
     }
 
-    public void setVersionNum(string version)
-    {
-        versionNumText.text = version;
-    }
 }

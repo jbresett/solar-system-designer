@@ -33,109 +33,6 @@ public class CameraControls : MonoBehaviour {
     [SerializeField]
     private bool enableMouse = true;
     
-    
-    // Camera Panning
-    public KeyCode MoveUp
-    {
-        get { return moveUp;  }
-        set { moveUp = value; }
-    }
-    [SerializeField]
-    private KeyCode moveUp = KeyCode.W;
-    
-    public KeyCode MoveDown
-    {
-        get { return moveDown;  }
-        set { moveDown = value; }
-    }
-    [SerializeField]
-    private KeyCode moveDown = KeyCode.S;
-    
-    public KeyCode MoveLeft
-    {
-        get { return moveLeft;  }
-        set { moveLeft = value; }
-    }
-    [SerializeField]
-    private KeyCode moveLeft = KeyCode.A;
-    
-    public KeyCode MoveRight
-    {
-        get { return moveRight;  }
-        set { moveRight = value; }
-    }
-    [SerializeField]
-    private KeyCode moveRight = KeyCode.D;
-    
-    public KeyCode MoveIn
-    {
-        get { return moveIn;  }
-        set { moveIn = value; }
-    }
-    [SerializeField]
-    private KeyCode moveIn = KeyCode.F;
-    
-    public KeyCode MoveOut
-    {
-        get { return moveOut;  }
-        set { moveOut = value; }
-    }
-
-    [SerializeField]
-    private KeyCode moveOut = KeyCode.C;
-    
-    // Camera FOV
-    
-    public KeyCode ViewIn
-    {
-        get { return viewIn;  }
-        set { viewIn = value; }
-    }
-    [SerializeField]
-    private KeyCode viewIn = KeyCode.G;
-    
-    public KeyCode ViewOut
-    {
-        get { return viewOut;  }
-        set { viewOut = value; }
-    }
-    [SerializeField]
-    private KeyCode viewOut = KeyCode.V;
-    
-    // Camera Rotation
-    
-    public KeyCode RotUp
-    {
-        get { return rotUp;  }
-        set { rotUp = value; }
-    }
-    [SerializeField]
-    private KeyCode rotUp = KeyCode.UpArrow;
-    
-    public KeyCode RotDown
-    {
-        get { return rotDown;  }
-        set { rotDown = value; }
-    }
-    [SerializeField]
-    private KeyCode rotDown = KeyCode.DownArrow;
-    
-    public KeyCode RotLeft
-    {
-        get { return rotLeft;  }
-        set { rotLeft = value; }
-    }
-    [SerializeField]
-    private KeyCode rotLeft = KeyCode.LeftArrow;
-    
-    public KeyCode RotRight
-    {
-        get { return rotRight;  }
-        set { rotRight = value; }
-    }
-    [SerializeField]
-    private KeyCode rotRight = KeyCode.RightArrow;
-
     // Basic Constants
     const float KEYBOARD_MOVE = 1000F;
     private const float FOVAdjust = .1f;
@@ -197,62 +94,65 @@ public class CameraControls : MonoBehaviour {
         // Move Factor is based on Base movement speed * User Preferences.
         float MoveFactor = KEYBOARD_MOVE * Time.deltaTime * (float)Preferences.Keyboard.Movement;
 
+        // Get Controls
+        var controls = Sim.Settings.KeyControls;
+        
         //Up
-        if (Input.GetKey(moveUp))
+        if (Input.GetKey(controls[Direction.MoveUp]))
         {
             Camera.main.transform.position -= Camera.main.transform.up * MoveFactor;
         }
 
         //Down
-        if (Input.GetKey(moveDown))
+        if (Input.GetKey(controls[Direction.MoveDown]))
         {
             Camera.main.transform.position += Camera.main.transform.up * MoveFactor;
         }
 
         //Left
-        if (Input.GetKey(moveRight))
+        if (Input.GetKey(controls[Direction.MoveLeft]))
         {
             Camera.main.transform.position -= Camera.main.transform.right * MoveFactor;
         }
 
         //Right
-        if (Input.GetKey(moveLeft))
+        if (Input.GetKey(controls[Direction.MoveRight]))
         {
             Camera.main.transform.position += Camera.main.transform.right * MoveFactor;
         }
 
         // Move Forward
-        if (Input.GetKey(moveIn))
+        if (Input.GetKey(controls[Direction.MoveForward]))
         {
             Camera.main.transform.position += Camera.main.transform.forward * MoveFactor;
         }
 
         // Move Backward
-        if (Input.GetKey(moveOut))
+        if (Input.GetKey(controls[Direction.MoveBackward]))
         {
             Camera.main.transform.position -= Camera.main.transform.forward * MoveFactor;
         }
 
         // Zoom In
-        if (Input.GetKey(viewIn))
+        if (Input.GetKey(controls[Direction.ZoomIn]))
         {
             Camera.main.fieldOfView += FOVAdjust;
         }
 
         // Move Backward
-        if (Input.GetKey(viewOut))
+        if (Input.GetKey(controls[Direction.ZoomOut]))
         {
             Camera.main.fieldOfView -= FOVAdjust;
         }
 
         // Rotate Camera (note, the vectors are correct despite not matching the key)
-        if (Input.GetKey(rotLeft))
+        if (Input.GetKey(controls[Direction.RotLeft]))
             Camera.main.transform.Rotate(Vector3.down,rotateSpeed*Time.deltaTime);
-        if (Input.GetKey(rotRight))
+        if (Input.GetKey(controls[Direction.RotRight]))
             Camera.main.transform.Rotate(Vector3.up,rotateSpeed*Time.deltaTime);
-        if (Input.GetKey(rotUp))
+        if (Input.GetKey(controls[Direction.RotUp]))
             Camera.main.transform.Rotate(Vector3.left,rotateSpeed*Time.deltaTime);
-        if (Input.GetKey(rotDown))
+        if (Input.GetKey(controls[Direction.RotDown]))
             Camera.main.transform.Rotate(Vector3.right,rotateSpeed*Time.deltaTime);
     }
 

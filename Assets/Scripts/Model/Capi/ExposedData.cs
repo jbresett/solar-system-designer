@@ -23,9 +23,10 @@ public class ExposedData {
      */
 
     /// <summary>
-    /// Current simulation time in days from starting point.
+    /// Current simulation speed.
     /// </summary>
-    public SimCapiNumber Time;
+    public SimCapiNumber Speed;
+    public SimCapiEnum<Sim.SpeedRatio> SpeedRatio;
 
     /// <summary>
     /// Body that currently has focus. Empty string ("") means no body is currently selected (free camera).
@@ -44,7 +45,8 @@ public class ExposedData {
     /// Sets initial values.
     /// </summary>
     public ExposedData() {
-        Time = new SimCapiNumber(0F);
+        Speed = new SimCapiNumber(0F);
+        SpeedRatio = new SimCapiEnum<Sim.SpeedRatio>(Sim.SpeedRatio.Paused);
         FocusedBody = new SimCapiString("");
         CanCreate = new SimCapiBoolean(false);
         Perms = new SimCapiStringArray();
@@ -55,7 +57,8 @@ public class ExposedData {
     /// </summary>
     public void exposeAll()
     {
-        Time.expose("Time", false, false);
+        Speed.expose("Speed", false, false);
+        SpeedRatio.expose("Speed ", false, false);
         FocusedBody.expose("Focused", false, false);
         CanCreate.expose("Can Create", false, false);
         Perms.expose("Perm", true, false);
@@ -75,11 +78,30 @@ public class ExposedData {
     /// </summary>
     public void setDeligates()
     {
-
-        Time.setChangeDelegate(
+        Speed.setChangeDelegate(
             delegate (float value, ChangedBy changedBy)
             {
-                // Any changes done by the SIM go through the NBody system first, which updates the Exposed Data.
+                // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
+                if (changedBy == ChangedBy.SIM)
+                {
+                }
+                // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
+                else
+                {
+                    Sim.Speed = value;
+                }
+
+                // Update SpeedRatio
+                SpeedRatio.setValue(Sim.SpeedRatio.Custom);
+
+            }
+
+        );
+
+        SpeedRatio.setChangeDelegate(
+            delegate (Sim.SpeedRatio value, ChangedBy changedBy)
+            {
+                // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
                 if (changedBy == ChangedBy.SIM)
                 {
                     // Not further effects here at this time.
@@ -87,12 +109,13 @@ public class ExposedData {
                 // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
                 else
                 {
-                    NBody.Time = value;
+                    Sim.Speed = (int)value;
                 }
-                Time.setValue(value);
 
             }
+
         );
+
 
         FocusedBody.setChangeDelegate(
            delegate (String value, ChangedBy changedBy)
