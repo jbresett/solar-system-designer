@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class TransformUtils {
+public static class TransformExtension{
 
     /// <summary>
     /// Finds any child or grandchild with a given name.

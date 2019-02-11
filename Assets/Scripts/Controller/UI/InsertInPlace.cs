@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class InsertInPlace : MonoBehaviour
 {
     public Button button;
-    public TMP_InputField name;
+    public TMP_InputField objName;
     public TMP_Dropdown type;
     public TMP_InputField xPos;
     public TMP_InputField yPos;
@@ -40,7 +40,7 @@ public class InsertInPlace : MonoBehaviour
     {
         GameObject obj = Bodies.activateNext();
         Body script = obj.GetComponent<Body>();
-        script.Name = name.text;
+        script.Name = objName.text;
 
         try
         {
@@ -69,7 +69,7 @@ public class InsertInPlace : MonoBehaviour
         //obj.AddComponent<InsertParticleSystem>();
         //Instantiate(InsertParticleSystem);
         //InsertParticleSystem.
-        Instantiate(UseParticleSystem, obj.transform);
+        //Instantiate(UseParticleSystem, obj.transform);
         //particleSystem.transform.parent = obj.transform;
         //particleSystem.SetActive(true);
     }

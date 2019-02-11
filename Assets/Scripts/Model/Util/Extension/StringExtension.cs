@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Extension Utilities.
-public static class StringUtil
+public static class StringExtension
 {
 
     /// <summary>
