@@ -7,6 +7,11 @@ public class Sim : MonoBehaviour {
     static public Config Config {
         get { return Config.Instance; }
     }
+
+    static public Settings Settings
+    {
+        get { return Settings.Instance; }
+    }
     /// <summary>
     /// Time Ratios for Speed.  Used by the Capi interface default options (can be manually set in Capi as well).
     /// </summary>
