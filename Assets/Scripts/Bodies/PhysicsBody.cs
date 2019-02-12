@@ -6,8 +6,14 @@ public class PhysicsBody : CapiBody {
 
     private static double SOLAR_MASS_CONVERT = 334672.021419; // Solar Mass in Earths.
     private static double KG_MASS_CONVERT = 5.9722E24; // Earth's Mass in KG.
+    private static double M_TO_AU = 1.496E11; //AU represented in meters
+    public Vector3d Pos {
 
-    private Gravity gravity;
+            get { return Position * M_TO_AU; }
+            set { Position = value / M_TO_AU; }
+
+    }
+    
     /// <summary>
     /// Mass of the Body in Sols.
     /// </summary>

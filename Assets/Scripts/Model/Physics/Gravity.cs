@@ -15,39 +15,7 @@ using UnityEngine;
 
 public class Gravity : MonoBehaviour{
 
-	private const double g = 6.67408e-11;
-	private const double time = 100;
-
-	private Bodies bodyArray;
-
-//	//mass
-//	private double stillBody;
-//	private double moveBody;
-//
-//	//distance and angle
-//	private double distance;
-//	private double angle;
-//
-//	//current distance of the planet from sun
-//	private double currentDistance;
-//
-//	//current velocity at which a planet travels around the star
-//	private double currentDistVel;
-//
-//	//the current angle of planet from the sun
-//	private double currentAngle;
-//
-//	//the current angular velocity
-//	private double currentAngularVel;
-//
-//	/// <summary>
-//	/// constructor will intialize values and convert to Km using
-//	/// constants defined.
-//	/// </summary>
-	public Gravity()
-	{
-
-	}
+	private const double g = 6.67408E-11;
 	
 	/// <summary>
 	/// This calculates the initial velocities of all the bodies.
@@ -60,60 +28,15 @@ public class Gravity : MonoBehaviour{
 	/// </summary>
 	public void calcInitialVelocities()
 	{
-		double years = 0;
-		double days = 0;
-		double kmSec = 0;
-		Body sun = new Body();
-		Vector3d initialVel;
-		Vector3d baryDistVec;
-		double dist;
 		List<Body> bodyList = Bodies.getActive();
-		
-		// looking for the star
-		foreach (Body body in bodyList)
-		{
-			if (body.Type == BodyType.Star)
-			{
-				sun = body;
-			}
-		}
-		
 		// checking distance and calculating.
 		foreach (Body body in bodyList)
 		{
-//			if (body.Type != BodyType.Star)
-//			{
-//				baryDistVec = body.GetBaycenter(sun);
-//				dist = baryDistVec[2];
-//				dist = dist * dist * dist;
-//				years = Math.Sqrt(dist);
-//				days = years * 360;
-//				kmSec = (dist * 2 * Math.PI) / (days * 24 * 60 * 60);
-//				body.initialVelocity = new Vector3d(0,kmSec/1000,0);
-//			}
-//			//else for case of star
-//			else
-//			{
-				body.initialVelocity = new Vector3d(0,0,0.01);
-//			}
+
+				body.initialVelocity = new Vector3d(0,0,0);
 		}
 	}
 	
-	/// <summary>
-	/// This method calculates force applied by each body to
-	/// each body in the nbody system.
-	/// </summary>
-	/// <returns></returns>
-	public double[] distCalulation()
-	{
-		List<Body> bodyList = Bodies.getActive();
-
-		foreach (Body body in bodyList)
-		{
-			
-		}
-		return null;
-	}
 	
 	/// <summary>
 	/// This method uses the distance calculation in order
@@ -130,11 +53,15 @@ public class Gravity : MonoBehaviour{
  
 		for (int i = 0; i < numBodies-1; i++)
 		{
-            //Debugger.log("Comparing " + i + " " + bodyList[i].name + bodyList[i].Position + " " + bodyList[i+1].name + bodyList[i + 1].Position);
-			positionDiff = bodyList[i].Position - bodyList[i+1].Position;
-			combinedMass = g * bodyList[i].Mass * bodyList[i + 1].Mass / positionDiff.magnitude * positionDiff.magnitude;
+			for (int j = i+1; j < numBodies; j++)
+			{
+				//Debugger.log("Comparing " + i + " " + bodyList[i].name + bodyList[i].Position + " " + bodyList[i+1].name + bodyList[i + 1].Position);
+				positionDiff = bodyList[i].Pos - bodyList[j].Pos;
+				combinedMass = -g * bodyList[i].KG * bodyList[j].KG / positionDiff.magnitude *
+				               positionDiff.magnitude;
 
-			forceApplied += positionDiff.normalized * combinedMass;
+				forceApplied += positionDiff.normalized * combinedMass;
+			}
 		}
 
 		return forceApplied;
@@ -153,7 +80,7 @@ public class Gravity : MonoBehaviour{
 			if (body.momentumVector == null)
 			{
 				calcInitialVelocities();
-				body.momentumVector = body.initialVelocity * body.Mass;
+				body.momentumVector = body.initialVelocity * body.KG;
 			}
 			else
 			{
@@ -174,7 +101,7 @@ public class Gravity : MonoBehaviour{
 		updateMomentum(calculateForce());
 		foreach (Body body in bodyList)
 		{
-			body.Position = (body.Position + body.momentumVector) / body.Mass;
+			body.Pos = (body.Pos + body.momentumVector) / body.KG;
 		}
 	}
 

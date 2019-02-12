@@ -31,11 +31,13 @@
               <e p="KeyboardShortcut.cs" t="Include" />
               <e p="SelectBody.cs" t="Include" />
             </e>
+            <e p="Settings.cs" t="Include" />
             <e p="UI" t="Include">
               <e p="ConsoleUI.cs" t="Include" />
+              <e p="ControlUI.cs" t="Include" />
               <e p="InsertInPlace.cs" t="Include" />
               <e p="PreferencesUI.cs" t="Include" />
-              <e p="Settings.cs" t="Include" />
+              <e p="SettingsUI.cs" t="Include" />
             </e>
           </e>
           <e p="Editor" t="Include">
@@ -61,6 +63,7 @@
                 <e p="NBodyTests.cs" t="Include" />
               </e>
             </e>
+            <e p="UnityMenu.cs" t="Include" />
           </e>
           <e p="Model" t="Include">
             <e p="Body" t="Include">
@@ -81,10 +84,14 @@
             </e>
             <e p="Util" t="Include">
               <e p="Debugger.cs" t="Include" />
+              <e p="Extension" t="Include">
+                <e p="StringExtension.cs" t="Include" />
+                <e p="TransformExtension.cs" t="Include" />
+              </e>
               <e p="Mathd.cs" t="Include" />
               <e p="Perm.cs" t="Include" />
               <e p="Preferences.cs" t="Include" />
-              <e p="StringUtil.cs" t="Include" />
+              <e p="Singleton.cs" t="Include" />
               <e p="Vector3d.cs" t="Include" />
             </e>
           </e>
