@@ -34,6 +34,12 @@ public class Vector3d
     public Vector3d() : this(0, 0, 0) { }
 
     /// <summary>
+    /// Creates a new vector with X, Y, & Z all equal to the same value.
+    /// </summary>
+    /// <param name="value"></param>
+    public Vector3d(double value) : this(value, value, value) { }
+
+    /// <summary>
     /// Creates a new vector at choosen coordinates.
     /// </summary>
     /// <param name="x"></param>

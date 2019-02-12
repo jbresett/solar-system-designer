@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// This class is used to alter the display settings of the UI
 /// </summary> 
-public class Settings : MonoBehaviour
+public class SettingsUI : MonoBehaviour
 {
 
 	public float opacity = .9f;

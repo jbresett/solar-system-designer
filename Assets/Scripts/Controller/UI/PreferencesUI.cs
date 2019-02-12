@@ -13,14 +13,14 @@ public class PreferencesUI : MonoBehaviour {
     /// Use this for initialization
     /// </summary>
 	void Start () {
-		// Nothing needed here at this time.
+        // Nothing needed here at this time.
         // TODO: When preferences are saved between runs, we'll need to load the values here.
-	}
-	
-	/// <summary>
+    }
+
+    /// <summary>
     /// Update is called once per frame
     /// </summary>
-	void Update () {
+    void Update () {
 
         // While the Preferences UI window is visible, updates all preferences.
 

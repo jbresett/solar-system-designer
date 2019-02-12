@@ -55,7 +55,7 @@ static public class NBody {
         set
         {
             time = value;
-            Capi.Exposed.Time.setValue((float)value);
+            Capi.Exposed.Speed.setValue((float)value);
         }
     }
     static private double time;
