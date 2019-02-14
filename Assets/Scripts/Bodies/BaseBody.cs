@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class BaseBody : MonoBehaviour {
 
     public int Id {
@@ -13,11 +14,9 @@ public class BaseBody : MonoBehaviour {
 
     public bool Active
     {
-        get { return active; }
-        set { active = value; }
+        get { return gameObject.activeSelf; }
+        set { gameObject.SetActive(true); }
     }
-    [SerializeField]
-    protected bool active;
     
 
     /// <summary>
@@ -36,10 +35,9 @@ public class BaseBody : MonoBehaviour {
     /// </summary>
     public string Name
     {
-        get { return name; }
-        set { name = value; }
+        get { return gameObject.name; }
+        set { gameObject.name = value; }
     }
-    //[SerializeField] "name" not needed: Part of the MonoBehavior.
 
     /// <summary>
     /// Mass in Earths.
@@ -62,7 +60,7 @@ public class BaseBody : MonoBehaviour {
         set { vel = value; }
     }
     [SerializeField]
-    private Vector3d vel;
+    protected Vector3d vel = new Vector3d();
 
     /// <summary>
     /// Diameter in Earths.
@@ -83,7 +81,8 @@ public class BaseBody : MonoBehaviour {
         get { return position; }
         set { position = value; }
     }
-    protected Vector3d position;
+    [SerializeField]
+    protected Vector3d position = new Vector3d();
 
     /// <summary>
     /// Initial position in AUs.
@@ -93,7 +92,8 @@ public class BaseBody : MonoBehaviour {
         get { return initialPosition; }
         set { initialPosition = value; }
     }
-    protected Vector3d initialPosition;
+    [SerializeField]
+    protected Vector3d initialPosition = new Vector3d();
 
     /// <summary>
     /// Rotation in Earth Days.
@@ -115,15 +115,15 @@ public class BaseBody : MonoBehaviour {
         set { velocity = value; }
     }
     [SerializeField]
-    protected Vector3d velocity;
+    protected Vector3d velocity = new Vector3d();
 
-    public string Material
+    public BodyMaterial Material
     {
         get { return material; }
         set { material = value; }
     }
     [SerializeField]
-    protected string material;
+    protected BodyMaterial material = BodyMaterial.Sun;
 
     public void Awake()
     {

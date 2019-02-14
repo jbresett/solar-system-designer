@@ -44,12 +44,14 @@ namespace Planets
                     {
                         Debug.Log(v.name);
                     }
-
+                    
+                    /* Removed per old code. [TODO] SelectBody rebuild needed.
                     comps[1].text = body.GetComponent<OrbitalBody>().Type;
                     comps[3].text = body.GetComponent<OrbitalBody>().Name;
                     comps[5].text = body.GetComponent<OrbitalBody>().Vel[0].ToString();
                     comps[7].text = body.GetComponent<OrbitalBody>().Vel[1].ToString();
                     comps[9].text = body.GetComponent<OrbitalBody>().Vel[2].ToString();
+                    */
                 }
             }
             

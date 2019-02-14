@@ -11,6 +11,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Type = value;
+            if (Application.isEditor) return; // No Capi interface during editor.
             capiType[Id].setValue(type);
         }
     }
@@ -22,6 +23,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Name = value;
+            if (Application.isEditor) return; // No Capi interface during editor.
             capiName[Id].setValue(value);
         }
     }
@@ -36,6 +38,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Mass = value;
+            if (Application.isEditor) return; // No Capi interface during editor.
             capiMass[Id].setValue((float)value);
         }
     }
@@ -50,6 +53,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Diameter = value;
+            if (Application.isEditor) return; // No Capi interface during editor.
             capiDiameter[Id].setValue((float)value);
         }
     }
@@ -64,6 +68,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Position = value;
+            if (Application.isEditor) return; // No Capi interface during editor.
             capiPosition[Id].getList().Clear();
             capiPosition[Id].getList().Add(value.x.ToString());
             capiPosition[Id].getList().Add(value.y.ToString());
@@ -82,6 +87,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.InitialPosition = value;
+            if (Application.isEditor) return; // No Capi interface during editor.
             capiInitialPosition[Id].getList().Clear();
             capiInitialPosition[Id].getList().Add(value.x.ToString());
             capiInitialPosition[Id].getList().Add(value.y.ToString());
@@ -100,6 +106,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Rotation = value;
+            if (Application.isEditor) return; // No Capi interface during editor.
             capiRotation[Id].setValue((float)value);
         }
     }

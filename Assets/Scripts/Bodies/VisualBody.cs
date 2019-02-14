@@ -28,13 +28,13 @@ public class VisualBody : BaseBody {
         }
     }
 
-    new public string Material
+    new public BodyMaterial Material
     {
         get { return material; }
         set
         {
             base.Material = value;
-            Material mat = (Material)Resources.Load(value, typeof(Material));
+            Material mat = (Material)Resources.Load(value.ToString(), typeof(Material));
             gameObject.GetComponent<MeshRenderer>().material = mat;
         }
     }
@@ -42,15 +42,6 @@ public class VisualBody : BaseBody {
     new public void Awake()
     {
         base.Awake();
-        if (material != "")
-        {
-            Material = material;
-        }
-        
-        if (Position == null)
-        {
-            base.Position = new Vector3d(transform.localPosition / POSITION_MULT);
-        }
     }
 
 	new public void Start ()

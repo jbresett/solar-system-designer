@@ -128,7 +128,8 @@ public class ExposedData {
                // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
                else
                {
-                   NBody.Focused = value;
+                   // [TODO] Update to new focus
+                   // NBody.Focused = value;
                }
                FocusedBody.setValue(value);
            }

@@ -9,6 +9,7 @@ using UnityEngine;
 /// 
 /// Partial code based on Unity's Vector3: https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Vector3.cs
 /// </summary>
+[Serializable]
 public class Vector3d
 {
 
@@ -22,6 +23,17 @@ public class Vector3d
     static public Vector3d forward { get { return new Vector3d(0, 0, 1); } }
     static public Vector3d left { get { return new Vector3d(-1, 0, 0); } }
     static public Vector3d negativeInfinity { get { return new Vector3d(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity); } }
+
+    /// <summary>
+    /// Returns a clone of the vector.
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public Vector3d clone()
+    {
+        return new Vector3d(x, y, z);
+    }
+
     static public Vector3d one { get { return new Vector3d(1, 1, 1); } }
     static public Vector3d positiveInfinity { get { return new Vector3d(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity); } }
     static public Vector3d right { get { return new Vector3d(1, 0, 0); } }
