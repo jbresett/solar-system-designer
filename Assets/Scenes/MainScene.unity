@@ -16698,9 +16698,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 499840112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a05d54f8f51a14790327b20560c9c7, type: 3}
+  m_Script: {fileID: 11500000, guid: b05b5cf018aa8a6479f4df670e2fcdc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aboutText: {fileID: 1649409127}
 --- !u!1 &506821039
 GameObject:
   m_ObjectHideFlags: 0
@@ -18692,7 +18693,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 37.5
+  m_fontSize: 38.4
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20889,8 +20890,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 929881797}
   m_HandleRect: {fileID: 929881795}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 1
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -41074,7 +41075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1649409126
