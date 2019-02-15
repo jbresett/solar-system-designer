@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.10226516, g: 0.085952245, b: 0.0954598, a: 1}
+  m_IndirectSpecularColor: {r: 0.10229354, g: 0.08584928, b: 0.09556366, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16623,13 +16623,14 @@ GameObject:
   - component: {fileID: 499840113}
   - component: {fileID: 499840115}
   - component: {fileID: 499840114}
+  - component: {fileID: 499840116}
   m_Layer: 5
   m_Name: AboutScreen
   m_TagString: UIMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &499840113
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16689,6 +16690,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 499840112}
   m_CullTransparentMesh: 0
+--- !u!114 &499840116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 499840112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a05d54f8f51a14790327b20560c9c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &506821039
 GameObject:
   m_ObjectHideFlags: 0
@@ -18680,7 +18692,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18
+  m_fontSize: 37.5
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -18698,7 +18710,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -20877,8 +20889,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 929881797}
   m_HandleRect: {fileID: 929881795}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.57327074
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -25477,8 +25489,8 @@ RectTransform:
   m_Father: {fileID: 525655233}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.42672926}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -41063,7 +41075,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 211.79001}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1649409126
 MonoBehaviour:
@@ -41099,7 +41111,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\n<b>Version:</b> 1.0.0\n\r\n<size=24><u>Project Description:\r</u></size>\nThe
+  m_text: "\n<b>Version:</b> {version_num}\n\r\n<size=24><u>Project Description:\r</u></size>\nThe
     ETX Center's web-based simulation to its portals that enables learners to populate
     a star with planets, creating a functioning solar system. This solar system model
     uses real life physics concepts such as gravity and other classical mechanics.
@@ -41173,12 +41185,12 @@ MonoBehaviour:
   m_margin: {x: 10, y: 0, z: 10, w: 5}
   m_textInfo:
     textComponent: {fileID: 1649409127}
-    characterCount: 488
+    characterCount: 496
     spriteCount: 0
     spaceCount: 77
-    wordCount: 78
+    wordCount: 77
     linkCount: 0
-    lineCount: 21
+    lineCount: 19
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
