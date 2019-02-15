@@ -42,6 +42,12 @@
           </e>
           <e p="Editor" t="Include">
             <e p="Archive" t="Include">
+              <e p="Body" t="Include">
+                <e p="FluidBody.cs" t="Include" />
+                <e p="NBody.cs" t="Include" />
+                <e p="OrbitalBody.cs" t="Include" />
+                <e p="StarBody.cs" t="Include" />
+              </e>
               <e p="Body.cs" t="Include" />
               <e p="BodyCnvsn.cs" t="Include" />
               <e p="Compound.cs" t="Include" />
@@ -50,6 +56,9 @@
               <e p="SolarSystemModel.cs" t="Include" />
               <e p="~OrbitalBody.cs" t="Include" />
               <e p="~READ ME.txt" t="Include" />
+            </e>
+            <e p="Inspector" t="Include">
+              <e p="BodyEditor.cs" t="Include" />
             </e>
             <e p="Tests" t="Include">
               <e p="Physics" t="Include">
@@ -66,12 +75,6 @@
             <e p="UnityMenu.cs" t="Include" />
           </e>
           <e p="Model" t="Include">
-            <e p="Body" t="Include">
-              <e p="FluidBody.cs" t="Include" />
-              <e p="NBody.cs" t="Include" />
-              <e p="OrbitalBody.cs" t="Include" />
-              <e p="StarBody.cs" t="Include" />
-            </e>
             <e p="Capi" t="Include">
               <e p="Capi.cs" t="Include" />
               <e p="ExposedData.cs" t="Include" />
@@ -97,6 +100,7 @@
           </e>
           <e p="Sim.cs" t="Include" />
           <e p="View" t="Include">
+            <e p="BodyMaterial.cs" t="Include" />
             <e p="Effects" t="Include">
               <e p="GenerateRings.cs" t="Include" />
               <e p="InsertParticle.cs" t="Include" />

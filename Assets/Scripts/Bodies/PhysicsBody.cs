@@ -9,7 +9,7 @@ public class PhysicsBody : CapiBody {
     private static double M_TO_AU = 1.496E11; //AU represented in meters
     public Vector3d Pos {
 
-            get { return Position * M_TO_AU; }
+            get { return position * M_TO_AU; }
             set { Position = value / M_TO_AU; }
 
     }
@@ -51,6 +51,20 @@ public class PhysicsBody : CapiBody {
     [SerializeField]
     protected Vector3d momentum;
 
+    public Vector3d velocity
+    {
+        get { return vel; }
+        set {vel = value; }  
+    }
+    
+    public Vector3d totalForce
+    {
+        get { return force; }
+        set { force = value; }  
+    }
+
+    [SerializeField]
+    protected Vector3d force;
     new public void Awake()
     {
         base.Awake();
