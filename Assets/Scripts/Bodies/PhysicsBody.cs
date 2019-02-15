@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class PhysicsBody : CapiBody {
 
-    private static double SOLAR_MASS_CONVERT = 334672.021419; // Solar Mass in Earths.
+    //private static double SOLAR_MASS_CONVERT = 334672.021419; // Solar Mass in Earths.
     private static double KG_MASS_CONVERT = 5.9722E24; // Earth's Mass in KG.
     private static double M_TO_AU = 1.496E11; //AU represented in meters
     public Vector3d Pos {
 
             get { return position * M_TO_AU; }
-            set { Position = value / M_TO_AU; }
+            set { position = value / M_TO_AU; }
 
     }
     
     /// <summary>
     /// Mass of the Body in Sols.
     /// </summary>
-    public double SolarMass
-    {
-        get { return mass / SOLAR_MASS_CONVERT; }
-        set { Mass = value / SOLAR_MASS_CONVERT; }
-    }
+//    public double SolarMass
+//    {
+//        get { return mass * SOLAR_MASS_CONVERT; }
+//        set { Mass = value / SOLAR_MASS_CONVERT; }
+//    }
     /// <summary>
     /// Mass of the Body in kg.
     /// </summary>
@@ -54,7 +54,7 @@ public class PhysicsBody : CapiBody {
     public Vector3d velocity
     {
         get { return vel; }
-        set {vel = value; }  
+        set {Velocity = value; }  
     }
     
     public Vector3d totalForce

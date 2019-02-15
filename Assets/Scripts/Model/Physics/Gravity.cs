@@ -17,7 +17,7 @@ using UnityEngine;
 public class Gravity : MonoBehaviour{
 
 	private const double g = 6.67408E-11;
-	
+	private const double time = 10000;
 	/// <summary>
 	/// This calculates the initial velocities of all the bodies.
 	/// The function works by checking all bodies from the list
@@ -37,37 +37,19 @@ public class Gravity : MonoBehaviour{
 				body.initialVelocity = new Vector3d(0,0,0);
 		}
 	}
-
-
+	
 	/// <summary>
-	/// This method uses the distance calculation in order
-	/// to calculate the force applied to the nbodies
+	/// This method calculates the force of another body on a body
+	/// The equation first calculates the the distance between.
+	/// Then takes the magnitude of the distance
+	/// next force is calculated G * M1 * M2 / (magnitude)^2
+	/// we then find the angle theta
+	///
+	/// we then use angle theta to calc the direction of the force
 	/// </summary>
+	/// <param name="body"></param>
+	/// <param name="obody"></param>
 	/// <returns></returns>
-//	public Vector3d calculateForce()
-//	{
-//		List<Body> bodyList = Bodies.getActive();
-//		int numBodies = bodyList.Count;
-//		Vector3d forceApplied = new Vector3d();;
-//		Vector3d positionDiff;
-//		double combinedMass = 0;
-// 
-//		for (int i = 0; i < numBodies-1; i++)
-//		{
-//			for (int j = i+1; j < numBodies; j++)
-//			{
-//				//Debugger.log("Comparing " + i + " " + bodyList[i].name + bodyList[i].Position + " " + bodyList[i+1].name + bodyList[i + 1].Position);
-//				positionDiff = bodyList[i].Pos - bodyList[j].Pos;
-//				combinedMass = -g * bodyList[i].KG * bodyList[j].KG / positionDiff.magnitude *
-//				               positionDiff.magnitude;
-//
-//				forceApplied += positionDiff.normalized * combinedMass;
-//			}
-//		}
-//
-//		return forceApplied;
-//	}
-
 	public Vector3d calcForce(Body body, Body obody)
 	{
 		Vector3d force;
@@ -82,43 +64,64 @@ public class Gravity : MonoBehaviour{
 
 		return force;
 	}
+
 	
 	/// <summary>
-	/// This method uses the force calculated to
-	/// update the momentum of the nbodies
+	/// This method utilizes the above forceCalc method to
+	/// sum the force applied on each body by each body.
 	/// </summary>
-	public void updateMomentum(Vector3d force)
+	public void updateForce()
 	{
-		List<Body> bodyList = Bodies.getActive();
-	
-		foreach (Body body in bodyList)
+		List<Body> bodies = Bodies.getActive();
+		Vector3d force;
+		foreach (Body bod in bodies)
 		{
-			if (body.momentumVector == null)
+			force = new Vector3d(0,0,0);
+			foreach (Body obod in bodies)
 			{
-				calcInitialVelocities();
-				body.momentumVector = body.initialVelocity * body.KG;
-			}
-			else
-			{
-				body.momentumVector = body.momentumVector + force;
+				if (bod.Id != obod.Id)
+				{
+					force += calcForce(bod, obod);
+				}
 			}
 
+			bod.totalForce = force;
+		}
+	}
+
+	/// <summary>
+	///  This method uses a bodies total force to calculate a new velocity
+	/// This function calculates new velocity for each body.
+	/// </summary>
+	public void updateVelocity()
+	{
+		updateForce();
+		List<Body> bodies = Bodies.getActive();
+		Vector3d velocity;
+		foreach (Body bod in bodies)
+		{
+			velocity = bod.velocity;
+			velocity.x += bod.totalForce.x / bod.KG * time;
+			velocity.z += bod.totalForce.z / bod.KG * time;
+
+			bod.velocity = velocity;
 		}
 	}
 	
+
 	/// <summary>
-	/// This method utilizes the momentum in order to
-	/// determine the nbodies new positions.
+	/// THis function uses the new velocities to calculate a new position
 	/// </summary>
 	public void calcPosition()
 	{
-//		List<Body> bodyList = Bodies.getActive();
-//		
-//		updateMomentum(calculateForce());
-//		foreach (Body body in bodyList)
-//		{
-//			body.Pos = (body.Pos + body.momentumVector) / body.KG;
-//		}
+		updateVelocity();
+		List<Body> bodies = Bodies.getActive();
+		Vector3d newPos;
+		foreach (Body bod in bodies)
+		{
+			newPos = new Vector3d(bod.Pos.x + bod.velocity.x *time,0,bod.Pos.z + bod.velocity.z *time);
+			bod.Pos = newPos;
+		}
 	}
 
 	// Update is called once per frame
