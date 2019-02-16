@@ -55,7 +55,7 @@ static public class NBody {
         set
         {
             time = value;
-            Capi.Exposed.Speed.setValue((float)value);
+            Sim.Capi.Exposed.Speed.setValue((float)value);
         }
     }
     static private double time;
@@ -76,7 +76,7 @@ static public class NBody {
         {
             focused = value;
             // Instantly updates Exposed value.
-            Capi.Exposed.FocusedBody.setValue(value);
+            Sim.Capi.Exposed.FocusedBody.setValue(value);
         }
     }
     static private string focused;

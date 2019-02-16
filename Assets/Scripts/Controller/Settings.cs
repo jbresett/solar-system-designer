@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Control Directions.
+/// <summary>
+/// Control Directions.
+/// </summary>
 public enum Direction
 {
     MoveUp, MoveDown, MoveLeft, MoveRight, MoveForward, MoveBackward,
@@ -10,14 +12,52 @@ public enum Direction
     RotLeft, RotRight, RotUp, RotDown
 }
 
-public class Settings : Singleton<Settings> {
+/// <summary>
+/// Time Ratios for Speed.  Used by the Capi interface default options (can be manually set in Capi as well).
+/// </summary>
+public enum SpeedRatios
+{
+    Custom = int.MinValue, // For Capi Interface.
+    Stop = 0,
+    Second = 1,
+    Minute = 60,
+    Hour = 360,
+    Day = 86400,
+    Month = 2629800,
+    Year = 31557600,
+}
+
+public class Settings : Singleton<Settings>
+{
 
     // Links a Move Direction to a key control
     public Dictionary<Direction, KeyCode> KeyControls
     {
         get { return controlMap; }
     }
+
+    public bool Paused
+    {
+        get { return paused; }
+        set { paused = value; }
+    }
+    [SerializeField]
+    protected bool paused;
+    
+    public float Speed
+    {
+        get { return speed; }
+        set
+        {
+            Sim.Capi.Exposed.Speed.setValue(value);
+            speed = value;
+        }
+    }
+    [SerializeField]
+    protected float speed;
+
     // Initialize with Default Values.
+    [SerializeField]
     private Dictionary<Direction, KeyCode> controlMap = new Dictionary<Direction, KeyCode>()
     {
         {Direction.MoveUp, KeyCode.W },
@@ -34,13 +74,4 @@ public class Settings : Singleton<Settings> {
         {Direction.RotDown, KeyCode.DownArrow }
     };
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

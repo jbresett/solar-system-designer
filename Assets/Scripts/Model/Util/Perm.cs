@@ -15,22 +15,22 @@ using UnityEngine;
 /// Permissions can be changed by the instructor in the case of a live session.
 /// Permissions are checked by the software prior to any action that could require a permission. 
 /// </summary>
-public class Perm {
+public class Perm: Singleton<Perm> {
 
     private static string[] INVALID_COMMAND = { "Invalid Command. Use: perm (add/remove/list) [name]." };
 
-    static public void Init()
+    public void Init()
     {
         Debugger.AddProcessor(ProcessCmd);
     }
 
-    static public void Start()
+    public void Start()
     {
         
     }
 
     // Processes 
-    static private string[] ProcessCmd(string[] args)
+    private string[] ProcessCmd(string[] args)
     {
         // Ignores non-"perm" commands.
         if (!args[0].Equals("perm", StringComparison.InvariantCultureIgnoreCase)) return new string[0];
@@ -62,10 +62,10 @@ public class Perm {
         switch (args[1].ToLower())
         {
             case "add":
-                result[0] = "Perm \"" + args[2] + "\" " + (Perm.Add(args[2]) ? "added." : "already exists.");
+                result[0] = "Perm \"" + args[2] + "\" " + (Add(args[2]) ? "added." : "already exists.");
                 break;
             case "remove":
-                result[0] = "Perm \"" + args[2] + "\" " + (Perm.Remove(args[2]) ? "removed." : "does not exist.");
+                result[0] = "Perm \"" + args[2] + "\" " + (Remove(args[2]) ? "removed." : "does not exist.");
                 break;
             default:
                 result[0] = "Invalid Command. 2nd Command must be either \"add\" or \"remove.\"";
@@ -82,9 +82,9 @@ public class Perm {
     /// <param name="exact">Exact permission only. If true, will only the exact node exists.
     ///     If false, checks for all upper level nodes as well (e.g. "edit.gravity" would check for "edit" node as well).</param>
     /// <returns>True if the user has the permission set.</returns>
-    static public bool Has(string perm, bool exact = false)
+    public bool Has(string perm, bool exact = false)
     {
-        ExposedData exp = Capi.Exposed;
+        ExposedData exp = Sim.Capi.Exposed;
         
         // Loop for checking upper level permission as well.
         while (true)
@@ -108,7 +108,7 @@ public class Perm {
     /// </summary>
     /// <param name="perms">set of permission nodes.</param>
     /// <returns>True if any of the nodes were added, false if the user already had every node.</returns>
-    static public bool Add(string[] perms)
+    public bool Add(string[] perms)
     {
         // Turns true once a new node has been added (not already on the perm list).
         bool result = false;
@@ -127,9 +127,9 @@ public class Perm {
     /// actual permissions.
     /// </summary>
     /// <returns></returns>
-    static public List<string> getList()
+    public List<string> getList()
     {
-        return new List<string>(Capi.Exposed.Perms.getList());
+        return new List<string>(Sim.Capi.Exposed.Perms.getList());
     }
 
     /// <summary>
@@ -137,9 +137,9 @@ public class Perm {
     /// </summary>
     /// <param name="perm">Permission name. Use '.' to add specific layers.</param>
     /// <returns>True if the permission is added, false if it already exists.</returns>
-    static public bool Add(string perm)
+    public bool Add(string perm)
     {
-        ExposedData exp = Capi.Exposed;
+        ExposedData exp = Sim.Capi.Exposed;
         List<string> list = exp.Perms.getList();
 
         // Check if permission already exists.
@@ -158,9 +158,9 @@ public class Perm {
     /// <param name="perm">Full Permission name.  Removing </param>
     /// <param name="remvoeChildren">Removes any children nodes that have the same parent.</param>
     /// <returns>True if any permission was removed, false if the node (or any children for removeChilden) did not exist to begin with.</returns>
-    static public bool Remove(string perm, bool removeChildren = false)
+    public bool Remove(string perm, bool removeChildren = false)
     {
-        ExposedData exp = Capi.Exposed;
+        ExposedData exp = Sim.Capi.Exposed;
         List<string> list = exp.Perms.getList();
 
         // Gets initial size to later check for any changes.
@@ -182,9 +182,9 @@ public class Perm {
     /// Clears all current permmision nodes.
     /// </summary>
     /// <returns>True if cleared, false if nothing to clear.</returns>
-    static public bool Clear()
+    public bool Clear()
     {
-        ExposedData exp = Capi.Exposed;
+        ExposedData exp = Sim.Capi.Exposed;
         List<string> list = exp.Perms.getList();
 
         if (list.Count == 0) return false;

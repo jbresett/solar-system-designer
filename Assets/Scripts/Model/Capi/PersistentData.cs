@@ -6,10 +6,8 @@ using SimCapi;
 /// <summary>
 /// Basic handler for processing SimCapi persistent data.
 /// </summary>
-public class PersistentData
+public class PersistentData: Singleton<PersistentData>
 {
-
-    private SimCapi.Transporter transporter = SimCapi.Transporter.getInstance();
 
     /// <summary>
     /// Sets a persisent value.
@@ -21,7 +19,7 @@ public class PersistentData
     public void Set(string key, string value, SetDataRequestSuccessDelegate onSuccess, SetDataRequestErrorDelegate onError)
     {
 
-        transporter.setDataRequest(Capi.SIM_ID, key, value, onSuccess, onError);
+        Sim.Capi.Transporter.setDataRequest(Capi.SIM_ID, key, value, onSuccess, onError);
     }
 
     /// <summary>
@@ -32,8 +30,7 @@ public class PersistentData
     /// <param name="onError"></param>
     public void Get(string key, GetDataRequestSuccessDelegate onSuccess, GetDataRequestErrorDelegate onError)
     {
-        transporter.getDataRequest(Capi.SIM_ID, key, onSuccess, onError);
-
+        Sim.Capi.Transporter.getDataRequest(Capi.SIM_ID, key, onSuccess, onError);
     }
 
 }

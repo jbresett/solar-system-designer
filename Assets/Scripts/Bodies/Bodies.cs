@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bodies {
+public class Bodies: Singleton<Bodies> {
     public const int MAX = 30;
 
-    static private Body[] bodies = new Body[MAX];
+    private Body[] bodies = new Body[MAX];
          
     /// <summary>
     /// Returns a body by id.
     /// </summary>
     /// <param name="id">Must be between 0 and BODY_COUNT.</param>
     /// <returns></returns>
-    static public Body get(int id)
+    public Body get(int id)
     {
         return bodies[id];
     }
@@ -22,7 +22,7 @@ public class Bodies {
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    static public Body get(string name)
+    public Body get(string name)
     {
         foreach (Body body in bodies)
         {
@@ -31,11 +31,8 @@ public class Bodies {
         return null;
     }
 
-    static private bool hasInit = false;
-    static public void Init(GameObject bodyContainer, GameObject bodyPrefab)
+    public void Awake()
     {
-        if (hasInit) return;
-        hasInit = true;
         
         // Id pre-existing bodies.
         int i = 0;
@@ -51,7 +48,7 @@ public class Bodies {
         {
             //GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             //obj.transform.SetParent(bodyContainer.transform);
-            GameObject obj = Object.Instantiate(bodyPrefab, bodyContainer.transform);
+            GameObject obj = Object.Instantiate(Sim.Config.BodyPrefab, Sim.Config.BodyContainer.transform);
             obj.name = "";
             obj.SetActive(false);
 
@@ -70,7 +67,7 @@ public class Bodies {
     /// Returns a set of all body values, including empty(null) bodies.
     /// </summary>
     /// <returns></returns>
-    static public Body[] getAll()
+    public Body[] getAll()
     {
         return bodies;
     }
@@ -79,21 +76,30 @@ public class Bodies {
     /// Returns a list of all active bodies.
     /// </summary>
     /// <returns></returns>
-    static public List<Body> getActive()
+    public List<Body> Active 
     {
-        List<Body> active = new List<Body>();
-        foreach (Body body in bodies)
+        get
         {
-            if (body != null && body.name != "" && body.gameObject.activeSelf)
+            List<Body> active = new List<Body>();
+            foreach (Body body in bodies)
             {
-                active.Add(body);
+                if (body != null && body.name != "" && body.gameObject.activeSelf)
+                {
+                    active.Add(body);
+                }
+
             }
-            
+            return active;
         }
-        return active;
     }
 
-    static public GameObject activateNext()
+    [System.Obsolete("Used Sim.Body.Active")]
+    static public List<Body> getActive()
+    {
+        return Instance.Active;
+    }
+
+    public GameObject activateNext()
     {
         foreach (Body body in bodies)
         {

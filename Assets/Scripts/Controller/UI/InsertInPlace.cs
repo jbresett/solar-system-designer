@@ -38,7 +38,7 @@ public class InsertInPlace : MonoBehaviour
     /// </summary>
     public void insert()
     {
-        GameObject obj = Bodies.activateNext();
+        GameObject obj = Sim.Bodies.activateNext();
         Body script = obj.GetComponent<Body>();
         script.Name = objName.text;
 

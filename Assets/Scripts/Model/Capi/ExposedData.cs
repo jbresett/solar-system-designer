@@ -9,7 +9,7 @@ using UnityEngine;
 /// <summary>
 /// Handles top-level data exposed to SimCapi.
 /// </summary>
-public class ExposedData {
+public class ExposedData: Singleton<ExposedData> {
 
 
     /* Data Types:
@@ -26,7 +26,7 @@ public class ExposedData {
     /// Current simulation speed.
     /// </summary>
     public SimCapiNumber Speed;
-    public SimCapiEnum<Sim.SpeedRatio> SpeedRatio;
+    public SimCapiEnum<SpeedRatios> SpeedRatio;
 
     /// <summary>
     /// Body that currently has focus. Empty string ("") means no body is currently selected (free camera).
@@ -46,7 +46,7 @@ public class ExposedData {
     /// </summary>
     public ExposedData() {
         Speed = new SimCapiNumber(0F);
-        SpeedRatio = new SimCapiEnum<Sim.SpeedRatio>(Sim.SpeedRatio.Paused);
+        SpeedRatio = new SimCapiEnum<SpeedRatios>(SpeedRatios.Stop);
         FocusedBody = new SimCapiString("");
         CanCreate = new SimCapiBoolean(false);
         Perms = new SimCapiStringArray();
@@ -88,18 +88,18 @@ public class ExposedData {
                 // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
                 else
                 {
-                    Sim.Speed = value;
+                    Sim.Settings.Speed = value;
                 }
 
                 // Update SpeedRatio
-                SpeedRatio.setValue(Sim.SpeedRatio.Custom);
+                SpeedRatio.setValue(SpeedRatios.Custom);
 
             }
 
         );
 
         SpeedRatio.setChangeDelegate(
-            delegate (Sim.SpeedRatio value, ChangedBy changedBy)
+            delegate (SpeedRatios value, ChangedBy changedBy)
             {
                 // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
                 if (changedBy == ChangedBy.SIM)
@@ -109,7 +109,7 @@ public class ExposedData {
                 // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
                 else
                 {
-                    Sim.Speed = (int)value;
+                    Sim.Settings.Speed = (int)value;
                 }
 
             }

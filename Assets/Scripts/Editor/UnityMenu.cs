@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEditor.Build.Reporting;
+using UnityEditor.SceneManagement;
 
 public class UnityMenu : MonoBehaviour {
 
-    [MenuItem("SolarSystemDesigner/Build/Build")]
+    [MenuItem("SolarSystemDesigner/Build/Build", false, 0)]
     public static void Build()
     {
         buildProject(false);
     }
 
-    [MenuItem("SolarSystemDesigner/Build/Build && Run")]
+    [MenuItem("SolarSystemDesigner/Build/Build && Run", false, 0)]
     public static void BuildAndRun()
     {
         buildProject(true);
@@ -50,7 +51,6 @@ public class UnityMenu : MonoBehaviour {
         int[] ver = VersionArray;
         ver[0]++;
         ver[1] = 0;
-        ver[2] = 0;
         VersionArray = ver;
     }
 
@@ -59,8 +59,18 @@ public class UnityMenu : MonoBehaviour {
     {
         int[] ver = VersionArray;
         ver[1]++;
-        ver[2] = 0;
         VersionArray = ver;
+    }
+
+    [MenuItem("SolarSystemDesigner/Scene/Revert", false, 0)]
+    static void RevertScene()
+    {
+        if (EditorApplication.isPlaying)
+        {
+            EditorUtility.DisplayDialog("Notice", "You can't reset the main scene in play mode. Please stop the simulation before reverting.", "OK");
+            return;
+        }
+        EditorSceneManager.OpenScene(EditorSceneManager.GetActiveScene().path);
     }
 
     /// <summary>
@@ -71,7 +81,7 @@ public class UnityMenu : MonoBehaviour {
         // Converts version string to array of integers.
         get
         {
-            string version = FindObjectOfType<Sim>().version;
+            string version = Sim.Config.Version;
             
             // Return 1.0.0 if version isn't set.
             if (version == "")
@@ -101,7 +111,7 @@ public class UnityMenu : MonoBehaviour {
         {
             string ver = value[0].ToString();
             for (int i = 1; i < value.Length; i++) ver += "." + value[i];
-            FindObjectOfType<Sim>().version = ver;
+            Sim.Config.Version = ver;
         }
     }
 
