@@ -8,7 +8,7 @@ namespace DefaultNamespace
     public class SetVersionText : MonoBehaviour
     {
         public TextMeshProUGUI aboutText;
-        private string version = "1.0.0";
+        private string version;
 
         private void setVersion()
         {
@@ -18,6 +18,7 @@ namespace DefaultNamespace
 
         private void Start()
         {
+            version = Sim.Config.Version;
             setVersion();
         }
     }
