@@ -8,17 +8,15 @@ namespace DefaultNamespace
     public class SetVersionText : MonoBehaviour
     {
         public TextMeshProUGUI aboutText;
-        private string version;
 
         private void setVersion()
         {
             string text = aboutText.text;
-            aboutText.text = text.Replace("{version_num}", version);
+            aboutText.text = text.Replace("{version_num}", Sim.Config.Version);
         }
 
         private void Start()
         {
-            version = Sim.Config.Version;
             setVersion();
         }
     }
