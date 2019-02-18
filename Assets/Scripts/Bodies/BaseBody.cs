@@ -54,14 +54,6 @@ public class BaseBody : MonoBehaviour {
     [SerializeField]
     protected double mass;
 
-    public Vector3d Vel
-    {
-        get { return vel; }
-        set { vel = value; }
-    }
-    [SerializeField]
-    protected Vector3d vel = new Vector3d();
-
     /// <summary>
     /// Diameter in Earths.
     /// </summary>

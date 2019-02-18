@@ -51,9 +51,9 @@ public class PhysicsBody : CapiBody {
     [SerializeField]
     protected Vector3d momentum;
 
-    public Vector3d velocity
+    public Vector3d Vel
     {
-        get { return vel; }
+        get { return velocity; }
         set {Velocity = value; }  
     }
     

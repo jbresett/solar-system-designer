@@ -17,7 +17,7 @@ using UnityEngine;
 public class Gravity : MonoBehaviour{
 
 	private const double g = 6.67408E-11;
-	private const double time = 10000;
+	private const double time = 50000;
 	/// <summary>
 	/// This calculates the initial velocities of all the bodies.
 	/// The function works by checking all bodies from the list
@@ -100,11 +100,11 @@ public class Gravity : MonoBehaviour{
 		Vector3d velocity;
 		foreach (Body bod in bodies)
 		{
-			velocity = bod.velocity;
+			velocity = bod.Vel;
 			velocity.x += bod.totalForce.x / bod.KG * time;
 			velocity.z += bod.totalForce.z / bod.KG * time;
 
-			bod.velocity = velocity;
+			bod.Vel = velocity;
 		}
 	}
 	
@@ -119,7 +119,7 @@ public class Gravity : MonoBehaviour{
 		Vector3d newPos;
 		foreach (Body bod in bodies)
 		{
-			newPos = new Vector3d(bod.Pos.x + bod.velocity.x *time,0,bod.Pos.z + bod.velocity.z *time);
+			newPos = new Vector3d(bod.Pos.x + bod.Vel.x *time,0,bod.Pos.z + bod.Vel.z *time);
 			bod.Pos = newPos;
 		}
 	}
