@@ -13,15 +13,7 @@ public class PhysicsBody : CapiBody {
             set { position = value / M_TO_AU; }
 
     }
-    
-    /// <summary>
-    /// Mass of the Body in Sols.
-    /// </summary>
-//    public double SolarMass
-//    {
-//        get { return mass * SOLAR_MASS_CONVERT; }
-//        set { Mass = value / SOLAR_MASS_CONVERT; }
-//    }
+
     /// <summary>
     /// Mass of the Body in kg.
     /// </summary>
@@ -30,27 +22,6 @@ public class PhysicsBody : CapiBody {
         get { return mass * KG_MASS_CONVERT; }
         set { Mass = value / KG_MASS_CONVERT; }
     }
-    
-    /// <summary>
-    /// Set and get initial velocity for the body
-    /// </summary>
-    public Vector3d initialVelocity
-    {
-        get { return initialVel; }
-        set { initialVel = value; }
-    }
-    
-    [SerializeField]
-    protected Vector3d initialVel;
-    public Vector3d momentumVector
-    {
-        get { return momentum; }
-        set { momentum = value; }  
-    }
-
-    [SerializeField]
-    protected Vector3d momentum;
-
     public Vector3d Vel
     {
         get { return velocity; }
@@ -65,6 +36,15 @@ public class PhysicsBody : CapiBody {
 
     [SerializeField]
     protected Vector3d force;
+    
+    public bool isInitialVel
+    {
+        get { return initialVelocity; }
+        set { initialVelocity = value; }  
+    }
+
+    [SerializeField]
+    protected bool initialVelocity = false;
     new public void Awake()
     {
         base.Awake();

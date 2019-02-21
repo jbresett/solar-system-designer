@@ -27,15 +27,27 @@ public class Gravity : MonoBehaviour{
 	/// finds the estimated circumference of the orbit and divides by the number
 	/// of seconds to get the km/sec velocity
 	/// </summary>
-	public void calcInitialVelocities()
+	public void calcInitialVelocities(Body bod)
 	{
 		List<Body> bodyList = Bodies.getActive();
+		Body mostMass = new Body();
+		double mass = 0;
+		double xDist = 0;
+		double xDiam = 0;
 		// checking distance and calculating.
 		foreach (Body body in bodyList)
 		{
-
-				body.initialVelocity = new Vector3d(0,0,0);
+			if (body.Id != bod.Id)
+			{
+				if (body.KG > mass)
+				{
+					mostMass = body;
+				}
+			}
 		}
+		
+		xDist = mostMass.Position.x - bod.Position.x;
+		
 	}
 	
 	/// <summary>
