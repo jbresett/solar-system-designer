@@ -13,7 +13,6 @@ public class VisualBody : BaseBody {
         set
         {
             base.Position = value;
-            gameObject.transform.position = value.Vec3 * POSITION_MULT;
         }
     }
 
@@ -52,6 +51,13 @@ public class VisualBody : BaseBody {
 	new public void Update ()
     {
         base.Update();
-        transform.Rotate((Vector3.up * (float)rotation) * Time.deltaTime, Space.Self);
+
+        // Update Rotation
+        transform.Rotate((Vector3.up * -(float)Rotation) * Time.deltaTime, Space.Self);
+
+        // New Position already calculated via change in time.
+        Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position; 
+        transform.position += move;
+
     }
 }

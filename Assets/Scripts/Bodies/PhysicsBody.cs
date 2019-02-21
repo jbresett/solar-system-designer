@@ -71,16 +71,6 @@ public class PhysicsBody : CapiBody {
         // Can delete function if not needed in this class: next level down will automatically be called instead.
     }
 
-    new public void Start () {
-
-        // Can delete function if not needed in this class: next level down will automatically be called instead.
-    }
-
-    // Update is called once per frame
-    new public void Update () {
-
-	}
-
     /// <summary>
     /// Gets the Barycenter point between this object and another.
     /// <param name="withBody"></param>

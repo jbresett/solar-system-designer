@@ -17,7 +17,7 @@ using UnityEngine;
 public class Gravity : MonoBehaviour{
 
 	private const double g = 6.67408E-11;
-	private const double time = 50000;
+	private const double time = 500000;
 	/// <summary>
 	/// This calculates the initial velocities of all the bodies.
 	/// The function works by checking all bodies from the list

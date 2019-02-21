@@ -1,8 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Sim : MonoBehaviour {
+
+    // Frame Rate Tracker
+    private float nextUpdate = 0;
+    private float updateTime = 1.0f; //Seconds Per Update
+    private int frameCount = 0;
+
 
     static public Config Config {
         get { return Config.Instance; }
@@ -30,6 +37,8 @@ public class Sim : MonoBehaviour {
     // Location for the Active and Inactive body containers.
     public GameObject BodyContainer;
     public GameObject BodyPrefab;
+
+    public GameObject StatsLabel;
 
     public string version;
 
@@ -66,7 +75,8 @@ public class Sim : MonoBehaviour {
         Bodies.Init(BodyContainer, BodyPrefab);
         Capi.Init();
         CapiBody.Init();
-        
+
+        nextUpdate = Time.time + updateTime;
     }
 
     void Start () {
@@ -74,9 +84,21 @@ public class Sim : MonoBehaviour {
         Capi.Start();	
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		
+        frameCount++;
+
+        if (Time.time >= nextUpdate)
+        {
+            // Set next update.
+            nextUpdate = Time.time + updateTime;
+            
+            // Calculate and display frames/second.
+            var fps = frameCount / updateTime;
+            StatsLabel.GetComponent<TextMeshProUGUI>().text = string.Format("{0:0} fps", fps);
+                
+            // Reset FrameCount for next set.
+            frameCount = 0;
+        }
 	}
 
 }
