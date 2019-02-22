@@ -92,7 +92,7 @@ public class ExposedData: Singleton<ExposedData> {
                 }
 
                 // Update SpeedRatio
-                SpeedRatio.setValue(SpeedRatios.Custom);
+                SpeedRatio.setValue(SpeedRatios.Stop);
 
             }
 

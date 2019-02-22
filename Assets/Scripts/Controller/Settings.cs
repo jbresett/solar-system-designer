@@ -17,7 +17,6 @@ public enum Direction
 /// </summary>
 public enum SpeedRatios
 {
-    Custom = int.MinValue, // For Capi Interface.
     Stop = 0,
     Second = 1,
     Minute = 60,
@@ -25,7 +24,7 @@ public enum SpeedRatios
     Day = 86400,
     Month = 2629800,
     Year = 31557600,
-}
+} 
 
 public class Settings : Singleton<Settings>
 {
@@ -54,7 +53,7 @@ public class Settings : Singleton<Settings>
         }
     }
     [SerializeField]
-    protected float speed;
+    protected float speed = (float)SpeedRatios.Day;
 
     // Initialize with Default Values.
     [SerializeField]
