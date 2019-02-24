@@ -26,28 +26,37 @@ public class Gravity : MonoBehaviour{
 	/// the total years it takes to make a revolution. The function then
 	/// finds the estimated circumference of the orbit and divides by the number
 	/// of seconds to get the km/sec velocity
+	///
+	/// Equation derrived from: https://www.physicsclassroom.com/class/circles/Lesson-4/Mathematics-of-Satellite-Motion
 	/// </summary>
-	public void calcInitialVelocities(Body bod)
+	public void calcInitialVelocities()
 	{
 		List<Body> bodyList = Bodies.getActive();
 		Body mostMass = new Body();
-		double mass = 0;
+		mostMass.KG = 0;
 		double xDist = 0;
-		double xDiam = 0;
+		double period = 0;
+		Vector3d vec = new Vector3d(0,0,0);
 		// checking distance and calculating.
 		foreach (Body body in bodyList)
 		{
-			if (body.Id != bod.Id)
+			if (body.KG > mostMass.KG)
 			{
-				if (body.KG > mass)
-				{
-					mostMass = body;
-				}
+				mostMass = body;
 			}
 		}
-		
-		xDist = mostMass.Position.x - bod.Position.x;
-		
+
+		foreach (Body body in bodyList)
+		{
+			if (!body.isInitialVel)
+			{
+				xDist = mostMass.Pos.x - body.Pos.x;
+				period = Math.Sqrt((4 * Math.PI * Math.PI * Math.Pow(xDist, 3)) / (g * (body.KG + mostMass.KG)));
+				vec.z = (xDist + xDist) * Math.PI/period;
+				body.Vel = vec;
+				body.isInitialVel = true;
+			}
+		}
 	}
 	
 	/// <summary>
@@ -107,6 +116,7 @@ public class Gravity : MonoBehaviour{
 	/// </summary>
 	public void updateVelocity()
 	{
+		calcInitialVelocities();
 		updateForce();
 		List<Body> bodies = Bodies.getActive();
 		Vector3d velocity;
