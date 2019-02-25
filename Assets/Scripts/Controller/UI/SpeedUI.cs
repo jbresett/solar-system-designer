@@ -62,10 +62,11 @@ public class SpeedUI : MonoBehaviour {
             return;
         }
 
+
         // Find Current Ratio: Is  in hours, days, etc.
         foreach (SpeedRatios ratio in (SpeedRatios[])Enum.GetValues(typeof(SpeedRatios)))
         {
-            if (speed >= (int)ratio)
+            if (speed >= (int)ratio && (int)ratio > (int)useRatio)
             {
                 useRatio = ratio;
             }
@@ -78,5 +79,16 @@ public class SpeedUI : MonoBehaviour {
         speedText.text = string.Format("{0:0.0} {1}/sec", speed, useRatio.ToString());
 
     }
-   
+
+    /// <summary>
+    /// Resets all Planets to initial positions.
+    /// </summary>
+    public void OnResetButtonPress()
+    {
+        foreach (Body body in Sim.Bodies.getAll())
+        {
+            body.Position = body.InitialPosition;
+        }
+    }
+
 }

@@ -20,7 +20,7 @@ public enum SpeedRatios
     Stop = 0,
     Second = 1,
     Minute = 60,
-    Hour = 360,
+    Hour = 3600,
     Day = 86400,
     Month = 2629800,
     Year = 31557600,
