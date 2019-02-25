@@ -11,17 +11,17 @@ using UnityEngine.UI;
 public class InsertInPlace : MonoBehaviour
 {
     public Button button;
+    public GameObject bodyBase;
     public TMP_InputField objName;
     public TMP_Dropdown type;
+    public TMP_InputField radius;
+    public TMP_InputField mass;
     public TMP_InputField xPos;
     public TMP_InputField yPos;
     public TMP_InputField zPos;
     public TMP_InputField xVel;
     public TMP_InputField yVel;
     public TMP_InputField zVel;
-    public TMP_InputField radius;
-    public TMP_InputField mass;
-    public GameObject planetBase;
 
     public GameObject UseParticleSystem;
 
