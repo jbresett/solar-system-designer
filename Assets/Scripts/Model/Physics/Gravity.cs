@@ -35,6 +35,7 @@ public class Gravity : MonoBehaviour{
 		Body mostMass = new Body();
 		mostMass.KG = 0;
 		double xDist = 0;
+		Vector3d dist = new Vector3d();
 		double period = 0;
 		Vector3d vec = new Vector3d(0,0,0);
 		// checking distance and calculating.
@@ -48,11 +49,11 @@ public class Gravity : MonoBehaviour{
 
 		foreach (Body body in bodyList)
 		{
-			if (!body.isInitialVel)
+			if (!body.isInitialVel && body != mostMass)
 			{
-				xDist = mostMass.Pos.x - body.Pos.x;
-				period = Math.Sqrt((4 * Math.PI * Math.PI * Math.Pow(xDist, 3)) / (g * (body.KG + mostMass.KG)));
-				vec.z = (xDist + xDist) * Math.PI/period;
+				dist = mostMass.Pos - body.Pos;
+				xDist = dist.magnitude;
+				vec.z = (Math.Sqrt((g * (mostMass.KG) )/ xDist));
 				body.Vel = vec;
 				body.isInitialVel = true;
 			}
