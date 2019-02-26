@@ -145,11 +145,6 @@ MonoBehaviour:
   id: -1
   type: 0
   mass: 1
-  vel:
-    axis:
-    - 0
-    - 0
-    - 0
   diameter: 2.5
   position:
     axis:
@@ -168,16 +163,12 @@ MonoBehaviour:
     - 0
     - 0
   material: 7
-  initialVel:
+  force:
     axis:
     - 0
     - 0
     - 0
-  momentum:
-    axis:
-    - 0
-    - 0
-    - 0
+  initialVelocity: 0
 --- !u!114 &114830010619269704
 MonoBehaviour:
   m_ObjectHideFlags: 1

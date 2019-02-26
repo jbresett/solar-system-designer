@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class PhysicsBody : CapiBody {
 
-    private static double SOLAR_MASS_CONVERT = 334672.021419; // Solar Mass in Earths.
+
     private static double KG_MASS_CONVERT = 5.9722E24; // Earth's Mass in KG.
     private static double M_TO_AU = 1.496E11; //AU represented in meters
-    public Vector3d Pos {
-
-            get { return Position * M_TO_AU; }
-            set { Position = value / M_TO_AU; }
-
-    }
     
     /// <summary>
-    /// Mass of the Body in Sols.
+    /// This method is used by the Gravity class to get and set the
+    /// celestial object's position.
+    /// 
     /// </summary>
-    public double SolarMass
-    {
-        get { return mass / SOLAR_MASS_CONVERT; }
-        set { Mass = value / SOLAR_MASS_CONVERT; }
+    public Vector3d Pos {
+
+            get { return position * M_TO_AU; }
+            set { position = value / M_TO_AU; }
+
     }
+
     /// <summary>
-    /// Mass of the Body in kg.
+    /// Mass of the Body in kg, which is needed for
+    /// physics calculations within the Gravity class.
     /// </summary>
     public double KG
     {
@@ -32,40 +31,47 @@ public class PhysicsBody : CapiBody {
     }
     
     /// <summary>
-    /// Set and get initial velocity for the body
+    /// This Method gets and sets the velocity for the Gravity
+    /// Class.
     /// </summary>
-    public Vector3d initialVelocity
+    public Vector3d Vel
     {
-        get { return initialVel; }
-        set { initialVel = value; }
+        get { return velocity; }
+        set {Velocity = value; }  
     }
     
-    [SerializeField]
-    protected Vector3d initialVel;
-    public Vector3d momentumVector
+    /// <summary>
+    /// This method stores the total force that is applied
+    /// to a particular body.
+    /// </summary>
+    public Vector3d totalForce
     {
-        get { return momentum; }
-        set { momentum = value; }  
+        get { return force; }
+        set { force = value; }  
     }
 
     [SerializeField]
-    protected Vector3d momentum;
+    protected Vector3d force;
+    
+    
+    /// <summary>
+    /// This method checks to see if initial velocity has been
+    /// set or not.  This is so that the gravity class can calculate
+    /// an initial velocity if a new body is added to the simulation.
+    /// </summary>
+    public bool isInitialVel
+    {
+        get { return initialVelocity; }
+        set { initialVelocity = value; }  
+    }
 
+    [SerializeField]
+    protected bool initialVelocity = false;
     new public void Awake()
     {
         base.Awake();
         // Can delete function if not needed in this class: next level down will automatically be called instead.
     }
-
-    new public void Start () {
-
-        // Can delete function if not needed in this class: next level down will automatically be called instead.
-    }
-
-    // Update is called once per frame
-    new public void Update () {
-
-	}
 
     /// <summary>
     /// Gets the Barycenter point between this object and another.

@@ -7,13 +7,12 @@ public class VisualBody : BaseBody {
     // Multiplers for standard Earths -> Unity
     static public float POSITION_MULT = 10f;   // 1 AU = 10 Unity units.
     static public float SIZE_MULT = 1f;     // 1 Earth = 1 Unity units.
-
+    
     new public Vector3d Position {
         get { return position; }
         set
         {
             base.Position = value;
-            gameObject.transform.position = value.Vec3 * POSITION_MULT;
         }
     }
 
@@ -52,6 +51,14 @@ public class VisualBody : BaseBody {
 	new public void Update ()
     {
         base.Update();
-        transform.Rotate((Vector3.up * (float)rotation) * Time.deltaTime, Space.Self);
+
+        // Update Rotation
+        transform.Rotate((Vector3.up * -(float)Rotation) * Time.deltaTime, Space.Self);
+        
+        
+        // New Position already calculated via change in time.
+        Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position; 
+        transform.position += move;
+
     }
 }

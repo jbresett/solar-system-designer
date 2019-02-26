@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -8,8 +9,12 @@ using UnityEngine;
 /// </summary>
 public class Sim : Singleton<Sim> {
 
-    static public Config Config
-    {
+    // Frame Rate Tracker
+    private float nextUpdate = 0;
+    private float updateTime = 1.0f; //Seconds Per Update
+    private int frameCount = 0;
+
+    static public Config Config {
         get { return Config.Instance; }
     }
 
@@ -27,6 +32,14 @@ public class Sim : Singleton<Sim> {
     {
         get { return Bodies.Instance; }
     }
+
+    // Location for the Active and Inactive body containers.
+    public GameObject BodyContainer;
+    public GameObject BodyPrefab;
+
+    public GameObject StatsLabel;
+
+    public string version;
 
     static public Perm Perm
     {
@@ -49,11 +62,29 @@ public class Sim : Singleton<Sim> {
     public void Awake()
     {
         CapiBody.Init();
+
+        nextUpdate = Time.time + updateTime;
     }
 
     void Start () {
 
 	}
+	
+	void Update () {
+        frameCount++;
 
+        if (Time.time >= nextUpdate)
+        {
+            // Set next update.
+            nextUpdate = Time.time + updateTime;
+            
+            // Calculate and display frames/second.
+            var fps = frameCount / updateTime;
+            StatsLabel.GetComponent<TextMeshProUGUI>().text = string.Format("{0:0} fps", fps);
+                
+            // Reset FrameCount for next set.
+            frameCount = 0;
+        }
+	}
 
 }

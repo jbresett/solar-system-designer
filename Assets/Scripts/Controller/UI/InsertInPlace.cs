@@ -55,9 +55,9 @@ public class InsertInPlace : MonoBehaviour
 
         try
         { 
-            script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
+            script.Velocity = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
         } catch (Exception) {
-            script.Vel = new Vector3d(0.0,0.0,0.0);
+            script.Velocity = new Vector3d(0.0,0.0,0.0);
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
         }
        
