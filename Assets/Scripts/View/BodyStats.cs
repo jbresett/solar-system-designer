@@ -8,7 +8,7 @@ namespace DefaultNamespace
     public class BodyStats : MonoBehaviour
     {
         public Toggle cameraLock;
-        public TMP_Dropdown planetSelector;
+        public TMP_Dropdown bodySelector;
         public TextMeshProUGUI pos;
         public Component viewPort;
 
@@ -16,21 +16,31 @@ namespace DefaultNamespace
         {
             Body[] bodies = Sim.Bodies.getAll();
             List<string> options = new List<string>();
+            Body b;
             for (int i = 0; i < bodies.Length; i++)
             {
-                if (!bodies[i].name.Equals(""))
+                b = bodies[i];
+                if (!b.name.Equals("")&&b.Active)
                 {
                     options.Add(bodies[i].name);
                 }
             }
-            planetSelector.ClearOptions();
-            planetSelector.AddOptions(options);
-            listStats();
+            bodySelector.ClearOptions();
+            bodySelector.AddOptions(options);
+            if (bodySelector.options.Count > 0)
+            {
+                listStats();
+                
+            }
+            else
+            {
+                viewPort.gameObject.SetActive(false);
+            }
         }
 
         public void listStats()
         {
-            string name = planetSelector.options[planetSelector.value].text;
+            string name = bodySelector.options[bodySelector.value].text;
             Body b = Sim.Bodies.get(name);
             pos.text = b.Pos.ToString();
             viewPort.gameObject.SetActive(false);
