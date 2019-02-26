@@ -7,12 +7,9 @@ using UnityEngine;
 /// <summary>
 /// Main Class for SS Game. Handles SimCapi interface.
 /// </summary>
-public class Capi {
+public class Capi: Singleton<Capi> {
 
     readonly static public String SIM_ID = "SolarSystemDesigner";
-
-    // Singleton instance. Created at start.
-    static public Capi Instance { get; private set; }
 
     // Program states.
     public enum States
@@ -20,32 +17,30 @@ public class Capi {
         Startup, Active, Paused, Stopped
     }
 
-    static public States State = States.Startup;
+    public States State = States.Startup;
 
-    static public ExposedData Exposed { get; private set; }
-    static public PersistentData Persistent { get; private set; }
+    public ExposedData Exposed { get { return ExposedData.Instance; }  }
+    public PersistentData Persistent { get { return PersistentData.Instance; } }
+    public Transporter Transporter {  get { return SimCapi.Transporter.getInstance(); } }
 
-    static SimCapi.Transporter transporter;
-
-    static public void Init()
+    public void Awake()
     {
 
-        transporter = SimCapi.Transporter.getInstance();
+        //transporter = SimCapi.Transporter.getInstance();
 
         // Create SSData 
-        Exposed = new ExposedData();
         Exposed.exposeAll();
         Exposed.setDeligates();
 
         Debugger.log("Initializing Transporter");
-        transporter.addInitialSetupCompleteListener(setupComplete);
-        transporter.addHandshakeCompleteListener(handshakeComplete);
+        Transporter.addInitialSetupCompleteListener(setupComplete);
+        Transporter.addHandshakeCompleteListener(handshakeComplete);
 
     }
 
     // Initialization
-    static public void Start () {
-        transporter.notifyOnReady();
+    public void Start () {
+        Transporter.notifyOnReady();
     }
 
     /// <summary>
@@ -53,28 +48,16 @@ public class Capi {
     /// Starts project initalization (objects/etc).
     /// </summary>
     /// <param name="message"></param>
-    static public void setupComplete()
+    public void setupComplete()
     {
-        Debugger.log("SimCapi Setup Complete.");
-        Debugger.log("SimCapi Context: " + SimCapi.Transporter.getInstance().getConfig().context);
+        Debugger.log("SimCapi Setup Complete. Context: " + SimCapi.Transporter.getInstance().getConfig().context);
         // Move to ready state.
         State = States.Active;
     }
 
-
-    static private void handshakeComplete(SimCapiHandshake handshake)
+    private void handshakeComplete(SimCapiHandshake handshake)
     {
         Debugger.log("SimCapi Handshake Complete.");
     }
 
-    // Frame Update
-    static public void Update() {
-        /// Code that occurs every frame, regardless of state.
-        //TODO: Add future frame code here.    
-
-        /** Active state only. **/
-        if (State != States.Active) return;
-        
-        //TODO: Add future frame code here.
-	}
 }

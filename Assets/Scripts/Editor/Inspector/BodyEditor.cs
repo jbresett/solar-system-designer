@@ -25,10 +25,17 @@ public class BodyEditor : Editor
         body.Type = (BodyType)EditorGUILayout.EnumPopup("Type", body.Type);
 
         
-        // Position & Initial Position
+        // Position
         v3d("Position", body.Position);
         body.Position = body.Position; // Set here to update Unity's Transform.
-        body.InitialPosition = body.Position;
+
+        // Initial Position automatically updated in non-play mode.
+        if (!Application.isPlaying)
+        {
+            body.InitialPosition = body.Position;
+        }
+
+        v3d("  Initial", body.InitialPosition);
 
         // Velocity
         v3d("Velocity", body.Velocity);

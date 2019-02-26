@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b09e62cb-5961-486e-a92d-c8016b6589f9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.solar-system-designer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.solar-system-designer/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1356349847">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="cs" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C#" value="9" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="cs" value="828" />
+          <entry key="txt" value="276" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="C#" value="828" />
+          <entry key="PLAIN_TEXT" value="276" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scenes/MainScene.unity">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="2" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Controls/CameraControls.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-973">
+              <folding>
+                <marker date="1550207039270" expanded="false" signature="6:151" ph="..." />
+                <marker date="1550207039270" expanded="true" signature="153:243" ph="/// This class handles all movement and control of the camera ... " />
+                <marker date="1550207039270" expanded="true" signature="288:6210" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="295:382" ph="/// Method used to enable and disable the keyboard ... " />
+                <marker date="1550207039270" expanded="true" signature="413:504" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="571:685" ph="/// This method is used to enable and disable the ... " />
+                <marker date="1550207039270" expanded="true" signature="713:799" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="1246:1485" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="1352:1479" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="1401:1469" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="1491:1598" ph="/// This function is used to update the frame once ... " />
+                <marker date="1550207039270" expanded="true" signature="1616:2281" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="1887:2073" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="1935:2063" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="2172:2222" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="2287:2390" ph="/// This function Updates movement position based on the keyboard. ... " />
+                <marker date="1550207039270" expanded="true" signature="2416:4718" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="2746:2851" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="2923:3028" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="3100:3208" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="3282:3390" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="3474:3584" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="3670:3780" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="3854:3924" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="4005:4075" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="4724:4824" ph="/// This function Updates movement position based on the mouse. ... " />
+                <marker date="1550207039270" expanded="true" signature="4855:6208" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="5072:5354" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="5367:5441" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="5529:5847" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="5860:5934" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="5976:6083" ph="{...}" />
+                <marker date="1550207039270" expanded="true" signature="6124:6193" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Config.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="47">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+              <folding>
+                <marker date="1551117399197" expanded="false" signature="6:78" ph="..." />
+                <marker date="1551117399197" expanded="true" signature="120:534" ph="{...}" />
+                <marker date="1551117399197" expanded="true" signature="148:225" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Sim.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="25" column="21" selection-start-line="22" selection-start-column="37" selection-end-line="25" selection-end-column="21" />
+              <folding>
+                <marker date="1551117399370" expanded="false" signature="6:78" ph="..." />
+                <marker date="1551117399370" expanded="true" signature="80:226" ph="/// Primary Simulation instance. Singleton class instances of can be accessed via ... " />
+                <marker date="1551117399370" expanded="true" signature="261:1144" ph="{...}" />
+                <marker date="1551117399370" expanded="true" signature="295:347" ph="{...}" />
+                <marker date="1551117399370" expanded="true" signature="384:438" ph="{...}" />
+                <marker date="1551117399370" expanded="true" signature="467:518" ph="{...}" />
+                <marker date="1551117399370" expanded="true" signature="551:603" ph="{...}" />
+                <marker date="1551117399370" expanded="true" signature="632:682" ph="{...}" />
+                <marker date="1551117399370" expanded="true" signature="688:810" ph="/// Simulation speed. Default of 1.0 is s 1 Day / second, or 86,400x times real-time. ... " />
+                <marker date="1551117399370" expanded="true" signature="889:981" ph="{...}" />
+                <marker date="1551117399370" expanded="true" signature="987:1054" ph="/// Main Simulation Initiation ... " />
+                <marker date="1551117399370" expanded="true" signature="1078:1115" ph="{...}" />
+                <marker date="1551117399370" expanded="true" signature="1135:1140" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Bodies.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1007">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding>
+                <marker date="1551117399196" expanded="false" signature="6:78" ph="..." />
+                <marker date="1551117399196" expanded="true" signature="119:2853" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="210:367" ph="/// Returns a body by id. ... " />
+                <marker date="1551117399196" expanded="true" signature="395:434" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="440:604" ph="/// Returns a Body by name, or null if the body does not exist. ... " />
+                <marker date="1551117399196" expanded="true" signature="637:797" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="681:770" ph="{...}" />
+                <marker date="1551117399196" expanded="false" signature="822:1557" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="955:1047" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="1111:1551" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="1134:1266" ph="/* GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere); ... */" />
+                <marker date="1551117399196" expanded="true" signature="1593:1626" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="1632:1764" ph="/// Returns a set of all body values, including empty(null) bodies. ... " />
+                <marker date="1551117399196" expanded="true" signature="1791:1826" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="1832:1937" ph="/// Returns a list of all active bodies. ... " />
+                <marker date="1551117399196" expanded="true" signature="1967:2316" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="1985:2310" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="2087:2273" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="2184:2258" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="2404:2448" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="2486:2751" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="2530:2724" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="2610:2714" ph="{...}" />
+                <marker date="1551117399196" expanded="true" signature="2797:2851" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/View/BodyStats.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+              <folding>
+                <marker date="1551150679217" expanded="true" signature="6:87" ph="..." />
+                <marker date="1551150679217" expanded="true" signature="115:1359" ph="{...}" />
+                <marker date="1551150679217" expanded="true" signature="160:1357" ph="{...}" />
+                <marker date="1551150679217" expanded="true" signature="344:1042" ph="{...}" />
+                <marker date="1551150679217" expanded="true" signature="530:724" ph="{...}" />
+                <marker date="1551150679217" expanded="true" signature="625:710" ph="{...}" />
+                <marker date="1551150679217" expanded="true" signature="859:933" ph="{...}" />
+                <marker date="1551150679217" expanded="true" signature="950:1032" ph="{...}" />
+                <marker date="1551150679217" expanded="true" signature="1075:1351" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UI/RemoveBody.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+              <folding>
+                <marker date="1551150286014" expanded="true" signature="6:53" ph="..." />
+                <marker date="1551150286014" expanded="true" signature="78:304" ph="{...}" />
+                <marker date="1551150286014" expanded="true" signature="124:302" ph="{...}" />
+                <marker date="1551150286014" expanded="true" signature="198:296" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>planetMass</find>
+      <find>distanc</find>
+      <find>norm</find>
+      <find>normal</find>
+      <find>mag</find>
+      <find>initial</find>
+      <find>norma</find>
+      <find>m</find>
+      <find>multi</find>
+      <find>bodies</find>
+      <find>gam</find>
+      <find>sun</find>
+      <find>initialVel</find>
+      <find>solar</find>
+      <find>distance</find>
+      <find>KG</find>
+      <find>mass</find>
+      <find>posit</find>
+      <find>position</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>moveBody</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sim.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Util/Vector3d.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiMono.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Capi/ExposedData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/View/BodyStats.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UI/RemoveBody.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Config.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UI/InsertInPlace.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/VisualBody.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Controls/CameraControls.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/View/Motion/Rotation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Model/Physics/Gravity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/CapiBody.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Body.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Bodies.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/BaseBody.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/View/SetVersionText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Tests/Physics/ThirdLawTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/View/BodyMaterial.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Model/Body/NBody.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Bodies/BaseBody.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/UI/InsertInPlace.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Bodies/VisualBody.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Model/Physics/Gravity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Bodies/Bodies.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controller/UI/RemoveBody.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/View/BodyStats.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="riderModule/invalid/Default Android Facet" />
+    </ignored-facets>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="31" />
+    <option name="y" value="57" />
+    <option name="width" value="1400" />
+    <option name="height" value="776" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="FileSystemExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Editor" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Fonts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Plugins" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scenes" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Bodies" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controller" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controller" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controls" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Controller" type="1045f7f1:UnityExplorerNode" />
+              <item name="UI" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Editor" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="View" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="View" type="1045f7f1:UnityExplorerNode" />
+              <item name="Motion" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-hidden-items" value="false" />
+      </pane>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name=".idea" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name=".idea" type="34e6ba20:FileSystemExplorerNode" />
+              <item name=".idea.solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name=".idea" type="34e6ba20:FileSystemExplorerNode" />
+              <item name=".idea.solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name=".idea" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Assets" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Assets" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Editor" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Assets" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Plugins" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Assets" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Scripts" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Assets" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Scripts" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Controller" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Assets" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Scripts" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Controller" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="UI" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+            <path>
+              <item name="Project" type="161ac34:FileSystemExplorerRootNode" />
+              <item name="solar-system-designer" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Assets" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Scripts" type="34e6ba20:FileSystemExplorerNode" />
+              <item name="Model" type="34e6ba20:FileSystemExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AssemblyExplorer" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Assets/Scenes/MainScene.unity</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Assets/Scripts/Controller/Settings.cs</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Assets/Scripts/Controller/UI/SpeedUI.cs</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Assets/Scripts/Editor/Inspector/BodyEditor.cs</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b09e62cb-5961-486e-a92d-c8016b6589f9" name="Default Changelist" comment="" />
+      <created>1548309242757</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1548309242757</updated>
+      <workItem from="1548309246774" duration="1092000" />
+      <workItem from="1548532974894" duration="11826000" />
+      <workItem from="1548828257674" duration="2524000" />
+      <workItem from="1548998840898" duration="2801000" />
+      <workItem from="1549140333712" duration="7749000" />
+      <workItem from="1549155076181" duration="1040000" />
+      <workItem from="1549394419018" duration="1117000" />
+      <workItem from="1549607320610" duration="34000" />
+      <workItem from="1549608642278" duration="4842000" />
+      <workItem from="1549942629297" duration="4723000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added Stats screen with body selector">
+      <created>1551148971404</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1551148971404</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added button to stats panel to remove (disable) a body from the simulation. added checking to prevent index out ob bounds errors when there are no valid bodies in the simulation.">
+      <created>1551150983898</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1551150983898</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="47398000" />
+  </component>
+  <component name="TodoView" selected-index="1">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="23" width="1550" height="848" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27919462" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Captures" order="5" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4992636" visible="true" weight="0.32894737" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32894737" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50073636" side_tool="true" weight="0.32894737" />
+      <window_info anchor="bottom" id="NuGet" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Logcat" order="12" />
+      <window_info anchor="bottom" id="Unit Tests" order="13" weight="0.32894737" />
+      <window_info anchor="bottom" id="Database Changes" order="14" />
+      <window_info anchor="bottom" id="Version Control" order="15" weight="0.32894737" />
+      <window_info anchor="bottom" id="Unity" order="16" weight="0.32894737" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Errors In Solution" order="6" visible="true" weight="0.02147651" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added Stats screen with body selector" />
+    <MESSAGE value="Added button to stats panel to remove (disable) a body from the simulation. added checking to prevent index out ob bounds errors when there are no valid bodies in the simulation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added button to stats panel to remove (disable) a body from the simulation. added checking to prevent index out ob bounds errors when there are no valid bodies in the simulation." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="151" column="13" lean-forward="true" selection-start-line="151" selection-start-column="13" selection-end-line="151" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/PhysicsBody.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/NBody.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/StarBody.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/FluidBody.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Capi/ExposedData.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="113" column="9" lean-forward="true" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Editor/Tests/Physics/ThirdLawTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/View/Motion/Rotation.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/SimCapi/Scripts/SimCapiMono.cs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Body/OrbitalBody.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Util/Vector3d.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4110">
+          <caret line="315" column="8" selection-start-line="315" selection-start-column="8" selection-end-line="315" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UI/InsertInPlace.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Model/Physics/Gravity.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="59" column="32" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Controls/CameraControls.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-973">
+          <folding>
+            <marker date="1550207039270" expanded="false" signature="6:151" ph="..." />
+            <marker date="1550207039270" expanded="true" signature="153:243" ph="/// This class handles all movement and control of the camera ... " />
+            <marker date="1550207039270" expanded="true" signature="288:6210" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="295:382" ph="/// Method used to enable and disable the keyboard ... " />
+            <marker date="1550207039270" expanded="true" signature="413:504" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="571:685" ph="/// This method is used to enable and disable the ... " />
+            <marker date="1550207039270" expanded="true" signature="713:799" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="1246:1485" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="1352:1479" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="1401:1469" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="1491:1598" ph="/// This function is used to update the frame once ... " />
+            <marker date="1550207039270" expanded="true" signature="1616:2281" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="1887:2073" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="1935:2063" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="2172:2222" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="2287:2390" ph="/// This function Updates movement position based on the keyboard. ... " />
+            <marker date="1550207039270" expanded="true" signature="2416:4718" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="2746:2851" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="2923:3028" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="3100:3208" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="3282:3390" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="3474:3584" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="3670:3780" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="3854:3924" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="4005:4075" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="4724:4824" ph="/// This function Updates movement position based on the mouse. ... " />
+            <marker date="1550207039270" expanded="true" signature="4855:6208" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="5072:5354" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="5367:5441" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="5529:5847" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="5860:5934" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="5976:6083" ph="{...}" />
+            <marker date="1550207039270" expanded="true" signature="6124:6193" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scenes/MainScene.unity">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/View/SetVersionText.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <marker date="1551040234672" expanded="false" signature="6:85" ph="..." />
+            <marker date="1551040234672" expanded="true" signature="113:472" ph="{...}" />
+            <marker date="1551040234672" expanded="true" signature="163:470" ph="{...}" />
+            <marker date="1551040234672" expanded="true" signature="246:388" ph="{...}" />
+            <marker date="1551040234672" expanded="true" signature="418:464" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/View/BodyMaterial.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1550207039291" expanded="false" signature="6:78" ph="..." />
+            <marker date="1550207039291" expanded="true" signature="104:186" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Body.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <marker date="1550207039266" expanded="false" signature="6:92" ph="..." />
+            <marker date="1550207039266" expanded="true" signature="114:161" ph="{...}" />
+            <marker date="1550207039266" expanded="true" signature="195:199" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/PhysicsBody.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="69" column="9" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
+          <folding>
+            <marker date="1550207039268" expanded="false" signature="6:78" ph="..." />
+            <marker date="1550207039268" expanded="true" signature="116:2211" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="381:485" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="495:561" ph="/// Mass of the Body in Sols. ... " />
+            <marker date="1550207039268" expanded="true" signature="589:702" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="707:771" ph="/// Mass of the Body in kg. ... " />
+            <marker date="1550207039268" expanded="true" signature="792:899" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="909:991" ph="/// Set and get initial velocity for the body ... " />
+            <marker date="1550207039268" expanded="true" signature="1027:1110" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="1206:1287" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="1371:1519" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="1550:1672" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="1743:1748" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="1754:1902" ph="/// &lt;summary&gt; ... " />
+            <marker date="1550207039268" expanded="true" signature="1957:2208" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/CapiBody.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <marker date="1550207039267" expanded="false" signature="6:93" ph="..." />
+            <marker date="1550207039267" expanded="true" signature="130:7515" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="161:388" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="208:382" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="473:701" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="520:695" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="752:820" ph="/// Mass of the body in Earths. ... " />
+            <marker date="1550207039267" expanded="true" signature="847:1082" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="894:1076" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="1133:1193" ph="/// Diameter in Earths. ... " />
+            <marker date="1550207039267" expanded="true" signature="1224:1471" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="1275:1465" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="1526:1638" ph="/// Current Position of the object. Any changes will be reflected in Unity. ... " />
+            <marker date="1550207039267" expanded="true" signature="1671:2149" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="1722:2143" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="2209:2351" ph="/// Initial position of the Body. Using resetPosition() will move the Body back to it's initial position. ... " />
+            <marker date="1550207039267" expanded="true" signature="2391:2918" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="2449:2912" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="2985:3067" ph="/// Planet's rotational speed, in earth days. ... " />
+            <marker date="1550207039267" expanded="true" signature="3098:3345" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="3149:3339" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="3487:3595" ph="/// Initiates CapiBody, exposing all variables to the main Capi system. ... " />
+            <marker date="1550207039267" expanded="true" signature="3625:7254" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="4160:7199" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="5143:7189" ph="/* [TODO] Deligates don't work as is: to fix on later task. ... */" />
+            <marker date="1550207039267" expanded="true" signature="7283:7317" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="7388:7417" ph="{...}" />
+            <marker date="1550207039267" expanded="true" signature="7483:7513" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/VisualBody.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <marker date="1550207039268" expanded="false" signature="6:78" ph="..." />
+            <marker date="1550207039268" expanded="true" signature="115:1375" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="344:523" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="390:517" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="555:795" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="606:789" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="833:1102" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="884:1096" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="1131:1165" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="1192:1223" ph="{...}" />
+            <marker date="1550207039268" expanded="true" signature="1251:1373" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/BaseBody.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="78" column="21" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="21" />
+          <folding>
+            <marker date="1550207039265" expanded="false" signature="6:78" ph="..." />
+            <marker date="1550207039265" expanded="true" signature="140:2991" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="161:223" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="290:392" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="403:454" ph="/// Body Type. ... " />
+            <marker date="1550207039265" expanded="true" signature="479:550" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="606:664" ph="/// Unique Body Name. ... " />
+            <marker date="1550207039265" expanded="true" signature="687:780" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="786:842" ph="/// Mass in Earths. ... " />
+            <marker date="1550207039265" expanded="true" signature="865:1050" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="912:1044" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="1123:1192" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="1264:1324" ph="/// Diameter in Earths. ... " />
+            <marker date="1550207039265" expanded="true" signature="1351:1430" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="1488:1554" ph="///x ... " />
+            <marker date="1550207039265" expanded="true" signature="1583:1662" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="1739:1804" ph="/// Initial position in AUs. ... " />
+            <marker date="1550207039265" expanded="true" signature="1840:1933" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="2017:2081" ph="/// Rotation in Earth Days. ... " />
+            <marker date="1550207039265" expanded="true" signature="2108:2187" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="2245:2319" ph="/// Sum of all vectors on the object. ... " />
+            <marker date="1550207039265" expanded="true" signature="2348:2427" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="2532:2611" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="2713:2788" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="2813:2888" ph="{...}" />
+            <marker date="1550207039265" expanded="true" signature="2914:2989" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Sim.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="25" column="21" selection-start-line="22" selection-start-column="37" selection-end-line="25" selection-end-column="21" />
+          <folding>
+            <marker date="1551117399370" expanded="false" signature="6:78" ph="..." />
+            <marker date="1551117399370" expanded="true" signature="80:226" ph="/// Primary Simulation instance. Singleton class instances of can be accessed via ... " />
+            <marker date="1551117399370" expanded="true" signature="261:1144" ph="{...}" />
+            <marker date="1551117399370" expanded="true" signature="295:347" ph="{...}" />
+            <marker date="1551117399370" expanded="true" signature="384:438" ph="{...}" />
+            <marker date="1551117399370" expanded="true" signature="467:518" ph="{...}" />
+            <marker date="1551117399370" expanded="true" signature="551:603" ph="{...}" />
+            <marker date="1551117399370" expanded="true" signature="632:682" ph="{...}" />
+            <marker date="1551117399370" expanded="true" signature="688:810" ph="/// Simulation speed. Default of 1.0 is s 1 Day / second, or 86,400x times real-time. ... " />
+            <marker date="1551117399370" expanded="true" signature="889:981" ph="{...}" />
+            <marker date="1551117399370" expanded="true" signature="987:1054" ph="/// Main Simulation Initiation ... " />
+            <marker date="1551117399370" expanded="true" signature="1078:1115" ph="{...}" />
+            <marker date="1551117399370" expanded="true" signature="1135:1140" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/Config.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <marker date="1551117399197" expanded="false" signature="6:78" ph="..." />
+            <marker date="1551117399197" expanded="true" signature="120:534" ph="{...}" />
+            <marker date="1551117399197" expanded="true" signature="148:225" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Controller/UI/RemoveBody.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <marker date="1551150286014" expanded="true" signature="6:53" ph="..." />
+            <marker date="1551150286014" expanded="true" signature="78:304" ph="{...}" />
+            <marker date="1551150286014" expanded="true" signature="124:302" ph="{...}" />
+            <marker date="1551150286014" expanded="true" signature="198:296" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/Bodies/Bodies.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1007">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <marker date="1551117399196" expanded="false" signature="6:78" ph="..." />
+            <marker date="1551117399196" expanded="true" signature="119:2853" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="210:367" ph="/// Returns a body by id. ... " />
+            <marker date="1551117399196" expanded="true" signature="395:434" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="440:604" ph="/// Returns a Body by name, or null if the body does not exist. ... " />
+            <marker date="1551117399196" expanded="true" signature="637:797" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="681:770" ph="{...}" />
+            <marker date="1551117399196" expanded="false" signature="822:1557" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="955:1047" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="1111:1551" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="1134:1266" ph="/* GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere); ... */" />
+            <marker date="1551117399196" expanded="true" signature="1593:1626" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="1632:1764" ph="/// Returns a set of all body values, including empty(null) bodies. ... " />
+            <marker date="1551117399196" expanded="true" signature="1791:1826" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="1832:1937" ph="/// Returns a list of all active bodies. ... " />
+            <marker date="1551117399196" expanded="true" signature="1967:2316" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="1985:2310" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="2087:2273" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="2184:2258" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="2404:2448" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="2486:2751" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="2530:2724" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="2610:2714" ph="{...}" />
+            <marker date="1551117399196" expanded="true" signature="2797:2851" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/View/BodyStats.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <folding>
+            <marker date="1551150679217" expanded="true" signature="6:87" ph="..." />
+            <marker date="1551150679217" expanded="true" signature="115:1359" ph="{...}" />
+            <marker date="1551150679217" expanded="true" signature="160:1357" ph="{...}" />
+            <marker date="1551150679217" expanded="true" signature="344:1042" ph="{...}" />
+            <marker date="1551150679217" expanded="true" signature="530:724" ph="{...}" />
+            <marker date="1551150679217" expanded="true" signature="625:710" ph="{...}" />
+            <marker date="1551150679217" expanded="true" signature="859:933" ph="{...}" />
+            <marker date="1551150679217" expanded="true" signature="950:1032" ph="{...}" />
+            <marker date="1551150679217" expanded="true" signature="1075:1351" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

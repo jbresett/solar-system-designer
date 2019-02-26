@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1835317294241454}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 4223934215438076}
   m_Father: {fileID: 0}
@@ -143,12 +143,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: -1
-  active: 1
   type: 0
   mass: 1
+  vel:
+    axis:
+    - 0
+    - 0
+    - 0
   diameter: 2.5
+  position:
+    axis:
+    - 0
+    - 0
+    - 0
+  initialPosition:
+    axis:
+    - 0
+    - 0
+    - 0
   rotation: 0
-  texture: Mars
+  velocity:
+    axis:
+    - 0
+    - 0
+    - 0
+  material: 7
+  initialVel:
+    axis:
+    - 0
+    - 0
+    - 0
+  momentum:
+    axis:
+    - 0
+    - 0
+    - 0
 --- !u!114 &114830010619269704
 MonoBehaviour:
   m_ObjectHideFlags: 1
