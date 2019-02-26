@@ -83,17 +83,16 @@ public class Bodies: Singleton<Bodies> {
             List<Body> active = new List<Body>();
             foreach (Body body in bodies)
             {
-                if (body != null && body.name != "" && body.gameObject.activeSelf)
+                if (body != null && body.gameObject.activeSelf)
                 {
                     active.Add(body);
                 }
-
             }
             return active;
         }
     }
 
-    [System.Obsolete("Used Sim.Body.Active")]
+    [System.Obsolete("Used Sim.Bodies.Active")]
     static public List<Body> getActive()
     {
         return Instance.Active;

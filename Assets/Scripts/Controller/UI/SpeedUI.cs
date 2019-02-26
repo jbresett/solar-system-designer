@@ -17,7 +17,7 @@ public class SpeedUI : MonoBehaviour {
 	void Start () {
 
         speedText.text = "0";
-        slider.GetComponent<Slider>().value = Sim.Settings.Speed;
+        slider.GetComponent<Slider>().value = (float)Sim.Settings.Speed;
         pauseButton.interactable = !Sim.Settings.Paused;
         playButton.interactable = Sim.Settings.Paused;
     }
@@ -88,6 +88,8 @@ public class SpeedUI : MonoBehaviour {
         foreach (Body body in Sim.Bodies.getAll())
         {
             body.Position = body.InitialPosition;
+            body.Velocity = new Vector3d();
+            body.isInitialVel = false;
         }
     }
 

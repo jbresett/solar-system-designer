@@ -15,7 +15,6 @@ namespace Planets
         public GameObject editMenu;
         public GameObject body;
         public Button selectArea;
-        public new Camera camera;
 
         /// <summary> 
         /// This function initializes the class and begins listening for
@@ -33,7 +32,7 @@ namespace Planets
         private void select()
         {
             RaycastHit hitInfo = new RaycastHit();
-            bool hit = Physics.Raycast(camera.ScreenPointToRay(Input.mousePosition), out hitInfo);
+            bool hit = Physics.Raycast(Camera.current.ScreenPointToRay(Input.mousePosition), out hitInfo);
             if (hit)
             {
                 if (hitInfo.collider.gameObject.tag == "OrbitalBody")

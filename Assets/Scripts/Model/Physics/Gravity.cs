@@ -17,7 +17,7 @@ using UnityEngine;
 public class Gravity : MonoBehaviour{
 
 	private const double g = 6.67408E-11;
-	private const double time = 86400; //seconds in a day
+	//private const double time = 86400; //seconds in a day
 	/// <summary>
 	/// This method checks for the body with the most mass and keeps the
 	/// velocity for the most mass at zero so that the solar system stays relative
@@ -31,7 +31,7 @@ public class Gravity : MonoBehaviour{
 	/// </summary>
 	public void calcInitialVelocities()
 	{
-		List<Body> bodyList = Bodies.getActive();
+		List<Body> bodyList = Sim.Bodies.Active;
 		Body mostMass = new Body();
 		mostMass.KG = 0;
 		double xDist = 0;
@@ -94,7 +94,7 @@ public class Gravity : MonoBehaviour{
 	/// </summary>
 	public void updateForce()
 	{
-		List<Body> bodies = Bodies.getActive();
+		List<Body> bodies = Sim.Bodies.Active;
 		Vector3d force;
 		foreach (Body bod in bodies)
 		{
@@ -119,13 +119,13 @@ public class Gravity : MonoBehaviour{
 	{
 		calcInitialVelocities();
 		updateForce();
-		List<Body> bodies = Bodies.getActive();
+		List<Body> bodies = Sim.Bodies.Active;
 		Vector3d velocity;
 		foreach (Body bod in bodies)
 		{
 			velocity = bod.Vel;
-			velocity.x += bod.totalForce.x / bod.KG * time;
-			velocity.z += bod.totalForce.z / bod.KG * time;
+			velocity.x += bod.totalForce.x / bod.KG * Sim.Settings.Speed;
+			velocity.z += bod.totalForce.z / bod.KG * Sim.Settings.Speed;
 
 			bod.Vel = velocity;
 		}
@@ -138,19 +138,21 @@ public class Gravity : MonoBehaviour{
 	public void calcPosition()
 	{
 		updateVelocity();
-		List<Body> bodies = Bodies.getActive();
+		List<Body> bodies = Sim.Bodies.Active;
 		Vector3d newPos;
 		foreach (Body bod in bodies)
 		{
-			newPos = new Vector3d(bod.Pos.x + bod.Vel.x *time,0,bod.Pos.z + bod.Vel.z *time);
+			newPos = new Vector3d(bod.Pos.x + bod.Vel.x * Sim.Settings.Speed, 0,bod.Pos.z + bod.Vel.z * Sim.Settings.Speed);
 			bod.Pos = newPos;
 		}
 	}
 
 	// Update is called once per frame
 	public void Update () {
-		calcPosition();
-
-	}
+        if (!Sim.Settings.Paused)
+        { 
+            calcPosition();
+        }
+    }
 
 }

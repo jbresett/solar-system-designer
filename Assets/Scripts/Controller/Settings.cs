@@ -28,6 +28,7 @@ public enum SpeedRatios
 
 public class Settings : Singleton<Settings>
 {
+    public GameObject speedBar; 
 
     // Links a Move Direction to a key control
     public Dictionary<Direction, KeyCode> KeyControls
@@ -43,17 +44,17 @@ public class Settings : Singleton<Settings>
     [SerializeField]
     protected bool paused;
     
-    public float Speed
+    public double Speed
     {
         get { return speed; }
         set
         {
-            Sim.Capi.Exposed.Speed.setValue(value);
+            Sim.Capi.Exposed.Speed.setValue((float)value);
             speed = value;
         }
     }
     [SerializeField]
-    protected float speed = (float)SpeedRatios.Day;
+    protected double speed = (float)SpeedRatios.Day;
 
     // Initialize with Default Values.
     [SerializeField]
@@ -72,5 +73,10 @@ public class Settings : Singleton<Settings>
         {Direction.RotUp, KeyCode.UpArrow },
         {Direction.RotDown, KeyCode.DownArrow }
     };
+
+    public void Awake()
+    {
+        speedBar.GetComponent<SpeedUI>().OnSliderChange((float)Speed);
+    }
 
 }

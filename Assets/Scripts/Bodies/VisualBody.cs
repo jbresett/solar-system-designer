@@ -53,12 +53,14 @@ public class VisualBody : BaseBody {
         base.Update();
 
         // Update Rotation
-        transform.Rotate((Vector3.up * -(float)Rotation) * Time.deltaTime, Space.Self);
-        
-        
+        if (!Sim.Settings.Paused)
+        {
+            transform.Rotate((Vector3.up * -(float)Rotation) * (Time.deltaTime * (float)Sim.Settings.Speed), Space.Self);
+            Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position;
+            transform.position += move;
+        }
+
         // New Position already calculated via change in time.
-        Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position; 
-        transform.position += move;
 
     }
 }

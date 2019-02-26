@@ -47,16 +47,6 @@ public class Sim : Singleton<Sim> {
     }
 
     /// <summary>
-    /// Simulation speed. Default of 1.0 is s 1 Day / second, or 86,400x times real-time.
-    /// </summary>
-    [System.Obsolete("Call Sim.Settings.Speed")]
-    static public float Speed
-    {
-        get { return Settings.Speed;  }
-        set { Settings.Speed = value; }
-    }
-
-    /// <summary>
     /// Main Simulation Initiation
     /// </summary>
     public void Awake()
