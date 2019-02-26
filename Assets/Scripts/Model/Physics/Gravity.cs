@@ -17,15 +17,15 @@ using UnityEngine;
 public class Gravity : MonoBehaviour{
 
 	private const double g = 6.67408E-11;
-	private const double time = 500000;
+	private const double time = 86400; //seconds in a day
 	/// <summary>
-	/// This calculates the initial velocities of all the bodies.
-	/// The function works by checking all bodies from the list
-	/// for the body that is a star, then compares the distance from the
-	/// sun to a given body and utilizes kepler's erd law to calculate
-	/// the total years it takes to make a revolution. The function then
-	/// finds the estimated circumference of the orbit and divides by the number
-	/// of seconds to get the km/sec velocity
+	/// This method checks for the body with the most mass and keeps the
+	/// velocity for the most mass at zero so that the solar system stays relative
+	/// The method then checks each body to see if it has an inital velocity yet or not
+	/// and then calculates that bodies initial velocity.
+	///
+	/// This method may not account for binary star systems and may not represent the actual starting
+	/// velocity of a planet. This method calculates a guess based on mass and distance.
 	///
 	/// Equation derrived from: https://www.physicsclassroom.com/class/circles/Lesson-4/Mathematics-of-Satellite-Motion
 	/// </summary>

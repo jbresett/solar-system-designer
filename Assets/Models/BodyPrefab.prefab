@@ -143,12 +143,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: -1
-  active: 1
   type: 0
   mass: 1
   diameter: 2.5
+  position:
+    axis:
+    - 0
+    - 0
+    - 0
+  initialPosition:
+    axis:
+    - 0
+    - 0
+    - 0
   rotation: 0
-  texture: Mars
+  velocity:
+    axis:
+    - 0
+    - 0
+    - 0
+  material: 7
+  force:
+    axis:
+    - 0
+    - 0
+    - 0
+  initialVelocity: 0
 --- !u!114 &114830010619269704
 MonoBehaviour:
   m_ObjectHideFlags: 1
