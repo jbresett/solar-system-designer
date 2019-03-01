@@ -15,9 +15,15 @@ public class BaseBody : MonoBehaviour {
     public bool Active
     {
         get { return gameObject.activeSelf; }
-        set { gameObject.SetActive(true); }
+        set
+        {
+            gameObject.SetActive(value);
+            active = value;
+        }
     }
-    
+    // Note: Active stored in gameObject.  Property below emulates the primitive for direct read-access.
+    [SerializeField]
+    protected bool active;
 
     /// <summary>
     /// Body Type.
@@ -28,7 +34,7 @@ public class BaseBody : MonoBehaviour {
         set { type = value; }
     }
     [SerializeField]
-    protected BodyType type;
+    protected BodyType type = BodyType.Undefined;
 
     /// <summary>
     /// Unique Body Name.
@@ -115,11 +121,14 @@ public class BaseBody : MonoBehaviour {
         set { material = value; }
     }
     [SerializeField]
-    protected BodyMaterial material;
+    protected BodyMaterial material = BodyMaterial.Sun;
 
     public void Awake()
     {
         // Leave in to ensure no issues with extended classes.
+
+        // Set initial states.
+        active = gameObject.activeSelf;
     }
 
     public void Start()

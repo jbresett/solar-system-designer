@@ -34,24 +34,12 @@ public class Bodies: Singleton<Bodies> {
 
     public void Awake()
     {
-        
-        // Id pre-existing bodies.
-        int i = 0;
-        foreach (Body body in Object.FindObjectsOfType<Body>())
+        // Generate the rest of the bodies.
+        // All Bodies must exist at initiation due to needing Capi variables.
+        int i = Object.FindObjectsOfType<Body>().Length;
+        for ( ; i < MAX_BODY_COUNT; i++)
         {
-
-            bodies[i] = body;
-            i++;
-        }
-
-        // Generate new bodies.
-        for (  ; i < MAX_BODY_COUNT; i++)
-        {
-            //GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            //obj.transform.SetParent(bodyContainer.transform);
             GameObject obj = Object.Instantiate(Sim.Config.BodyPrefab, Sim.Config.BodyContainer.transform);
-            obj.name = "";
-            obj.SetActive(false);
 
             Body body = obj.GetComponent<Body>();
             bodies[i] = body;

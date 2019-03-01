@@ -9478,6 +9478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: -1
+  active: 0
   type: 0
   mass: 5
   diameter: 0.5

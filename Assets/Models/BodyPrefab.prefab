@@ -37,17 +37,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4273283828206422}
+  - component: {fileID: 114458855037137440}
   - component: {fileID: 33403343114523158}
   - component: {fileID: 23922857776590058}
   - component: {fileID: 64489014758129818}
-  - component: {fileID: 114458855037137440}
   m_Layer: 0
   m_Name: BodyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4223934215438076
 Transform:
   m_ObjectHideFlags: 1
@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: -1
-  type: 0
+  active: 0
+  type: 4
   mass: 1
   diameter: 2.5
   position:

@@ -5,6 +5,17 @@ using UnityEngine;
 
 public class CapiBody : VisualBody {
 
+    new public bool Active
+    {
+        get { return base.Active; }
+        set {
+            base.Active = active;
+            if (Application.isEditor) return; // No Capi interface during editor.
+            capiActive.setValue(value);
+        }
+    }
+    private SimCapiBoolean capiActive;
+
     new public BodyType Type
     {
         get { return type; }
@@ -12,7 +23,7 @@ public class CapiBody : VisualBody {
         {
             base.Type = value;
             if (Application.isEditor) return; // No Capi interface during editor.
-            capiType.setValue(type);
+            capiType.setValue(value);
         }
     }
     private SimCapiEnum<BodyType> capiType;
@@ -112,9 +123,26 @@ public class CapiBody : VisualBody {
 
     new public void Awake()
     {
+        base.Awake();
 
         // Create Capi values and expose.
         Sim.Bodies.add(gameObject);
+        if (name.Contains("(Clone)"))
+        {
+            base.Name = "Body " + id;
+        }
+
+        capiActive = new SimCapiBoolean(active);
+        capiActive.expose(id + " Active", false, false);
+        capiActive.setChangeDelegate(
+            delegate (bool value, SimCapi.ChangedBy changedBy)
+            {
+                if (changedBy == ChangedBy.AELP)
+                {
+                    Active = value;
+                }
+            }
+        );
 
         capiName = new SimCapiString(name);
         capiName.expose(id + " Name", false, false);
@@ -141,9 +169,9 @@ public class CapiBody : VisualBody {
         );
 
         capiPosition = new SimCapiStringArray();
-        capiPosition.getList().AddRange(Position.ToStringArray());
-        capiPosition.updateValue();
         capiPosition.expose(id + " Position", false, false);
+        capiPosition.getList().AddRange(position.ToStringArray());
+        capiPosition.updateValue();
         capiPosition.setChangeDelegate(
             delegate (string[] values, SimCapi.ChangedBy changedBy)
             {
@@ -155,9 +183,10 @@ public class CapiBody : VisualBody {
         );
 
         capiInitialPosition = new SimCapiStringArray();
-        capiInitialPosition.getList().AddRange(Position.ToStringArray());
-        capiInitialPosition.updateValue();
         capiInitialPosition.expose(id + " InitialPosition", false, false);
+
+        capiInitialPosition.getList().AddRange(initialPosition.ToStringArray());
+        capiInitialPosition.updateValue();
         capiInitialPosition.setChangeDelegate(
             delegate (string[] values, SimCapi.ChangedBy changedBy)
             {
@@ -206,10 +235,9 @@ public class CapiBody : VisualBody {
 
     }
 
-
     // Use this for initialization
     new public void Start () {
-        base.Start();
+
     }
 	
 	// Update is called once per frame
