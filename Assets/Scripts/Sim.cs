@@ -39,8 +39,6 @@ public class Sim : Singleton<Sim> {
 
     public GameObject StatsLabel;
 
-    public string version;
-
     static public Perm Perm
     {
         get { return Perm.Instance; }
@@ -51,8 +49,7 @@ public class Sim : Singleton<Sim> {
     /// </summary>
     public void Awake()
     {
-        CapiBody.Init();
-
+        // Set value for FPS
         nextUpdate = Time.time + updateTime;
     }
 

@@ -52,6 +52,16 @@ public class Vector3d
     public Vector3d(double value) : this(value, value, value) { }
 
     /// <summary>
+    /// Creates a new vector with string[3].
+    /// </summary>
+    /// <param name="values"></param>
+    public Vector3d(string[] values) : this(
+        System.Convert.ToDouble(values[0]),
+        System.Convert.ToDouble(values[1]),
+        System.Convert.ToDouble(values[2])
+    ) { }
+
+    /// <summary>
     /// Creates a new vector at choosen coordinates.
     /// </summary>
     /// <param name="x"></param>
@@ -116,6 +126,11 @@ public class Vector3d
             y = value.y;
             z = value.z;
         }
+    }
+
+    public string[] ToStringArray()
+    {
+        return new string[] { x.ToString(), y.ToString(), z.ToString() };
     }
 
     // Position

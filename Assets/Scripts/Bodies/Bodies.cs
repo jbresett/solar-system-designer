@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bodies: Singleton<Bodies> {
-    public const int MAX = 30;
+    public const int MAX_BODY_COUNT = 30;
 
-    private Body[] bodies = new Body[MAX];
+    int nextBodyId = 0;
+    private Body[] bodies = new Body[MAX_BODY_COUNT];
          
     /// <summary>
     /// Returns a body by id.
@@ -38,13 +39,13 @@ public class Bodies: Singleton<Bodies> {
         int i = 0;
         foreach (Body body in Object.FindObjectsOfType<Body>())
         {
-            body.Id = i;
+
             bodies[i] = body;
             i++;
         }
 
         // Generate new bodies.
-        for (  ; i < MAX; i++)
+        for (  ; i < MAX_BODY_COUNT; i++)
         {
             //GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             //obj.transform.SetParent(bodyContainer.transform);
@@ -53,14 +54,20 @@ public class Bodies: Singleton<Bodies> {
             obj.SetActive(false);
 
             Body body = obj.GetComponent<Body>();
-            body.Id = i;
             bodies[i] = body;
         }
     }
 
-    static public GameObject add()
+    /// <summary>
+    /// Called by CapiBody.Awake();, added Body to list and sets it's id.
+    /// </summary>
+    /// <param name="obj"></param>
+    public void add(GameObject obj)
     {
-        return null;
+        Body body = obj.GetComponent<Body>();
+        bodies[nextBodyId] = body;
+        body.Id = nextBodyId;
+        nextBodyId++;
     }
 
     /// <summary>
