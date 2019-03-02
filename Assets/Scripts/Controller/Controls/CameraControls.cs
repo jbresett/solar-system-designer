@@ -64,7 +64,7 @@ public class CameraControls : MonoBehaviour {
     public float zoomlevel = 1f;
     
     private Vector3 offset;
-    private Vector3 bodyPos;
+    public Vector3 bodyPos;
     private Transform cam;
 
     private List<Image> backgrounds;
@@ -82,8 +82,7 @@ public class CameraControls : MonoBehaviour {
                 backgrounds.Add(image);
             }
         }
-        Debug.Log(backgrounds.Count);
-        bodyPos = body.Position.Vec3;
+        bodyPos = body.Position.Vec3*10;
         focusOnBody();
     }
 
@@ -242,7 +241,7 @@ public class CameraControls : MonoBehaviour {
     {
         Quaternion rotation = Camera.main.transform.rotation;
         Vector3 pos = offset * zoomlevel;
-        cam.position = rotation *pos;
+        cam.position = rotation * pos+bodyPos;
     }
 
     private void focusOnBody()
