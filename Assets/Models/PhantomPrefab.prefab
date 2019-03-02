@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4460782817135116}
   - component: {fileID: 33392428892466450}
   - component: {fileID: 23372823752597418}
+  - component: {fileID: 64887131782032776}
   m_Layer: 0
-  m_Name: New Prefab
+  m_Name: PhantomPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,11 +149,25 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1267328478844500}
-  m_Mesh: {fileID: 4300000, guid: 6da85f880b0787a4ba70a55fa6a95037, type: 2}
+  m_Mesh: {fileID: 4300000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
 --- !u!33 &33893423396351506
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1860781500241264}
+  m_Mesh: {fileID: 4300000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
+--- !u!64 &64887131782032776
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1267328478844500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
