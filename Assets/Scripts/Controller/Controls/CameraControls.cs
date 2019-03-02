@@ -246,7 +246,7 @@ public class CameraControls : MonoBehaviour {
 
     private void focusOnBody()
     {
-        zoomlevel = 1;
+        zoomlevel = 2f;
         float zoomBase = (float)body.Diameter * 10F * 1.5F;
         cam.rotation = Quaternion.identity;
         cam.position = bodyPos + Vector3.forward * zoomBase;
