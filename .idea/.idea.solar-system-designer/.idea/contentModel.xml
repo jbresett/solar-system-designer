@@ -2,7 +2,193 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\tjcup\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\tjcup\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_solar-system-designer.-2091280791.00" t="ExcludeRecursive" />
-    <e p="D:\Users\tjcup\Programs\Rider\solar-system-designer" t="IncludeFlat" />
+    <e p="C:\Users\tjcup\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_solar-system-designer.1386497233.00" t="ExcludeRecursive" />
+    <e p="D:\Users\tjcup\Programs\Rider\solar-system-designer" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="link.xml" t="Include" />
+        <e p="Scenes" t="Include">
+          <e p="Loading Screen" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="LS_Components" t="Include">
+                <e p="SceneLoader.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Bodies" t="Include">
+            <e p="BaseBody.cs" t="Include" />
+            <e p="Bodies.cs" t="Include" />
+            <e p="Body.cs" t="Include" />
+            <e p="CapiBody.cs" t="Include" />
+            <e p="PhysicsBody.cs" t="Include" />
+            <e p="VisualBody.cs" t="Include" />
+          </e>
+          <e p="Controller" t="Include">
+            <e p="Config.cs" t="Include" />
+            <e p="Controls" t="Include">
+              <e p="CameraControls.cs" t="Include" />
+              <e p="KeyboardShortcut.cs" t="Include" />
+              <e p="SelectBody.cs" t="Include" />
+            </e>
+            <e p="Settings.cs" t="Include" />
+            <e p="UI" t="Include">
+              <e p="ConsoleUI.cs" t="Include" />
+              <e p="ControlUI.cs" t="Include" />
+              <e p="InsertInPlace.cs" t="Include" />
+              <e p="PreferencesUI.cs" t="Include" />
+              <e p="RemoveBody.cs" t="Include" />
+              <e p="SettingsUI.cs" t="Include" />
+              <e p="SpeedUI.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Editor" t="Include">
+            <e p="Archive" t="Include">
+              <e p="Body" t="Include">
+                <e p="FluidBody.cs" t="Include" />
+                <e p="NBody.cs" t="Include" />
+                <e p="OrbitalBody.cs" t="Include" />
+                <e p="StarBody.cs" t="Include" />
+              </e>
+              <e p="Body.cs" t="Include" />
+              <e p="BodyCnvsn.cs" t="Include" />
+              <e p="Compound.cs" t="Include" />
+              <e p="Element.cs" t="Include" />
+              <e p="Layer.cs" t="Include" />
+              <e p="SolarSystemModel.cs" t="Include" />
+              <e p="~OrbitalBody.cs" t="Include" />
+              <e p="~READ ME.txt" t="Include" />
+            </e>
+            <e p="Inspector" t="Include">
+              <e p="BodyEditor.cs" t="Include" />
+            </e>
+            <e p="Tests" t="Include">
+              <e p="Physics" t="Include">
+                <e p="EllipseConstruction.cs" t="Include" />
+                <e p="ThirdLawTest.cs" t="Include" />
+                <e p="Vector3dTest.cs" t="Include" />
+              </e>
+              <e p="Unit" t="Include">
+                <e p="BodyTests.cs" t="Include" />
+                <e p="EllipseTests.cs" t="Include" />
+                <e p="NBodyTests.cs" t="Include" />
+              </e>
+            </e>
+            <e p="UnityMenu.cs" t="Include" />
+          </e>
+          <e p="Model" t="Include">
+            <e p="Capi" t="Include">
+              <e p="Capi.cs" t="Include" />
+              <e p="ExposedData.cs" t="Include" />
+              <e p="PersistentData.cs" t="Include" />
+            </e>
+            <e p="Physics" t="Include">
+              <e p="Ellipse.cs" t="Include" />
+              <e p="Gravity.cs" t="Include" />
+              <e p="Orbit.cs" t="Include" />
+            </e>
+            <e p="Util" t="Include">
+              <e p="Debugger.cs" t="Include" />
+              <e p="Extension" t="Include">
+                <e p="StringExtension.cs" t="Include" />
+                <e p="TransformExtension.cs" t="Include" />
+              </e>
+              <e p="Mathd.cs" t="Include" />
+              <e p="Perm.cs" t="Include" />
+              <e p="Preferences.cs" t="Include" />
+              <e p="Singleton.cs" t="Include" />
+              <e p="Vector3d.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Sim.cs" t="Include" />
+          <e p="View" t="Include">
+            <e p="BodyMaterial.cs" t="Include" />
+            <e p="BodyStats.cs" t="Include" />
+            <e p="Effects" t="Include">
+              <e p="GenerateRings.cs" t="Include" />
+              <e p="InsertParticle.cs" t="Include" />
+            </e>
+            <e p="Motion" t="Include">
+              <e p="Rotation.cs" t="Include" />
+            </e>
+            <e p="SetVersionText.cs" t="Include" />
+          </e>
+        </e>
+        <e p="SimCapi" t="Include">
+          <e p="API_Helpers" t="Include">
+            <e p="ChemicalAPI.cs" t="Include" />
+            <e p="DataSyncAPI.cs" t="Include" />
+            <e p="DeviceAPI.cs" t="Include" />
+            <e p="InchRepoService.cs" t="Include" />
+            <e p="PeerResponseAPI.cs" t="Include" />
+          </e>
+          <e p="CapiController.cs" t="Include" />
+          <e p="Scripts" t="Include">
+            <e p="APIInterface.cs" t="Include" />
+            <e p="ExposedValues.cs" t="Include" />
+            <e p="ExternalCalls.cs" t="Include" />
+            <e p="MessagePipe.cs" t="Include" />
+            <e p="SimCapiConfig.cs" t="Include" />
+            <e p="SimCapiConsole.cs" t="Include" />
+            <e p="SimCapiData.cs" t="Include" />
+            <e p="SimCapiEnums.cs" t="Include" />
+            <e p="SimCapiHandshake.cs" t="Include" />
+            <e p="SimCapiJavaBindings.cs" t="Include" />
+            <e p="SimCapiJsonMaker.cs" t="Include" />
+            <e p="SimCapiLocalData.cs" t="Include" />
+            <e p="SimCapiMessage.cs" t="Include" />
+            <e p="SimCapiModel.cs" t="Include" />
+            <e p="SimCapiMono.cs" t="Include" />
+            <e p="SimCapiOption.cs" t="Include" />
+            <e p="SimCapiTimer.cs" t="Include" />
+            <e p="SimCapiValues.cs" t="Include" />
+            <e p="Transporter.cs" t="Include" />
+            <e p="uuid.cs" t="Include" />
+          </e>
+          <e p="Tests" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ExposedValuesTest.cs" t="Include" />
+              <e p="SimCapiMessageTests.cs" t="Include" />
+              <e p="TestHelpers.cs" t="Include" />
+              <e p="TransporterTest.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
+            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="solar-system-designer.sln" t="IncludeFlat" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
   </component>
 </project>
