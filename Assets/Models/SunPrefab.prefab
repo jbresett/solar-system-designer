@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 64489014758129818}
   - component: {fileID: 114458855037137440}
   m_Layer: 0
-  m_Name: BodyPrefab
+  m_Name: SunPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
