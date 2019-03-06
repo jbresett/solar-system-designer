@@ -10,7 +10,7 @@ public class CapiBody : VisualBody {
         get { return base.Active; }
         set {
             base.Active = active;
-            if (Application.isEditor) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during editor.
             capiActive.setValue(value);
         }
     }
@@ -22,7 +22,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Type = value;
-            if (Application.isEditor) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during editor.
             capiType.setValue(value);
         }
     }
@@ -34,7 +34,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Name = value;
-            if (Application.isEditor) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during editor.
             capiName.setValue(value);
         }
     }
@@ -49,7 +49,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Mass = value;
-            if (Application.isEditor) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during editor.
             capiMass.setValue((float)value);
         }
     }
@@ -64,7 +64,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Diameter = value;
-            if (Application.isEditor) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during editor.
             capiDiameter.setValue((float)value);
         }
     }
@@ -79,7 +79,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Position = value;
-            if (Application.isEditor) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during editor.
             capiPosition.getList().Clear();
             capiPosition.getList().AddRange(value.ToStringArray());
             capiPosition.updateValue();
@@ -96,7 +96,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.InitialPosition = value;
-            if (Application.isEditor) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during editor.
             capiInitialPosition.getList().Clear();
             capiInitialPosition.getList().AddRange(value.ToStringArray());
             capiInitialPosition.updateValue();
@@ -113,7 +113,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Rotation = value;
-            if (Application.isEditor) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during editor.
             capiRotation.setValue((float)value);
         }
     }
@@ -124,19 +124,19 @@ public class CapiBody : VisualBody {
     new public void Awake()
     {
         base.Awake();
+    }
 
+    public void Init(int id)
+    {
         // Create Capi values and expose.
-        Sim.Bodies.add(gameObject);
-        if (name.Contains("(Clone)"))
-        {
-            base.Name = "Body " + id;
-        }
+        Id = id;
 
         capiActive = new SimCapiBoolean(active);
         capiActive.expose(id + " Active", false, false);
         capiActive.setChangeDelegate(
             delegate (bool value, SimCapi.ChangedBy changedBy)
             {
+                Debug.Log(id + " " + value + " " + changedBy);
                 if (changedBy == ChangedBy.AELP)
                 {
                     Active = value;

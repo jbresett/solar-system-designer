@@ -32,16 +32,16 @@ public class Gravity : MonoBehaviour{
 	public void calcInitialVelocities()
 	{
 		List<Body> bodyList = Sim.Bodies.Active;
-		Body mostMass = new Body();
-		mostMass.KG = 0;
+        Body mostMass = null;
+		//mostMass.KG = 0;
 		double xDist = 0;
 		Vector3d dist = new Vector3d();
-		double period = 0;
+		//double period = 0;
 		Vector3d vec = new Vector3d(0,0,0);
 		// checking distance and calculating.
 		foreach (Body body in bodyList)
 		{
-			if (body.KG > mostMass.KG)
+			if (mostMass == null || body.KG > mostMass.KG)
 			{
 				mostMass = body;
 			}

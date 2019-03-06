@@ -16,7 +16,7 @@ public class PhysicsBody : CapiBody {
     public Vector3d Pos {
 
             get { return position * M_TO_AU; }
-            set { position = value / M_TO_AU; }
+            set { Position = value / M_TO_AU; }
 
     }
 

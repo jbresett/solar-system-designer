@@ -81,7 +81,7 @@ public class UnityMenu : MonoBehaviour {
         // Converts version string to array of integers.
         get
         {
-            string version = Sim.Config.Version;
+            string version = Config.Instance.Version;
             
             // Return 1.0.0 if version isn't set.
             if (version == "")

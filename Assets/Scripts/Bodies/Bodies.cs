@@ -5,7 +5,6 @@ using UnityEngine;
 public class Bodies: Singleton<Bodies> {
     public const int MAX_BODY_COUNT = 30;
 
-    int nextBodyId = 0;
     private Body[] bodies = new Body[MAX_BODY_COUNT];
          
     /// <summary>
@@ -36,26 +35,28 @@ public class Bodies: Singleton<Bodies> {
     {
         // Generate the rest of the bodies.
         // All Bodies must exist at initiation due to needing Capi variables.
-        int i = Object.FindObjectsOfType<Body>().Length;
+
+        // Intial Bodies
+        int i = 0;
+
+        Body[] currentBodies = Object.FindObjectsOfType<Body>();
+
+        for (; i < currentBodies.Length; i++)
+        {
+            currentBodies[i].Init(i);
+            bodies[i] = currentBodies[i];
+        }
+
         for ( ; i < MAX_BODY_COUNT; i++)
         {
             GameObject obj = Object.Instantiate(Sim.Config.BodyPrefab, Sim.Config.BodyContainer.transform);
-
             Body body = obj.GetComponent<Body>();
+
+            body.Init(i);
+            body.Name = "Body " + i;
+
             bodies[i] = body;
         }
-    }
-
-    /// <summary>
-    /// Called by CapiBody.Awake();, added Body to list and sets it's id.
-    /// </summary>
-    /// <param name="obj"></param>
-    public void add(GameObject obj)
-    {
-        Body body = obj.GetComponent<Body>();
-        bodies[nextBodyId] = body;
-        body.Id = nextBodyId;
-        nextBodyId++;
     }
 
     /// <summary>

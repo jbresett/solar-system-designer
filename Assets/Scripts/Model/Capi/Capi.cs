@@ -25,7 +25,6 @@ public class Capi: Singleton<Capi> {
 
     public void Awake()
     {
-
         //transporter = SimCapi.Transporter.getInstance();
 
         // Create SSData 

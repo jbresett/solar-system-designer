@@ -13,6 +13,8 @@ public class VisualBody : BaseBody {
         set
         {
             base.Position = value;
+            if (Application.isPlaying) return; // position updated via Update() in play mode.
+            transform.position = value.Vec3 * POSITION_MULT;
         }
     }
 
@@ -56,11 +58,9 @@ public class VisualBody : BaseBody {
         if (!Sim.Settings.Paused)
         {
             transform.Rotate((Vector3.up * -(float)Rotation) * (Time.deltaTime * (float)Sim.Settings.Speed), Space.Self);
-            Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position;
-            transform.position += move;
         }
-
-        // New Position already calculated via change in time.
+        Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position;
+        transform.position += move;
 
     }
 }
