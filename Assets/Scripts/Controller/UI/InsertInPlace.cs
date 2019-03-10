@@ -82,7 +82,7 @@ public class InsertInPlace : MonoBehaviour
         }
        
         script.Diameter = double.Parse(radius.text);
-        script.Mass = convertMassUnits(double.Parse(mass.text));
+        script.Mass = double.Parse(mass.text);
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
         script.Type = type.options[type.value].text.Enum<BodyType>();
 
@@ -102,21 +102,4 @@ public class InsertInPlace : MonoBehaviour
         return value * 6.3781;
     }
 
-    /// <summary>
-    /// scales position
-    /// </summary>
-    private double[] convertPosUnits(double x, double y, double z)
-    {
-        double au = 14959.78707;
-        double[] pos = {x * au, y * au, z * au};
-        return pos;
-    }
-
-    /// <summary>
-    /// scales mass
-    /// </summary>
-    private double convertMassUnits(double mass)
-    {
-        return mass * (5.9736 * Math.Pow(10, 24));
-    }
 }
