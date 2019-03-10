@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+    <e p="C:\Users\tjcup\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\tjcup\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_solar-system-designer.1386497233.00" t="ExcludeRecursive" />
+    <e p="D:\Users\tjcup\Programs\Rider\solar-system-designer" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -36,8 +38,11 @@
               <e p="ConsoleUI.cs" t="Include" />
               <e p="ControlUI.cs" t="Include" />
               <e p="InsertInPlace.cs" t="Include" />
+              <e p="PhantomBodyController.cs" t="Include" />
               <e p="PreferencesUI.cs" t="Include" />
+              <e p="RemoveBody.cs" t="Include" />
               <e p="SettingsUI.cs" t="Include" />
+              <e p="SpeedUI.cs" t="Include" />
             </e>
           </e>
           <e p="Editor" t="Include">
@@ -101,6 +106,7 @@
           <e p="Sim.cs" t="Include" />
           <e p="View" t="Include">
             <e p="BodyMaterial.cs" t="Include" />
+            <e p="BodyStats.cs" t="Include" />
             <e p="Effects" t="Include">
               <e p="GenerateRings.cs" t="Include" />
               <e p="InsertParticle.cs" t="Include" />
@@ -108,6 +114,7 @@
             <e p="Motion" t="Include">
               <e p="Rotation.cs" t="Include" />
             </e>
+            <e p="SetVersionText.cs" t="Include" />
           </e>
         </e>
         <e p="SimCapi" t="Include">
@@ -184,7 +191,5 @@
         <e p="bin" t="ExcludeRecursive" />
       </e>
     </e>
-    <e p="$USER_HOME$/Library/Caches/Rider2018.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2018.3/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_solar-system-designer.-1607415645.00" t="ExcludeRecursive" />
   </component>
 </project>
