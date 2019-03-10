@@ -34,6 +34,7 @@ public class InsertInPlace : MonoBehaviour
         button.onClick.AddListener(insert);
         type.onValueChanged.AddListener(delegate { updateUnits(); });
         unitType = "absolute";
+        updateUnits();
     }
 
     private void updateUnits()

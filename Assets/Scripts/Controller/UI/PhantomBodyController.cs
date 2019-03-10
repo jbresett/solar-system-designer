@@ -80,16 +80,16 @@ namespace Controller.UI
         {
             Vector3 pos = scalePos(new Vector3(float.Parse(xpos.text), float.Parse(ypos.text), float.Parse(zpos.text)));
             bodyPrefab.transform.position = pos;
-            bodyPrefab.transform.localScale = Vector3.one * scaleSize(float.Parse(size.text));
+            bodyPrefab.transform.localScale = Vector3.one * (float)scaleSize(double.Parse(size.text));
         }
 
         private Vector3 scalePos(Vector3 pos)
         {
             return pos*10;
         }
-        private float scaleSize(float size)
+        private double scaleSize(double size)
         {
-            return size;
+            return UnitConverter.convertRadius(size,unitScale,"earths");
         }
     }
 }
