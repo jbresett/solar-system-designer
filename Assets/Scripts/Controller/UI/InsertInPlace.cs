@@ -31,6 +31,26 @@ public class InsertInPlace : MonoBehaviour
     void Start()
     {
         button.onClick.AddListener(insert);
+        type.onValueChanged.AddListener(delegate { updateUnits(); });
+    }
+
+    private void updateUnits()
+    {
+    TextMeshProUGUI[] textComps = this.gameObject.GetComponentsInChildren<TextMeshProUGUI>();
+        Debug.Log(textComps.Length);
+        String unit = type.options[type.value].text;
+        foreach (var text in textComps)
+        {
+            if (text.tag.ToLower().Equals("dist"))
+            {
+                text.text = unit;
+            }
+
+            if (text.tag.ToLower().Equals("mass"))
+            {
+                text.text = unit;
+            }
+        }
     }
 
     /// <summary>

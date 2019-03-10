@@ -8,6 +8,7 @@ TagManager:
   - OrbitalBody
   - Planet
   - ConsoleWindow
+  - Dist
   layers:
   - Default
   - TransparentFX

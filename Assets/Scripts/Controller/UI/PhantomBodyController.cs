@@ -42,8 +42,17 @@ namespace Controller.UI
             get { return bodyPrefab; }
             set { bodyPrefab = value; }
         }
+        public TMP_Dropdown Unit
+        {
+            get { return unit; }
+            set { unit = value; }
+        }
+
+        [SerializeField] private TMP_Dropdown unit;
 
         [SerializeField] private Component bodyPrefab;
+
+        private string unitScale;
 
         private void OnEnable()
         {
@@ -61,6 +70,13 @@ namespace Controller.UI
             ypos.onValueChanged.AddListener(delegate { updatePhantom(); });
             zpos.onValueChanged.AddListener(delegate { updatePhantom(); });
             size.onValueChanged.AddListener(delegate { updatePhantom(); });
+            unit.onValueChanged.AddListener(delegate { updateScale(); });
+            updateScale();
+        }
+
+        private void updateScale()
+        {
+            unitScale = unit.options[unit.value].text;
             updatePhantom();
         }
 
