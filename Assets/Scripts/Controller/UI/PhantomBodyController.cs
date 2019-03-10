@@ -1,3 +1,4 @@
+using Model.Util;
 using TMPro;
 using UnityEngine;
 
@@ -10,7 +11,6 @@ namespace Controller.UI
             get { return xpos; }
             set { xpos = value; }
         }
-
         [SerializeField] private TMP_InputField xpos;
 
         public TMP_InputField Ypos
@@ -18,15 +18,13 @@ namespace Controller.UI
             get { return ypos; }
             set { ypos = value; }
         }
-
         [SerializeField] private TMP_InputField ypos;
-
+        
         public TMP_InputField Zpos
         {
             get { return zpos; }
             set { zpos = value; }
         }
-
         [SerializeField] private TMP_InputField zpos;
 
         public TMP_InputField Size
@@ -34,7 +32,6 @@ namespace Controller.UI
             get { return size; }
             set { size = value; }
         }
-
         [SerializeField] private TMP_InputField size;
 
         public Component BodyPrefab
@@ -42,17 +39,16 @@ namespace Controller.UI
             get { return bodyPrefab; }
             set { bodyPrefab = value; }
         }
+        [SerializeField] private Component bodyPrefab;
+        
         public TMP_Dropdown Unit
         {
             get { return unit; }
             set { unit = value; }
         }
-
         [SerializeField] private TMP_Dropdown unit;
 
-        [SerializeField] private Component bodyPrefab;
-
-        private string unitScale;
+        private string unitScale = "absolute";
 
         private void OnEnable()
         {
@@ -76,10 +72,10 @@ namespace Controller.UI
 
         private void updateScale()
         {
-            unitScale = unit.options[unit.value].text;
+            string newUnit = unit.options[unit.value].text.ToLower();
+            unitScale = newUnit;
             updatePhantom();
         }
-
         private void updatePhantom()
         {
             Vector3 pos = scalePos(new Vector3(float.Parse(xpos.text), float.Parse(ypos.text), float.Parse(zpos.text)));

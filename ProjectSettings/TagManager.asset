@@ -9,6 +9,8 @@ TagManager:
   - Planet
   - ConsoleWindow
   - Dist
+  - Mass
+  - Radius
   layers:
   - Default
   - TransparentFX

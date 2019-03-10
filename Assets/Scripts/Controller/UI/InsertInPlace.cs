@@ -1,7 +1,6 @@
 using System;
-using Planets;
+using Model.Util;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +24,8 @@ public class InsertInPlace : MonoBehaviour
 
     public GameObject UseParticleSystem;
 
+    private string unitType;
+
     /// <summary>
     /// initializes class and begins listening for mouse click
     /// </summary>
@@ -32,25 +33,43 @@ public class InsertInPlace : MonoBehaviour
     {
         button.onClick.AddListener(insert);
         type.onValueChanged.AddListener(delegate { updateUnits(); });
+        unitType = "absolute";
     }
 
     private void updateUnits()
     {
-    TextMeshProUGUI[] textComps = this.gameObject.GetComponentsInChildren<TextMeshProUGUI>();
-        Debug.Log(textComps.Length);
-        String unit = type.options[type.value].text;
-        foreach (var text in textComps)
+        String unit = type.options[type.value].text.ToLower();
+        Debug.Log(unit);
+        GameObject[] comps = GameObject.FindGameObjectsWithTag("Radius");
+        foreach (var comp in comps)
         {
-            if (text.tag.ToLower().Equals("dist"))
-            {
-                text.text = unit;
-            }
-
-            if (text.tag.ToLower().Equals("mass"))
-            {
-                text.text = unit;
-            }
+            TMP_InputField inp = comp.GetComponentInChildren<TMP_InputField>();
+            TextMeshProUGUI suff = comp.transform.Find("Unit").gameObject.GetComponent<TextMeshProUGUI>();
+            Debug.Log(suff);
+            updateRadius(inp,unit);
+            suff.text = UnitConverter.units[unit].DistSuff;
         }
+        comps = GameObject.FindGameObjectsWithTag("Mass");
+        foreach (var comp in comps)
+        {
+            TMP_InputField inp = comp.GetComponentInChildren<TMP_InputField>();
+            TextMeshProUGUI suff = comp.transform.Find("Unit").gameObject.GetComponent<TextMeshProUGUI>();
+            updateMass(inp,unit);
+            suff.text = UnitConverter.units[unit].MassSuff;
+        }
+
+        unitType = unit;
+    }
+    
+    private void updateRadius(TMP_InputField val, string unit)
+    {
+        double v = double.Parse(val.text);
+        val.text = UnitConverter.convertRadius(v, unitType, unit).ToString();
+    }
+    private void updateMass(TMP_InputField val, string unit)
+    {
+        double v = double.Parse(val.text);
+        val.text = UnitConverter.convertMass(v, unitType, unit).ToString();
     }
 
     /// <summary>
