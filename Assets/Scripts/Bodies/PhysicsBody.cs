@@ -53,6 +53,15 @@ public class PhysicsBody : CapiBody {
     [SerializeField]
     protected Vector3d force;
     
+    public Body MostPull
+    {
+        get { return mostPull; }
+        set { mostPull = value; }  
+    }
+
+    [SerializeField]
+    protected Body mostPull;
+    
     
     /// <summary>
     /// This method checks to see if initial velocity has been

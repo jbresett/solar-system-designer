@@ -32,28 +32,21 @@ public class Gravity : MonoBehaviour{
 	public void calcInitialVelocities()
 	{
 		List<Body> bodyList = Sim.Bodies.Active;
-		Body mostMass = new Body();
-		mostMass.KG = 0;
+		Body mostPull = new Body();
 		double xDist = 0;
 		Vector3d dist = new Vector3d();
 		double period = 0;
 		Vector3d vec = new Vector3d(0,0,0);
 		// checking distance and calculating.
-		foreach (Body body in bodyList)
-		{
-			if (body.KG > mostMass.KG)
-			{
-				mostMass = body;
-			}
-		}
 
 		foreach (Body body in bodyList)
 		{
-			if (!body.isInitialVel && body != mostMass)
+			mostPull = body.MostPull;
+			if (!body.isInitialVel)
 			{
-				dist = mostMass.Pos - body.Pos;
+				dist = mostPull.Pos - body.Pos;
 				xDist = dist.magnitude;
-				vec.z = (Math.Sqrt((g * (mostMass.KG) )/ xDist));
+				vec.z = (Math.Sqrt((g * (mostPull.KG) )/ xDist));
 				body.Vel = vec;
 				body.isInitialVel = true;
 			}
@@ -96,6 +89,10 @@ public class Gravity : MonoBehaviour{
 	{
 		List<Body> bodies = Sim.Bodies.Active;
 		Vector3d force;
+		Vector3d aforce = new Vector3d();
+		double mostForce = 0;
+		Body mostPull = new Body();
+		
 		foreach (Body bod in bodies)
 		{
 			force = new Vector3d(0,0,0);
@@ -103,8 +100,17 @@ public class Gravity : MonoBehaviour{
 			{
 				if (bod.Id != obod.Id)
 				{
-					force += calcForce(bod, obod);
+					aforce = calcForce(bod, obod);
+					if (aforce.magnitude > mostForce)
+					{
+						mostForce = aforce.magnitude;
+						mostPull = obod;
+
+					}
+					force += aforce;
 				}
+
+				bod.MostPull = mostPull;
 			}
 
 			bod.totalForce = force;
@@ -117,8 +123,8 @@ public class Gravity : MonoBehaviour{
 	/// </summary>
 	public void updateVelocity()
 	{
-		calcInitialVelocities();
 		updateForce();
+		calcInitialVelocities();
 		List<Body> bodies = Sim.Bodies.Active;
 		Vector3d velocity;
 		foreach (Body bod in bodies)

@@ -37,7 +37,9 @@
               <e p="ControlUI.cs" t="Include" />
               <e p="InsertInPlace.cs" t="Include" />
               <e p="PreferencesUI.cs" t="Include" />
+              <e p="RemoveBody.cs" t="Include" />
               <e p="SettingsUI.cs" t="Include" />
+              <e p="SpeedUI.cs" t="Include" />
             </e>
           </e>
           <e p="Editor" t="Include">
@@ -101,6 +103,7 @@
           <e p="Sim.cs" t="Include" />
           <e p="View" t="Include">
             <e p="BodyMaterial.cs" t="Include" />
+            <e p="BodyStats.cs" t="Include" />
             <e p="Effects" t="Include">
               <e p="GenerateRings.cs" t="Include" />
               <e p="InsertParticle.cs" t="Include" />
@@ -108,6 +111,7 @@
             <e p="Motion" t="Include">
               <e p="Rotation.cs" t="Include" />
             </e>
+            <e p="SetVersionText.cs" t="Include" />
           </e>
         </e>
         <e p="SimCapi" t="Include">
