@@ -21044,6 +21044,11 @@ Prefab:
       propertyPath: speedBar
       value: 
       objectReference: {fileID: 1888047679}
+    - target: {fileID: 114231798529128666, guid: ae52c2c0fabc97744b1dd108d91e4dd6,
+        type: 2}
+      propertyPath: version
+      value: 1.2.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae52c2c0fabc97744b1dd108d91e4dd6, type: 2}
   m_IsPrefabAsset: 0

@@ -77,7 +77,7 @@ public class BaseBody : MonoBehaviour {
     public Vector3d Position
     {
         get { return position; }
-        set { position = value; }
+        set { position.Set(value); }
     }
     [SerializeField]
     protected Vector3d position = new Vector3d();
@@ -88,7 +88,7 @@ public class BaseBody : MonoBehaviour {
     public Vector3d InitialPosition
     {
         get { return initialPosition; }
-        set { initialPosition = value; }
+        set { initialPosition.Set(value); }
     }
     [SerializeField]
     protected Vector3d initialPosition = new Vector3d();

@@ -10,7 +10,7 @@ public class CapiBody : VisualBody {
         get { return base.Active; }
         set {
             base.Active = active;
-            if (!Application.isPlaying) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiActive.setValue(value);
         }
     }
@@ -22,7 +22,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Type = value;
-            if (!Application.isPlaying) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiType.setValue(value);
         }
     }
@@ -34,7 +34,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Name = value;
-            if (!Application.isPlaying) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiName.setValue(value);
         }
     }
@@ -49,13 +49,13 @@ public class CapiBody : VisualBody {
         set
         {
             base.Mass = value;
-            if (!Application.isPlaying) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiMass.setValue((float)value);
         }
     }
     private SimCapiNumber capiMass;
 
-    /// <summary>
+    /// <summary>// No Capi interface during edit mode.
     /// Diameter in Earths.
     /// </summary>
     new public double Diameter
@@ -64,7 +64,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Diameter = value;
-            if (!Application.isPlaying) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiDiameter.setValue((float)value);
         }
     }
@@ -79,13 +79,11 @@ public class CapiBody : VisualBody {
         set
         {
             base.Position = value;
-            if (!Application.isPlaying) return; // No Capi interface during editor.
-            capiPosition.getList().Clear();
-            capiPosition.getList().AddRange(value.ToStringArray());
-            capiPosition.updateValue();
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
+            capiPosition.setValue(value);
         }
     }
-    private SimCapiStringArray capiPosition;
+    private SimCapiVector capiPosition;
 
     /// <summary>
     /// Initial position of the Body. Using resetPosition() will move the Body back to it's initial position.
@@ -96,13 +94,11 @@ public class CapiBody : VisualBody {
         set
         {
             base.InitialPosition = value;
-            if (!Application.isPlaying) return; // No Capi interface during editor.
-            capiInitialPosition.getList().Clear();
-            capiInitialPosition.getList().AddRange(value.ToStringArray());
-            capiInitialPosition.updateValue();
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
+            capiInitialPosition.setValue(value);
         }
     }
-    private SimCapiStringArray capiInitialPosition;
+    private SimCapiVector capiInitialPosition;
 
     /// <summary>
     /// Planet's rotational speed, in earth days.
@@ -113,7 +109,7 @@ public class CapiBody : VisualBody {
         set
         {
             base.Rotation = value;
-            if (!Application.isPlaying) return; // No Capi interface during editor.
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiRotation.setValue((float)value);
         }
     }
@@ -128,15 +124,11 @@ public class CapiBody : VisualBody {
 
     public void Init(int id)
     {
-        // Create Capi values and expose.
-        Id = id;
-
         capiActive = new SimCapiBoolean(active);
         capiActive.expose(id + " Active", false, false);
         capiActive.setChangeDelegate(
             delegate (bool value, SimCapi.ChangedBy changedBy)
             {
-                Debug.Log(id + " " + value + " " + changedBy);
                 if (changedBy == ChangedBy.AELP)
                 {
                     Active = value;
@@ -168,34 +160,8 @@ public class CapiBody : VisualBody {
             }
         );
 
-        capiPosition = new SimCapiStringArray();
-        capiPosition.expose(id + " Position", false, false);
-        capiPosition.getList().AddRange(position.ToStringArray());
-        capiPosition.updateValue();
-        capiPosition.setChangeDelegate(
-            delegate (string[] values, SimCapi.ChangedBy changedBy)
-            {
-                if (changedBy == ChangedBy.AELP)
-                {
-                    Position = new Vector3d(values);
-                }
-            }
-        );
-
-        capiInitialPosition = new SimCapiStringArray();
-        capiInitialPosition.expose(id + " InitialPosition", false, false);
-
-        capiInitialPosition.getList().AddRange(initialPosition.ToStringArray());
-        capiInitialPosition.updateValue();
-        capiInitialPosition.setChangeDelegate(
-            delegate (string[] values, SimCapi.ChangedBy changedBy)
-            {
-                if (changedBy == ChangedBy.AELP)
-                {
-                    InitialPosition = new Vector3d(values);
-                }
-            }
-        );
+        capiPosition = new SimCapiVector(id + " Position", base.position);
+        capiInitialPosition = new SimCapiVector(id + " InitialPosition", base.initialPosition);
 
         capiMass = new SimCapiNumber((float)mass);
         capiMass.expose(id + " Mass", false, false);
