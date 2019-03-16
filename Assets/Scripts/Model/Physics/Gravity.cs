@@ -27,7 +27,8 @@ public class Gravity : MonoBehaviour{
 	/// This method may not account for binary star systems and may not represent the actual starting
 	/// velocity of a planet. This method calculates a guess based on mass and distance.
 	///
-	/// Equation derrived from: https://www.physicsclassroom.com/class/circles/Lesson-4/Mathematics-of-Satellite-Motion
+	/// Partial Equation derrived from:
+	/// https://www.physicsclassroom.com/class/circles/Lesson-4/Mathematics-of-Satellite-Motion
 	/// </summary>
 	public void calcInitialVelocities()
 	{
@@ -35,20 +36,39 @@ public class Gravity : MonoBehaviour{
 		Body mostPull = new Body();
 		double xDist = 0;
 		Vector3d dist = new Vector3d();
-		double period = 0;
 		Vector3d vec = new Vector3d(0,0,0);
+		int numStars = 0;
 		// checking distance and calculating.
-
+		foreach (Body body in bodyList)
+		{
+			if (body.Type == BodyType.Star)
+			{
+				numStars++;
+			}
+		}
+		
 		foreach (Body body in bodyList)
 		{
 			mostPull = body.MostPull;
 			if (!body.isInitialVel)
 			{
-				dist = mostPull.Pos - body.Pos;
-				xDist = dist.magnitude;
-				vec.z = (Math.Sqrt((g * (mostPull.KG) )/ xDist));
-				body.Vel = vec;
-				body.isInitialVel = true;
+				if (numStars >= 2)
+				{
+					dist = mostPull.Pos - body.Pos;
+					xDist = dist.magnitude;
+					vec.z = (Math.Sqrt((g * (mostPull.KG)) / xDist));
+					body.Vel = vec;
+					body.isInitialVel = true;
+				}
+				else if (body.Type != BodyType.Star)
+				{
+					dist = mostPull.Pos - body.Pos;
+					xDist = dist.magnitude;
+					vec.z = (Math.Sqrt((g * (mostPull.KG)) / xDist));
+					body.Vel = vec;
+					body.isInitialVel = true;
+				}
+				
 			}
 		}
 	}

@@ -97,6 +97,7 @@
               <e p="Perm.cs" t="Include" />
               <e p="Preferences.cs" t="Include" />
               <e p="Singleton.cs" t="Include" />
+              <e p="UnitConverter.cs" t="Include" />
               <e p="Vector3d.cs" t="Include" />
             </e>
           </e>
