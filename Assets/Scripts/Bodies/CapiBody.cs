@@ -9,7 +9,7 @@ public class CapiBody : VisualBody {
     {
         get { return base.Active; }
         set {
-            base.Active = active;
+            base.Active = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiActive.setValue(value);
         }
@@ -28,6 +28,19 @@ public class CapiBody : VisualBody {
     }
     private SimCapiEnum<BodyType> capiType;
     
+    new public BodyMaterial Material
+    {
+        get { return material; }
+        set
+        {
+            base.Material = value;
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
+            capiMaterial.setValue(value);
+        }
+    }
+    private SimCapiEnum<BodyMaterial> capiMaterial;
+
+
     new public string Name
     {
         get { return name; }
@@ -71,6 +84,21 @@ public class CapiBody : VisualBody {
     private SimCapiNumber capiDiameter;
 
     /// <summary>
+    /// Initial position of the Body. Using resetPosition() will move the Body back to it's initial position.
+    /// </summary>
+    new public Vector3d InitialPosition
+    {
+        get { return initialPosition; }
+        set
+        {
+            base.InitialPosition = value;
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
+            capiInitialPosition.setValue(value);
+        }
+    }
+    private SimCapiVector capiInitialPosition;
+
+    /// <summary>
     /// Current Position of the object. Any changes will be reflected in Unity.
     /// </summary>
     new public Vector3d Position
@@ -86,19 +114,19 @@ public class CapiBody : VisualBody {
     private SimCapiVector capiPosition;
 
     /// <summary>
-    /// Initial position of the Body. Using resetPosition() will move the Body back to it's initial position.
+    /// Current Position of the object. Any changes will be reflected in Unity.
     /// </summary>
-    new public Vector3d InitialPosition
+    new public Vector3d Velocity
     {
-        get { return initialPosition; }
+        get { return velocity; }
         set
         {
-            base.InitialPosition = value;
+            base.Velocity = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
-            capiInitialPosition.setValue(value);
+            capiVelocity.setValue(value);
         }
     }
-    private SimCapiVector capiInitialPosition;
+    private SimCapiVector capiVelocity;
 
     /// <summary>
     /// Planet's rotational speed, in earth days.
@@ -131,7 +159,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    Active = value;
+                    base.Active = value;
                 }
             }
         );
@@ -143,7 +171,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    Name = value;
+                    base.Name = value;
                 }
             }
         );
@@ -155,13 +183,26 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    Type = value;
+                    base.Type = value;
                 }
             }
         );
 
-        capiPosition = new SimCapiVector(id + " Position", base.position);
-        capiInitialPosition = new SimCapiVector(id + " InitialPosition", base.initialPosition);
+        capiMaterial = new SimCapiEnum<BodyMaterial>(material);
+        capiMaterial.expose(id + " Material", false, false);
+        capiMaterial.setChangeDelegate(
+            delegate (BodyMaterial value, SimCapi.ChangedBy changedBy)
+            {
+                if (changedBy == ChangedBy.AELP)
+                {
+                    base.Material = value;
+                }
+            }
+        );
+
+        capiPosition = new SimCapiVector(id + " Position", Position);
+        capiInitialPosition = new SimCapiVector(id + " InitialPosition", InitialPosition);
+        capiVelocity = new SimCapiVector(id + " Velocity", Velocity);
 
         capiMass = new SimCapiNumber((float)mass);
         capiMass.expose(id + " Mass", false, false);
@@ -170,7 +211,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    Mass = value;
+                    base.Mass = value;
                 }
             }
         );
@@ -182,7 +223,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    Diameter = value;
+                    base.Diameter = value;
                 }
             }
         );
@@ -194,7 +235,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    Rotation = value;
+                    base.Rotation = value;
                 }
             }
         );

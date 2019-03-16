@@ -10,16 +10,16 @@ public class UnityMenu : MonoBehaviour {
     [MenuItem("SolarSystemDesigner/Build/Build", false, 0)]
     public static void Build()
     {
-        buildProject(false);
+        buildProject(BuildOptions.None);
     }
 
     [MenuItem("SolarSystemDesigner/Build/Build && Run", false, 0)]
     public static void BuildAndRun()
     {
-        buildProject(true);
+        buildProject(BuildOptions.AutoRunPlayer);
     }
 
-    private static void buildProject(bool run)
+    private static void buildProject(BuildOptions options)
     { 
         // Update Build
         int[] ver = VersionArray;
@@ -31,7 +31,7 @@ public class UnityMenu : MonoBehaviour {
         buildOptions.scenes = new[] { "Assets/Scenes/MainScene.unity" };
         buildOptions.locationPathName = "Build";
         buildOptions.target = BuildTarget.WebGL;
-        buildOptions.options = (run ? BuildOptions.AutoRunPlayer : BuildOptions.None);
+        buildOptions.options = options;
 
         // Run and View Results.
         BuildReport report = BuildPipeline.BuildPlayer(buildOptions);

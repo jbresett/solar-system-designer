@@ -15,15 +15,14 @@ public class BaseBody : MonoBehaviour {
     public bool Active
     {
         get { return gameObject.activeSelf; }
-        set
-        {
-            gameObject.SetActive(value);
-            active = value;
-        }
+        set { gameObject.SetActive(value); }
     }
-    // Note: Active stored in gameObject.  Property below emulates the primitive for direct read-access.
+    // Note: Active stored in gameObject.  Property below emulates the primitive for direct read/write -access.
     [SerializeField]
-    protected bool active;
+    protected bool active {
+        get { return gameObject.activeSelf; }
+        set { gameObject.SetActive(value); }
+    }
 
     /// <summary>
     /// Body Type.
@@ -53,7 +52,7 @@ public class BaseBody : MonoBehaviour {
         get { return mass; }
         set
         {
-            if (value < 0) Debugger.log("Body '{0}' set to negative mass.".Format());
+            if (value < 0) Debugger.log("Warning: Body '{0}' set to negative mass.".Format(id));
             mass = value;
         }
     }
@@ -110,7 +109,7 @@ public class BaseBody : MonoBehaviour {
     public Vector3d Velocity
     {
         get { return velocity; }
-        set { velocity = value; }
+        set { velocity.Set(value); }
     }
     [SerializeField]
     protected Vector3d velocity = new Vector3d();
@@ -126,9 +125,6 @@ public class BaseBody : MonoBehaviour {
     public void Awake()
     {
         // Leave in to ensure no issues with extended classes.
-
-        // Set initial states.
-        active = gameObject.activeSelf;
     }
 
     public void Start()
