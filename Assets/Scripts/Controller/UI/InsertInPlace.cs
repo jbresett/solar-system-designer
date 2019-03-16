@@ -101,7 +101,7 @@ public class InsertInPlace : MonoBehaviour
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
         }
        
-        script.Diameter = double.Parse(radius.text);
+        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,"absolute");
         script.Mass = double.Parse(mass.text);
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
         script.Type = type.options[type.value].text.Enum<BodyType>();
