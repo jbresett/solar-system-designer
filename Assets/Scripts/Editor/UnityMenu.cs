@@ -7,6 +7,10 @@ using UnityEditor.SceneManagement;
 
 public class UnityMenu : MonoBehaviour {
 
+    // Build Source and Destination for overwriting default WebGL index file.
+    private const string BUILD_SRC = "build.index.html";
+    private const string BUILD_DEST = "Build/index.html";
+
     [MenuItem("SolarSystemDesigner/Build/Build", false, 0)]
     public static void Build()
     {
@@ -18,6 +22,11 @@ public class UnityMenu : MonoBehaviour {
     {
         buildProject(BuildOptions.AutoRunPlayer);
     }
+
+    [MenuItem("SolarSystemDesigner/Test", false, 0)]
+    public static void Test()
+    {
+    }   
 
     private static void buildProject(BuildOptions options)
     { 
@@ -35,6 +44,10 @@ public class UnityMenu : MonoBehaviour {
 
         // Run and View Results.
         BuildReport report = BuildPipeline.BuildPlayer(buildOptions);
+
+        FileUtil.DeleteFileOrDirectory(BUILD_DEST);
+        FileUtil.CopyFileOrDirectory(BUILD_SRC, BUILD_DEST);
+
         if (report.summary.result == BuildResult.Succeeded)
         {
             Debug.Log("Build " + report.summary.result + " @ " + (report.summary.totalSize / 1024) + "kb.");
