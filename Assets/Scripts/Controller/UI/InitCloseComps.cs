@@ -15,7 +15,7 @@ namespace Controller.UI
             {
                 if (menuTags.Contains(go.tag))
                 {
-                    CloseUIs close = go.AddComponent(typeof(CloseUIs))as CloseUIs;
+                    go.AddComponent(typeof(CloseUIs));
                     menus.Add(go);
                 }
             }
