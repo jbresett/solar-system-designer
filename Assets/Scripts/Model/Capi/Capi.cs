@@ -25,12 +25,9 @@ public class Capi: Singleton<Capi> {
 
     public void Awake()
     {
-        //transporter = SimCapi.Transporter.getInstance();
 
-        // Create SSData 
-        Exposed.exposeAll();
-        Exposed.setDeligates();
-
+        Exposed.Init();
+ 
         Debugger.log("Initializing Transporter");
         Transporter.addInitialSetupCompleteListener(setupComplete);
         Transporter.addHandshakeCompleteListener(handshakeComplete);
@@ -58,5 +55,14 @@ public class Capi: Singleton<Capi> {
     {
         Debugger.log("SimCapi Handshake Complete.");
     }
-
+    
+    /// <summary>
+    /// Logs an simulation event or issue into the Capi server.
+    /// </summary>
+    /// <param name="eventString"></param>
+    public void Log(string eventString)
+    {
+        Exposed.capiEvents.getList().Add(eventString);
+        Exposed.capiEvents.updateValue();
+    }
 }

@@ -17,6 +17,7 @@ public enum Direction
 /// </summary>
 public enum SpeedRatios
 {
+    Custom = -1,
     Stop = 0,
     Second = 1,
     Minute = 60,
@@ -39,7 +40,14 @@ public class Settings : Singleton<Settings>
     public bool Paused
     {
         get { return paused; }
-        set { paused = value; }
+        set {
+            paused = value;
+            var ui = speedBar.GetComponent<SpeedUI>();
+            ui.pauseButton.interactable = !Sim.Settings.Paused;
+            ui.playButton.interactable = Sim.Settings.Paused;
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
+            Sim.Capi.Exposed.capiPaused.setValue(value);
+        }
     }
     [SerializeField]
     protected bool paused;
@@ -49,8 +57,9 @@ public class Settings : Singleton<Settings>
         get { return speed; }
         set
         {
-            Sim.Capi.Exposed.Speed.setValue((float)value);
             speed = value;
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
+            Sim.Capi.Exposed.capiSpeed.setValue((float)value);
         }
     }
     [SerializeField]

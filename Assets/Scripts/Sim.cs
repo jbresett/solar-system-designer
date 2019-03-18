@@ -74,4 +74,15 @@ public class Sim : Singleton<Sim> {
         }
 	}
 
+    public void Reset()
+    {
+        Sim.Settings.Paused = true;
+        foreach (Body body in Sim.Bodies.getAll())
+        {
+            body.Position = body.InitialPosition;
+            body.Velocity = new Vector3d();
+            body.isInitialVel = false;
+        }
+    }
+
 }

@@ -25,116 +25,93 @@ public class ExposedData: Singleton<ExposedData> {
     /// <summary>
     /// Current simulation speed.
     /// </summary>
-    public SimCapiNumber Speed;
-    public SimCapiEnum<SpeedRatios> SpeedRatio;
+    public SimCapiNumber capiSpeed;
+    public SimCapiEnum<SpeedRatios> speedRatio;
+    public SimCapiBoolean capiPaused;
 
     /// <summary>
     /// Body that currently has focus. Empty string ("") means no body is currently selected (free camera).
     /// </summary>
-    public SimCapiString FocusedBody;
+    public SimCapiString capiFocused;
 
-    public SimCapiStringArray Perms;
+    public SimCapiStringArray capiPerms;
 
-    // Permission switch for "create" perm.
-    public SimCapiBoolean CanCreate;
-
-    public SimCapiBoolean ReadOnlyTest;
-    public SimCapiBoolean WriteOnlyTest;
+    public SimCapiStringArray capiEvents;
 
     /// <summary>
     /// Sets initial values.
     /// </summary>
-    public ExposedData() {
-        Speed = new SimCapiNumber(0F);
-        SpeedRatio = new SimCapiEnum<SpeedRatios>(SpeedRatios.Stop);
-        FocusedBody = new SimCapiString("");
-        CanCreate = new SimCapiBoolean(false);
-        Perms = new SimCapiStringArray();
-    }
+    public void Init() {
+        capiSpeed = new SimCapiNumber((float)Sim.Settings.Speed);
+        capiSpeed.expose("Speed", false, false);
+        capiSpeed.setChangeDelegate(
+            delegate (float value, ChangedBy changedBy)
+            {
+                // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
+                if (changedBy == ChangedBy.AELP)
+                { 
+                    Sim.Settings.Speed = value;
+                }
 
-    /// <summary>
-    /// Exposes all data. Called by the Main processing class after instance is created.
-    /// </summary>
-    public void exposeAll()
-    {
-        Speed.expose("Speed", false, false);
-        SpeedRatio.expose("Speed ", false, false);
-        FocusedBody.expose("Focused", false, false);
-        CanCreate.expose("Can Create", false, false);
-        Perms.expose("Perm", true, false);
+                // Update Speed Ratio to matching value.
+                SpeedRatios ratio = SpeedRatios.Custom;
+                foreach (SpeedRatios r in Enum.GetValues(typeof(SpeedRatios)))
+                {
+                    if ((int)r == (int)value)
+                    {
+                        ratio = r;
+                    }
+                }
+                speedRatio.setValue(ratio);
+            }
+        );
+
+        speedRatio = new SimCapiEnum<SpeedRatios>(SpeedRatios.Stop);
+        speedRatio.expose("Speeds", false, false);
+        speedRatio.setChangeDelegate(
+            delegate (SpeedRatios value, ChangedBy changedBy)
+            {
+                if (changedBy == ChangedBy.AELP)
+                {
+                    Sim.Settings.Speed = (int)value;
+                }
+            }
+        );
+
+        capiPaused = new SimCapiBoolean(Sim.Settings.Paused);
+        capiPaused.expose("Paused", false, false);
+        capiPaused.setChangeDelegate(
+            delegate (Boolean value, ChangedBy changedBy)
+            {
+                if (changedBy == ChangedBy.AELP)
+                {
+                    Sim.Settings.Paused = value;
+                }
+            }
+        );
+
+        capiFocused = new SimCapiString("");
+        capiFocused.expose("Focused", false, false);
+        capiFocused.setChangeDelegate(
+            delegate (String value, ChangedBy changedBy)
+            {
+                if (changedBy == ChangedBy.AELP)
+                {
+                    capiFocused.setValue(value);
+                }
+            }
+        );
+
+        capiPerms = new SimCapiStringArray();
+        capiPerms.expose("Perm", false, false);
+
+        capiEvents = new SimCapiStringArray();
+        capiEvents.expose("Events", false, false);
     }
 
     internal void BodyUpdate(PhysicsBody physicsBody)
     {
         throw new NotImplementedException();
     }
-
-
-    /// <summary>
-    /// Sets all the deligates to handle updates to the Exposed data.
-    /// 
-    /// Changes done through the SIM generally update the NBody classes automatically.
-    /// Changes done through ALEP need to be reflected into the NBody system.
-    /// </summary>
-    public void setDeligates()
-    {
-        Speed.setChangeDelegate(
-            delegate (float value, ChangedBy changedBy)
-            {
-                // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
-                if (changedBy == ChangedBy.SIM)
-                {
-                }
-                // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
-                else
-                {
-                    Sim.Settings.Speed = value;
-                }
-
-                // Update SpeedRatio
-                SpeedRatio.setValue(SpeedRatios.Stop);
-
-            }
-
-        );
-
-        SpeedRatio.setChangeDelegate(
-            delegate (SpeedRatios value, ChangedBy changedBy)
-            {
-                // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
-                if (changedBy == ChangedBy.SIM)
-                {
-                    // Not further effects here at this time.
-                }
-                // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
-                else
-                {
-                    Sim.Settings.Speed = (int)value;
-                }
-
-            }
-
-        );
-
-
-        FocusedBody.setChangeDelegate(
-           delegate (String value, ChangedBy changedBy)
-           {
-               // Any changes done by the SIM go through the NBody system first, which updates the Exposed Data.
-               if (changedBy == ChangedBy.SIM)
-               {
-                   // Not further effects here at this time.
-               }
-               // If the Changes were done by the ALEP, the NBody system needs to be updated accordingly.               
-               else
-               {
-                   // [TODO] Update to new focus
-                   // NBody.Focused = value;
-               }
-               FocusedBody.setValue(value);
-           }
-       );
-    }
-
 
 }

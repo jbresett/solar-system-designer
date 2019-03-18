@@ -91,7 +91,7 @@ public class Perm: Singleton<Perm> {
         {
 
             // Check Permission
-            if (exp.Perms.getList().Contains(perm)) return true;
+            if (exp.capiPerms.getList().Contains(perm)) return true;
 
             // If exact (1st) match is not found and only checking for exact matches, return.
             if (exact) return false;
@@ -129,7 +129,7 @@ public class Perm: Singleton<Perm> {
     /// <returns></returns>
     public List<string> getList()
     {
-        return new List<string>(Sim.Capi.Exposed.Perms.getList());
+        return new List<string>(Sim.Capi.Exposed.capiPerms.getList());
     }
 
     /// <summary>
@@ -140,14 +140,14 @@ public class Perm: Singleton<Perm> {
     public bool Add(string perm)
     {
         ExposedData exp = Sim.Capi.Exposed;
-        List<string> list = exp.Perms.getList();
+        List<string> list = exp.capiPerms.getList();
 
         // Check if permission already exists.
         if (list.Contains(perm)) return false;
 
         // Add item and update value.
         list.Add(perm);
-        exp.Perms.updateValue();
+        exp.capiPerms.updateValue();
 
         return true;
     }
@@ -161,7 +161,7 @@ public class Perm: Singleton<Perm> {
     public bool Remove(string perm, bool removeChildren = false)
     {
         ExposedData exp = Sim.Capi.Exposed;
-        List<string> list = exp.Perms.getList();
+        List<string> list = exp.capiPerms.getList();
 
         // Gets initial size to later check for any changes.
         int initSize = list.Count;
@@ -171,7 +171,7 @@ public class Perm: Singleton<Perm> {
         if (removeChildren) list.RemoveAll(val => val.StartsWith(perm + "."));
 
         // If list changed, update values.
-        if (list.Count != initSize) exp.Perms.updateValue();
+        if (list.Count != initSize) exp.capiPerms.updateValue();
 
         // Returnsif the size has changed.
         return (list.Count != initSize);
@@ -185,12 +185,12 @@ public class Perm: Singleton<Perm> {
     public bool Clear()
     {
         ExposedData exp = Sim.Capi.Exposed;
-        List<string> list = exp.Perms.getList();
+        List<string> list = exp.capiPerms.getList();
 
         if (list.Count == 0) return false;
 
         list.Clear();
-        exp.Perms.updateValue();
+        exp.capiPerms.updateValue();
 
         return true;
     }

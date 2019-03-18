@@ -40,8 +40,6 @@ public class SpeedUI : MonoBehaviour {
     {
         Sim.Settings.Paused = Paused;
         // Swaps which button is enabled.
-        pauseButton.interactable = !Sim.Settings.Paused;
-        playButton.interactable = Sim.Settings.Paused;
     }
 
     /// <summary>
@@ -85,12 +83,7 @@ public class SpeedUI : MonoBehaviour {
     /// </summary>
     public void OnResetButtonPress()
     {
-        foreach (Body body in Sim.Bodies.getAll())
-        {
-            body.Position = body.InitialPosition;
-            body.Velocity = new Vector3d();
-            body.isInitialVel = false;
-        }
+        Sim.Instance.Reset();
     }
 
 }
