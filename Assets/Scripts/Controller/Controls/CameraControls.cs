@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -33,21 +35,46 @@ public class CameraControls : MonoBehaviour {
     [SerializeField]
     private bool enableMouse = true;
     
+    public Body Body
+    {
+        get { return body;  }
+        set { body = value; }
+    }
+    [SerializeField]
+    private Body body;
+    
+    public float DragSpeed
+    {
+        get { return dragSpeed; }
+        set { dragSpeed = value; }
+    }
+    [SerializeField,Range(50,500)]
+    private float dragSpeed = 100f;
+    
     // Basic Constants
     const float KEYBOARD_MOVE = 1000F;
     private const float FOVAdjust = .1f;
     private const float rotateSpeed = 10f;
     
-    private float dragSpeed = 10f;
+    
     private Vector3 dragOriginRot;
     private Vector3 dragOriginPos;
-    private float mouseZoomFactor = 1f;
+    [Range(.1f,5f)]
+    public float mouseZoomFactor = 1f;
+    public float zoomlevel = 1f;
     
-    private List<Image> backgrounds = new List<Image>();
+    private Vector3 offset;
+    public Vector3 bodyPos;
+    private Transform cam;
+
+    private List<Image> backgrounds;
 
     private void Start()
     {
+        cam = Camera.main.transform;
+        backgrounds = new List<Image>();
         var images = Resources.FindObjectsOfTypeAll<Image>();
+        
         foreach (var image in images)
         {
             if (image.tag == "UIMenu")
@@ -55,6 +82,8 @@ public class CameraControls : MonoBehaviour {
                 backgrounds.Add(image);
             }
         }
+        bodyPos = body.Position.Vec3*10;
+        focusOnBody();
     }
 
     /// <summary>
@@ -63,27 +92,19 @@ public class CameraControls : MonoBehaviour {
     /// </summary>
     void Update()
     {
-        // Automatically disable Cemera controls if the current object is an InputField.
-        GameObject selected = EventSystem.current.currentSelectedGameObject;
-        enableKeyboard = true;
-        enableMouse = true;
-        foreach(Image i in backgrounds)
-        {
-            if (i.isActiveAndEnabled)
-            {
-                enableKeyboard = false;
-                enableMouse = false;
-                break;
-            }
-        }
-        
-        if (EnableKeyboard && (selected == null || !selected.GetComponent<InputField>()))
-        {
+        setControlsActive();
+        if (EnableKeyboard)
             UpdateKeyboard();
-        }
-
         if (EnableMouse)
             UpdateMouse();
+        if (zoomlevel < 1f)
+            zoomlevel = 1f;
+    }
+
+    private void LateUpdate()
+    {
+        bodyPos = body.Position.Vec3*10;
+        setCameraPos();
     }
 
     /// <summary>
@@ -100,37 +121,37 @@ public class CameraControls : MonoBehaviour {
         //Up
         if (Input.GetKey(controls[Direction.MoveUp]))
         {
-            Camera.main.transform.position -= Camera.main.transform.up * MoveFactor;
+            cam.position -= Camera.main.transform.up * MoveFactor;
         }
 
         //Down
         if (Input.GetKey(controls[Direction.MoveDown]))
         {
-            Camera.main.transform.position += Camera.main.transform.up * MoveFactor;
+            cam.position += Camera.main.transform.up * MoveFactor;
         }
 
         //Left
         if (Input.GetKey(controls[Direction.MoveLeft]))
         {
-            Camera.main.transform.position -= Camera.main.transform.right * MoveFactor;
+            cam.position -= Camera.main.transform.right * MoveFactor;
         }
 
         //Right
         if (Input.GetKey(controls[Direction.MoveRight]))
         {
-            Camera.main.transform.position += Camera.main.transform.right * MoveFactor;
+            cam.position += Camera.main.transform.right * MoveFactor;
         }
 
         // Move Forward
         if (Input.GetKey(controls[Direction.MoveForward]))
         {
-            Camera.main.transform.position += Camera.main.transform.forward * MoveFactor;
+            cam.position += Camera.main.transform.forward * MoveFactor;
         }
 
         // Move Backward
         if (Input.GetKey(controls[Direction.MoveBackward]))
         {
-            Camera.main.transform.position -= Camera.main.transform.forward * MoveFactor;
+            cam.position -= Camera.main.transform.forward * MoveFactor;
         }
 
         // Zoom In
@@ -146,14 +167,17 @@ public class CameraControls : MonoBehaviour {
         }
 
         // Rotate Camera (note, the vectors are correct despite not matching the key)
-        if (Input.GetKey(controls[Direction.RotLeft]))
-            Camera.main.transform.Rotate(Vector3.down,rotateSpeed*Time.deltaTime);
+        Vector3 rotVect = Vector3.zero;
         if (Input.GetKey(controls[Direction.RotRight]))
-            Camera.main.transform.Rotate(Vector3.up,rotateSpeed*Time.deltaTime);
-        if (Input.GetKey(controls[Direction.RotUp]))
-            Camera.main.transform.Rotate(Vector3.left,rotateSpeed*Time.deltaTime);
+            rotVect = Vector3.down*rotateSpeed*Time.deltaTime;
+        if (Input.GetKey(controls[Direction.RotLeft]))
+            rotVect = Vector3.up*rotateSpeed*Time.deltaTime;
         if (Input.GetKey(controls[Direction.RotDown]))
-            Camera.main.transform.Rotate(Vector3.right,rotateSpeed*Time.deltaTime);
+            rotVect = Vector3.left*rotateSpeed*Time.deltaTime;
+        if (Input.GetKey(controls[Direction.RotUp]))
+            rotVect = Vector3.right*rotateSpeed*Time.deltaTime;
+        if (rotVect != Vector3.zero)
+            cam.Rotate(rotVect,Space.Self);
     }
 
     /// <summary>
@@ -161,9 +185,10 @@ public class CameraControls : MonoBehaviour {
     /// </summary>
     private void UpdateMouse()
     {
-        Camera.main.transform.position += Camera.main.transform.forward*Input.mouseScrollDelta.y*mouseZoomFactor;
+        zoomlevel += Input.mouseScrollDelta.y*mouseZoomFactor;
         
-        if (Input.GetMouseButton(0) && !dragOriginPos.Equals(Vector3.negativeInfinity))
+        
+        /*if (Input.GetMouseButton(0) && !dragOriginPos.Equals(Vector3.negativeInfinity))
         {
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginPos);
             pos.y = -pos.y;
@@ -175,16 +200,18 @@ public class CameraControls : MonoBehaviour {
         else
         {
             dragOriginPos = Vector3.negativeInfinity;
-        }
+        }*/
         if (Input.GetMouseButton(1) && !dragOriginRot.Equals(Vector3.negativeInfinity))
         {
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginRot);
+            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginRot)*-dragSpeed;
             float x = pos.x;
             float y = pos.y;
             pos.x = y;
             pos.y = -x;
-            Debug.Log(pos);
-            Camera.main.transform.Rotate(pos);
+            pos.z = 0;
+            Camera.main.transform.Rotate(pos,Space.Self);
+           
+            dragOriginRot = Input.mousePosition;
             return;
         }
         else
@@ -202,5 +229,44 @@ public class CameraControls : MonoBehaviour {
             dragOriginRot = Input.mousePosition;
         }
         
+    }
+
+    public void changeBody(String bodyName)
+    {
+        body = Sim.Bodies.get(bodyName);
+        focusOnBody();
+    }
+
+    private void setCameraPos()
+    {
+        Quaternion rotation = Camera.main.transform.rotation;
+        Vector3 pos = offset * zoomlevel;
+        cam.position = rotation * pos+bodyPos;
+    }
+
+    private void focusOnBody()
+    {
+        zoomlevel = 2f;
+        float zoomBase = (float)body.Diameter * 10F * 1.5F;
+        cam.rotation = Quaternion.identity;
+        cam.position = bodyPos + Vector3.forward * zoomBase;
+        offset = bodyPos - cam.position;
+    }
+    
+
+    private void setControlsActive()
+    {
+        // Automatically disable Camera controls if the current object is an InputField.
+        enableKeyboard = true;
+        enableMouse = true;
+        foreach(Image i in backgrounds)
+        {
+            if (i.isActiveAndEnabled)
+            {
+                enableKeyboard = false;
+                enableMouse = false;
+                break;
+            }
+        }
     }
 }
