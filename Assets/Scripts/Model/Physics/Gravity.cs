@@ -33,7 +33,7 @@ public class Gravity : MonoBehaviour{
 	public void calcInitialVelocities()
 	{
 		List<Body> bodyList = Sim.Bodies.Active;
-		Body mostPull = new Body();
+		Body mostPull;
 		double xDist = 0;
 		Vector3d dist = new Vector3d();
 		Vector3d vec = new Vector3d(0,0,0);
@@ -58,26 +58,22 @@ public class Gravity : MonoBehaviour{
 		//or not.
 		foreach (Body body in bodyList)
 		{
-			mostPull = body.MostPull;
 			if (!body.isInitialVel)
 			{
 				if (numStars >= 2)
 				{
-					dist = mostPull.Pos - body.Pos;
-					xDist = dist.magnitude;
-					vec.z = (Math.Sqrt((g * (mostPull.KG)) / xDist));
+					xDist = body.MostPull.Pos.x - body.Pos.x;
+					vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist*-1)));
 					body.Vel = vec;
 					body.isInitialVel = true;
 				}
 				else if (body.Type != BodyType.Star)
 				{
-					dist = mostPull.Pos - body.Pos;
-					xDist = dist.magnitude;
-					vec.z = (Math.Sqrt((g * (mostPull.KG)) / xDist));
+					xDist = body.MostPull.Pos.x - body.Pos.x;
+					vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist*-1)));
 					body.Vel = vec;
 					body.isInitialVel = true;
 				}
-				
 			}
 		}
 	}
@@ -136,15 +132,15 @@ public class Gravity : MonoBehaviour{
 					if (aforce.magnitude > mostForce)
 					{
 						mostForce = aforce.magnitude;
-						mostPull = obod;
+						bod.MostPull = obod;
 
 					}
 					force += aforce;
 				}
 
-				bod.MostPull = mostPull;
 			}
 
+			mostForce = 0;
 			bod.totalForce = force;
 		}
 	}
