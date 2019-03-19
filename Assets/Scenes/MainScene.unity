@@ -11165,7 +11165,7 @@ MonoBehaviour:
   objName: {fileID: 499052447}
   type: {fileID: 462516534}
   radius: {fileID: 434998730}
-  mass: {fileID: 0}
+  mass: {fileID: 2010610502}
   xPos: {fileID: 2089563818}
   yPos: {fileID: 1796722314}
   zPos: {fileID: 94640860}

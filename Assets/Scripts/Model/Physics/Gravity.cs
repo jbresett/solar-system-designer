@@ -17,7 +17,7 @@ using UnityEngine;
 public class Gravity : MonoBehaviour{
 
 	private const double g = 6.67408E-11;
-	//private const double time = 86400; //seconds in a day
+
 	/// <summary>
 	/// This method checks for the body with the most mass and keeps the
 	/// velocity for the most mass at zero so that the solar system stays relative
@@ -27,35 +27,53 @@ public class Gravity : MonoBehaviour{
 	/// This method may not account for binary star systems and may not represent the actual starting
 	/// velocity of a planet. This method calculates a guess based on mass and distance.
 	///
-	/// Equation derrived from: https://www.physicsclassroom.com/class/circles/Lesson-4/Mathematics-of-Satellite-Motion
+	/// Partial Equation derrived from:
+	/// https://www.physicsclassroom.com/class/circles/Lesson-4/Mathematics-of-Satellite-Motion
 	/// </summary>
 	public void calcInitialVelocities()
 	{
 		List<Body> bodyList = Sim.Bodies.Active;
-        Body mostMass = null;
-		//mostMass.KG = 0;
+		Body mostPull;
 		double xDist = 0;
 		Vector3d dist = new Vector3d();
-		//double period = 0;
 		Vector3d vec = new Vector3d(0,0,0);
-		// checking distance and calculating.
+		int numStars = 0;
+		
+		//counting the number of stars in a system
+		//We need to know the number of stars, so that
+		//if there is only one star, we do not give
+		//the one star initial velocity because if we did,
+		//it would travel out of our field of vision
 		foreach (Body body in bodyList)
 		{
-			if (mostMass == null || body.KG > mostMass.KG)
+			if (body.Type == BodyType.Star)
 			{
-				mostMass = body;
+				numStars++;
 			}
 		}
-
+		
+		//here we check each body and determine its initial velocity
+		//based on the the strongest force applied to the object.
+		//we then determine if we should give a star initial velocity
+		//or not.
 		foreach (Body body in bodyList)
 		{
-			if (!body.isInitialVel && body != mostMass)
+			if (!body.isInitialVel)
 			{
-				dist = mostMass.Pos - body.Pos;
-				xDist = dist.magnitude;
-				vec.z = (Math.Sqrt((g * (mostMass.KG) )/ xDist));
-				body.Vel = vec;
-				body.isInitialVel = true;
+				if (numStars >= 2)
+				{
+					xDist = body.MostPull.Pos.x - body.Pos.x;
+					vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist*-1)));
+					body.Vel = vec;
+					body.isInitialVel = true;
+				}
+				else if (body.Type != BodyType.Star)
+				{
+					xDist = body.MostPull.Pos.x - body.Pos.x;
+					vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist*-1)));
+					body.Vel = vec;
+					body.isInitialVel = true;
+				}
 			}
 		}
 	}
@@ -96,6 +114,13 @@ public class Gravity : MonoBehaviour{
 	{
 		List<Body> bodies = Sim.Bodies.Active;
 		Vector3d force;
+		Vector3d aforce = new Vector3d();
+		double mostForce = 0;
+		Body mostPull = new Body();
+		
+		//We are taking each body and calculating the force between
+		//that body and all other bodies, we are also determining
+		//which body applies the most force to the specific body.
 		foreach (Body bod in bodies)
 		{
 			force = new Vector3d(0,0,0);
@@ -103,10 +128,19 @@ public class Gravity : MonoBehaviour{
 			{
 				if (bod.Id != obod.Id)
 				{
-					force += calcForce(bod, obod);
+					aforce = calcForce(bod, obod);
+					if (aforce.magnitude > mostForce)
+					{
+						mostForce = aforce.magnitude;
+						bod.MostPull = obod;
+
+					}
+					force += aforce;
 				}
+
 			}
 
+			mostForce = 0;
 			bod.totalForce = force;
 		}
 	}
@@ -117,8 +151,8 @@ public class Gravity : MonoBehaviour{
 	/// </summary>
 	public void updateVelocity()
 	{
-		calcInitialVelocities();
 		updateForce();
+		calcInitialVelocities();
 		List<Body> bodies = Sim.Bodies.Active;
 		Vector3d velocity;
 		foreach (Body bod in bodies)
@@ -126,7 +160,7 @@ public class Gravity : MonoBehaviour{
 			velocity = bod.Vel;
 			velocity.x += bod.totalForce.x / bod.KG * Sim.Settings.Speed;
 			velocity.z += bod.totalForce.z / bod.KG * Sim.Settings.Speed;
-
+			velocity.y = bod.Vel.y;
 			bod.Vel = velocity;
 		}
 	}
@@ -142,7 +176,7 @@ public class Gravity : MonoBehaviour{
 		Vector3d newPos;
 		foreach (Body bod in bodies)
 		{
-			newPos = new Vector3d(bod.Pos.x + bod.Vel.x * Sim.Settings.Speed, 0,bod.Pos.z + bod.Vel.z * Sim.Settings.Speed);
+			newPos = new Vector3d(bod.Pos.x + bod.Vel.x * Sim.Settings.Speed, bod.Pos.y,bod.Pos.z + bod.Vel.z * Sim.Settings.Speed);
 			bod.Pos = newPos;
 		}
 	}
