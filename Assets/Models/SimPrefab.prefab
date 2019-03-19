@@ -29,7 +29,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4802366313395770
 Transform:
   m_ObjectHideFlags: 1
@@ -68,6 +68,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d54aac2c7d25504882b4b899f272434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BodyContainer: {fileID: 0}
+  BodyPrefab: {fileID: 0}
+  StatsLabel: {fileID: 0}
+  version: 
 --- !u!114 &114724795525953660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9808d79e3283c074a8bee7ef6082478d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedBar: {fileID: 0}
   paused: 0
   speed: 0
 --- !u!114 &114793214286861954

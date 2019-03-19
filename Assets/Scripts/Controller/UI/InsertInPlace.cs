@@ -1,7 +1,6 @@
 using System;
-using Planets;
+using Model.Util;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,12 +24,53 @@ public class InsertInPlace : MonoBehaviour
 
     public GameObject UseParticleSystem;
 
+    private string unitType;
+
     /// <summary>
     /// initializes class and begins listening for mouse click
     /// </summary>
     void Start()
     {
         button.onClick.AddListener(insert);
+        type.onValueChanged.AddListener(delegate { updateUnits(); });
+        unitType = "absolute";
+        updateUnits();
+    }
+
+    private void updateUnits()
+    {
+        String unit = type.options[type.value].text.ToLower();
+        Debug.Log(unit);
+        GameObject[] comps = GameObject.FindGameObjectsWithTag("Radius");
+        foreach (var comp in comps)
+        {
+            TMP_InputField inp = comp.GetComponentInChildren<TMP_InputField>();
+            TextMeshProUGUI suff = comp.transform.Find("Unit").gameObject.GetComponent<TextMeshProUGUI>();
+            Debug.Log(suff);
+            updateRadius(inp,unit);
+            suff.text = UnitConverter.units[unit].DistSuff;
+        }
+        comps = GameObject.FindGameObjectsWithTag("Mass");
+        foreach (var comp in comps)
+        {
+            TMP_InputField inp = comp.GetComponentInChildren<TMP_InputField>();
+            TextMeshProUGUI suff = comp.transform.Find("Unit").gameObject.GetComponent<TextMeshProUGUI>();
+            updateMass(inp,unit);
+            suff.text = UnitConverter.units[unit].MassSuff;
+        }
+
+        unitType = unit;
+    }
+    
+    private void updateRadius(TMP_InputField val, string unit)
+    {
+        double v = double.Parse(val.text);
+        val.text = UnitConverter.convertRadius(v, unitType, unit).ToString();
+    }
+    private void updateMass(TMP_InputField val, string unit)
+    {
+        double v = double.Parse(val.text);
+        val.text = UnitConverter.convertMass(v, unitType, unit).ToString();
     }
 
     /// <summary>
@@ -61,7 +101,7 @@ public class InsertInPlace : MonoBehaviour
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
         }
        
-        script.Diameter = double.Parse(radius.text);
+        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,"absolute");
         script.Mass = double.Parse(mass.text);
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
         script.Type = type.options[type.value].text.Enum<BodyType>();

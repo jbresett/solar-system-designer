@@ -32,7 +32,7 @@ namespace Planets
         private void select()
         {
             RaycastHit hitInfo = new RaycastHit();
-            bool hit = Physics.Raycast(Camera.current.ScreenPointToRay(Input.mousePosition), out hitInfo);
+            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
             if (hit)
             {
                 if (hitInfo.collider.gameObject.tag == "OrbitalBody")

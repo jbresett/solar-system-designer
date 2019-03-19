@@ -67,14 +67,10 @@ public class CameraControls : MonoBehaviour {
     public Vector3 bodyPos;
     private Transform cam;
 
-    private List<Image> backgrounds;
+    private List<Image> backgrounds = new List<Image>();
 
     private void Start()
-    {
-        cam = Camera.main.transform;
-        backgrounds = new List<Image>();
-        var images = Resources.FindObjectsOfTypeAll<Image>();
-        
+    {        var images = Resources.FindObjectsOfTypeAll<Image>();
         foreach (var image in images)
         {
             if (image.tag == "UIMenu")
@@ -121,37 +117,37 @@ public class CameraControls : MonoBehaviour {
         //Up
         if (Input.GetKey(controls[Direction.MoveUp]))
         {
-            cam.position -= Camera.main.transform.up * MoveFactor;
+            Camera.main.transform.position -= Camera.main.transform.up * MoveFactor;
         }
 
         //Down
         if (Input.GetKey(controls[Direction.MoveDown]))
         {
-            cam.position += Camera.main.transform.up * MoveFactor;
+            Camera.main.transform.position += Camera.main.transform.up * MoveFactor;
         }
 
         //Left
         if (Input.GetKey(controls[Direction.MoveLeft]))
         {
-            cam.position -= Camera.main.transform.right * MoveFactor;
+            Camera.main.transform.position -= Camera.main.transform.right * MoveFactor;
         }
 
         //Right
         if (Input.GetKey(controls[Direction.MoveRight]))
         {
-            cam.position += Camera.main.transform.right * MoveFactor;
+            Camera.main.transform.position += Camera.main.transform.right * MoveFactor;
         }
 
         // Move Forward
         if (Input.GetKey(controls[Direction.MoveForward]))
         {
-            cam.position += Camera.main.transform.forward * MoveFactor;
+            Camera.main.transform.position += Camera.main.transform.forward * MoveFactor;
         }
 
         // Move Backward
         if (Input.GetKey(controls[Direction.MoveBackward]))
         {
-            cam.position -= Camera.main.transform.forward * MoveFactor;
+            Camera.main.transform.position -= Camera.main.transform.forward * MoveFactor;
         }
 
         // Zoom In
@@ -241,16 +237,16 @@ public class CameraControls : MonoBehaviour {
     {
         Quaternion rotation = Camera.main.transform.rotation;
         Vector3 pos = offset * zoomlevel;
-        cam.position = rotation * pos+bodyPos;
+        Camera.main.transform.position = rotation * pos+bodyPos;
     }
 
     private void focusOnBody()
     {
         zoomlevel = 2f;
-        float zoomBase = (float)body.Diameter * 10F * 1.5F;
-        cam.rotation = Quaternion.identity;
-        cam.position = bodyPos + Vector3.forward * zoomBase;
-        offset = bodyPos - cam.position;
+        float zoomBase = (float)body.Diameter * 75F;
+        Camera.main.transform.rotation = Quaternion.identity;
+        Camera.main.transform.position = bodyPos + Vector3.forward * zoomBase;
+        offset = bodyPos - Camera.main.transform.position;
     }
     
 
