@@ -12,7 +12,7 @@ namespace DefaultNamespace
             double r2 = b2.Diameter / 2;
             Vector3d p1 = b1.Pos;
             Vector3d p2 = b2.Pos;
-            return (r1 + r2) >= calcDist(p1, p2);
+            return (r1 + r2)*6378.1 >= calcDist(p1, p2);
         }
 
         public static double calcDist(Vector3d p1, Vector3d p2)
