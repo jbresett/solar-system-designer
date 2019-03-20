@@ -70,7 +70,7 @@ public class CameraControls : MonoBehaviour {
     private List<Image> backgrounds = new List<Image>();
 
     private void Start()
-    {        
+    {
         var images = Resources.FindObjectsOfTypeAll<Image>();
         foreach (var image in images)
         {
@@ -80,7 +80,18 @@ public class CameraControls : MonoBehaviour {
             }
         }
 
-        body = Sim.Bodies.Active[0];
+        // If no body is selected, select the body closest to (0,0,0)
+        if (body == null)
+        {
+            foreach (Body r in Sim.Bodies.Active)
+            {
+                if (body == null || r.Position.magnitude < body.Position.magnitude)
+                {
+                    body = r;
+                }
+            }
+        }
+        
         bodyPos = body.Position.Vec3*10;
         focusOnBody();
     }
