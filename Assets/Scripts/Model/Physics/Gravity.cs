@@ -34,9 +34,9 @@ public class Gravity : MonoBehaviour
     public void calcInitialVelocities()
     {
         List<Body> bodyList = Sim.Bodies.Active;
-        Body mostPull;
+        //Body mostPull;
         double xDist = 0;
-        Vector3d dist = new Vector3d();
+        //Vector3d dist = new Vector3d();
         Vector3d vec = new Vector3d(0, 0, 0);
         int numStars = 0;
 
