@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum BodyType
 {
-    Star, Planet, Moon, Asteroid, Undefined
+    Star, Planet, Moon, Asteroid, Undefined, Earths
 }
