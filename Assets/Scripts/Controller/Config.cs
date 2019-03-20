@@ -20,4 +20,8 @@ public class Config : Singleton<Config> {
     [SerializeField]
     protected GameObject bodyPrefab;
 
+    public GameObject CollisionEffect { get { return collisionEffect; } }
+    [SerializeField]
+    protected GameObject collisionEffect;
+
 }
