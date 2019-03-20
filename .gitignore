@@ -3,6 +3,10 @@
 [Oo]bj/
 Assets/AssetStoreTools*
 
+#Jetbrains Rider
+.idea/
+*.iml
+
 # Visual Studio cache directory
 .vs/
 
