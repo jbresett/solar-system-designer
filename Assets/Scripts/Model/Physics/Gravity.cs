@@ -34,24 +34,9 @@ public class Gravity : MonoBehaviour
     public void calcInitialVelocities()
     {
         List<Body> bodyList = Sim.Bodies.Active;
-        //Body mostPull;
         double xDist = 0;
-        //Vector3d dist = new Vector3d();
         Vector3d vec = new Vector3d(0, 0, 0);
         int numStars = 0;
-
-        //counting the number of stars in a system
-        //We need to know the number of stars, so that
-        //if there is only one star, we do not give
-        //the one star initial velocity because if we did,
-        //it would travel out of our field of vision
-        foreach (Body body in bodyList)
-        {
-            if (body.Type == BodyType.Star)
-            {
-                numStars++;
-            }
-        }
 
         //here we check each body and determine its initial velocity
         //based on the the strongest force applied to the object.
@@ -61,21 +46,16 @@ public class Gravity : MonoBehaviour
         {
             if (!body.isInitialVel)
             {
-                if (numStars >= 2)
-                {
                     xDist = body.MostPull.Pos.x - body.Pos.x;
-                    vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist * -1)));
+                    if (xDist < 0)
+                    {
+                        xDist = xDist * -1;
+                    }
+                    vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist)));
                     body.Vel = vec;
                     body.isInitialVel = true;
-                }
-                else if (body.Type != BodyType.Star)
-                {
-                    xDist = body.MostPull.Pos.x - body.Pos.x;
-                    vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist * -1)));
-                    body.Vel = vec;
-                    body.isInitialVel = true;
-                }
             }
+            
         }
     }
 
