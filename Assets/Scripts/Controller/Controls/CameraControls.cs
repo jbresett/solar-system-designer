@@ -70,7 +70,8 @@ public class CameraControls : MonoBehaviour {
     private List<Image> backgrounds = new List<Image>();
 
     private void Start()
-    {        var images = Resources.FindObjectsOfTypeAll<Image>();
+    {        
+        var images = Resources.FindObjectsOfTypeAll<Image>();
         foreach (var image in images)
         {
             if (image.tag == "UIMenu")
@@ -78,6 +79,8 @@ public class CameraControls : MonoBehaviour {
                 backgrounds.Add(image);
             }
         }
+
+        body = Sim.Bodies.Active[0];
         bodyPos = body.Position.Vec3*10;
         focusOnBody();
     }

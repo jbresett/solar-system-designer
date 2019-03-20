@@ -18,9 +18,9 @@ public class InsertInPlace : MonoBehaviour
     public TMP_InputField xPos;
     public TMP_InputField yPos;
     public TMP_InputField zPos;
-    public TMP_InputField xVel;
+    /*public TMP_InputField xVel;
     public TMP_InputField yVel;
-    public TMP_InputField zVel;
+    public TMP_InputField zVel;*/
 
     public GameObject UseParticleSystem;
 
@@ -93,13 +93,13 @@ public class InsertInPlace : MonoBehaviour
         }
         script.Position = script.InitialPosition;
 
-        try
+        /*try
         { 
             script.Velocity = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
         } catch (Exception) {
             script.Velocity = new Vector3d(0.0,0.0,0.0);
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
-        }
+        }*/
        
         script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,"absolute");
         script.Mass = double.Parse(mass.text);
