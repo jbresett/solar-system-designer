@@ -9,6 +9,8 @@ using UnityEngine.UI;
 /// Class links Speed Bar Features (buttons/sliders) to Sim.Settings
 /// </summary>
 public class SpeedUI : MonoBehaviour {
+    private const string SPEED_DISPLAY_FMT = "{0:0.0} {1}{2}/sec"; // Value, Ratio, Plural
+
     public Slider slider;
     public Button pauseButton, playButton;
     public TextMeshProUGUI speedText;
@@ -51,18 +53,10 @@ public class SpeedUI : MonoBehaviour {
         float speed = (int)Sim.Settings.Speed;
     
         // Ratio to use based on current speed context.
-        SpeedRatios useRatio = SpeedRatios.Stop;
-
-        // If sim is stopped, return 0 (no ratio).
-        if (speed == 0)
-        {
-            speedText.text = "0";
-            return;
-        }
-
+        SpeedRatio useRatio = SpeedRatio.Second;
 
         // Find Current Ratio: Is  in hours, days, etc.
-        foreach (SpeedRatios ratio in (SpeedRatios[])Enum.GetValues(typeof(SpeedRatios)))
+        foreach (SpeedRatio ratio in (SpeedRatio[])Enum.GetValues(typeof(SpeedRatio)))
         {
             if (speed >= (int)ratio && (int)ratio > (int)useRatio)
             {
@@ -73,8 +67,8 @@ public class SpeedUI : MonoBehaviour {
         // Set display speed based on ratio (e.g. Hours/sec).
         speed = speed / (float)useRatio;
 
-        // Update display
-        speedText.text = string.Format("{0:0.0} {1}/sec", speed, useRatio.ToString());
+        // Update display: Value, Ratio, Plural (s)
+        speedText.text = string.Format(SPEED_DISPLAY_FMT, speed, useRatio.ToString(), (speed == 1.0 ? "" : "s"));
 
     }
 

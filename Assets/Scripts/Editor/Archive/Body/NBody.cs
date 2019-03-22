@@ -55,7 +55,7 @@ static public class NBody {
         set
         {
             time = value;
-            Sim.Capi.Exposed.capiSpeed.setValue((float)value);
+            Sim.Capi.Exposed.capiSpeedTime.setValue((float)value);
         }
     }
     static private double time;

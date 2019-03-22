@@ -25,8 +25,8 @@ public class ExposedData: Singleton<ExposedData> {
     /// <summary>
     /// Current simulation speed.
     /// </summary>
-    public SimCapiNumber capiSpeed;
-    public SimCapiEnum<SpeedRatios> speedRatio;
+    public SimCapiNumber capiSpeedTime;
+    public SimCapiEnum<SpeedRatio> capiSpeedRatio;
     public SimCapiBoolean capiPaused;
 
     /// <summary>
@@ -42,50 +42,40 @@ public class ExposedData: Singleton<ExposedData> {
     /// Sets initial values.
     /// </summary>
     public void Init() {
-        capiSpeed = new SimCapiNumber((float)Sim.Settings.Speed);
-        capiSpeed.expose("Speed", false, false);
-        capiSpeed.setChangeDelegate(
-            delegate (float value, ChangedBy changedBy)
-            {
-                // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
-                if (changedBy == ChangedBy.AELP)
-                { 
-                    Sim.Settings.Speed = value;
-                }
-
-                // Update Speed Ratio to matching value.
-                SpeedRatios ratio = SpeedRatios.Custom;
-                foreach (SpeedRatios r in Enum.GetValues(typeof(SpeedRatios)))
-                {
-                    if ((int)r == (int)value)
-                    {
-                        ratio = r;
-                    }
-                }
-                speedRatio.setValue(ratio);
-            }
-        );
-
-        speedRatio = new SimCapiEnum<SpeedRatios>(SpeedRatios.Stop);
-        speedRatio.expose("Speeds", false, false);
-        speedRatio.setChangeDelegate(
-            delegate (SpeedRatios value, ChangedBy changedBy)
-            {
-                if (changedBy == ChangedBy.AELP)
-                {
-                    Sim.Settings.Speed = (int)value;
-                }
-            }
-        );
-
         capiPaused = new SimCapiBoolean(Sim.Settings.Paused);
-        capiPaused.expose("Paused", false, false);
+        capiPaused.expose("Speed.Pause", false, false);
         capiPaused.setChangeDelegate(
             delegate (Boolean value, ChangedBy changedBy)
             {
                 if (changedBy == ChangedBy.AELP)
                 {
                     Sim.Settings.Paused = value;
+                }
+            }
+        );
+
+        capiSpeedTime = new SimCapiNumber((float)Sim.Settings.Speed);
+        capiSpeedTime.expose("Speed.Time", false, false);
+        capiSpeedTime.setChangeDelegate(
+            delegate (float value, ChangedBy changedBy)
+            {
+                // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
+                if (changedBy == ChangedBy.AELP)
+                { 
+                    Sim.Settings.Speed = value * (int)capiSpeedRatio.getValue();
+                }
+
+            }
+        );
+
+        capiSpeedRatio = new SimCapiEnum<SpeedRatio>(SpeedRatio.Second);
+        capiSpeedRatio.expose("Speed.Ratio", false, false);
+        capiSpeedRatio.setChangeDelegate(
+            delegate (SpeedRatio value, ChangedBy changedBy)
+            {
+                if (changedBy == ChangedBy.AELP)
+                {
+                    Sim.Settings.Speed = capiSpeedTime.getValue() * (int)value;
                 }
             }
         );
@@ -103,10 +93,10 @@ public class ExposedData: Singleton<ExposedData> {
         );
 
         capiPerms = new SimCapiStringArray();
-        capiPerms.expose("Perm", false, false);
+        capiPerms.expose("Permission", false, false);
 
         capiEvents = new SimCapiStringArray();
-        capiEvents.expose("Events", false, false);
+        capiEvents.expose("Event", false, false);
     }
 
     internal void BodyUpdate(PhysicsBody physicsBody)

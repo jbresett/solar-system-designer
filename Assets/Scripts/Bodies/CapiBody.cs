@@ -152,20 +152,10 @@ public class CapiBody : VisualBody {
 
     public void Init(int id)
     {
-        capiActive = new SimCapiBoolean(active);
-        capiActive.expose(id + " Active", false, false);
-        capiActive.setChangeDelegate(
-            delegate (bool value, SimCapi.ChangedBy changedBy)
-            {
-                if (changedBy == ChangedBy.AELP)
-                {
-                    base.Active = value;
-                }
-            }
-        );
+        string baseName = "Body." + id;
 
         capiName = new SimCapiString(name);
-        capiName.expose(id + " Name", false, false);
+        capiName.expose(baseName + ".Name", false, false);
         capiName.setChangeDelegate(
             delegate (string value, SimCapi.ChangedBy changedBy)
             {
@@ -176,8 +166,20 @@ public class CapiBody : VisualBody {
             }
         );
 
+        capiActive = new SimCapiBoolean(active);
+        capiActive.expose(baseName + ".Active", false, false);
+        capiActive.setChangeDelegate(
+            delegate (bool value, SimCapi.ChangedBy changedBy)
+            {
+                if (changedBy == ChangedBy.AELP)
+                {
+                    base.Active = value;
+                }
+            }
+        );
+
         capiType = new SimCapiEnum<BodyType>(type);
-        capiType.expose(id + " Type", false, false);
+        capiType.expose(baseName + ".Type", false, false);
         capiType.setChangeDelegate(
             delegate (BodyType value, SimCapi.ChangedBy changedBy)
             {
@@ -189,7 +191,7 @@ public class CapiBody : VisualBody {
         );
 
         capiMaterial = new SimCapiEnum<BodyMaterial>(material);
-        capiMaterial.expose(id + " Material", false, false);
+        capiMaterial.expose(baseName + ".Material", false, false);
         capiMaterial.setChangeDelegate(
             delegate (BodyMaterial value, SimCapi.ChangedBy changedBy)
             {
@@ -200,12 +202,8 @@ public class CapiBody : VisualBody {
             }
         );
 
-        capiPosition = new SimCapiVector(id + " Position", Position);
-        capiInitialPosition = new SimCapiVector(id + " InitialPosition", InitialPosition);
-        capiVelocity = new SimCapiVector(id + " Velocity", Velocity);
-
         capiMass = new SimCapiNumber((float)mass);
-        capiMass.expose(id + " Mass", false, false);
+        capiMass.expose(baseName + ".Mass", false, false);
         capiMass.setChangeDelegate(
             delegate (float value, SimCapi.ChangedBy changedBy)
             {
@@ -217,7 +215,7 @@ public class CapiBody : VisualBody {
         );
 
         capiDiameter = new SimCapiNumber((float)diameter);
-        capiDiameter.expose(id + " Diameter", false, false);
+        capiDiameter.expose(baseName + ".Diameter", false, false);
         capiDiameter.setChangeDelegate(
             delegate (float value, SimCapi.ChangedBy changedBy)
             {
@@ -229,7 +227,7 @@ public class CapiBody : VisualBody {
         );
 
         capiRotation = new SimCapiNumber((float)rotation);
-        capiRotation.expose(id + " Rotation", false, false);
+        capiRotation.expose(baseName + ".Rotation", false, false);
         capiRotation.setChangeDelegate(
             delegate (float value, SimCapi.ChangedBy changedBy)
             {
@@ -239,6 +237,11 @@ public class CapiBody : VisualBody {
                 }
             }
         );
+
+        // Set Capi Vectors. Exposure and Delegation are handled interally.
+        capiPosition = new SimCapiVector(baseName + ".Position", Position);
+        capiInitialPosition = new SimCapiVector(baseName + ".InitialPosition", InitialPosition);
+        capiVelocity = new SimCapiVector(baseName + ".Velocity", Velocity);
 
     }
 

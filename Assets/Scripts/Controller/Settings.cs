@@ -15,10 +15,8 @@ public enum Direction
 /// <summary>
 /// Time Ratios for Speed.  Used by the Capi interface default options (can be manually set in Capi as well).
 /// </summary>
-public enum SpeedRatios
+public enum SpeedRatio
 {
-    Custom = -1,
-    Stop = 0,
     Second = 1,
     Minute = 60,
     Hour = 3600,
@@ -58,12 +56,25 @@ public class Settings : Singleton<Settings>
         set
         {
             speed = value;
+            speedBar.GetComponent<SpeedUI>().UpdateSpeedText();
+
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
-            Sim.Capi.Exposed.capiSpeed.setValue((float)value);
+
+            // Use Highest Ratio possible when setting values.
+            SpeedRatio useRatio = SpeedRatio.Second;
+            foreach (SpeedRatio ratio in System.Enum.GetValues(typeof(SpeedRatio)))
+            {
+                if (value >= (int)ratio && ratio > useRatio)
+                {
+                    useRatio = ratio;
+                }
+            }
+            Sim.Capi.Exposed.capiSpeedTime.setValue((float)(value / (float)useRatio));
+            Sim.Capi.Exposed.capiSpeedRatio.setValue(useRatio);
         }
     }
     [SerializeField]
-    protected double speed = (float)SpeedRatios.Day;
+    protected double speed = (float)SpeedRatio.Day;
 
     // Initialize with Default Values.
     [SerializeField]

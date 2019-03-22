@@ -9,7 +9,7 @@ using UnityEngine;
 public class SimCapiVector {
 
     // Name Suffixes for each axis.
-    private static readonly string[] NAME_SUFFIX = { " X", " Y", " Z" };
+    private static readonly string[] NAME_SUFFIX = { ".X", ".Y", ".Z" };
 
     // Linked Vector
     private Vector3d vector;
