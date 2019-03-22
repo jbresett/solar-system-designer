@@ -94,6 +94,7 @@ public class CameraControls : MonoBehaviour {
         
         bodyPos = body.Position.Vec3*10;
         focusOnBody();
+        numBodies = Sim.Bodies.Active.Count;
     }
 
     /// <summary>
@@ -113,6 +114,10 @@ public class CameraControls : MonoBehaviour {
 
     private void LateUpdate()
     {
+        if (Sim.Bodies.Active.Count != numBodies)
+        {
+            focusMass();
+        }
         bodyPos = body.Position.Vec3*10;
         setCameraPos();
     }
@@ -240,10 +245,27 @@ public class CameraControls : MonoBehaviour {
         }
         
     }
-
     public void changeBody(String bodyName)
     {
         body = Sim.Bodies.get(bodyName);
+        focusOnBody();
+    }
+    
+    [SerializeField]
+    private int numBodies = 0;
+    private void focusMass()
+    {
+        double mostMass = 0;
+        foreach (Body bod in Sim.Bodies.Active)
+        {
+            if (bod.KG > mostMass)
+            {
+                mostMass = bod.KG;
+                body = bod;
+            }
+        }
+        
+        bodyPos = body.Position.Vec3*10;
         focusOnBody();
     }
 
