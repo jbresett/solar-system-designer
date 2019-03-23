@@ -94,4 +94,10 @@ public class PhysicsBody : CapiBody {
         return Vector3d.LerpUnclamped(position, withBody.Position, baryDistance);
     }
 
+    public BodyType whatAmI()
+    {
+        //TODO Implement logic to determine body classification
+        return BodyType.Star;
+    }
+
 }

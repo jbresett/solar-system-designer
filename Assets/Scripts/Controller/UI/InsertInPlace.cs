@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Remoting.Messaging;
 using Model.Util;
 using TMPro;
 using UnityEngine;
@@ -106,7 +107,7 @@ public class InsertInPlace : MonoBehaviour
         script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,UnitType.Earths);
         script.Mass = double.Parse(mass.text);
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
-        script.Type = type.options[type.value].text.Enum<BodyType>();
+        script.Type = script.whatAmI();
 
         //obj.AddComponent<InsertParticleSystem>();
         //Instantiate(InsertParticleSystem);
@@ -123,5 +124,4 @@ public class InsertInPlace : MonoBehaviour
     {
         return value * 6.3781;
     }
-
 }
