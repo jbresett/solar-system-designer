@@ -3,6 +3,7 @@ using Model.Util;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
 /// <summary>
 /// This class places an orbital body a specified postion
@@ -24,7 +25,7 @@ public class InsertInPlace : MonoBehaviour
 
     public GameObject UseParticleSystem;
 
-    private string unitType;
+    private UnitType unitType;
 
     /// <summary>
     /// initializes class and begins listening for mouse click
@@ -33,13 +34,14 @@ public class InsertInPlace : MonoBehaviour
     {
         button.onClick.AddListener(insert);
         type.onValueChanged.AddListener(delegate { updateUnits(); });
-        unitType = "absolute";
+        unitType = UnitType.Absolute;
         updateUnits();
     }
 
     private void updateUnits()
     {
-        String unit = type.options[type.value].text.ToLower();
+        UnitType unit = UnitConverter.unitTypes[type.options[type.value].text.ToLower()];
+
         Debug.Log(unit);
         GameObject[] comps = GameObject.FindGameObjectsWithTag("Radius");
         foreach (var comp in comps)
@@ -62,12 +64,12 @@ public class InsertInPlace : MonoBehaviour
         unitType = unit;
     }
     
-    private void updateRadius(TMP_InputField val, string unit)
+    private void updateRadius(TMP_InputField val, UnitType unit)
     {
         double v = double.Parse(val.text);
         val.text = UnitConverter.convertRadius(v, unitType, unit).ToString();
     }
-    private void updateMass(TMP_InputField val, string unit)
+    private void updateMass(TMP_InputField val, UnitType unit)
     {
         double v = double.Parse(val.text);
         val.text = UnitConverter.convertMass(v, unitType, unit).ToString();
@@ -101,7 +103,7 @@ public class InsertInPlace : MonoBehaviour
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
         }*/
        
-        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,"earths");
+        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,UnitType.Earths);
         script.Mass = double.Parse(mass.text);
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
         script.Type = type.options[type.value].text.Enum<BodyType>();
