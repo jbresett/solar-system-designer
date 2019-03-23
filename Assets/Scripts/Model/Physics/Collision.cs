@@ -30,7 +30,13 @@ public class Collision: MonoBehaviour
                     Bodies.deactivate(body1);
                     Bodies.deactivate(body2);
                     GameObject effect = UnityEngine.Object.Instantiate(Sim.Config.CollisionEffect, Sim.Config.BodyContainer.transform);
+                    effect.GetComponent<MeshRenderer>().material.color = body1.GetComponent<MeshRenderer>().material.color;
+                    effect.GetComponent<MeshRenderer>().material.color = Color.brown;
                     effect.transform.position = body1.transform.position;
+                    //GameObject effect2 = UnityEngine.Object.Instantiate(Sim.Config.CollisionEffect, Sim.Config.BodyContainer.transform);
+                    //effect2.GetComponent<MeshRenderer>().material.color = body2.GetComponent<MeshRenderer>().material.color;
+                    //effect2.GetComponent<MeshRenderer>().material.color = Color.yellow;
+                    //effect2.transform.position = body2.transform.position;
                 }
             }
         }
