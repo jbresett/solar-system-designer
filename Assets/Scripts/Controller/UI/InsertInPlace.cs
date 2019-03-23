@@ -1,69 +1,125 @@
 using System;
-using Planets;
-using UnityEditor;
+using Model.Util;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class places an orbital body a specified postion
+/// </summary>
 public class InsertInPlace : MonoBehaviour
 {
     public Button button;
-    new public InputField name;
-    public Dropdown type;
-    public InputField xPos;
-    public InputField yPos;
-    public InputField zPos;
-    public InputField xVel;
-    public InputField yVel;
-    public InputField zVel;
-    public InputField radius;
-    public InputField mass;
-    public GameObject planetBase;
+    public GameObject bodyBase;
+    public TMP_InputField objName;
+    public TMP_Dropdown type;
+    public TMP_InputField radius;
+    public TMP_InputField mass;
+    public TMP_InputField xPos;
+    public TMP_InputField yPos;
+    public TMP_InputField zPos;
+    /*public TMP_InputField xVel;
+    public TMP_InputField yVel;
+    public TMP_InputField zVel;*/
 
+    public GameObject UseParticleSystem;
+
+    private string unitType;
+
+    /// <summary>
+    /// initializes class and begins listening for mouse click
+    /// </summary>
     void Start()
     {
         button.onClick.AddListener(insert);
-    }
-    public void insert()
-    {
-        GameObject[] bodies = GameObject.FindGameObjectsWithTag("OrbitalBody");
-        Debug.Log(bodies);
-        String bodyName = name.text;
-        int id = 1;
-        foreach (var b in bodies)
-        {
-            if (b.name == bodyName)
-            {
-                bodyName = name.text + id;
-                id++;
-            }
-        }
-        //Vector3 pos = new Vector3();
-        //Quaternion rot = new Quaternion(0,0,0,0);
-        GameObject body = Instantiate(planetBase);
-        body.SetActive(true);
-        body.name = bodyName;
-        OrbitalBody script = body.AddComponent<OrbitalBody>();
-        script.Vel = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
-        //script.setPos(convertPosUnits(double.Parse(xPos.text),double.Parse(yPos.text),double.Parse(zPos.text)));
-        script.Radius = (float)convertRadiUnits(double.Parse(radius.text));
-        script.Mass = (float)convertMassUnits(double.Parse(mass.text));
-        script.Type = type.options[type.value].text;
+        type.onValueChanged.AddListener(delegate { updateUnits(); });
+        unitType = "absolute";
+        updateUnits();
     }
 
+    private void updateUnits()
+    {
+        String unit = type.options[type.value].text.ToLower();
+        Debug.Log(unit);
+        GameObject[] comps = GameObject.FindGameObjectsWithTag("Radius");
+        foreach (var comp in comps)
+        {
+            TMP_InputField inp = comp.GetComponentInChildren<TMP_InputField>();
+            TextMeshProUGUI suff = comp.transform.Find("Unit").gameObject.GetComponent<TextMeshProUGUI>();
+            Debug.Log(suff);
+            updateRadius(inp,unit);
+            suff.text = UnitConverter.units[unit].DistSuff;
+        }
+        comps = GameObject.FindGameObjectsWithTag("Mass");
+        foreach (var comp in comps)
+        {
+            TMP_InputField inp = comp.GetComponentInChildren<TMP_InputField>();
+            TextMeshProUGUI suff = comp.transform.Find("Unit").gameObject.GetComponent<TextMeshProUGUI>();
+            updateMass(inp,unit);
+            suff.text = UnitConverter.units[unit].MassSuff;
+        }
+
+        unitType = unit;
+    }
+    
+    private void updateRadius(TMP_InputField val, string unit)
+    {
+        double v = double.Parse(val.text);
+        val.text = UnitConverter.convertRadius(v, unitType, unit).ToString();
+    }
+    private void updateMass(TMP_InputField val, string unit)
+    {
+        double v = double.Parse(val.text);
+        val.text = UnitConverter.convertMass(v, unitType, unit).ToString();
+    }
+
+    /// <summary>
+    /// This function places each body in the array in its correct position
+    /// </summary>
+    public void insert()
+    {
+        GameObject obj = Sim.Bodies.activateNext();
+        Body script = obj.GetComponent<Body>();
+        script.Name = objName.text;
+
+        try
+        {
+            script.InitialPosition = new Vector3d(double.Parse(xPos.text), double.Parse(yPos.text), double.Parse(zPos.text));
+        }
+        catch (Exception)
+        {
+            script.InitialPosition = new Vector3d(0.0, 0.0, 0.0);
+            Debugger.log("Invalid Position for Insert. Using base of (0,0,0)");
+        }
+        script.Position = script.InitialPosition;
+
+        /*try
+        { 
+            script.Velocity = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
+        } catch (Exception) {
+            script.Velocity = new Vector3d(0.0,0.0,0.0);
+            Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
+        }*/
+       
+        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,"earths");
+        script.Mass = double.Parse(mass.text);
+        //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
+        script.Type = type.options[type.value].text.Enum<BodyType>();
+
+        //obj.AddComponent<InsertParticleSystem>();
+        //Instantiate(InsertParticleSystem);
+        //InsertParticleSystem.
+        //Instantiate(UseParticleSystem, obj.transform);
+        //particleSystem.transform.parent = obj.transform;
+        //particleSystem.SetActive(true);
+    }
+
+    /// <summary>
+    /// scales radius
+    /// </summary>
     private double convertRadiUnits(double value)
     {
         return value * 6.3781;
     }
 
-    private double[] convertPosUnits(double x, double y, double z)
-    {
-        double au = 14959.78707;
-        double[] pos = {x * au, y * au, z * au};
-        return pos;
-    }
-
-    private double convertMassUnits(double mass)
-    {
-        return mass * (5.9736 * Math.Pow(10, 24));
-    }
 }

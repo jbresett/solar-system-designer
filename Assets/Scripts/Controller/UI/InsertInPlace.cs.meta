@@ -13,7 +13,11 @@ MonoImporter:
   - xVel: {instanceID: 0}
   - yVel: {instanceID: 0}
   - zVel: {instanceID: 0}
-  - sphereMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  - radius: {instanceID: 0}
+  - mass: {instanceID: 0}
+  - planetBase: {instanceID: 0}
+  - UseParticleSystem: {fileID: 1708923499037404, guid: fa8a05335385f954da9a3af8115bc7d5,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

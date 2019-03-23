@@ -5,20 +5,13 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
+// Old Body Tests not in use. Can rebuild later with Physics Body.
+#if false
+
 #pragma warning disable CS0618 // Type or member is obsolete
-public class BodyTests: IPrebuildSetup {
-    private Body Sun;
-    private Body Earth;
-
-    public void Setup()
-    {
-        NBody System = new NBody();
-
-        Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
-
-        Orbit earthOrbit = new Orbit("Sun", new Ellipse(100, 50), 365);
-        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
-    }
+public class BodyTests {
+    private OldBody Sun;
+    private OldBody Earth;
 
     /// <summary>
     /// Tests the degrees at any given time.
@@ -26,7 +19,6 @@ public class BodyTests: IPrebuildSetup {
     [Test]
     public void DegreeOverTime()
     {
-        Setup();
 
         // Expected degrees at each given time interval.
         double[,] time = new double[,] { { 0, 0 }, { 91.25, 90}, { 182.5, 180 }, { 273.75, 270 }, { 365.0, 0 }};
@@ -38,21 +30,26 @@ public class BodyTests: IPrebuildSetup {
 
     }
 
+    /// <summary>
+    /// Tests json serialization
+    /// </summary>
     [Test]
     public void Serial()
     {
-        NBody System = new NBody();
+        /*NBody System = new NBody();
 
         Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
         Orbit earthOrbit = new Orbit("Sun", new Ellipse(156, 146), 365);
         Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 5.972e+24, 6371.0, 1.0);
 
         Debug.Log("Sun JSON: " + Sun.ToJson());
-        Debug.Log("Earth JSON: " + Earth.ToJson());
+        Debug.Log("Earth JSON: " + Earth.ToJson());*/
     }
 
-    // A UnityTest behaves like a coroutine in PlayMode
-    // and allows you to yield null to skip a frame in EditMode
+    /// <summary>
+    /// A UnityTest behaves like a coroutine in PlayMode
+    /// and allows you to yield null to skip a frame in EditMode
+    /// </summary>
     [UnityTest]
     public IEnumerator BodyTestsWithEnumeratorPasses() {
         // Use the Assert class to test conditions.
@@ -60,3 +57,5 @@ public class BodyTests: IPrebuildSetup {
         yield return null;
     }
 }
+
+#endif

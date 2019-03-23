@@ -5,22 +5,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+// NBody no longer used.
+#if false
+
+/// <summary>
+/// This class is used to test the nbody system class in order
+/// to verify an nbody collection can be properly created
+/// </summary>
 #pragma warning disable CS0618 // Type or member is obsolete
 public class NBodyTests {
 
-    private Body Earth;
-    private Body Moon;
+    private OldBody Earth;
+    private OldBody Moon;
 
     public void Setup()
     {
-        NBody System = new NBody();
-        Body Sun = new Body(System, "Sun", BodyType.Sun, null, 0, 0, 0);
+        OldBody Sun = new OldBody("Sun", OldBodyType.Sun, null, 0, 0, 0);
 
         Orbit earthOrbit = new Orbit("Sun", new Ellipse(100, 50), 365);
-        Earth = new Body(System, "Earth", BodyType.Planet, earthOrbit, 0, 0, 0);
+        Earth = new OldBody("Earth", OldBodyType.Planet, earthOrbit, 0, 0, 0);
 
         Orbit moonOrbit = new Orbit("Earth", new Ellipse(10.0, 5.0), 30.0);
-        Moon = new Body(System, "Moon", BodyType.Moon, moonOrbit, 0, 0, 0);
+        Moon = new OldBody("Moon", OldBodyType.Moon, moonOrbit, 0, 0, 0);
     }
 
     /// <summary>
@@ -43,8 +49,10 @@ public class NBodyTests {
 
     }
 
-    // A UnityTest behaves like a coroutine in PlayMode
-    // and allows you to yield null to skip a frame in EditMode
+    /// <summary>
+    /// A UnityTest behaves like a coroutine in PlayMode
+    /// and allows you to yield null to skip a frame in EditMode
+    /// </summary>
     [UnityTest]
     public IEnumerator NBodyTestsWithEnumeratorPasses() {
         // Use the Assert class to test conditions.
@@ -53,3 +61,5 @@ public class NBodyTests {
     }
 
 }
+
+#endif

@@ -1,125 +1,174 @@
-﻿/**
- * This class utilizes the laws of orbital mechanics
- * to simulate orbit based on a planet and a stars mass
- * along with their distance from eachother.
- *
- * The formulas for this class were obtained from
- * https://evgenii.com/blog/earth-orbit-simulation
- * 
- * @author Jack Northcutt
- */
+﻿/// <summary>
+/// This class utilizes the laws of orbital mechanics
+/// to simulate orbit based on a planet and a stars mass
+/// along with their distance from eachother.
+///
+/// The formulas for this class were obtained from
+/// https://www.wired.com/2016/06/way-solve-three-body-problem/
+/// https://fiftyexamples.readthedocs.io/en/latest/gravity.html
+/// @author Jack Northcutt
+/// </summary>
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gravity{
+public class Gravity : MonoBehaviour
+{
 
-	//our simulation utilizes number of earths or number
-	//of suns for mass and utilizes au for distance, but 
-	//for accuracy in calculations theses values must be 
-	//converted for to Km, so the following constants are
-	//added.
-	private const double earthMass = 5.972e24;
-	private const double sunMass = 1.989e30;
-	private const double au = 1.496e8;
-	private const double g = 6.67408e-11;
-	private const double time = 100;
+    private const double g = 6.67408E-11;
 
-	//mass
-	private double starMass;
-	private double planetMass;
+    /// <summary>
+    /// This method checks for the body with the most mass and keeps the
+    /// velocity for the most mass at zero so that the solar system stays relative
+    /// The method then checks each body to see if it has an inital velocity yet or not
+    /// and then calculates that bodies initial velocity.
+    ///
+    /// This method may not account for binary star systems and may not represent the actual starting
+    /// velocity of a planet. This method calculates a guess based on mass and distance.
+    ///
+    /// Partial Equation derrived from:
+    /// https://www.physicsclassroom.com/class/circles/Lesson-4/Mathematics-of-Satellite-Motion
+    /// </summary>
+    public void calcInitialVelocities()
+    {
+        List<Body> bodyList = Sim.Bodies.Active;
+        double xDist = 0;
+        Vector3d vec = new Vector3d(0, 0, 0);
+        int numStars = 0;
 
-	//distance and angle
-	private double distance;
-	private double angle;
+        //here we check each body and determine its initial velocity
+        //based on the the strongest force applied to the object.
+        //we then determine if we should give a star initial velocity
+        //or not.
+        foreach (Body body in bodyList)
+        {
+            if (!body.isInitialVel)
+            {
+                    xDist = body.MostPull.Pos.x - body.Pos.x;
+                    if (xDist < 0)
+                    {
+                        xDist = xDist * -1;
+                    }
+                    vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist)));
+                    body.Vel = vec;
+                    body.isInitialVel = true;
+            }
+            
+        }
+    }
 
-	//current distance of the planet from sun
-	private double currentDistance;
+    /// <summary>
+    /// This method calculates the force of another body on a body
+    /// The equation first calculates the the distance between.
+    /// Then takes the magnitude of the distance
+    /// next force is calculated G * M1 * M2 / (magnitude)^2
+    /// we then find the angle theta
+    ///
+    /// we then use angle theta to calc the direction of the force
+    /// </summary>
+    /// <param name="body"></param>
+    /// <param name="obody"></param>
+    /// <returns></returns>
+    public Vector3d calcForce(Body body, Body obody)
+    {
+        Vector3d force;
+        Vector3d distance = obody.Pos - body.Pos;
+        double distMag = distance.magnitude;
 
-	//current velocity at which a planet travels around the star
-	private double currentDistVel;
+        double aForce = (g * body.KG * obody.KG) / (distMag * distMag);
 
-	//the current angle of planet from the sun
-	private double currentAngle;
+        double theta = Math.Atan2(distance.z, distance.x);
 
-	//the current angular velocity
-	private double currentAngularVel;
+        force = new Vector3d(Math.Cos(theta) * aForce, 0, Math.Sin(theta) * aForce);
 
-	//constructor will intialize values and convert to Km using
-	//constants defined.
-	public Gravity(double starMass, double planetMass, double dist){
-
-		this.starMass = starMass * sunMass;
-		this.planetMass = planetMass * earthMass;
-		this.distance = dist *au;
-		this.currentDistance = distance;
-		this.currentDistVel = 0;
-		this.currentAngle = System.Math.PI/2;
-		this.currentAngularVel = 0;
-	}
-
-	//partial derivative of the angle of the Lagrangian equation
-	//L = (m/2)* ((r^2) + (r^2)(theta^2)) + (GMm)/r
-	//with respect to the anglet theta. Derived becomes
-	//distance = rDist * thetaVelocity^2 - GM/rDist^2
-	public double calcDist(){
-
-		double rThetaSqr = 0.0;
-		double gMassRSqr = 0.0;
-		double val = 0.0;
-		rThetaSqr = currentDistance * System.Math.Pow(currentAngularVel, 2);
-		gMassRSqr = (g * starMass)/ System.Math.Pow(currentDistance, 2);
-		val = rThetaSqr - gMassRSqr;
-
-		return val;
-	}
-
-	//partial derivative of the angle of the Lagrangian equation
-	//L = (m/2)* ((r^2) + (r^2)(theta^2)) + (GMm)/r
-	//with respect to the anglet theta. Derived becomes
-	//angle = -(2*(rVelocity)*(angularVelocity)/rDistance
-	public double calcAngle(){
-
-		double val = 0.0;
-		val = (currentDistVel * currentAngularVel * (-2))/ currentDistance;
-
-		return val;
-	}
+        return force;
+    }
 
 
-	//Simple method to conver polar coordinates to cartesian
-	public Vector3d convertToCartesian(double r, double theta){
+    /// <summary>
+    /// This method utilizes the above forceCalc method to
+    /// sum the force applied on each body by each body.
+    /// </summary>
+    public void updateForce()
+    {
+        List<Body> bodies = Sim.Bodies.Active;
+        Vector3d force;
+        Vector3d aforce = new Vector3d();
+        double mostForce = 0;
+        //Body mostPull = new Body();
 
-		double x = r * System.Math.Cos(theta);
+        //We are taking each body and calculating the force between
+        //that body and all other bodies, we are also determining
+        //which body applies the most force to the specific body.
+        foreach (Body bod in bodies)
+        {
+            force = new Vector3d(0, 0, 0);
+            foreach (Body obod in bodies)
+            {
+                if (bod != obod)
+                {
+                    aforce = calcForce(bod, obod);
+                    if (aforce.magnitude > mostForce)
+                    {
+                        mostForce = aforce.magnitude;
+                        bod.MostPull = obod;
 
-		double y = r * System.Math.Sin(theta);
+                    }
+                    force += aforce;
+                }
 
-		double z = 0.0;
+            }
 
-		Vector3d coords = new Vector3d(x,y,z);
+            mostForce = 0;
+            bod.totalForce = force;
+        }
+    }
 
-		return coords;
+    /// <summary>
+    ///  This method uses a bodies total force to calculate a new velocity
+    /// This function calculates new velocity for each body.
+    /// </summary>
+    public void updateVelocity()
+    {
+        updateForce();
+        calcInitialVelocities();
+        List<Body> bodies = Sim.Bodies.Active;
+        Vector3d velocity;
+        foreach (Body bod in bodies)
+        {
+            velocity = bod.Vel;
+            velocity.x += bod.totalForce.x / bod.KG * Sim.Settings.Speed;
+            velocity.z += bod.totalForce.z / bod.KG * Sim.Settings.Speed;
+            velocity.y = bod.Vel.y;
+            bod.Vel = velocity;
+        }
+    }
 
-	}
 
-	//This method will run the calculations to create new
-	//x, y, z positions of the planet as it orbits around the
-	// sun.
-	public Vector3d calcPosition(){
+    /// <summary>
+    /// THis function uses the new velocities to calculate a new position
+    /// </summary>
+    public void calcPosition()
+    {
+        updateVelocity();
+        List<Body> bodies = Sim.Bodies.Active;
+        Vector3d newPos;
+        foreach (Body bod in bodies)
+        {
+            newPos = new Vector3d(bod.Pos.x + bod.Vel.x * Sim.Settings.Speed, bod.Pos.y, bod.Pos.z + bod.Vel.z * Sim.Settings.Speed);
+            bod.Pos = newPos;
+        }
+    }
 
-		Vector3d coords;
-
-		currentDistVel = currentDistVel + time * calcDist();
-		currentDistance = currentDistance + time * currentDistVel;
-
-		currentAngularVel = currentAngularVel + time * calcAngle();
-		currentAngle = currentAngle + time * currentAngularVel;
-
-		coords = convertToCartesian(currentDistance, currentAngle);
-
-		return coords;
-	}
-
+    // Update is called once per frame
+    public void Update()
+    {
+        if (!Sim.Settings.Paused)
+        {
+            calcPosition();
+        }
+    }
 
 }

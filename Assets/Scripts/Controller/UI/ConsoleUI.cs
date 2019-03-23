@@ -13,15 +13,19 @@ public class ConsoleUI : MonoBehaviour {
     public InputField TextInput;
     public Text TextOutput;
 
-    // Use this for initialization
-    void Start () {
+    /// <summary>
+    /// This function initializes the class
+    /// </summary>
+    void Awake() {
 
         // Add "test" command processor and output. 
         Debugger.AddProcessor(processTest);
         Debugger.AddOutput(output);
     }
 	
-	// Update is called once per frame
+	/// <summary> 
+    /// Updates console once per frame
+    /// </summary>
 	void Update () {
 
         // Input text field.
@@ -31,7 +35,7 @@ public class ConsoleUI : MonoBehaviour {
             Debugger.send(TextInput.text);
         }
 
-        gameObject.GetComponent<CameraControls>().EnableKeyboard = !TextInput.isFocused;
+        Camera.main.GetComponent<CameraControls>().EnableKeyboard = !TextInput.isFocused;
     }
 
     /// <summary>
@@ -47,7 +51,7 @@ public class ConsoleUI : MonoBehaviour {
         {
             result += line + "\n";
         }
-        TextOutput.text = result;
+        TextOutput.text += result;
     }
     
     /// <summary>
