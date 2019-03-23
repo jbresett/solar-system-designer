@@ -39,7 +39,19 @@ public class VisualBody : BaseBody {
             gameObject.GetComponent<MeshRenderer>().material = mat;
         }
     }
+    
+    /// <summary>
+    /// This function is so that we can determine
+    /// which body is currently selected.
+    /// </summary>
+    public bool IsSelected
+    {
+        get { return isSelected; }
+        set { isSelected = value; }  
+    }
 
+    [SerializeField]
+    protected bool isSelected;
     new public void Awake()
     {
         base.Awake();
