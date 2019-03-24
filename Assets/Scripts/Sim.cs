@@ -14,35 +14,18 @@ public class Sim : Singleton<Sim> {
     private float updateTime = 1.0f; //Seconds Per Update
     private int frameCount = 0;
 
-    static public Config Config {
-        get { return Config.Instance; }
-    }
-
-    static public Settings Settings
-    {
-        get { return Settings.Instance; }
-    }
-
-    static public Capi Capi
-    { 
-        get { return Capi.Instance; }
-    }
-
-    static public Bodies Bodies
-    {
-        get { return Bodies.Instance; }
-    }
-
     // Location for the Active and Inactive body containers.
     public GameObject BodyContainer;
     public GameObject BodyPrefab;
-
     public GameObject StatsLabel;
 
-    static public Perm Perm
-    {
-        get { return Perm.Instance; }
-    }
+    // Simple References
+    static public Config Config { get { return Config.Instance; } }
+    static public Settings Settings { get { return Settings.Instance; } }
+    static public Capi Capi { get { return Capi.Instance; } }
+    static public Bodies Bodies { get { return Bodies.Instance; } }
+    static public SimEventHandler Event { get { return SimEventHandler.Instance; } }
+    static public Perm Perm { get { return Perm.Instance; } }
 
     /// <summary>
     /// Main Simulation Initiation
@@ -77,6 +60,8 @@ public class Sim : Singleton<Sim> {
     public void Reset()
     {
         Sim.Settings.Paused = true;
+        Sim.Event.Clear();
+
         foreach (Body body in Sim.Bodies.getAll())
         {
             body.Position = body.InitialPosition;

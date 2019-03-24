@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimCapi;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,9 +20,33 @@ public class Perm: Singleton<Perm> {
 
     private static string[] INVALID_COMMAND = { "Invalid Command. Use: perm (add/remove/list) [name]." };
 
+    private SimCapiStringArray capiPerms;
+
     public void Init()
     {
         Debugger.AddProcessor(ProcessCmd);
+
+        // Adds Seperate insert Body Permission
+        var capiInsertBody = new SimCapiBoolean(false);
+        capiInsertBody.expose("Permission.InsertBody", false, false);
+        capiInsertBody.setChangeDelegate(delegate (bool value, ChangedBy by) {
+            // Add Permisison on true.
+            if (value && !capiPerms.getList().Contains("InsertBody"))
+            {
+                capiPerms.getList().Add("InsertBody");
+                capiPerms.updateValue();
+            }
+            // Remove Permission on false.
+            else if (!value && capiPerms.getList().Contains("InsertBody"))
+            {
+                capiPerms.getList().Remove("InsertBody");
+                capiPerms.updateValue();
+            }
+        });
+
+        capiPerms = new SimCapiStringArray();
+        capiPerms.expose("Permission.List", false, false);
+
     }
 
     public void Start()
@@ -84,14 +109,13 @@ public class Perm: Singleton<Perm> {
     /// <returns>True if the user has the permission set.</returns>
     public bool Has(string perm, bool exact = false)
     {
-        ExposedData exp = Sim.Capi.Exposed;
         
         // Loop for checking upper level permission as well.
         while (true)
         {
 
             // Check Permission
-            if (exp.capiPerms.getList().Contains(perm)) return true;
+            if (capiPerms.getList().Contains(perm)) return true;
 
             // If exact (1st) match is not found and only checking for exact matches, return.
             if (exact) return false;
@@ -129,7 +153,7 @@ public class Perm: Singleton<Perm> {
     /// <returns></returns>
     public List<string> getList()
     {
-        return new List<string>(Sim.Capi.Exposed.capiPerms.getList());
+        return new List<string>(capiPerms.getList());
     }
 
     /// <summary>
@@ -139,15 +163,12 @@ public class Perm: Singleton<Perm> {
     /// <returns>True if the permission is added, false if it already exists.</returns>
     public bool Add(string perm)
     {
-        ExposedData exp = Sim.Capi.Exposed;
-        List<string> list = exp.capiPerms.getList();
-
         // Check if permission already exists.
-        if (list.Contains(perm)) return false;
+        if (capiPerms.getList().Contains(perm)) return false;
 
         // Add item and update value.
-        list.Add(perm);
-        exp.capiPerms.updateValue();
+        capiPerms.getList().Add(perm);
+        capiPerms.updateValue();
 
         return true;
     }
@@ -160,21 +181,19 @@ public class Perm: Singleton<Perm> {
     /// <returns>True if any permission was removed, false if the node (or any children for removeChilden) did not exist to begin with.</returns>
     public bool Remove(string perm, bool removeChildren = false)
     {
-        ExposedData exp = Sim.Capi.Exposed;
-        List<string> list = exp.capiPerms.getList();
 
         // Gets initial size to later check for any changes.
-        int initSize = list.Count;
+        int initSize = capiPerms.getList().Count;
 
         // Remove perms, and all children perms if removeChildren is true.
-        list.Remove(perm);
-        if (removeChildren) list.RemoveAll(val => val.StartsWith(perm + "."));
+        capiPerms.getList().Remove(perm);
+        if (removeChildren) capiPerms.getList().RemoveAll(val => val.StartsWith(perm + "."));
 
         // If list changed, update values.
-        if (list.Count != initSize) exp.capiPerms.updateValue();
+        if (capiPerms.getList().Count != initSize) capiPerms.updateValue();
 
         // Returnsif the size has changed.
-        return (list.Count != initSize);
+        return (capiPerms.getList().Count != initSize);
     }
 
    
@@ -184,13 +203,11 @@ public class Perm: Singleton<Perm> {
     /// <returns>True if cleared, false if nothing to clear.</returns>
     public bool Clear()
     {
-        ExposedData exp = Sim.Capi.Exposed;
-        List<string> list = exp.capiPerms.getList();
 
-        if (list.Count == 0) return false;
+        if (capiPerms.getList().Count == 0) return false;
 
-        list.Clear();
-        exp.capiPerms.updateValue();
+        capiPerms.getList().Clear();
+        capiPerms.updateValue();
 
         return true;
     }

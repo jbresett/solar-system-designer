@@ -26,7 +26,7 @@ public class Collision: MonoBehaviour
                 Body body2 = bodies[j];
                 if (isCollided(body1, body2))
                 {
-                    Sim.Capi.Log("Collision between" + body1.Name + " and " + body2.Name);
+                    Sim.Event.Log(SimEvent.Collision, body1.Name, body2.Name);
                     Bodies.deactivate(body1);
                     Bodies.deactivate(body2);
                     GameObject effect = UnityEngine.Object.Instantiate(Sim.Config.CollisionEffect, Sim.Config.BodyContainer.transform);

@@ -11,17 +11,6 @@ using UnityEngine;
 /// </summary>
 public class ExposedData: Singleton<ExposedData> {
 
-
-    /* Data Types:
-     * SimCapi.SimCapiNumber
-     * SimCapi.SimCapiString
-     * SimCapi.SimCapiStringArray
-     * SimCapi.SimCapiBoolean
-     * SimCapi.SimCapiEnum<T>
-     * SimCapi.SimCapiMathExpression
-     * SimCapi.SimCapiPointArray
-     */
-
     /// <summary>
     /// Current simulation speed.
     /// </summary>
@@ -33,10 +22,6 @@ public class ExposedData: Singleton<ExposedData> {
     /// Body that currently has focus. Empty string ("") means no body is currently selected (free camera).
     /// </summary>
     public SimCapiString capiFocused;
-
-    public SimCapiStringArray capiPerms;
-
-    public SimCapiStringArray capiEvents;
 
     /// <summary>
     /// Sets initial values.
@@ -92,11 +77,6 @@ public class ExposedData: Singleton<ExposedData> {
             }
         );
 
-        capiPerms = new SimCapiStringArray();
-        capiPerms.expose("Permission", false, false);
-
-        capiEvents = new SimCapiStringArray();
-        capiEvents.expose("Event", false, false);
     }
 
     internal void BodyUpdate(PhysicsBody physicsBody)

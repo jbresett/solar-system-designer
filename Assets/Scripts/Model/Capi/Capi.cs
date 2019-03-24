@@ -19,15 +19,19 @@ public class Capi: Singleton<Capi> {
 
     public States State = States.Startup;
 
+    public Transporter Transporter { get { return SimCapi.Transporter.getInstance(); } }
+
     public ExposedData Exposed { get { return ExposedData.Instance; }  }
     public PersistentData Persistent { get { return PersistentData.Instance; } }
-    public Transporter Transporter {  get { return SimCapi.Transporter.getInstance(); } }
+
 
     public void Awake()
     {
 
         Exposed.Init();
- 
+        Sim.Event.Init();
+        Sim.Perm.Init();
+        
         Debugger.log("Initializing Transporter");
         Transporter.addInitialSetupCompleteListener(setupComplete);
         Transporter.addHandshakeCompleteListener(handshakeComplete);
@@ -56,13 +60,4 @@ public class Capi: Singleton<Capi> {
         Debugger.log("SimCapi Handshake Complete.");
     }
     
-    /// <summary>
-    /// Logs an simulation event or issue into the Capi server.
-    /// </summary>
-    /// <param name="eventString"></param>
-    public void Log(string eventString)
-    {
-        Exposed.capiEvents.getList().Add(eventString);
-        Exposed.capiEvents.updateValue();
-    }
 }
