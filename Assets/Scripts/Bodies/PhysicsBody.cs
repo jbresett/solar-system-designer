@@ -74,8 +74,7 @@ public class PhysicsBody : CapiBody {
         set { initialVelocity = value; }  
     }
 
-    [SerializeField]
-    protected bool initialVelocity = false;
+    [SerializeField] protected bool initialVelocity;
     new public void Awake()
     {
         base.Awake();

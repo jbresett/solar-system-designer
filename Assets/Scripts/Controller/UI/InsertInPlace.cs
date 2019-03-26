@@ -20,6 +20,9 @@ public class InsertInPlace : MonoBehaviour
     public TMP_InputField xPos;
     public TMP_InputField yPos;
     public TMP_InputField zPos;
+    public Toggle autoVel;
+
+    public TMP_InputField initialVel;
     /*public TMP_InputField xVel;
     public TMP_InputField yVel;
     public TMP_InputField zVel;*/
@@ -84,10 +87,15 @@ public class InsertInPlace : MonoBehaviour
         GameObject obj = Sim.Bodies.activateNext();
         Body script = obj.GetComponent<Body>();
         script.Name = objName.text;
-
+        
         try
         {
             script.InitialPosition = new Vector3d(double.Parse(xPos.text), double.Parse(yPos.text), double.Parse(zPos.text));
+            if (!autoVel.isOn)
+            {
+                script.Vel = new Vector3d(0, 0, double.Parse(initialVel.text));
+                script.isInitialVel = true;
+            }
         }
         catch (Exception)
         {
