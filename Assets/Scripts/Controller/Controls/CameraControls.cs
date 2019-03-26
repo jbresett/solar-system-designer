@@ -35,13 +35,13 @@ public class CameraControls : MonoBehaviour {
     [SerializeField]
     private bool enableMouse = true;
     
-    public Body Body
+    public static Body Body
     {
         get { return body;  }
         set { body = value; }
     }
     [SerializeField]
-    private Body body;
+    private static Body body;
     
     public float DragSpeed
     {
@@ -61,10 +61,10 @@ public class CameraControls : MonoBehaviour {
     private Vector3 dragOriginPos;
     [Range(.1f,5f)]
     public float mouseZoomFactor = 1f;
-    public float zoomlevel = 1f;
+    public static float zoomlevel = 1f;
     
-    private Vector3 offset;
-    public Vector3 bodyPos;
+    private static Vector3 offset;
+    public static Vector3 bodyPos;
     private Transform cam;
 
     private List<Image> backgrounds = new List<Image>();
@@ -241,26 +241,28 @@ public class CameraControls : MonoBehaviour {
         
     }
 
-    public void changeBody(String bodyName)
+    public static void changeBody(String bodyName)
     {
         body = Sim.Bodies.get(bodyName);
+        bodyPos = body.Position.Vec3*10;
         focusOnBody();
     }
 
-    private void setCameraPos()
+    private static void setCameraPos()
     {
         Quaternion rotation = Camera.main.transform.rotation;
         Vector3 pos = offset * zoomlevel;
         Camera.main.transform.position = rotation * pos+bodyPos;
     }
 
-    private void focusOnBody()
+    private static void focusOnBody()
     {
         zoomlevel = 2f;
         float zoomBase = (float)body.Diameter * 75F;
         Camera.main.transform.rotation = Quaternion.identity;
         Camera.main.transform.position = bodyPos + Vector3.forward * zoomBase;
         offset = bodyPos - Camera.main.transform.position;
+        Debug.Log("Body changed to:" + body.name);
     }
     
 

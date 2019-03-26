@@ -63,6 +63,7 @@ namespace Planets
                 if (bod.Id == body.Id)
                 {
                     bod.IsSelected = true;
+                    CameraControls.changeBody(body.name);
                 }
                 else
                 {
