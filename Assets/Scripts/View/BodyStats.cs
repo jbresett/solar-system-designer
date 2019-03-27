@@ -12,6 +12,11 @@ namespace DefaultNamespace
         public TextMeshProUGUI pos;
         public Component viewPort;
 
+        private void Start()
+        {
+            bodySelector.onValueChanged.AddListener(delegate { updateView(); });
+        }
+
         private void Update()
         {
             Body[] bodies = Sim.Bodies.getAll();
@@ -45,6 +50,11 @@ namespace DefaultNamespace
             pos.text = b.Pos.ToString();
             viewPort.gameObject.SetActive(false);
             viewPort.gameObject.SetActive(true);
+        }
+
+        private void updateView()
+        {
+            CameraControls.changeBody(bodySelector.options[bodySelector.value].text);
         }
     }
 }

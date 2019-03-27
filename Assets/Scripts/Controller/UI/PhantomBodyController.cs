@@ -1,6 +1,7 @@
 using Model.Util;
 using TMPro;
 using UnityEngine;
+using Util;
 
 namespace Controller.UI
 {
@@ -48,7 +49,7 @@ namespace Controller.UI
         }
         [SerializeField] private TMP_Dropdown unit;
 
-        private string unitScale = "absolute";
+        private UnitType unitScale = UnitType.Absolute;
 
         private void OnEnable()
         {
@@ -72,7 +73,7 @@ namespace Controller.UI
 
         private void updateScale()
         {
-            string newUnit = unit.options[unit.value].text.ToLower();
+            UnitType newUnit = UnitConverter.unitTypes[unit.options[unit.value].text.ToLower()];
             unitScale = newUnit;
             updatePhantom();
         }
@@ -89,7 +90,7 @@ namespace Controller.UI
         }
         private double scaleSize(double size)
         {
-            return UnitConverter.convertRadius(size,unitScale,"earths");
+            return UnitConverter.convertRadius(size,unitScale,UnitType.Earths);
         }
     }
 }

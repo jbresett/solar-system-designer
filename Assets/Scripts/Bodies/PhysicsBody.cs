@@ -74,8 +74,7 @@ public class PhysicsBody : CapiBody {
         set { initialVelocity = value; }  
     }
 
-    [SerializeField]
-    protected bool initialVelocity = false;
+    [SerializeField] protected bool initialVelocity;
     new public void Awake()
     {
         base.Awake();
@@ -92,6 +91,12 @@ public class PhysicsBody : CapiBody {
         double baryDistance = (Vector3d.Distance(position, withBody.Position) * withBody.Mass) / (Mass + withBody.Mass);
 
         return Vector3d.LerpUnclamped(position, withBody.Position, baryDistance);
+    }
+
+    public BodyType whatAmI()
+    {
+        //TODO Implement logic to determine body classification
+        return BodyType.Star;
     }
 
 }
