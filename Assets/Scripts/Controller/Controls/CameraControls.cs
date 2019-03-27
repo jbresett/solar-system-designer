@@ -258,7 +258,7 @@ public class CameraControls : MonoBehaviour {
     private static void focusOnBody()
     {
         zoomlevel = 2f;
-        float zoomBase = (float)body.Diameter * 75F;
+        float zoomBase = (float)body.Diameter * 50F;
         Camera.main.transform.rotation = Quaternion.identity;
         Camera.main.transform.position = bodyPos + Vector3.forward * zoomBase;
         offset = bodyPos - Camera.main.transform.position;
