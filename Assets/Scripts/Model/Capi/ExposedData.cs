@@ -44,6 +44,7 @@ public class ExposedData: Singleton<ExposedData> {
         capiSpeedTime.setChangeDelegate(
             delegate (float value, ChangedBy changedBy)
             {
+                // Debug.Log("Speed.Time " + value + " " + changedBy);
                 // Any changes done by the SIM go through the Body system first, which updates the Exposed Data.
                 if (changedBy == ChangedBy.AELP)
                 { 

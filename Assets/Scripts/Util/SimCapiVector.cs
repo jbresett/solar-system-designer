@@ -32,7 +32,6 @@ public class SimCapiVector {
     /// <param name="value">Vector3d values</param>
     public void setValue(Vector3d value)
     {
-        vector = value;
         capiAxis[0].setValue((float)value.x);
         capiAxis[1].setValue((float)value.y);
         capiAxis[2].setValue((float)value.z);

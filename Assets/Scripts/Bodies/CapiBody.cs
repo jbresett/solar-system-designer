@@ -108,14 +108,29 @@ public class CapiBody : VisualBody {
         {
             base.Position = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
-            capiPosition.setValue(value);
+            
+            // Set to update Capi to current value in 1 second.
+            if (!positionDelayUpdate)
+            {
+                positionDelayUpdate = true;
+                Invoke("CapiPositionUpdate", 1.0f);
+            }
         }
     }
     private SimCapiVector capiPosition;
 
+    // Handles Delayed update for position (maximum updates/second to display).
+    private bool positionDelayUpdate = false;
+    private void CapiPositionUpdate()
+    {
+        positionDelayUpdate = false;
+        capiPosition.setValue(base.position);
+    }
+
     /// <summary>
     /// Current Position of the object. Any changes will be reflected in Unity.
     /// </summary>
+    private SimCapiVector capiVelocity;
     new public Vector3d Velocity
     {
         get { return velocity; }
@@ -123,10 +138,22 @@ public class CapiBody : VisualBody {
         {
             base.Velocity = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
-            capiVelocity.setValue(value);
+                                                // Set to update Capi to current value in 1 second.
+            if (!velocityDelayUpdate)
+            {
+                positionDelayUpdate = true;
+                Invoke("CapiVelocityUpdate", 1.0f);
+            }
         }
     }
-    private SimCapiVector capiVelocity;
+
+    // Handles Delayed update for velocity (maximum updates/second to display).
+    private bool velocityDelayUpdate = false;
+    private void CapiVelocityUpdate()
+    {
+        velocityDelayUpdate = false;
+        capiVelocity.setValue(base.velocity);
+    }
 
     /// <summary>
     /// Planet's rotational speed, in earth days.

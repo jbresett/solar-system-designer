@@ -46,7 +46,7 @@ public class SimEventHandler : Singleton<SimEventHandler> {
         }
 
         // Removes any additional values outside the placeholders.
-        while (typeList.Count >= PLACEHOLDER_COUNT)
+        while (typeList.Count > PLACEHOLDER_COUNT)
         {
             typeList[PLACEHOLDER_COUNT].unexpose();
             typeList.RemoveAt(PLACEHOLDER_COUNT);
