@@ -25,6 +25,7 @@ public class Sim : Singleton<Sim> {
     static public Capi Capi { get { return Capi.Instance; } }
     static public Bodies Bodies { get { return Bodies.Instance; } }
     static public SimEventHandler Event { get { return SimEventHandler.Instance; } }
+    static public WebHandler Http { get { return WebHandler.Instance; } }
     static public Perm Perm { get { return Perm.Instance; } }
 
     /// <summary>
@@ -32,8 +33,12 @@ public class Sim : Singleton<Sim> {
     /// </summary>
     public void Awake()
     {
+        Http.Init();
+
+
         // Set value for FPS
         nextUpdate = Time.time + updateTime;
+        
     }
 
     void Start () {
