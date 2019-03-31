@@ -36,7 +36,6 @@ public class Gravity : MonoBehaviour
         List<Body> bodyList = Sim.Bodies.Active;
         double xDist = 0;
         Vector3d vec = new Vector3d(0, 0, 0);
-        int numStars = 0;
 
         //here we check each body and determine its initial velocity
         //based on the the strongest force applied to the object.
@@ -44,14 +43,37 @@ public class Gravity : MonoBehaviour
         //or not.
         foreach (Body body in bodyList)
         {
+            /// we need to know if initial velocity has already been set
             if (!body.isInitialVel)
             {
+                    ///We need the radius, which is the x position, between the body
+                    /// and the body it is most attracted too
                     xDist = body.MostPull.Pos.x - body.Pos.x;
+                    
+                    ///control variable to protect against unwanted retrograde
+                    bool negative = false;
+                    
+                    ///If the distance calculated is less than zero we will
+                    /// multiply the xDist by negative 1 to make positive, so
+                    /// that we can protect from a divide by zero error.
+                    ///
+                    /// we set negative to true so we know this value needs to be
+                    /// altered after calculation
                     if (xDist < 0)
                     {
                         xDist = xDist * -1;
+                        negative = true;
                     }
+                    
+                    /// working in x/z plane we need to set the z velocity to be
+                    /// perpendicular to x
                     vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist)));
+                    
+                    /// here is where retrograde is handled.
+                    if (!negative)
+                    {
+                        vec.z = vec.z * -1;
+                    }
                     body.Vel = vec;
                     body.isInitialVel = true;
             }
