@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// Handles interactions with the Web-Server (http and JavaScript).
+/// 
+/// Note: To call functions from Java: SendMessage(GameObject, Function, Parameters);
 /// </summary>
 public class WebHandler : Singleton<WebHandler> {
 
@@ -21,7 +24,7 @@ public class WebHandler : Singleton<WebHandler> {
 
         // Get Application URL
         string url = Application.absoluteURL;
-        
+
         // Return if there are no parameters to add.
         if (url.IndexOf("?") == -1) return;
 
@@ -65,14 +68,54 @@ public class WebHandler : Singleton<WebHandler> {
 
         // Base URL.
         string url = Application.absoluteURL.Split('?')[0] + "?";
-        
+
         // Add each parameters.
-        foreach(KeyValuePair<string, string> pair in dictionary)
+        foreach (KeyValuePair<string, string> pair in dictionary)
         {
             url += WWW.EscapeURL(pair.Key) + "&" + WWW.EscapeURL(pair.Value);
         }
 
         return url;
     }
+
+    /// <summary>
+    /// [Read-only Property]: If the platform running in WebGLPlayer.
+    /// </summary>
+    public bool IsWebMode { get { return Application.platform == RuntimePlatform.WebGLPlayer; } }
+
+    /// <summary>
+    /// [Read-only Property]: Retrives the canvas width.
+    /// </summary>
+    public int CanvasWidth { get { return JSCanvasWidth(); } }
+    [DllImport("__Internal")]
+    private static extern int JSCanvasWidth();
+
+    /// <summary>
+    /// [Read-only Property]: Retrives the canvas height.
+    /// </summary>
+    public int CanvasHeight { get { return JSCanvasHeight(); } }
+    [DllImport("__Internal")]
+    private static extern int JSCanvasHeight();
+
+    /// <summary>
+    /// Sends a JS message.alert(text) to the web browser.  Emulated in Unity Editor.
+    /// </summary>
+    /// <param name="text">Text MEssage</param>
+    public void Alert(string text)
+    {
+        if (IsWebMode)
+        {
+            JSAlert(text);
+        }
+        else
+        {
+            // UnityEdtior alert emulation.  Will 
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.DisplayDialog("JS Alert", text, "OK");
+#endif
+        }
+    }
+    [DllImport("__Internal")]
+    private static extern void JSAlert(string text);
 
 }
