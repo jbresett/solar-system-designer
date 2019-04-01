@@ -56,7 +56,6 @@ public class CameraControls : MonoBehaviour {
     private const float FOVAdjust = .1f;
     private const float rotateSpeed = 10f;
     
-    
     private Vector3 dragOriginRot;
     private Vector3 dragOriginPos;
     [Range(.1f,5f)]

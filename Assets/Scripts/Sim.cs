@@ -39,7 +39,7 @@ public class Sim : Singleton<Sim> {
 
     public GameObject StatsLabel;
 
-    static public Perm Perm
+    static public Permissions Perm
     {
         get { return Perm.Instance; }
     }
