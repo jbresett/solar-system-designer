@@ -15,13 +15,13 @@ public class Rotation : MonoBehaviour
     /// <summary>
     /// gets and sets the rotation speed
     /// </summary>
-    public float RotSpd
+    public float RotationSpd
     {
-        get { return rotSpd; }
-        set { rotSpd = value; }
+        get { return rotationSpd; }
+        set { rotationSpd = value; }
     }
     [SerializeField]
-    private float rotSpd;
+    private float rotationSpd;
 
     /// <summary>
     /// gets and sets the Dam amount
@@ -39,7 +39,7 @@ public class Rotation : MonoBehaviour
     /// </summary>
     void Update()
     {
-        transform.Rotate((Vector3.up * RotSpd) * (Time.deltaTime * DampAmt), Space.Self);
+        transform.Rotate((Vector3.up * RotationSpd) * (Time.deltaTime * DampAmt), Space.Self);
         //transform.Rotate((Vector3.up * rotSpd) * (Time.deltaTime * dampAmt), Space.World);
         transform.RotateAround(Vector3.zero, transform.up, Time.deltaTime * DampAmt);
     }

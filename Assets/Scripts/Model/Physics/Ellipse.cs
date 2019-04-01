@@ -29,15 +29,8 @@ public class Ellipse{
 	/// <summary>
     public double MinorAxis
     {
-        get
-        {
-            return minorAxis;
-        }
-
-        set
-        {
-            minorAxis = value;
-        }
+        get { return minorAxis; }
+        set  { minorAxis = value; }
     }
     [SerializeField]
     private double minorAxis;
@@ -57,7 +50,6 @@ public class Ellipse{
 	/// the ellipse. The foci is where the sun will be placed.
 	/// </summary>
 	public double calcFoci(){
-
 		double a = System.Math.Pow(this.MajorAxis/2, 2);
 		double b = System.Math.Pow(this.MinorAxis/2, 2);
 
@@ -73,7 +65,6 @@ public class Ellipse{
 	/// to 1 the more elongated the ellipse is. 
 	/// </summary>
 	public double calcEccentricity(){
-
 		double foci = calcFoci();
 		double aSqr = System.Math.Pow(MinorAxis/2, 2);
 		double bSqr = System.Math.Pow(foci, 2);
@@ -90,7 +81,6 @@ public class Ellipse{
 	/// on the ellipse. THis function returns a Vector3D
 	/// </summary>
 	public Vector3d calcPoint(double theta){
-
 		//converting the angle give to radians
 		theta = (theta * System.Math.PI)/ 180;
 
@@ -105,7 +95,6 @@ public class Ellipse{
 		Vector3d coords = new Vector3d(x,y,z);
 
 		return coords;
-
 	}
 
 	/// <summary>
@@ -113,7 +102,6 @@ public class Ellipse{
 	/// when given an x value
 	/// </summary>
 	public double findY(double x){
-
 			//squrar each of the values
 			double a= System.Math.Pow(MajorAxis, 2);
 			double b = System.Math.Pow(MinorAxis, 2);
@@ -132,7 +120,6 @@ public class Ellipse{
 	/// when given a y value.
 	/// </summary>
 	public double findx(double y){
-
 			//squrar each of the values
 			double a= System.Math.Pow(MajorAxis, 2);
 			double b = System.Math.Pow(MinorAxis, 2);

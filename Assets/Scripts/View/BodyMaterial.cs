@@ -5,5 +5,4 @@ using UnityEngine;
 public enum BodyMaterial
 {
     Earth, Jupiter, Mars, Mercury, Moon, Neptune, Saturn, Sun, Uranus, Venus
-
 }

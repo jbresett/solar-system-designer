@@ -25,13 +25,11 @@ public class Capi: Singleton<Capi> {
 
     public void Awake()
     {
-
         Exposed.Init();
  
         Debugger.log("Initializing Transporter");
         Transporter.addInitialSetupCompleteListener(setupComplete);
         Transporter.addHandshakeCompleteListener(handshakeComplete);
-
     }
 
     // Initialization
