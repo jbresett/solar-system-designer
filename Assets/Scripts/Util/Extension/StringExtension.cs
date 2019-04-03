@@ -28,6 +28,11 @@ public static class StringExtension
         return (T)System.Enum.Parse(typeof(T), input);
     }
 
+    public static string IfBlank(this string input, string alternate)
+    {
+        return string.IsNullOrEmpty(input) ? alternate : input;
+    }
+
 }
 
 

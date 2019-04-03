@@ -58,7 +58,13 @@ namespace Controller.UI
 
         private void OnDisable()
         {
-            bodyPrefab.gameObject.SetActive(false);
+            try
+            {
+                bodyPrefab.gameObject.SetActive(false);
+            } catch (MissingReferenceException)
+            {
+                // Ignore: Caused when de-activating during shutdown.
+            }
         }
 
         private void Start()
@@ -79,9 +85,10 @@ namespace Controller.UI
         }
         private void updatePhantom()
         {
-            Vector3 pos = scalePos(new Vector3(float.Parse(xpos.text), float.Parse(ypos.text), float.Parse(zpos.text)));
+            Vector3 pos = scalePos(new Vector3(float.Parse(xpos.text.IfBlank("0")), 
+                float.Parse(ypos.text.IfBlank("0")), float.Parse(zpos.text.IfBlank("0"))));
             bodyPrefab.transform.position = pos;
-            bodyPrefab.transform.localScale = Vector3.one * (float)scaleSize(double.Parse(size.text));
+            bodyPrefab.transform.localScale = Vector3.one * (float)scaleSize(double.Parse(size.text.IfBlank("0")));
         }
 
         private Vector3 scalePos(Vector3 pos)
@@ -93,4 +100,5 @@ namespace Controller.UI
             return UnitConverter.convertRadius(size,unitScale,UnitType.Earths);
         }
     }
+
 }
