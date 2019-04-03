@@ -1,8 +1,10 @@
 using System;
+using System.Runtime.Remoting.Messaging;
 using Model.Util;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Util;
 
 /// <summary>
 /// This class places an orbital body a specified postion
@@ -18,13 +20,16 @@ public class InsertInPlace : MonoBehaviour
     public TMP_InputField xPos;
     public TMP_InputField yPos;
     public TMP_InputField zPos;
+    public Toggle autoVel;
+
+    public TMP_InputField initialVel;
     /*public TMP_InputField xVel;
     public TMP_InputField yVel;
     public TMP_InputField zVel;*/
 
     public GameObject UseParticleSystem;
 
-    private string unitType;
+    private UnitType unitType;
 
     /// <summary>
     /// initializes class and begins listening for mouse click
@@ -33,13 +38,14 @@ public class InsertInPlace : MonoBehaviour
     {
         button.onClick.AddListener(insert);
         type.onValueChanged.AddListener(delegate { updateUnits(); });
-        unitType = "absolute";
+        unitType = UnitType.Absolute;
         updateUnits();
     }
 
     private void updateUnits()
     {
-        String unit = type.options[type.value].text.ToLower();
+        UnitType unit = UnitConverter.unitTypes[type.options[type.value].text.ToLower()];
+
         Debug.Log(unit);
         GameObject[] comps = GameObject.FindGameObjectsWithTag("Radius");
         foreach (var comp in comps)
@@ -62,12 +68,12 @@ public class InsertInPlace : MonoBehaviour
         unitType = unit;
     }
     
-    private void updateRadius(TMP_InputField val, string unit)
+    private void updateRadius(TMP_InputField val, UnitType unit)
     {
         double v = double.Parse(val.text);
         val.text = UnitConverter.convertRadius(v, unitType, unit).ToString();
     }
-    private void updateMass(TMP_InputField val, string unit)
+    private void updateMass(TMP_InputField val, UnitType unit)
     {
         double v = double.Parse(val.text);
         val.text = UnitConverter.convertMass(v, unitType, unit).ToString();
@@ -81,10 +87,15 @@ public class InsertInPlace : MonoBehaviour
         GameObject obj = Sim.Bodies.activateNext();
         Body script = obj.GetComponent<Body>();
         script.Name = objName.text;
-
+        
         try
         {
             script.InitialPosition = new Vector3d(double.Parse(xPos.text), double.Parse(yPos.text), double.Parse(zPos.text));
+            if (!autoVel.isOn)
+            {
+                script.Vel = new Vector3d(0, 0, double.Parse(initialVel.text));
+                script.isInitialVel = true;
+            }
         }
         catch (Exception)
         {
@@ -101,10 +112,10 @@ public class InsertInPlace : MonoBehaviour
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
         }*/
        
-        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,"earths");
+        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,UnitType.Earths);
         script.Mass = double.Parse(mass.text);
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
-        script.Type = type.options[type.value].text.Enum<BodyType>();
+        script.Type = script.whatAmI();
 
         //obj.AddComponent<InsertParticleSystem>();
         //Instantiate(InsertParticleSystem);
@@ -121,5 +132,4 @@ public class InsertInPlace : MonoBehaviour
     {
         return value * 6.3781;
     }
-
 }
