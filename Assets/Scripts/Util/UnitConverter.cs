@@ -8,11 +8,10 @@ namespace Model.Util
     public static class UnitConverter
     {
         // Astronomical Units to Earth's Radius.
-
-
         public static readonly Dictionary<UnitType,Unit> units = new Dictionary<UnitType,Unit>();
         public static readonly Dictionary<String,UnitType> unitTypes = new Dictionary<string,UnitType>();
         
+        //Converts Units Between Kilometers, Earths, Earth Moons and Suns
         static UnitConverter()
         {
             units.Add(UnitType.Absolute,new Unit("Km", "Kg", 1, 1));

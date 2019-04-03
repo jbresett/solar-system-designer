@@ -16,7 +16,7 @@ using UnityEngine;
 /// Permissions can be changed by the instructor in the case of a live session.
 /// Permissions are checked by the software prior to any action that could require a permission. 
 /// </summary>
-public class Perm: Singleton<Perm> {
+public class Permissions: Singleton<Permissions> {
 
     private static string[] INVALID_COMMAND = { "Invalid Command. Use: perm (add/remove/list) [name]." };
 

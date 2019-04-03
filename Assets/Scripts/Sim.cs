@@ -26,7 +26,7 @@ public class Sim : Singleton<Sim> {
     static public Bodies Bodies { get { return Bodies.Instance; } }
     static public SimEventHandler Event { get { return SimEventHandler.Instance; } }
     static public WebHandler Web { get { return WebHandler.Instance; } }
-    static public Perm Perm { get { return Perm.Instance; } }
+    static public Permissions Perm { get { return Perm.Instance; } }
 
     /// <summary>
     /// Main Simulation Initiation

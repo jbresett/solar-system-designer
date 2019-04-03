@@ -27,7 +27,6 @@ public class Capi: Singleton<Capi> {
 
     public void Awake()
     {
-
         Exposed.Init();
         Sim.Event.Init();
         Sim.Perm.Init();
@@ -35,7 +34,6 @@ public class Capi: Singleton<Capi> {
         Debugger.log("Initializing Transporter");
         Transporter.addInitialSetupCompleteListener(setupComplete);
         Transporter.addHandshakeCompleteListener(handshakeComplete);
-
     }
 
     // Initialization
