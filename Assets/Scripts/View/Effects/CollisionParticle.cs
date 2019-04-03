@@ -24,7 +24,6 @@ public class CollisionParticle : MonoBehaviour {
 	void Start () {
         // Sets localScale to greater of parent-scale or minimum size.
         transform.localScale = Vector3.Max(transform.parent.localScale, MinimumSize);
-
 	}
 
 	void Update () {
