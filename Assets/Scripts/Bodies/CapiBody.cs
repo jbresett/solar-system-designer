@@ -141,7 +141,7 @@ public class CapiBody : VisualBody {
                                                 // Set to update Capi to current value in 1 second.
             if (!velocityDelayUpdate)
             {
-                positionDelayUpdate = true;
+                velocityDelayUpdate = true;
                 Invoke("CapiVelocityUpdate", 1.0f);
             }
         }
