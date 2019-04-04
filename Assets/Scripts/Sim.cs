@@ -37,11 +37,18 @@ public class Sim : Singleton<Sim> {
 
         // Set value for FPS
         nextUpdate = Time.time + updateTime;
-        
     }
 
     void Start () {
 
+        // Check for Parameters in URL. If found, use for initial state.
+        if (Web.Param.Count > 0)
+        {
+            // Update Capi Setup State with URL values.
+            Capi.Exposed.StartState.setValue(Web.ParamString);
+            // Update Simulation with URL values.
+            SetState(Web.ParamString);
+        }
 	}
 	
 	void Update () {
@@ -66,12 +73,37 @@ public class Sim : Singleton<Sim> {
         Sim.Settings.Paused = true;
         Sim.Event.Clear();
 
+    }
+
+    public void SetState(string state)
+    {
+        Dictionary<string, string> states = WebHandler.ToDictionary(state); 
+        
+        // Read Settings.
+        // Note: Most settings are not saved between instances.
+        SetProperty<double>(v => Sim.Settings.Speed = v, states, "Speed");
+
+        // Read each Body.
         foreach (Body body in Sim.Bodies.getAll())
         {
-            body.Position = body.InitialPosition;
-            body.Velocity = new Vector3d();
-            body.isInitialVel = false;
+            //[TODO] Seperate Task: Set Body based on values.
         }
+    }
+
+    /// <summary>
+    /// Sets a Property (Lambda) to a dictionary value while converting the value to the choosen type.
+    /// </summary>
+    /// <typeparam name="T">Type to convert to</typeparam>
+    /// <param name="setter">Lambda setter. Use: <code>v => Property = v</code></param>
+    /// <param name="dictionary">Dictionary</param>
+    /// <param name="key">Key value</param>
+    /// <returns>True if the property was set, false if the key does not exist.</returns>
+    private bool SetProperty<T>(System.Action<T> setter, Dictionary<string, string> dictionary, string key)
+    {
+        if (!dictionary.ContainsKey(key)) return false;
+        T value = (T)System.Convert.ChangeType(dictionary[key], typeof(T));
+        setter(value);
+        return true;
     }
 
 }

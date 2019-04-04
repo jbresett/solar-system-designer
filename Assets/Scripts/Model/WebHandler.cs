@@ -9,13 +9,32 @@ using System.Runtime.InteropServices;
 /// Note: To call functions from Java: SendMessage(GameObject, Function, Parameters);
 /// </summary>
 public class WebHandler : Singleton<WebHandler> {
+    // URL Split Character
+    private static char[] URL_SPLIT = { '?' };
 
     // Invalid Parameeter Message. {Parameter}.
     private const string INVALID_PARAM_MSG = "Invalid Parameter: {0} is not a 'key=value' pair.";
 
     // URL Parameters.
-    Dictionary<string, string> parameters = new Dictionary<string, string>();
+    /// <summary>
+    /// A dictionary of parameters found in the URL.
+    /// If no parameters are set, the dictionary will be empty.
+    /// </summary>
     public Dictionary<string, string> Param { get { return parameters; } }
+    private Dictionary<string, string> parameters;
+
+    /// <summary>
+    /// URL Parameters in string format.
+    /// If there are no parameters, get returns "";
+    /// </summary>
+    public string ParamString {
+        get
+        {
+            if (!Application.absoluteURL.Contains("?")) return "";
+            return Application.absoluteURL.Split(URL_SPLIT, 2)[1];
+        }
+    }
+
 
     /// <summary>
     /// Retrives any URL parameters on initiation.
@@ -29,10 +48,15 @@ public class WebHandler : Singleton<WebHandler> {
         if (url.IndexOf("?") == -1) return;
 
         // Get everything after the '?'.
-        string paramStr = url.Split('?')[1];
+        parameters = ToDictionary(url.Split(URL_SPLIT, 2)[1]);
+    }
 
+    public static Dictionary<string, string> ToDictionary(string paramString)
+    {
         // Convert Parameters into dictionary.
-        foreach (string param in paramStr.Split('&'))
+        Dictionary<string, string> result = new Dictionary<string, string>();
+
+        foreach (string param in paramString.Split('&'))
         {
             // 'Key=Value' pair.
             string[] pair = param.Split('=');
@@ -43,15 +67,10 @@ public class WebHandler : Singleton<WebHandler> {
             if (pair.Length == 2 && pair[0].Length > 0 && pair[1].Length > 0)
             {
                 // Convert from escaped URL to standard string.
-                parameters.Add(WWW.UnEscapeURL(pair[0]), WWW.UnEscapeURL(pair[1]));
-            }
-            // Ignore incorrect array length (non 'key=value' string).
-            else
-            {
-                Debug.Log(string.Format(INVALID_PARAM_MSG, param));
+                result.Add(WWW.UnEscapeURL(pair[0]), WWW.UnEscapeURL(pair[1]));
             }
         }
-
+        return result;
     }
 
     /// <summary>
@@ -109,7 +128,7 @@ public class WebHandler : Singleton<WebHandler> {
         }
         else
         {
-            // UnityEdtior alert emulation.  Will 
+            // UnityEdtior alert emulation.
 #if UNITY_EDITOR
             UnityEditor.EditorUtility.DisplayDialog("JS Alert", text, "OK");
 #endif
