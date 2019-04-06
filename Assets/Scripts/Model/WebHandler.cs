@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using System.Text;
 
 /// <summary>
 /// Handles interactions with the Web-Server (http and JavaScript).
@@ -18,7 +19,7 @@ public class WebHandler : Singleton<WebHandler> {
     // URL Parameters.
     /// <summary>
     /// A dictionary of parameters found in the URL.
-    /// If no parameters are set, the dictionary will be empty.
+    /// If no parameters are set, Param will return a null.
     /// </summary>
     public Dictionary<string, string> Param { get { return parameters; } }
     private Dictionary<string, string> parameters;
@@ -27,7 +28,7 @@ public class WebHandler : Singleton<WebHandler> {
     /// URL Parameters in string format.
     /// If there are no parameters, get returns "";
     /// </summary>
-    public string ParamString {
+    public string URLStateString {
         get
         {
             if (!Application.absoluteURL.Contains("?")) return "";
@@ -35,67 +36,42 @@ public class WebHandler : Singleton<WebHandler> {
         }
     }
 
+    /// <summary>
+    /// Generates a URL based on the current URL and a system state string.
+    /// </summary>
+    /// <param name="dictionary">dictionary to use. If null or not set, the current dictionary will be used.</param>
+    /// <returns></returns>
+    public string ToUrl(string state)
+    {
+        return Application.absoluteURL.Split('?')[0] + "?" + state;
+    }
 
     /// <summary>
     /// Retrives any URL parameters on initiation.
     /// </summary>
-    public void Init() {
-
+    public void Awake() {
         // Get Application URL
         string url = Application.absoluteURL;
 
-        // Return if there are no parameters to add.
-        if (url.IndexOf("?") == -1) return;
-
-        // Get everything after the '?'.
-        parameters = ToDictionary(url.Split(URL_SPLIT, 2)[1]);
-    }
-
-    public static Dictionary<string, string> ToDictionary(string paramString)
-    {
-        // Convert Parameters into dictionary.
-        Dictionary<string, string> result = new Dictionary<string, string>();
-
-        foreach (string param in paramString.Split('&'))
-        {
-            // 'Key=Value' pair.
-            string[] pair = param.Split('=');
-
-            // Check for proper array length:
-            // * must have exactly 1 '='
-            // * include both a key and value (neither 0-length).
-            if (pair.Length == 2 && pair[0].Length > 0 && pair[1].Length > 0)
-            {
-                // Convert from escaped URL to standard string.
-                result.Add(WWW.UnEscapeURL(pair[0]), WWW.UnEscapeURL(pair[1]));
-            }
+        // Add parameter list
+        if (url.IndexOf("?") >= 0)
+        { 
+            parameters = Sim.ToDictionary(url.Split(URL_SPLIT, 2)[1]);
         }
-        return result;
     }
 
-    /// <summary>
-    /// Generates a URL based on the current URL and a dictionary of paremeters.
-    /// 
-    /// Used to turn an solar systems generated within the Sim to a URL format.
-    /// </summary>
-    /// <param name="dictionary">dictionary to use. If null or not set, the current dictionary will be used.</param>
-    /// <returns></returns>
-    public string ToUrl(Dictionary<string, string> dictionary = null)
+    public void Start()
     {
-        // Use default if null.
-        if (dictionary == null) dictionary = parameters;
-
-        // Base URL.
-        string url = Application.absoluteURL.Split('?')[0] + "?";
-
-        // Add each parameters.
-        foreach (KeyValuePair<string, string> pair in dictionary)
+        // Check for Parameters in URL. If found, use for initial state.
+        if (Param != null)
         {
-            url += WWW.EscapeURL(pair.Key) + "&" + WWW.EscapeURL(pair.Value);
+            // Update Capi Setup State with URL values.
+            Sim.Capi.Exposed.StartState.setValue(URLStateString);
+            // Update Simulation with URL values.
+            Sim.Instance.State = URLStateString;
         }
-
-        return url;
     }
+
 
     /// <summary>
     /// [Read-only Property]: If the platform running in WebGLPlayer.
@@ -137,4 +113,19 @@ public class WebHandler : Singleton<WebHandler> {
     [DllImport("__Internal")]
     private static extern void JSAlert(string text);
 
+    /// <summary>
+    /// Sets a Property (Lambda) to a dictionary value while converting the value to the choosen type.
+    /// </summary>
+    /// <typeparam name="T">Type to convert to</typeparam>
+    /// <param name="setter">Lambda setter. Use: <code>v => Property = v</code></param>
+    /// <param name="dictionary">Dictionary</param>
+    /// <param name="key">Key value</param>
+    /// <returns>True if the property was set, false if the key does not exist.</returns>
+    private bool SetProperty<T>(System.Action<T> setter, Dictionary<string, string> dictionary, string key)
+    {
+        if (!dictionary.ContainsKey(key)) return false;
+        T value = (T)System.Convert.ChangeType(dictionary[key], typeof(T));
+        setter(value);
+        return true;
+    }
 }

@@ -41,7 +41,9 @@ public class SpeedUI : MonoBehaviour {
     public void OnButtonPress(bool Paused)
     {
         Sim.Settings.Paused = Paused;
-        // Swaps which button is enabled.
+
+        //TODO: Remove after US 333 is complete. Currently used for real-time task testing.
+        Debug.Log(Sim.Instance.State);
     }
 
     /// <summary>

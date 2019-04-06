@@ -50,7 +50,7 @@ public class ExposedData: Singleton<ExposedData> {
                 // Internal updates
                 if (changedBy == ChangedBy.SIM) return;
                 CurrentState.setValue(value);
-                Sim.Instance.SetState(value);
+                Sim.Instance.State = value;
             }
         );
 

@@ -62,6 +62,20 @@ public class Vector3d
     ) { }
 
     /// <summary>
+    /// Creates a vector based on a string.
+    /// </summary>
+    /// <param name="values">Formatted either "x,y,z" or "(x,y,z)"</param>
+    public Vector3d(string values) 
+    {
+        // Remove parentheses
+        if (values[0] == '(') values = values.Substring(1, values.Length - 2);
+        string[] parts = values.Split(',');
+        axis[0] = Double.Parse(parts[0]);
+        axis[1] = Double.Parse(parts[1]);
+        axis[2] = Double.Parse(parts[2]);
+    }
+
+    /// <summary>
     /// Creates a new vector at choosen coordinates.
     /// </summary>
     /// <param name="x"></param>

@@ -179,6 +179,8 @@ public class CapiBody : VisualBody {
 
     public void Init(int id)
     {
+        Id = id;
+
         string baseName = "Body." + id;
 
         capiName = new SimCapiString(name);

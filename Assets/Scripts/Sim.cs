@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ using UnityEngine;
 /// Sim.(Class) or (Class).Instance
 /// </summary>
 public class Sim : Singleton<Sim> {
+    // Format for appending body details to a State string. {Id, Key, Value}
+    private const string STATE_BODY_APPEND_FMT = "&{0}.{1}={2}";
 
     // Frame Rate Tracker
     private float nextUpdate = 0;
@@ -33,22 +36,12 @@ public class Sim : Singleton<Sim> {
     /// </summary>
     public void Awake()
     {
-        Web.Init();
-
         // Set value for FPS
         nextUpdate = Time.time + updateTime;
     }
 
     void Start () {
 
-        // Check for Parameters in URL. If found, use for initial state.
-        if (Web.Param.Count > 0)
-        {
-            // Update Capi Setup State with URL values.
-            Capi.Exposed.StartState.setValue(Web.ParamString);
-            // Update Simulation with URL values.
-            SetState(Web.ParamString);
-        }
 	}
 	
 	void Update () {
@@ -72,38 +65,91 @@ public class Sim : Singleton<Sim> {
     {
         Sim.Settings.Paused = true;
         Sim.Event.Clear();
-
     }
 
-    public void SetState(string state)
+
+    public static Dictionary<string, string> ToDictionary(string state)
     {
-        Dictionary<string, string> states = WebHandler.ToDictionary(state); 
-        
-        // Read Settings.
-        // Note: Most settings are not saved between instances.
-        SetProperty<double>(v => Sim.Settings.Speed = v, states, "Speed");
+        // Convert Parameters into dictionary.
+        Dictionary<string, string> result = new Dictionary<string, string>();
 
-        // Read each Body.
-        foreach (Body body in Sim.Bodies.getAll())
+        foreach (string param in state.Split('&'))
         {
-            //[TODO] Seperate Task: Set Body based on values.
+            // 'Key=Value' pair.
+            string[] pair = param.Split('=');
+
+            // Check for proper array length:
+            // * must have exactly 1 '='
+            // * include both a key and value (neither 0-length).
+            if (pair.Length == 2 && pair[0].Length > 0 && pair[1].Length > 0)
+            {
+                // Convert from escaped URL to standard string.
+                result.Add(WWW.UnEscapeURL(pair[0]), WWW.UnEscapeURL(pair[1]));
+            }
         }
+        return result;
     }
+
+
 
     /// <summary>
-    /// Sets a Property (Lambda) to a dictionary value while converting the value to the choosen type.
+    /// Current state of the simulation, including all active bodies.
     /// </summary>
-    /// <typeparam name="T">Type to convert to</typeparam>
-    /// <param name="setter">Lambda setter. Use: <code>v => Property = v</code></param>
-    /// <param name="dictionary">Dictionary</param>
-    /// <param name="key">Key value</param>
-    /// <returns>True if the property was set, false if the key does not exist.</returns>
-    private bool SetProperty<T>(System.Action<T> setter, Dictionary<string, string> dictionary, string key)
+    public string State
     {
-        if (!dictionary.ContainsKey(key)) return false;
-        T value = (T)System.Convert.ChangeType(dictionary[key], typeof(T));
-        setter(value);
-        return true;
+        get { return GetState(); }
+        set { SetState(value); }
     }
 
+    private string GetState()
+    {
+        StringBuilder result = new StringBuilder();
+        result.Append("Speed=");
+        result.Append(Sim.Settings.Speed);
+        foreach (Body body in Sim.Bodies.Active)
+        {
+            // Append Basic Details
+            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Name", body.Name.Escape());
+            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Type", body.Type.ToString().Escape());
+            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Material", body.Material.ToString().Escape());
+
+            // Append Internal
+            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Mass", body.Mass);
+            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Diameter", body.Diameter);
+
+            // Append Motion
+            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Rotation", body.Rotation);
+            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Position", body.Position);
+            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Velocity", body.Velocity);
+        }
+
+        return result.ToString();
+    }
+
+    private void SetState(string state)
+    {
+        Dictionary<string, string> states = ToDictionary(state);
+        Sim.Settings.Speed = int.Parse(states["Speed"]);
+        for (int i = 0; i < Sim.Bodies.All.Length; i++)
+        {
+            Body body = Sim.Bodies.All[i];
+
+            // Deactivates a body before making any changes. 
+            // If no state details exist, body will remain deactivated.
+            body.Active = false;
+            if (states.ContainsKey(i + ".Name"))
+            {
+                body.Name = states[i + ".Name"].UnEscape();
+                body.Type = states[i + ".Type"].UnEscape().Enum<BodyType>();
+                body.Material = states[i + ".Material"].UnEscape().Enum<BodyMaterial>();
+                body.Mass = double.Parse(states[i + ".Mass"]);
+                body.Diameter = double.Parse(states[i + ".Diameter"]);
+                body.Rotation = double.Parse(states[i + ".Rotation"]);
+                body.Position = new Vector3d(states[i + ".Position"]);
+                body.Velocity = new Vector3d(states[i + ".Velocity"]);
+
+                body.Active = true;
+            }
+        }
+    }
 }
