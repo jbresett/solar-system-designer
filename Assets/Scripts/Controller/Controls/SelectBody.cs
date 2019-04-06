@@ -32,45 +32,45 @@ namespace Planets
         /// https://docs.unity3d.com/ScriptReference/Physics.Raycast.html
         /// https://docs.unity3d.com/ScriptReference/Input.GetMouseButtonDown.html
         /// </summary>
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                //Creating a ray that will shoot straight through the scene and
-                //and register the first item hit
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                
-                //If object is hit within the first 1000 unity units
-                //then we will change the state of body.
-                if (Physics.Raycast(ray, out hit, 1000f))
-                {
-                    body = hit.collider.GetComponent<Body>();
-                    setSelected();
-                    Debug.Log(body.name);
-                }
-            }
-        }
+//        private void Update()
+//        {
+//            if (Input.GetMouseButtonDown(0))
+//            {
+//                //Creating a ray that will shoot straight through the scene and
+//                //and register the first item hit
+//                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+//                RaycastHit hit;
+//                
+//                //If object is hit within the first 1000 unity units
+//                //then we will change the state of body.
+//                if (Physics.Raycast(ray, out hit, 1000f))
+//                {
+//                    body = hit.collider.GetComponent<Body>();
+//                    setSelected();
+//                    Debug.Log(body.name);
+//                }
+//            }
+//        }
         
         /// <summary>
         /// This method sets the newly selected body as selected
         /// and all other bodies to not selected.
         /// </summary>
-        private void setSelected()
-        {
-            foreach (Body bod in Sim.Bodies.Active)
-            {
-                if (bod.Id == body.Id)
-                {
-                    bod.IsSelected = true;
-                    CameraControls.changeBody(body.name);
-                }
-                else
-                {
-                    bod.IsSelected = false;
-                }
-            }
-        }
+//       private void setSelected()
+//        {
+//            foreach (Body bod in Sim.Bodies.Active)
+//            {
+//                if (bod.Id == body.Id)
+//                {
+//                    bod.IsSelected = true;
+//                    CameraControls.changeBody(body.name);
+//                }
+//                else
+//                {
+//                    bod.IsSelected = false;
+//                }
+//            }
+//        }
         /// <summary> 
         /// This function looks for what celestial object was clicked and records
         /// the current data on that celestial object.
