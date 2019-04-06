@@ -11,6 +11,9 @@ using UnityEngine;
 /// </summary>
 public class ExposedData: Singleton<ExposedData> {
 
+    // The maximum number of prior states stored.
+    private const int PRIOR_STATE_LIMIT = 20;
+
     /// <summary>
     /// Current simulation speed.
     /// </summary>
@@ -34,9 +37,10 @@ public class ExposedData: Singleton<ExposedData> {
     /// </summary>
     public SimCapiString CurrentState;
     /// <summary>
-    /// List of previously saved states. A new prior state is added before each Run.
+    /// List of previously saved states. A new prior state is added each time the Play button is hit.
     /// </summary>
     public List<SimCapiString> PriorStates;
+    private int PriorStateIndex = 0;
 
     /// <summary>
     /// Sets initial values.
@@ -127,8 +131,18 @@ public class ExposedData: Singleton<ExposedData> {
         {
             StartState.setValue(state);
         }
+
         SimCapiString capi = new SimCapiString("");
-        capi.expose("State.Prior." + PriorStates.Count, false, false);
+        capi.expose("State.History." + PriorStateIndex, false, false);
         capi.setValue(state);
+        PriorStates.Add(capi);
+        PriorStateIndex++;
+
+        // Remove oldest state if more prior states exist then the PRIOR_STATE_LIMIT.
+        if (PriorStates.Count > PRIOR_STATE_LIMIT)
+        {
+            PriorStates[0].unexpose();
+            PriorStates.RemoveAt(0);
+        }
     }
 }

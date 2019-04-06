@@ -67,6 +67,7 @@ public class SimCapiVector {
                 {
                     if (changedBy == ChangedBy.SIM) return;
                     vector[axis] = value;
+                    capiAxis[axis].setValue(value);
                 }
             );
         }
