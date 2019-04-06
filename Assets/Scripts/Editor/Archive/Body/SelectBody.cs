@@ -11,18 +11,18 @@ namespace Planets
 
     public class SelectBody : MonoBehaviour
     {
-        public GameObject selectMenu;
-        public GameObject editMenu;
-        public Body body;
-        public Button selectArea;
-        /// <summary> 
-        /// This function initializes the class and begins listening for
-        /// mouse clicks.
-        /// </summary>
-        private void Start()
-        {
-            selectArea.onClick.AddListener(select);
-        }
+//        public GameObject selectMenu;
+//        public GameObject editMenu;
+//        public Body body;
+//        public Button selectArea;
+//        /// <summary> 
+//        /// This function initializes the class and begins listening for
+//        /// mouse clicks.
+//        /// </summary>
+//        private void Start()
+//        {
+//            selectArea.onClick.AddListener(select);
+//        }
 
         
         /// <summary>

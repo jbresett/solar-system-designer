@@ -19,29 +19,7 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            Body[] bodies = Sim.Bodies.getAll();
-            List<string> options = new List<string>();
-            Body b;
-            for (int i = 0; i < bodies.Length; i++)
-            {
-                b = bodies[i];
-                if (!b.name.Equals("")&&b.Active)
-                {
-                    options.Add(bodies[i].name);
-                }
-            }
-            bodySelector.ClearOptions();
-            bodySelector.AddOptions(options);
-            if (bodySelector.options.Count > 0)
-            {
-                listStats();
-                
-            }
-            else
-            {
-                viewPort.gameObject.SetActive(false);
-            }
-            
+            if (Input.GetMouseButtonDown(0))
             {
                 //Creating a ray that will shoot straight through the scene and
                 //and register the first item hit
@@ -53,8 +31,36 @@ namespace DefaultNamespace
                 if (Physics.Raycast(ray, out hit, 1000f))
                 {
                     body = hit.collider.GetComponent<Body>();
-                    //setSelected();
+                    setSelected();
                     Debug.Log(body.name);
+                }
+            }
+            else
+            {
+
+
+                Body[] bodies = Sim.Bodies.getAll();
+                List<string> options = new List<string>();
+                Body b;
+                for (int i = 0; i < bodies.Length; i++)
+                {
+                    b = bodies[i];
+                    if (!b.name.Equals("") && b.Active)
+                    {
+                        options.Add(bodies[i].name);
+                    }
+                }
+
+                bodySelector.ClearOptions();
+                bodySelector.AddOptions(options);
+                if (bodySelector.options.Count > 0)
+                {
+                    listStats();
+
+                }
+                else
+                {
+                    viewPort.gameObject.SetActive(false);
                 }
             }
         }
@@ -72,5 +78,23 @@ namespace DefaultNamespace
         {
             CameraControls.changeBody(bodySelector.options[bodySelector.value].text);
         }
+        
+        private void setSelected()
+        {
+            foreach (Body bod in Sim.Bodies.Active)
+            {
+                if (bod.Id == body.Id)
+                {
+                    bod.IsSelected = true;
+                    CameraControls.changeBody(body.name);
+                }
+                else
+                {
+                    bod.IsSelected = false;
+                }
+            }
+        }
     }
+    
+    
 }
