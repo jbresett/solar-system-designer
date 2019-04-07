@@ -111,9 +111,16 @@ public class InsertInPlace : MonoBehaviour
             script.Velocity = new Vector3d(0.0,0.0,0.0);
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
         }*/
-       
-        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,UnitType.Earths);
-        script.Mass = double.Parse(mass.text);
+
+        if (double.Parse(radius.text) > 0 && double.Parse(mass.text) > 0)
+        {
+            script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text), unitType, UnitType.Earths);
+            script.Mass = double.Parse(mass.text);
+        } else {
+            Debugger.log("Invalid Mass and Radius. Value must be greater than 0.");
+        }
+
+
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
         script.Type = script.whatAmI();
 
