@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: -1
-  active: 0
   type: 4
   mass: 1
   diameter: 2.5
@@ -164,11 +163,13 @@ MonoBehaviour:
     - 0
     - 0
   material: 7
+  isSelected: 0
   force:
     axis:
     - 0
     - 0
     - 0
+  mostPull: {fileID: 0}
   initialVelocity: 0
 --- !u!114 &114830010619269704
 MonoBehaviour:
