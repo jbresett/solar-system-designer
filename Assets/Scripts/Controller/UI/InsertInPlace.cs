@@ -112,11 +112,13 @@ public class InsertInPlace : MonoBehaviour
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
         }*/
 
-        if (double.Parse(radius.text) > 0 && double.Parse(mass.text) > 0)
+        if (double.Parse(radius.text) > 0 || double.Parse(mass.text) > 0)
         {
             script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text), unitType, UnitType.Earths);
             script.Mass = double.Parse(mass.text);
         } else {
+            radius.text = "1";
+            mass.text = "1";
             Debugger.log("Invalid Mass and Radius. Value must be greater than 0.");
         }
 
