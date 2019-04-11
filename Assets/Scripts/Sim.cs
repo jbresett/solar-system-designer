@@ -63,8 +63,9 @@ public class Sim : Singleton<Sim> {
 
     public void Reset()
     {
-        Sim.Settings.Paused = true;
-        Sim.Event.Clear();
+        Settings.Paused = true;
+        Event.Clear();
+        State = Capi.Exposed.StartState.getValue();
     }
 
 
