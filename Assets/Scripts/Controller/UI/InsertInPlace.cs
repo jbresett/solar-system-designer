@@ -21,11 +21,9 @@ public class InsertInPlace : MonoBehaviour
     public TMP_InputField yPos;
     public TMP_InputField zPos;
     public Toggle autoVel;
-
     public TMP_InputField initialVel;
-    /*public TMP_InputField xVel;
-    public TMP_InputField yVel;
-    public TMP_InputField zVel;*/
+
+    public TextMeshProUGUI errorText;
 
     public GameObject UseParticleSystem;
 
@@ -117,8 +115,13 @@ public class InsertInPlace : MonoBehaviour
             script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text), unitType, UnitType.Earths);
             script.Mass = double.Parse(mass.text);
         } else {
+            //Set values back to 1
             radius.text = "1";
             mass.text = "1";
+            //Set Error message window
+            string text = errorText.text;
+            errorText.text = text.Replace("{error_msg}", "Invalid Mass and Radius. Value must be greater than 0.");
+            //Set Debugger
             Debugger.log("Invalid Mass and Radius. Value must be greater than 0.");
         }
 
