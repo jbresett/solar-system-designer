@@ -37,3 +37,9 @@ sysinfo.txt
 *.apk
 *.unitypackage
 \.idea/
+
+Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF\.asset
+
+Assets/TextMesh Pro\.meta
+
+Assets/TextMesh Pro/Documentation\.meta

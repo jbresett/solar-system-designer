@@ -156,7 +156,7 @@ public class WebHandler : Singleton<WebHandler> {
         }
     }
     [DllImport("__Internal")]
-    private static extern string JSPrompt(string message, string value);
+    private static extern string JSPrompt(string message, string defaultText);
 
     /// <summary>
     /// Sets a Property (Lambda) to a dictionary value while converting the value to the choosen type.
