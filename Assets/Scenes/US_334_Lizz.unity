@@ -13452,6 +13452,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraLock: {fileID: 1427217808}
   bodySelector: {fileID: 1521114249}
+  bodyName: {fileID: 0}
+  radius: {fileID: 0}
+  mass: {fileID: 0}
   pos: {fileID: 0}
   viewPort: {fileID: 2117391327}
 --- !u!114 &446231860
@@ -47309,7 +47312,7 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 0
-  m_inputSource: 0
+  m_inputSource: 3
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -53271,6 +53274,8 @@ MonoBehaviour:
     - m_Text: Jupiters
       m_Image: {fileID: 0}
     - m_Text: Suns
+      m_Image: {fileID: 0}
+    - m_Text: Absolute
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

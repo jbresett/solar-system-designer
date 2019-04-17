@@ -14,6 +14,7 @@ public class InsertInPlace : MonoBehaviour
     public Button button;
     public GameObject bodyBase;
     public TMP_InputField objName;
+    public TMP_Dropdown mat;
     public TMP_Dropdown type;
     public TMP_InputField radius;
     public TMP_InputField mass;
@@ -85,7 +86,14 @@ public class InsertInPlace : MonoBehaviour
         GameObject obj = Sim.Bodies.activateNext();
         Body script = obj.GetComponent<Body>();
         script.Name = objName.text;
-        
+
+        //Get Material Name
+        //string material = mat.options[mat.value].text;
+        //Set Path
+        //string localPath = "Assets/Textures/Body/Resources/" + gameObject.name + ".prefab";
+        //Add Shader to Prefab
+
+
         try
         {
             script.InitialPosition = new Vector3d(double.Parse(xPos.text), double.Parse(yPos.text), double.Parse(zPos.text));
