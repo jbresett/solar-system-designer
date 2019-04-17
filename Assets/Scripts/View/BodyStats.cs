@@ -9,6 +9,9 @@ namespace DefaultNamespace
     {
         public Toggle cameraLock;
         public TMP_Dropdown bodySelector;
+        public TextMeshProUGUI bodyName;
+        public TextMeshProUGUI radius;
+        public TextMeshProUGUI mass;
         public TextMeshProUGUI pos;
         public Component viewPort;
 
@@ -25,7 +28,7 @@ namespace DefaultNamespace
             for (int i = 0; i < bodies.Length; i++)
             {
                 b = bodies[i];
-                if (!b.name.Equals("")&&b.Active)
+                if (!b.name.Equals("") && b.Active)
                 {
                     options.Add(bodies[i].name);
                 }
@@ -35,7 +38,6 @@ namespace DefaultNamespace
             if (bodySelector.options.Count > 0)
             {
                 listStats();
-                
             }
             else
             {
@@ -47,6 +49,10 @@ namespace DefaultNamespace
         {
             string name = bodySelector.options[bodySelector.value].text;
             Body b = Sim.Bodies.get(name);
+            BaseBody bb = Sim.Bodies.get(name);
+            bodyName.text = bb.Name.ToString();
+            radius.text = bb.Diameter.ToString();
+            mass.text = bb.Mass.ToString();
             pos.text = b.Pos.ToString();
             viewPort.gameObject.SetActive(false);
             viewPort.gameObject.SetActive(true);

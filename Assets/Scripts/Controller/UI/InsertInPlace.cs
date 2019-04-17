@@ -14,6 +14,7 @@ public class InsertInPlace : MonoBehaviour
     public Button button;
     public GameObject bodyBase;
     public TMP_InputField objName;
+    public TMP_Dropdown mat;
     public TMP_Dropdown type;
     public TMP_InputField radius;
     public TMP_InputField mass;
@@ -21,11 +22,9 @@ public class InsertInPlace : MonoBehaviour
     public TMP_InputField yPos;
     public TMP_InputField zPos;
     public Toggle autoVel;
-
     public TMP_InputField initialVel;
-    /*public TMP_InputField xVel;
-    public TMP_InputField yVel;
-    public TMP_InputField zVel;*/
+
+    public TextMeshProUGUI errorText;
 
     public GameObject UseParticleSystem;
 
@@ -87,7 +86,14 @@ public class InsertInPlace : MonoBehaviour
         GameObject obj = Sim.Bodies.activateNext();
         Body script = obj.GetComponent<Body>();
         script.Name = objName.text;
-        
+
+        //Get Material Name
+        //string material = mat.options[mat.value].text;
+        //Set Path
+        //string localPath = "Assets/Textures/Body/Resources/" + gameObject.name + ".prefab";
+        //Add Shader to Prefab
+
+
         try
         {
             script.InitialPosition = new Vector3d(double.Parse(xPos.text), double.Parse(yPos.text), double.Parse(zPos.text));
@@ -111,9 +117,23 @@ public class InsertInPlace : MonoBehaviour
             script.Velocity = new Vector3d(0.0,0.0,0.0);
             Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
         }*/
-       
-        script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text),unitType,UnitType.Earths);
-        script.Mass = double.Parse(mass.text);
+
+        if (double.Parse(radius.text) > 0 || double.Parse(mass.text) > 0 || radius.text != "" || mass.text != "")
+        {
+            script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text), unitType, UnitType.Earths);
+            script.Mass = double.Parse(mass.text);
+        } else {
+            //Set values back to 1
+            radius.text = "1";
+            mass.text = "1";
+            //Set Error message window
+            string text = errorText.text;
+            errorText.text = text.Replace("{error_msg}", "Invalid Mass and Radius. Value must be greater than 0.");
+            //Set Debugger
+            Debugger.log("Invalid Mass and Radius. Value must be greater than 0.");
+        }
+
+
         //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
         script.Type = script.whatAmI();
 
