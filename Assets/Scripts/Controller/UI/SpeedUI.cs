@@ -41,9 +41,6 @@ public class SpeedUI : MonoBehaviour {
     public void OnButtonPress(bool Paused)
     {
         Sim.Settings.Paused = Paused;
-
-        //TODO: Remove after US 333 is complete. Currently used for real-time task testing.
-        Debug.Log(Sim.Instance.State);
     }
 
     /// <summary>
