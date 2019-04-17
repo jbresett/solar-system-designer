@@ -9,6 +9,9 @@ namespace DefaultNamespace
     {
         public Toggle cameraLock;
         public TMP_Dropdown bodySelector;
+        public TextMeshProUGUI name;
+        public TextMeshProUGUI radius;
+        public TextMeshProUGUI mass;
         public TextMeshProUGUI pos;
         public Component viewPort;
 
@@ -46,6 +49,9 @@ namespace DefaultNamespace
         {
             string name = bodySelector.options[bodySelector.value].text;
             Body b = Sim.Bodies.get(name);
+            name.text = b.Name.ToString();
+            radius.text = b.Radius.ToString();
+            mass.text = b.Mass.ToString();
             pos.text = b.Pos.ToString();
             viewPort.gameObject.SetActive(false);
             viewPort.gameObject.SetActive(true);
