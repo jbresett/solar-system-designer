@@ -24,6 +24,11 @@ public class WebHandler : Singleton<WebHandler> {
     public Dictionary<string, string> Param { get { return parameters; } }
     private Dictionary<string, string> parameters;
 
+    public string URL
+    {
+        get { return Application.absoluteURL.Split(URL_SPLIT, 2)[0]; }
+    }
+
     /// <summary>
     /// URL Parameters in string format.
     /// If there are no parameters, get returns "";
@@ -95,23 +100,63 @@ public class WebHandler : Singleton<WebHandler> {
     /// <summary>
     /// Sends a JS message.alert(text) to the web browser.  Emulated in Unity Editor.
     /// </summary>
-    /// <param name="text">Text MEssage</param>
-    public void Alert(string text)
+    /// <param name="message">Text MEssage</param>
+    public void Alert(string message)
     {
         if (IsWebMode)
         {
-            JSAlert(text);
+            JSAlert(message);
         }
         else
         {
             // UnityEdtior alert emulation.
 #if UNITY_EDITOR
-            UnityEditor.EditorUtility.DisplayDialog("JS Alert", text, "OK");
+            UnityEditor.EditorUtility.DisplayDialog("JS Alert", message, "OK");
 #endif
         }
     }
     [DllImport("__Internal")]
     private static extern void JSAlert(string text);
+
+
+    /// <summary>
+    /// Displays a JS Confirm for the web browser.
+    /// No Unity Editor emulation (returns false).
+    /// </summary>
+    public bool Confirm(string message)
+    {
+        if (IsWebMode)
+        {
+            return JSConfirm(message);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    [DllImport("__Internal")]
+    private static extern bool JSConfirm(string message);
+
+    /// <summary>
+    /// Displays a JS prompt for the web browser.
+    /// No Unity Editor emulation (returns defaultText).
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="defaultText">Default value</param>
+    /// <returns></returns>
+    public string Prompt(string message, string defaultText)
+    {
+        if (IsWebMode)
+        {
+            return JSPrompt(message, defaultText);
+        }
+        else
+        {
+            return defaultText;
+        }
+    }
+    [DllImport("__Internal")]
+    private static extern string JSPrompt(string message, string value);
 
     /// <summary>
     /// Sets a Property (Lambda) to a dictionary value while converting the value to the choosen type.

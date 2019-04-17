@@ -1,9 +1,14 @@
 mergeInto(LibraryManager.library, 
 {
 
-	JSAlert: function (str)
+	JSAlert: function (message)
 	{
-		window.alert(Pointer_stringify(str));
+		window.alert(Pointer_stringify(message));
+	},
+
+	JSConfirm: function (message)
+	{
+		return window.confirm(Pointer_strify(message));
 	},
 
 	JSCanvasWidth: function () 
@@ -16,4 +21,8 @@ mergeInto(LibraryManager.library,
 		return gameInstance.Module.canvas.style.height;
 	},
 
+	JSPrompt: function (text, value)
+	{
+		return window.prompt(Pointer_stringify(text), Pointer_stringify(value));
+	},
 });
