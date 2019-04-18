@@ -38,6 +38,7 @@ namespace DefaultNamespace
             if (bodySelector.options.Count > 0)
             {
                 listStats();
+                Debugger.log("listStats called");
             }
             else
             {
@@ -49,10 +50,9 @@ namespace DefaultNamespace
         {
             string name = bodySelector.options[bodySelector.value].text;
             Body b = Sim.Bodies.get(name);
-            BaseBody bb = Sim.Bodies.get(name);
-            bodyName.text = bb.Name.ToString();
-            radius.text = bb.Diameter.ToString();
-            mass.text = bb.Mass.ToString();
+            bodyName.text = b.Name;
+            radius.text = b.Diameter.ToString();
+            mass.text = b.Mass.ToString();
             pos.text = b.Pos.ToString();
             viewPort.gameObject.SetActive(false);
             viewPort.gameObject.SetActive(true);

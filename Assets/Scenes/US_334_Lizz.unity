@@ -2404,7 +2404,7 @@ GameObject:
   - component: {fileID: 105884692}
   - component: {fileID: 105884691}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_Stats_Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10167,7 +10167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &258302599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10223,6 +10223,7 @@ MonoBehaviour:
   button: {fileID: 1778816012}
   bodyBase: {fileID: 100000, guid: a332066915af94b4b98e0e1ff3152166, type: 3}
   objName: {fileID: 430055434}
+  mat: {fileID: 1108065389}
   type: {fileID: 2114349790}
   radius: {fileID: 1390563006}
   mass: {fileID: 438668776}
@@ -13452,10 +13453,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraLock: {fileID: 1427217808}
   bodySelector: {fileID: 1521114249}
-  bodyName: {fileID: 0}
-  radius: {fileID: 0}
-  mass: {fileID: 0}
-  pos: {fileID: 0}
+  bodyName: {fileID: 476375138}
+  radius: {fileID: 105884692}
+  mass: {fileID: 1375922847}
+  pos: {fileID: 1280115242}
   viewPort: {fileID: 2117391327}
 --- !u!114 &446231860
 MonoBehaviour:
@@ -14056,7 +14057,7 @@ GameObject:
   - component: {fileID: 476375138}
   - component: {fileID: 476375137}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_Stats_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18136,7 +18137,7 @@ GameObject:
   - component: {fileID: 629513929}
   - component: {fileID: 629513928}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label_Stats_Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31611,7 +31612,7 @@ GameObject:
   - component: {fileID: 1130164305}
   - component: {fileID: 1130164304}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label_Stats_Radius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34183,7 +34184,7 @@ GameObject:
   - component: {fileID: 1280115242}
   - component: {fileID: 1280115241}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_Stats_Pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36499,7 +36500,7 @@ GameObject:
   - component: {fileID: 1375922847}
   - component: {fileID: 1375922846}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_Stats_Mass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47312,7 +47313,7 @@ MonoBehaviour:
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
   m_isInputParsingRequired: 0
-  m_inputSource: 3
+  m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -48182,7 +48183,7 @@ GameObject:
   - component: {fileID: 1731260649}
   - component: {fileID: 1731260648}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label_Stats_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51736,7 +51737,7 @@ GameObject:
   - component: {fileID: 1987741380}
   - component: {fileID: 1987741379}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label_Stats_Mass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
