@@ -14,7 +14,7 @@ public class CapiBody : VisualBody {
             capiActive.setValue(value);
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi(); 
         }
     }
     private SimCapiBoolean capiActive;
@@ -29,7 +29,7 @@ public class CapiBody : VisualBody {
             capiType.setValue(value);
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiEnum<BodyType> capiType;
@@ -44,7 +44,7 @@ public class CapiBody : VisualBody {
             capiMaterial.setValue(value);
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiEnum<BodyMaterial> capiMaterial;
@@ -60,7 +60,7 @@ public class CapiBody : VisualBody {
             capiName.setValue(value);
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiString capiName;
@@ -78,7 +78,7 @@ public class CapiBody : VisualBody {
             capiMass.setValue((float)value);
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiNumber capiMass;
@@ -96,7 +96,7 @@ public class CapiBody : VisualBody {
             capiDiameter.setValue((float)value);
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiNumber capiDiameter;
@@ -114,7 +114,7 @@ public class CapiBody : VisualBody {
             capiInitialPosition.setValue(value);
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiVector capiInitialPosition;
@@ -131,7 +131,7 @@ public class CapiBody : VisualBody {
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
 
             // Set to update Capi to current value in 1 second.
             if (!positionDelayUpdate)
@@ -164,7 +164,7 @@ public class CapiBody : VisualBody {
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
 
             // Set to update Capi to current value in 1 second   
             if (!velocityDelayUpdate)
@@ -196,7 +196,7 @@ public class CapiBody : VisualBody {
             capiRotation.setValue((float)value);
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiNumber capiRotation;

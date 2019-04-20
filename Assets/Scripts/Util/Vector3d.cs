@@ -404,8 +404,13 @@ public class Vector3d
         return !vecA.Equals(vecB);
     }
 
-    public override string ToString() {
-        return String.Format("({0},{1},{2})", axis[0], axis[1], axis[2]);
+    public override string ToString()
+    {
+        return String.Format("{0},{1},{2}", axis[0], axis[1], axis[2]);
+    }
+    public static implicit operator string (Vector3d v)
+    {
+        return v.ToString();
     }
 
     public override bool Equals(object obj)

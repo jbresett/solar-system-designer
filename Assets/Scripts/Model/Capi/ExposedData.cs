@@ -10,9 +10,6 @@ using UnityEngine;
 /// </summary>
 public class ExposedData: Singleton<ExposedData> {
 
-    // The maximum number of prior states stored.
-    private const int PRIOR_STATE_LIMIT = 20;
-
     /// <summary>
     /// Current simulation speed.
     /// </summary>
@@ -25,44 +22,12 @@ public class ExposedData: Singleton<ExposedData> {
     /// </summary>
     public SimCapiString capiFocused;
     
-    /// <summary>
-    /// Initial state for the solar system. State includes all solar system details and 
-    /// related settings (e.g. Simulation running speed).
-    /// </summary>
-    public SimCapiString StartState;
-    /// <summary>
-    /// Current State. Updates after each change while simulation is paused, and after
-    /// pausing.
-    /// </summary>
-    public SimCapiString CurrentState;
-    /// <summary>
-    /// List of previously saved states. A new prior state is added each time the Play button is hit.
-    /// </summary>
-    public List<SimCapiString> PriorStates;
-    private int PriorStateIndex = 0;
+ 
 
     /// <summary>
     /// Sets initial values.
     /// </summary>
     public void Init() {
-        StartState = new SimCapiString("");
-        StartState.expose("State.Start", false, false);
-        StartState.setChangeDelegate(
-            delegate (String value, ChangedBy changedBy)
-            {
-                // Internal updates
-                if (changedBy == ChangedBy.SIM) return;
-                CurrentState.setValue(value);
-                Sim.Instance.State = value;
-            }
-        );
-
-        CurrentState = new SimCapiString("");
-        CurrentState.expose("State.Current", true, false);
-
-        // Intialize prior state list. Individual items are added at run-time.
-        PriorStates = new List<SimCapiString>();
-
         capiPaused = new SimCapiBoolean(Sim.Settings.Paused);
         capiPaused.expose("Speed.Pause", false, false);
         capiPaused.setChangeDelegate(
@@ -120,28 +85,5 @@ public class ExposedData: Singleton<ExposedData> {
         throw new NotImplementedException();
     }
 
-    /// <summary>
-    /// Adds and exposes a state to the prior state list.
-    /// </summary>
-    /// <param name="state"></param>
-    public void addPriorState(string state)
-    {
-        if (StartState.getValue() == "")
-        {
-            StartState.setValue(state);
-        }
 
-        SimCapiString capi = new SimCapiString("");
-        capi.expose("State.History." + PriorStateIndex, false, false);
-        capi.setValue(state);
-        PriorStates.Add(capi);
-        PriorStateIndex++;
-
-        // Remove oldest state if more prior states exist then the PRIOR_STATE_LIMIT.
-        if (PriorStates.Count > PRIOR_STATE_LIMIT)
-        {
-            PriorStates[0].unexpose();
-            PriorStates.RemoveAt(0);
-        }
-    }
 }

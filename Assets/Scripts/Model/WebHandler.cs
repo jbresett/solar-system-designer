@@ -61,7 +61,7 @@ public class WebHandler : Singleton<WebHandler> {
         // Add parameter list
         if (url.IndexOf("?") >= 0)
         { 
-            parameters = Sim.ToDictionary(url.Split(URL_SPLIT, 2)[1]);
+            parameters = State.ToDictionary(url.Split(URL_SPLIT, 2)[1]);
         }
     }
 
@@ -70,10 +70,8 @@ public class WebHandler : Singleton<WebHandler> {
         // Check for Parameters in URL. If found, use for initial state.
         if (Param != null)
         {
-            // Update Capi Setup State with URL values.
-            Sim.Capi.Exposed.StartState.setValue(URLStateString);
             // Update Simulation with URL values.
-            Sim.Instance.State = URLStateString;
+            State.Instance.Current = URLStateString;
         }
     }
 

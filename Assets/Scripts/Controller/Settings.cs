@@ -54,16 +54,16 @@ public class Settings : Singleton<Settings>
                 // If Paused...
                 if (value)
                 {
-                    // Update Capi's current state to system state.
-                    //   Note: Capi's current state doesn't automatically update during playtime 
+                    // Update Capi with any changes from the physics engine.
+                    // Note: Capi's current state doesn't automatically update during playtime 
                     // due to limitied AELP/Server throughput.
-                    Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+                    State.Instance.UpdateCapi();
                 }
-                // If Resumed...
+                // If Played...
                 if (!value)
                 {
-                    // Save current state to Capi's prior state list. 
-                    Sim.Capi.Exposed.addPriorState(Sim.Instance.State);
+                    // Save state to backup list prior to resuming simulation.
+                    State.Instance.Save();
                 }
 
             }
@@ -83,7 +83,7 @@ public class Settings : Singleton<Settings>
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
 
             // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) Sim.Capi.Exposed.CurrentState.setValue(Sim.Instance.State);
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
 
             // Use Highest Ratio possible when setting values.
             SpeedRatio useRatio = SpeedRatio.Second;

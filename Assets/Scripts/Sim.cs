@@ -9,8 +9,7 @@ using UnityEngine;
 /// Sim.(Class) or (Class).Instance
 /// </summary>
 public class Sim : Singleton<Sim> {
-    // Format for appending body details to a State string. {Id, Key, Value}
-    private const string STATE_BODY_APPEND_FMT = "&{0}.{1}={2}";
+
 
     // Frame Rate Tracker
     private float nextUpdate = 0;
@@ -39,10 +38,6 @@ public class Sim : Singleton<Sim> {
         // Set value for FPS
         nextUpdate = Time.time + updateTime;
     }
-
-    void Start () {
-
-	}
 	
 	void Update () {
         frameCount++;
@@ -65,92 +60,14 @@ public class Sim : Singleton<Sim> {
     {
         Settings.Paused = true;
         Event.Clear();
-        State = Capi.Exposed.StartState.getValue();
-    }
-
-
-    public static Dictionary<string, string> ToDictionary(string state)
-    {
-        // Convert Parameters into dictionary.
-        Dictionary<string, string> result = new Dictionary<string, string>();
-
-        foreach (string param in state.Split('&'))
+        if (State.Instance.GetLastSave() != null)
         {
-            // 'Key=Value' pair.
-            string[] pair = param.Split('=');
-
-            // Check for proper array length:
-            // * must have exactly 1 '='
-            // * include both a key and value (neither 0-length).
-            if (pair.Length == 2 && pair[0].Length > 0 && pair[1].Length > 0)
-            {
-                // Convert from escaped URL to standard string.
-                result.Add(WWW.UnEscapeURL(pair[0]), WWW.UnEscapeURL(pair[1]));
-            }
-        }
-        return result;
-    }
-
-
-
-    /// <summary>
-    /// Current state of the simulation, including all active bodies.
-    /// </summary>
-    public string State
-    {
-        get { return GetState(); }
-        set { SetState(value); }
-    }
-
-    private string GetState()
-    {
-        StringBuilder result = new StringBuilder();
-        result.Append("Speed=");
-        result.Append(Sim.Settings.Speed);
-        foreach (Body body in Sim.Bodies.Active)
-        {
-            // Append Basic Details
-            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Name", body.Name.Escape());
-            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Type", body.Type.ToString().Escape());
-            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Material", body.Material.ToString().Escape());
-
-            // Append Internal
-            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Mass", body.Mass);
-            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Diameter", body.Diameter);
-
-            // Append Motion
-            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Rotation", body.Rotation);
-            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Position", body.Position);
-            result.AppendFormat(STATE_BODY_APPEND_FMT, body.Id, "Velocity", body.Velocity);
-        }
-
-        return result.ToString();
-    }
-
-    private void SetState(string state)
-    {
-        Dictionary<string, string> states = ToDictionary(state);
-        Sim.Settings.Speed = int.Parse(states["Speed"]);
-        for (int i = 0; i < Sim.Bodies.All.Length; i++)
-        {
-            Body body = Sim.Bodies.All[i];
-
-            // Deactivates a body before making any changes. 
-            // If no state details exist, body will remain deactivated.
-            body.Active = false;
-            if (states.ContainsKey(i + ".Name"))
-            {
-                body.Name = states[i + ".Name"].UnEscape();
-                body.Type = states[i + ".Type"].UnEscape().Enum<BodyType>();
-                body.Material = states[i + ".Material"].UnEscape().Enum<BodyMaterial>();
-                body.Mass = double.Parse(states[i + ".Mass"]);
-                body.Diameter = double.Parse(states[i + ".Diameter"]);
-                body.Rotation = double.Parse(states[i + ".Rotation"]);
-                body.Position = new Vector3d(states[i + ".Position"]);
-                body.Velocity = new Vector3d(states[i + ".Velocity"]);
-
-                body.Active = true;
-            }
+            State.Instance.Current = State.Instance.GetLastSave();
         }
     }
-}
+
+
+
+
+
+ }

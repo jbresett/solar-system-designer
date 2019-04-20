@@ -28,7 +28,7 @@ public class FileMenu : MonoBehaviour {
             string result = Sim.Web.Prompt("Paste from clipboard.", "");
             if (!string.IsNullOrEmpty(result))
             {
-                Sim.Instance.State = result;
+                State.Instance.Current = result;
             }
         }
         else
@@ -53,7 +53,7 @@ public class FileMenu : MonoBehaviour {
         if (Sim.Web.IsWebMode)
         {
             bool useURL = Sim.Web.Confirm("Include URL ('OK' for Yes, 'Cancel' for no)?");
-            string message = (useURL ? Sim.Web.URL + "?" : "") + Sim.Instance.State;
+            string message = (useURL ? Sim.Web.URL + "?" : "") + State.Instance.Current;
             Sim.Web.Prompt("Copy to Clipboard:", message);
         }
         else
@@ -61,7 +61,7 @@ public class FileMenu : MonoBehaviour {
             ImportPanel.SetActive(false);
             ExportPanel.SetActive(true);
             // Set InputField to current state and focus.
-            ExportText.text = Sim.Instance.State;
+            ExportText.text = State.Instance.Current;
             ExportText.Select();
             ExportText.ActivateInputField();
         }
@@ -72,7 +72,7 @@ public class FileMenu : MonoBehaviour {
     /// </summary>
     public void ImportOkBtnClick()
     {
-        Sim.Instance.State = ImportText.text;
+        State.Instance.Current = ImportText.text;
     }
 
     void Start () {
