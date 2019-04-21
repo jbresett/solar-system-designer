@@ -46,13 +46,15 @@ public class Gravity : MonoBehaviour
             /// we need to know if initial velocity has already been set
             if (!body.isInitialVel)
             {
+                if (bodyList.Count > 1)
+                {
                     ///We need the radius, which is the x position, between the body
                     /// and the body it is most attracted too
                     xDist = body.MostPull.Pos.x - body.Pos.x;
-                    
+
                     ///control variable to protect against unwanted retrograde
                     bool negative = false;
-                    
+
                     ///If the distance calculated is less than zero we will
                     /// multiply the xDist by negative 1 to make positive, so
                     /// that we can protect from a divide by zero error.
@@ -64,18 +66,21 @@ public class Gravity : MonoBehaviour
                         xDist = xDist * -1;
                         negative = true;
                     }
-                    
+
                     /// working in x/z plane we need to set the z velocity to be
                     /// perpendicular to x
                     vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist)));
-                    
+
                     /// here is where retrograde is handled.
                     if (!negative)
                     {
                         vec.z = vec.z * -1;
                     }
+
                     body.Vel = vec;
-                    body.isInitialVel = true;
+                }
+
+                body.isInitialVel = true;
             }
             
         }
