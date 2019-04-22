@@ -79,20 +79,12 @@ public class CameraControls : MonoBehaviour {
             }
         }
 
-        // If no body is selected, select the body closest to (0,0,0)
-        if (body == null)
+        if (body != null)
         {
-            foreach (Body r in Sim.Bodies.Active)
-            {
-                if (body == null || r.Position.magnitude < body.Position.magnitude)
-                {
-                    body = r;
-                }
-            }
+            bodyPos = body.Position.Vec3 * 10;
+            focusOnBody();
         }
-        
-        bodyPos = body.Position.Vec3*10;
-        focusOnBody();
+
         //numBodies = Sim.Bodies.Active.Count;
     }
 
@@ -117,8 +109,11 @@ public class CameraControls : MonoBehaviour {
 //        {
 //            focusMass();
 //        }
-        bodyPos = body.Position.Vec3*10;
-        setCameraPos();
+        if (body != null)
+        {
+            bodyPos = body.Position.Vec3 * 10;
+            setCameraPos();
+        }
     }
 
     /// <summary>
