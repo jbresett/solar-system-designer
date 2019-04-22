@@ -238,7 +238,7 @@ public class CameraControls : MonoBehaviour
     public static void changeBody(String bodyName)
     {
         body = Sim.Bodies.get(bodyName);
-        bodyPos = body.Position.Vec3*PosMult;
+        Sim.selectedBody = body;
         focusOnBody();
     }
 
@@ -246,7 +246,7 @@ public class CameraControls : MonoBehaviour
     {
         Quaternion rotation = Camera.main.transform.rotation;
         Vector3 pos = offset * zoomlevel;
-        Camera.main.transform.position = rotation * pos+bodyPos;
+        Camera.main.transform.position = rotation * pos;
     }
 
     private static void focusOnBody()
@@ -254,8 +254,8 @@ public class CameraControls : MonoBehaviour
         zoomlevel = 2f;
         float zoomBase = (float)body.Diameter * 2.5F;
         Camera.main.transform.rotation = Quaternion.identity;
-        Camera.main.transform.position = bodyPos + Vector3.forward * zoomBase;
-        offset = bodyPos - Camera.main.transform.position;
+        Camera.main.transform.position = Vector3.forward * zoomBase;
+        offset = Vector3.zero - Camera.main.transform.position;
         Debug.Log(offset.magnitude);
     }
     

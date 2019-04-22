@@ -29,6 +29,7 @@ public class Sim : Singleton<Sim> {
     static public SimEventHandler Event { get { return SimEventHandler.Instance; } }
     static public WebHandler Web { get { return WebHandler.Instance; } }
     static public Permissions Perm { get { return Permissions.Instance; } }
+    static public Body selectedBody = null;
 
     /// <summary>
     /// Main Simulation Initiation

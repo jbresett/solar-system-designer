@@ -74,6 +74,11 @@ public class VisualBody : BaseBody {
 
         Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position;
         transform.position += move;
+        if (Sim.selectedBody != null)
+        {
+            Vector3 offset = Sim.selectedBody.Position.Vec3 * POSITION_MULT;
+            transform.position -= offset;
+        }
 
     }
 }
