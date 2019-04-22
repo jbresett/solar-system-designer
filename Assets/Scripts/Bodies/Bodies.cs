@@ -60,12 +60,12 @@ public class Bodies: Singleton<Bodies> {
     }
 
     /// <summary>
-    /// Returns a set of all body values, including empty(null) bodies.
+    /// [Read-Oly]retrives a set of all body values, including empty(null) bodies.
     /// </summary>
     /// <returns></returns>
-    public Body[] getAll()
+    public Body[] All
     {
-        return bodies;
+        get { return bodies; }
     }
 
     /// <summary>
@@ -110,4 +110,7 @@ public class Bodies: Singleton<Bodies> {
     {
         body.gameObject.SetActive(false);
     }
+
+
+
 }

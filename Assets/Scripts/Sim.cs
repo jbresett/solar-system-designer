@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ using UnityEngine;
 /// Sim.(Class) or (Class).Instance
 /// </summary>
 public class Sim : Singleton<Sim> {
+
 
     // Frame Rate Tracker
     private float nextUpdate = 0;
@@ -33,16 +35,9 @@ public class Sim : Singleton<Sim> {
     /// </summary>
     public void Awake()
     {
-        Web.Init();
-
         // Set value for FPS
         nextUpdate = Time.time + updateTime;
-        
     }
-
-    void Start () {
-
-	}
 	
 	void Update () {
         frameCount++;
@@ -63,15 +58,16 @@ public class Sim : Singleton<Sim> {
 
     public void Reset()
     {
-        Sim.Settings.Paused = true;
-        Sim.Event.Clear();
-
-        foreach (Body body in Sim.Bodies.getAll())
+        Settings.Paused = true;
+        Event.Clear();
+        if (State.Instance.GetLastSave() != null)
         {
-            body.Position = body.InitialPosition;
-            body.Velocity = new Vector3d();
-            body.isInitialVel = false;
+            State.Instance.Current = State.Instance.GetLastSave();
         }
     }
 
-}
+
+
+
+
+ }

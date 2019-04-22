@@ -71,6 +71,7 @@ public class VisualBody : BaseBody {
         {
             transform.Rotate((Vector3.up * -(float)Rotation) * (Time.deltaTime * (float)Sim.Settings.Speed), Space.Self);
         }
+
         Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position;
         transform.position += move;
 

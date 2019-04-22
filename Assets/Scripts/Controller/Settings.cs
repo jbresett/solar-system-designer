@@ -40,11 +40,33 @@ public class Settings : Singleton<Settings>
         get { return paused; }
         set {
             paused = value;
+
+            // Update Button Availability
             var ui = speedBar.GetComponent<SpeedUI>();
             ui.pauseButton.interactable = !Sim.Settings.Paused;
             ui.playButton.interactable = Sim.Settings.Paused;
-            if (!Application.isPlaying) return; // No Capi interface during edit mode.
-            Sim.Capi.Exposed.capiPaused.setValue(value);
+            
+            // Update Capi if not in edit mode.
+            if (Application.isPlaying)
+            {
+                Sim.Capi.Exposed.capiPaused.setValue(value);
+
+                // If Paused...
+                if (value)
+                {
+                    // Update Capi with any changes from the physics engine.
+                    // Note: Capi's current state doesn't automatically update during playtime 
+                    // due to limitied AELP/Server throughput.
+                    State.Instance.UpdateCapi();
+                }
+                // If Played...
+                if (!value)
+                {
+                    // Save state to backup list prior to resuming simulation.
+                    State.Instance.Save();
+                }
+
+            }
         }
     }
     [SerializeField]
@@ -59,6 +81,9 @@ public class Settings : Singleton<Settings>
             speedBar.GetComponent<SpeedUI>().UpdateSpeedText();
 
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
 
             // Use Highest Ratio possible when setting values.
             SpeedRatio useRatio = SpeedRatio.Second;

@@ -12,6 +12,9 @@ public class CapiBody : VisualBody {
             base.Active = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiActive.setValue(value);
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi(); 
         }
     }
     private SimCapiBoolean capiActive;
@@ -24,6 +27,9 @@ public class CapiBody : VisualBody {
             base.Type = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiType.setValue(value);
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiEnum<BodyType> capiType;
@@ -36,6 +42,9 @@ public class CapiBody : VisualBody {
             base.Material = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiMaterial.setValue(value);
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiEnum<BodyMaterial> capiMaterial;
@@ -49,6 +58,9 @@ public class CapiBody : VisualBody {
             base.Name = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiName.setValue(value);
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiString capiName;
@@ -64,6 +76,9 @@ public class CapiBody : VisualBody {
             base.Mass = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiMass.setValue((float)value);
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiNumber capiMass;
@@ -79,6 +94,9 @@ public class CapiBody : VisualBody {
             base.Diameter = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiDiameter.setValue((float)value);
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiNumber capiDiameter;
@@ -94,6 +112,9 @@ public class CapiBody : VisualBody {
             base.InitialPosition = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiInitialPosition.setValue(value);
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiVector capiInitialPosition;
@@ -108,7 +129,10 @@ public class CapiBody : VisualBody {
         {
             base.Position = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
-            
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
+
             // Set to update Capi to current value in 1 second.
             if (!positionDelayUpdate)
             {
@@ -138,7 +162,11 @@ public class CapiBody : VisualBody {
         {
             base.Velocity = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
-                                                // Set to update Capi to current value in 1 second.
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
+
+            // Set to update Capi to current value in 1 second   
             if (!velocityDelayUpdate)
             {
                 velocityDelayUpdate = true;
@@ -166,6 +194,9 @@ public class CapiBody : VisualBody {
             base.Rotation = value;
             if (!Application.isPlaying) return; // No Capi interface during edit mode.
             capiRotation.setValue((float)value);
+
+            // Update Capi State immediatly if Simulation is paused.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
         }
     }
     private SimCapiNumber capiRotation;
@@ -179,6 +210,8 @@ public class CapiBody : VisualBody {
 
     public void Init(int id)
     {
+        Id = id;
+
         string baseName = "Body." + id;
 
         capiName = new SimCapiString(name);
@@ -188,7 +221,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    base.Name = value;
+                    Name = value;
                 }
             }
         );
@@ -200,7 +233,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    base.Active = value;
+                    Active = value;
                 }
             }
         );
@@ -212,7 +245,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    base.Type = value;
+                    Type = value;
                 }
             }
         );
@@ -224,7 +257,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    base.Material = value;
+                    Material = value;
                 }
             }
         );
@@ -236,7 +269,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    base.Mass = value;
+                    Mass = value;
                 }
             }
         );
@@ -248,7 +281,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    base.Diameter = value;
+                    Diameter = value;
                 }
             }
         );
@@ -260,7 +293,7 @@ public class CapiBody : VisualBody {
             {
                 if (changedBy == ChangedBy.AELP)
                 {
-                    base.Rotation = value;
+                    Rotation = value;
                 }
             }
         );
