@@ -6,9 +6,11 @@ namespace Controller.UI
 {
     public class InitCloseComps : MonoBehaviour
     {
+
         private string[] menuTags = {"UIMenu"};
         private List<GameObject> menus = new List<GameObject>();
-        private void Start()
+
+        private void Awake()
         {
             GameObject[] gameObjects = Resources.FindObjectsOfTypeAll<GameObject>() ;
             foreach (var go in gameObjects)

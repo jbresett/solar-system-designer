@@ -120,7 +120,7 @@ public class BaseBody : MonoBehaviour {
         set { material = value; }
     }
     [SerializeField]
-    protected BodyMaterial material = BodyMaterial.Sun;
+    protected BodyMaterial material = BodyMaterial.Star_Yellow;
 
     public void Awake()
     {

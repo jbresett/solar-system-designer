@@ -7,7 +7,6 @@ public class PhysicsBody : CapiBody {
     private const double KG_MASS_CONVERT = 5.9722E24; // Earth's Mass in KG.
     private const double M_TO_AU = 1.496E11; //AU represented in meters.
 
-
     /// <summary>
     /// This method is used by the Gravity class to get and set the
     /// celestial object's position.

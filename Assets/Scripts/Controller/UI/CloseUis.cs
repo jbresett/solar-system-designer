@@ -7,7 +7,7 @@ namespace Controller.UI
     {
         public GameObject[] menuList;
 
-        private void OnEnable()
+        private void Start()
         {
             foreach (var menu in menuList)
             {

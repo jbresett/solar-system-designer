@@ -35,7 +35,8 @@ public class VisualBody : BaseBody {
         set
         {
             base.Material = value;
-            Material mat = (Material)Resources.Load(value.ToString(), typeof(Material));
+            Debug.Log("Body/" + value.ToString());
+            Material mat = (Material)Resources.Load("Body/" + value.ToString(), typeof(Material));
             gameObject.GetComponent<MeshRenderer>().material = mat;
         }
     }

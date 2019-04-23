@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
 using Model.Util;
 using TMPro;
@@ -30,6 +31,21 @@ public class InsertInPlace : MonoBehaviour
 
     private UnitType unitType;
 
+
+    public void Awake()
+    {
+        // Load Material List from BodyMaterial.cs
+        List<string> matList = new List<string>();
+        foreach (String name in Enum.GetNames(typeof(BodyMaterial)))
+        {
+            matList.Add(name.Replace("_", ": "));
+        }
+        // Loads BodyMaterials into Material list
+        mat.ClearOptions();
+        mat.AddOptions(matList);
+    }
+
+
     /// <summary>
     /// initializes class and begins listening for mouse click
     /// </summary>
@@ -45,7 +61,6 @@ public class InsertInPlace : MonoBehaviour
     {
         UnitType unit = UnitConverter.unitTypes[type.options[type.value].text.ToLower()];
 
-        Debug.Log(unit);
         GameObject[] comps = GameObject.FindGameObjectsWithTag("Radius");
         foreach (var comp in comps)
         {
@@ -87,12 +102,12 @@ public class InsertInPlace : MonoBehaviour
         Body script = obj.GetComponent<Body>();
         script.Name = objName.text;
 
-        //Get Material Name
-        string matPath = "Body/" + mat.options[mat.value].text;
-        Debugger.log("Mat Path:" + matPath);
+        script.Material = mat.options[mat.value].text.Enum<BodyMaterial>();
+        //string matPath = "Body/" + mat.options[mat.value].text;
+        //Debugger.log("Mat Path:" + matPath);
         //Add Shader to Prefab
-        Material newMat = Resources.Load(matPath, typeof(Material)) as Material;
-        obj.GetComponent<Renderer>().material = newMat;
+        //Material newMat = Resources.Load(matPath, typeof(Material)) as Material;
+        //obj.GetComponent<Renderer>().material = newMat;
 
         try
         {
