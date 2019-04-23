@@ -88,11 +88,11 @@ public class InsertInPlace : MonoBehaviour
         script.Name = objName.text;
 
         //Get Material Name
-        //string material = mat.options[mat.value].text;
-        //Set Path
-        //string localPath = "Assets/Textures/Body/Resources/" + gameObject.name + ".prefab";
+        string matPath = "Body/" + mat.options[mat.value].text;
+        Debugger.log("Mat Path:" + matPath);
         //Add Shader to Prefab
-
+        Material newMat = Resources.Load(matPath, typeof(Material)) as Material;
+        obj.GetComponent<Renderer>().material = newMat;
 
         try
         {
@@ -109,15 +109,7 @@ public class InsertInPlace : MonoBehaviour
             Debugger.log("Invalid Position for Insert. Using base of (0,0,0)");
         }
         script.Position = script.InitialPosition;
-
-        /*try
-        { 
-            script.Velocity = new Vector3d(double.Parse(xVel.text), double.Parse(yVel.text), double.Parse(zVel.text));
-        } catch (Exception) {
-            script.Velocity = new Vector3d(0.0,0.0,0.0);
-            Debugger.log("Invalid Velocity for Insert. Using base of (0,0,0)");
-        }*/
-
+        
         if (double.Parse(radius.text) > 0 || double.Parse(mass.text) > 0 || radius.text != "" || mass.text != "")
         {
             script.Diameter = UnitConverter.convertRadius(double.Parse(radius.text), unitType, UnitType.Earths);
@@ -132,17 +124,8 @@ public class InsertInPlace : MonoBehaviour
             //Set Debugger
             Debugger.log("Invalid Mass and Radius. Value must be greater than 0.");
         }
-
-
-        //script.Type = (BodyType)System.Enum.Parse(typeof(BodyType), type.options[type.value].text);
+        
         script.Type = script.whatAmI();
-
-        //obj.AddComponent<InsertParticleSystem>();
-        //Instantiate(InsertParticleSystem);
-        //InsertParticleSystem.
-        //Instantiate(UseParticleSystem, obj.transform);
-        //particleSystem.transform.parent = obj.transform;
-        //particleSystem.SetActive(true);
     }
 
     /// <summary>
