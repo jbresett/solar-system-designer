@@ -6,9 +6,6 @@ using UnityEngine.UI;
 /// This class is used to display information on a celestial object
 /// when the celestial object is selected via mouse click.
 /// </summary>
-namespace Planets
-{
-
     public class SelectBody : MonoBehaviour
     {
 //        public GameObject selectMenu;
@@ -102,4 +99,3 @@ namespace Planets
 //            
         }
     }
-}
