@@ -86,9 +86,15 @@ public class VisualBody : BaseBody {
     {
         Light light = gameObject.GetComponent<Light>();
         GameObject sunLighting = gameObject.transform.GetChild(1).gameObject;
+        Debug.Log(name + " " + transform.localScale.x);
         if (type == BodyType.Star)
         {
             light.enabled = true;
+            sunLighting.SetActive(true);
+        }
+        else if (transform.localScale.x <= 0.5)
+        {
+            light.enabled = false;
             sunLighting.SetActive(true);
         }
         else
