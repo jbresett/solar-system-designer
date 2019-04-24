@@ -81,4 +81,20 @@ public class VisualBody : BaseBody {
         }
 
     }
+
+    private void OnEnable()
+    {
+        Light light = gameObject.GetComponent<Light>();
+        GameObject sunLighting = gameObject.transform.GetChild(1).gameObject;
+        if (type == BodyType.Star)
+        {
+            light.enabled = true;
+            sunLighting.SetActive(true);
+        }
+        else
+        {
+            light.enabled = false;
+            sunLighting.SetActive(false);
+        }
+    }
 }
