@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class VisualBody : BaseBody {
 
@@ -79,10 +80,10 @@ public class VisualBody : BaseBody {
             Vector3 offset = Sim.selectedBody.Position.Vec3 * POSITION_MULT;
             transform.position -= offset;
         }
-
+        setSunEffects();
     }
 
-    private void OnEnable()
+    private void setSunEffects()
     {
         Light light = gameObject.GetComponent<Light>();
         GameObject sunLighting = gameObject.transform.GetChild(1).gameObject;
