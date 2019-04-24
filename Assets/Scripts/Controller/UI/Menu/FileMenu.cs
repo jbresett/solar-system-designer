@@ -73,6 +73,7 @@ public class FileMenu : MonoBehaviour {
     public void ImportOkBtnClick()
     {
         State.Instance.Current = ImportText.text;
+        ImportPanel.SetActive(false);
     }
 
     void Start () {

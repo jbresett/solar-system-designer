@@ -220,7 +220,6 @@ public class CameraControls : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             dragOriginPos = Input.mousePosition;
-            Debug.Log(dragOriginPos);
         }
         if (Input.GetMouseButtonDown(1))
         {
