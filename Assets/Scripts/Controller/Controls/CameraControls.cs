@@ -253,7 +253,8 @@ public class CameraControls : MonoBehaviour
     {
         zoomlevel = 2f;
         float zoomBase = (float)body.Diameter * 2.5F;
-        Camera.main.transform.rotation = Quaternion.identity;
+        /*Camera.main.transform.rotation = Quaternion.identity;*/
+        Camera.main.transform.rotation = Quaternion.LookRotation(Vector3.down,Vector3.up);
         Camera.main.transform.position = Vector3.forward * zoomBase;
         offset = Vector3.zero - Camera.main.transform.position;
         Debug.Log(offset.magnitude);
