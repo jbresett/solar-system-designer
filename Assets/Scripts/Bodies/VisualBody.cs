@@ -91,6 +91,11 @@ public class VisualBody : BaseBody {
             light.enabled = true;
             sunLighting.SetActive(true);
         }
+        else if (transform.localScale.x <= 0.5)
+        {
+            light.enabled = false;
+            sunLighting.SetActive(true);
+        }
         else
         {
             light.enabled = false;

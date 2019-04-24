@@ -99,7 +99,7 @@ public class Settings : Singleton<Settings>
         }
     }
     [SerializeField]
-    protected double speed = (float)SpeedRatio.Day;
+    protected double speed = (float)SpeedRatio.Hour;
 
     // Initialize with Default Values.
     [SerializeField]

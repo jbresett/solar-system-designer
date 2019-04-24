@@ -9,7 +9,7 @@ public class Collision: MonoBehaviour
 
     public static bool isCollided(Body b1, Body b2)
     {
-        double totalRadius = (b1.Diameter + b2.Diameter) / 2;
+        double totalRadius = (b1.Diameter + b2.Diameter) / 4;
         Vector3d p1 = b1.Position;
         Vector3d p2 = b2.Position;
         return totalRadius >= (p2 - p1).magnitude * AU_TO_E;
