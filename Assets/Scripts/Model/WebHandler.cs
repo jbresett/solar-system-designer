@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using System.Text;
 
 /// <summary>
 /// Handles interactions with the Web-Server (http and JavaScript).
@@ -9,74 +10,71 @@ using System.Runtime.InteropServices;
 /// Note: To call functions from Java: SendMessage(GameObject, Function, Parameters);
 /// </summary>
 public class WebHandler : Singleton<WebHandler> {
+    // URL Split Character
+    private static char[] URL_SPLIT = { '?' };
 
     // Invalid Parameeter Message. {Parameter}.
     private const string INVALID_PARAM_MSG = "Invalid Parameter: {0} is not a 'key=value' pair.";
 
     // URL Parameters.
-    Dictionary<string, string> parameters = new Dictionary<string, string>();
+    /// <summary>
+    /// A dictionary of parameters found in the URL.
+    /// If no parameters are set, Param will return a null.
+    /// </summary>
     public Dictionary<string, string> Param { get { return parameters; } }
+    private Dictionary<string, string> parameters;
+
+    public string URL
+    {
+        get { return Application.absoluteURL.Split(URL_SPLIT, 2)[0]; }
+    }
+
+    /// <summary>
+    /// URL Parameters in string format.
+    /// If there are no parameters, get returns "";
+    /// </summary>
+    public string URLStateString {
+        get
+        {
+            if (!Application.absoluteURL.Contains("?")) return "";
+            return Application.absoluteURL.Split(URL_SPLIT, 2)[1];
+        }
+    }
+
+    /// <summary>
+    /// Generates a URL based on the current URL and a system state string.
+    /// </summary>
+    /// <param name="dictionary">dictionary to use. If null or not set, the current dictionary will be used.</param>
+    /// <returns></returns>
+    public string ToUrl(string state)
+    {
+        return Application.absoluteURL.Split('?')[0] + "?" + state;
+    }
 
     /// <summary>
     /// Retrives any URL parameters on initiation.
     /// </summary>
-    public void Init() {
-
+    public void Awake() {
         // Get Application URL
         string url = Application.absoluteURL;
 
-        // Return if there are no parameters to add.
-        if (url.IndexOf("?") == -1) return;
-
-        // Get everything after the '?'.
-        string paramStr = url.Split('?')[1];
-
-        // Convert Parameters into dictionary.
-        foreach (string param in paramStr.Split('&'))
-        {
-            // 'Key=Value' pair.
-            string[] pair = param.Split('=');
-
-            // Check for proper array length:
-            // * must have exactly 1 '='
-            // * include both a key and value (neither 0-length).
-            if (pair.Length == 2 && pair[0].Length > 0 && pair[1].Length > 0)
-            {
-                // Convert from escaped URL to standard string.
-                parameters.Add(WWW.UnEscapeURL(pair[0]), WWW.UnEscapeURL(pair[1]));
-            }
-            // Ignore incorrect array length (non 'key=value' string).
-            else
-            {
-                Debug.Log(string.Format(INVALID_PARAM_MSG, param));
-            }
+        // Add parameter list
+        if (url.IndexOf("?") >= 0)
+        { 
+            parameters = State.ToDictionary(url.Split(URL_SPLIT, 2)[1]);
         }
-
     }
 
-    /// <summary>
-    /// Generates a URL based on the current URL and a dictionary of paremeters.
-    /// 
-    /// Used to turn an solar systems generated within the Sim to a URL format.
-    /// </summary>
-    /// <param name="dictionary">dictionary to use. If null or not set, the current dictionary will be used.</param>
-    /// <returns></returns>
-    public string ToUrl(Dictionary<string, string> dictionary = null)
+    public void Start()
     {
-        // Use default if null.
-        if (dictionary == null) dictionary = parameters;
-
-        // Base URL.
-        string url = Application.absoluteURL.Split('?')[0] + "?";
-
-        // Add each parameters.
-        foreach (KeyValuePair<string, string> pair in dictionary)
+        // Check for Parameters in URL. If found, use for initial state.
+        if (Param != null)
         {
-            url += WWW.EscapeURL(pair.Key) + "&" + WWW.EscapeURL(pair.Value);
+            // Update Simulation with URL values.
+            State.Instance.Current = URLStateString;
         }
-
-        return url;
     }
+
 
     /// <summary>
     /// [Read-only Property]: If the platform running in WebGLPlayer.
@@ -100,22 +98,77 @@ public class WebHandler : Singleton<WebHandler> {
     /// <summary>
     /// Sends a JS message.alert(text) to the web browser.  Emulated in Unity Editor.
     /// </summary>
-    /// <param name="text">Text MEssage</param>
-    public void Alert(string text)
+    /// <param name="message">Text MEssage</param>
+    public void Alert(string message)
     {
         if (IsWebMode)
         {
-            JSAlert(text);
+            JSAlert(message);
         }
         else
         {
-            // UnityEdtior alert emulation.  Will 
+            // UnityEdtior alert emulation.
 #if UNITY_EDITOR
-            UnityEditor.EditorUtility.DisplayDialog("JS Alert", text, "OK");
+            UnityEditor.EditorUtility.DisplayDialog("JS Alert", message, "OK");
 #endif
         }
     }
     [DllImport("__Internal")]
     private static extern void JSAlert(string text);
 
+
+    /// <summary>
+    /// Displays a JS Confirm for the web browser.
+    /// No Unity Editor emulation (returns false).
+    /// </summary>
+    public bool Confirm(string message)
+    {
+        if (IsWebMode)
+        {
+            return JSConfirm(message);
+        }
+        else
+        {
+            return false;
+        }
+    }
+    [DllImport("__Internal")]
+    private static extern bool JSConfirm(string message);
+
+    /// <summary>
+    /// Displays a JS prompt for the web browser.
+    /// No Unity Editor emulation (returns defaultText).
+    /// </summary>
+    /// <param name="message"></param>
+    /// <param name="defaultText">Default value</param>
+    /// <returns></returns>
+    public string Prompt(string message, string defaultText)
+    {
+        if (IsWebMode)
+        {
+            return JSPrompt(message, defaultText);
+        }
+        else
+        {
+            return defaultText;
+        }
+    }
+    [DllImport("__Internal")]
+    private static extern string JSPrompt(string message, string defaultText);
+
+    /// <summary>
+    /// Sets a Property (Lambda) to a dictionary value while converting the value to the choosen type.
+    /// </summary>
+    /// <typeparam name="T">Type to convert to</typeparam>
+    /// <param name="setter">Lambda setter. Use: <code>v => Property = v</code></param>
+    /// <param name="dictionary">Dictionary</param>
+    /// <param name="key">Key value</param>
+    /// <returns>True if the property was set, false if the key does not exist.</returns>
+    private bool SetProperty<T>(System.Action<T> setter, Dictionary<string, string> dictionary, string key)
+    {
+        if (!dictionary.ContainsKey(key)) return false;
+        T value = (T)System.Convert.ChangeType(dictionary[key], typeof(T));
+        setter(value);
+        return true;
+    }
 }

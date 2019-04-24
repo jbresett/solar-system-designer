@@ -41,7 +41,6 @@ public class SpeedUI : MonoBehaviour {
     public void OnButtonPress(bool Paused)
     {
         Sim.Settings.Paused = Paused;
-        // Swaps which button is enabled.
     }
 
     /// <summary>

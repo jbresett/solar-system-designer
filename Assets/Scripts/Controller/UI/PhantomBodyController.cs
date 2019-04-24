@@ -7,6 +7,9 @@ namespace Controller.UI
 {
     public class PhantomBodyController : MonoBehaviour
     {
+        private const float POSITION_MULT = 30492.3f;
+        private const double SIZE_MULT = .1;
+        
         public TMP_InputField Xpos
         {
             get { return xpos; }
@@ -93,11 +96,11 @@ namespace Controller.UI
 
         private Vector3 scalePos(Vector3 pos)
         {
-            return pos*10;
+            return pos*POSITION_MULT;
         }
         private double scaleSize(double size)
         {
-            return UnitConverter.convertRadius(size,unitScale,UnitType.Earths);
+            return UnitConverter.convertRadius(size,unitScale,UnitType.Earths)*SIZE_MULT;
         }
     }
 

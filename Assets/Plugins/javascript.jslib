@@ -1,9 +1,14 @@
 mergeInto(LibraryManager.library, 
 {
 
-	JSAlert: function (str)
+	JSAlert: function (message)
 	{
-		window.alert(Pointer_stringify(str));
+		window.alert(Pointer_stringify(message));
+	},
+
+	JSConfirm: function (message)
+	{
+		return window.confirm(Pointer_stringify(message));
 	},
 
 	JSCanvasWidth: function () 
@@ -14,6 +19,16 @@ mergeInto(LibraryManager.library,
 	JSCanvasHeight: function () 
 	{
 		return gameInstance.Module.canvas.style.height;
+	},
+
+	JSPrompt: function (message, defaultText)
+	{
+		var result = window.prompt(Pointer_stringify(message), Pointer_stringify(defaultText));
+		if (result === null) return null;
+		var bufferSize = lengthBytesUTF8(result) + 1;
+		var buffer = gameInstance.Module._malloc(bufferSize);
+		stringToUTF8(result, buffer, bufferSize);
+		return buffer;
 	},
 
 });

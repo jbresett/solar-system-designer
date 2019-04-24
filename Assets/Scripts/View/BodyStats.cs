@@ -22,7 +22,7 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            Body[] bodies = Sim.Bodies.getAll();
+            Body[] bodies = Sim.Bodies.All;
             List<string> options = new List<string>();
             Body b;
             for (int i = 0; i < bodies.Length; i++)

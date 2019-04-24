@@ -21,6 +21,8 @@ public class ExposedData: Singleton<ExposedData> {
     /// Body that currently has focus. Empty string ("") means no body is currently selected (free camera).
     /// </summary>
     public SimCapiString capiFocused;
+    
+ 
 
     /// <summary>
     /// Sets initial values.
@@ -76,12 +78,12 @@ public class ExposedData: Singleton<ExposedData> {
                 }
             }
         );
-
     }
 
     internal void BodyUpdate(PhysicsBody physicsBody)
     {
         throw new NotImplementedException();
     }
+
 
 }

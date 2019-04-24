@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-// Extension Utilities.
+// Extension Utility for the String class.
 public static class StringExtension
 {
 
@@ -33,9 +33,35 @@ public static class StringExtension
         return (T)System.Enum.Parse(typeof(T), input);
     }
 
-    public static string IfBlank(this string input, string alternate)
+    /// <summary>
+    /// Returns the alternate value if the first is null or blank.
+    /// </summary>
+    /// <param name="primary">Primary value.</param>
+    /// <param name="alternate">Alternate value. Null or blank alternates will still be returned.</param>
+    /// <returns></returns>
+    public static string IfBlank(this string primary, string alternate)
     {
-        return string.IsNullOrEmpty(input) ? alternate : input;
+        return string.IsNullOrEmpty(primary) ? alternate : primary;
+    }
+
+    /// <summary>
+    /// Converts normal text to a URL friendly escape format.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static string Escape(this string input)
+    {
+        return WWW.EscapeURL(input);
+    }
+
+    /// <summary>
+    /// Converts a URL friendly escape format back to normal text.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <returns></returns>
+    public static string UnEscape(this string input)
+    {
+        return WWW.UnEscapeURL(input);
     }
 
 }

@@ -141,6 +141,26 @@ public class InsertInPlace : MonoBehaviour
         }
         
         script.Type = script.whatAmI();
+
+        if (script.Type == BodyType.Star)
+        {
+            if (obj.GetComponent<Light>() != null)
+            {
+                
+            }
+            else
+            {
+                Light light = obj.AddComponent<Light>() as Light;
+                light.range = 1000000;
+            }
+        }
+
+        //obj.AddComponent<InsertParticleSystem>();
+        //Instantiate(InsertParticleSystem);
+        //InsertParticleSystem.
+        //Instantiate(UseParticleSystem, obj.transform);
+        //particleSystem.transform.parent = obj.transform;
+        //particleSystem.SetActive(true);
     }
 
     /// <summary>

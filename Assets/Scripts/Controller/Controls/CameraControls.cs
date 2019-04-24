@@ -10,7 +10,10 @@ using UnityEngine.UI;
 /// <summary>
 /// This class handles all movement and control of the camera
 /// </summary>
-public class CameraControls : MonoBehaviour {
+public class CameraControls : MonoBehaviour
+{
+
+    private static float PosMult = 30492.3f;
 
     /// <summary>
     /// Method used to enable and disable the keyboard
@@ -196,20 +199,6 @@ public class CameraControls : MonoBehaviour {
     {
         zoomlevel += Input.mouseScrollDelta.y*mouseZoomFactor;
         
-        
-        /*if (Input.GetMouseButton(0) && !dragOriginPos.Equals(Vector3.negativeInfinity))
-        {
-            Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginPos);
-            pos.y = -pos.y;
-            pos.x = -pos.x;
-            Camera.main.transform.Translate(pos*dragSpeed);
-            Debug.Log(pos);
-            return;
-        }
-        else
-        {
-            dragOriginPos = Vector3.negativeInfinity;
-        }*/
         if (Input.GetMouseButton(1) && !dragOriginRot.Equals(Vector3.negativeInfinity))
         {
             Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition - dragOriginRot)*-dragSpeed;
@@ -243,43 +232,26 @@ public class CameraControls : MonoBehaviour {
     public static void changeBody(String bodyName)
     {
         body = Sim.Bodies.get(bodyName);
-        bodyPos = body.Position.Vec3*10;
+        Sim.selectedBody = body;
         focusOnBody();
     }
-    
-//    [SerializeField]
-//    private int numBodies = 0;
-//    private void focusMass()
-//    {
-//        double mostMass = 0;
-//        foreach (Body bod in Sim.Bodies.Active)
-//        {
-//            if (bod.KG > mostMass)
-//            {
-//                mostMass = bod.KG;
-//                body = bod;
-//            }
-//        }
-//        
-//        bodyPos = body.Position.Vec3*10;
-//        focusOnBody();
-//    }
 
     private static void setCameraPos()
     {
         Quaternion rotation = Camera.main.transform.rotation;
         Vector3 pos = offset * zoomlevel;
-        Camera.main.transform.position = rotation * pos+bodyPos;
+        Camera.main.transform.position = rotation * pos;
     }
 
     private static void focusOnBody()
     {
         zoomlevel = 2f;
-        float zoomBase = (float)body.Diameter * 50F;
-        Camera.main.transform.rotation = Quaternion.identity;
-        Camera.main.transform.position = bodyPos + Vector3.forward * zoomBase;
-        offset = bodyPos - Camera.main.transform.position;
-        Debug.Log("Body changed to:" + body.name);
+        float zoomBase = (float)body.Diameter * 2.5F;
+        /*Camera.main.transform.rotation = Quaternion.identity;*/
+        Camera.main.transform.rotation = Quaternion.LookRotation(Vector3.down,Vector3.up);
+        Camera.main.transform.position = Vector3.forward * zoomBase;
+        offset = Vector3.zero - Camera.main.transform.position;
+        Debug.Log(offset.magnitude);
     }
     
 

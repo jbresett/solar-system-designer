@@ -5,8 +5,8 @@ using UnityEngine;
 public class VisualBody : BaseBody {
 
     // Multiplers for standard Earths -> Unity
-    static public float POSITION_MULT = 10f;   // 1 AU = 10 Unity units.
-    static public float SIZE_MULT = 1f;     // 1 Earth = 1 Unity units.
+    static public float POSITION_MULT = 30492.3f;
+    static public float SIZE_MULT = .1f;     // 1 Earth = ~130 Unity units.
     
     new public Vector3d Position {
         get { return position; }
@@ -72,8 +72,30 @@ public class VisualBody : BaseBody {
         {
             transform.Rotate((Vector3.up * -(float)Rotation) * (Time.deltaTime * (float)Sim.Settings.Speed), Space.Self);
         }
+
         Vector3 move = (Position.Vec3 * POSITION_MULT) - transform.position;
         transform.position += move;
+        if (Sim.selectedBody != null)
+        {
+            Vector3 offset = Sim.selectedBody.Position.Vec3 * POSITION_MULT;
+            transform.position -= offset;
+        }
 
+    }
+
+    private void OnEnable()
+    {
+        Light light = gameObject.GetComponent<Light>();
+        GameObject sunLighting = gameObject.transform.GetChild(1).gameObject;
+        if (type == BodyType.Star)
+        {
+            light.enabled = true;
+            sunLighting.SetActive(true);
+        }
+        else
+        {
+            light.enabled = false;
+            sunLighting.SetActive(false);
+        }
     }
 }
