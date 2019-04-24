@@ -261,8 +261,8 @@ public class Gravity : MonoBehaviour
             // Now that we have calculated the acceleration, we can use the Kinematic equations to solve for a
             // new velocity, equation: Velocity final = velocity initial + acceleration * delta time.
             // We use Sim.Settings.Speed, which simulates elapsed time.
-            velocity.x += xAcceleration* Sim.Settings.Speed;
-            velocity.z += zAcceleration * Sim.Settings.Speed;
+            velocity.x += xAcceleration* Sim.Settings.Speed*time;
+            velocity.z += zAcceleration * Sim.Settings.Speed*time;
             
             // Since our simulation doesnt deal in the Y direction, I am just setting keeping the y velocity the sam
             // to avoid errors that may occur.
@@ -295,17 +295,22 @@ public class Gravity : MonoBehaviour
             // find our new position, we need to multiply the velocity by time, which will cancel out the seconds
             // and yield a value in meters, which will then be added to the original position, creating a new
             // position
-            newPos = new Vector3d(bod.Pos.x + bod.Vel.x * Sim.Settings.Speed, bod.Pos.y, 
-                bod.Pos.z + bod.Vel.z * Sim.Settings.Speed);
+            newPos = new Vector3d(bod.Pos.x + bod.Vel.x * Sim.Settings.Speed*time, bod.Pos.y, 
+                bod.Pos.z + bod.Vel.z * Sim.Settings.Speed*time);
             
             // we then set the new position to the associated body.
             bod.Pos = newPos;
         }
     }
-
+    
+    // we need a time variable so that we can scale the time with the 
+    // update functions so that our system will move with real time.
+    public double time;
     // Update is called once per frame
     public void Update()
     {
+        // setting the time to how long it took a frame to execute
+        time = Time.deltaTime;
         if (!Sim.Settings.Paused)
         {
             calcPosition();
