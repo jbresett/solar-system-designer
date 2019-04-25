@@ -13,6 +13,7 @@ namespace DefaultNamespace
         public TextMeshProUGUI radius;
         public TextMeshProUGUI mass;
         public TextMeshProUGUI pos;
+        public TextMeshProUGUI des;
         public Component viewPort;
 
         private void Start()
@@ -55,6 +56,12 @@ namespace DefaultNamespace
                 radius.text = b.Diameter.ToString();
                 mass.text = b.Mass.ToString();
                 pos.text = b.Pos.ToString();
+                if (!b.gameObject.activeSelf) {
+                    des.text = "Yes";
+                } else {
+                    des.text = "No";
+                }
+                
                 viewPort.gameObject.SetActive(false);
                 viewPort.gameObject.SetActive(true);
             } else

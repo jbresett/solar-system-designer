@@ -32,8 +32,6 @@ public class Collision: MonoBehaviour
                     GameObject effect = UnityEngine.Object.Instantiate(Sim.Config.CollisionEffect, Sim.Config.BodyContainer.transform);
                     effect.GetComponent<MeshRenderer>().material.color = new Color32(120,98,98,255);
                     effect.transform.position = body1.transform.position;
-                    //Destroy(body1);
-                    //Destroy(body2);
                 }
             }
         }
