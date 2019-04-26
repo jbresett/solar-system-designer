@@ -31,7 +31,14 @@ namespace DefaultNamespace
             {
                 if(listEmptied)
                     updateView();
-                listStats();
+                try
+                {
+                    listStats();
+                }
+                catch (System.Exception)
+                {
+                    bodyName.text = "Invalid Body";
+                }
             }
             else
             {
@@ -59,6 +66,7 @@ namespace DefaultNamespace
         public void listStats()
         {
             string name = bodySelector.options[bodySelector.value].text;
+
             if (GameObject.Find(name) != null)
             {
                 Body b = Sim.Bodies.get(name);
@@ -84,7 +92,15 @@ namespace DefaultNamespace
 
         private void updateView()
         {
-            CameraControls.changeBody(bodySelector.options[bodySelector.value].text);
+            try
+            {
+                CameraControls.changeBody(bodySelector.options[bodySelector.value].text);
+            }
+            catch (System.Exception)
+            {
+                // No Bodies to View. Ignore, will be refreshed once bodies are loaded.
+            }
+            
         }
     }
 }
