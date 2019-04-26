@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PhysicsBody : CapiBody {
@@ -94,8 +95,15 @@ public class PhysicsBody : CapiBody {
 
     public BodyType whatAmI()
     {
-        //TODO Implement logic to determine body classification
-        return BodyType.Star;
+        //todo Replace with proper classification system.
+        
+        //Hack to get star/nonstar differentiation for demo, REPLACE.
+        BodyMaterial[] starTypeBodyMaterials =
+        {
+            BodyMaterial.Star_Blue, BodyMaterial.Star_Orange, BodyMaterial.Star_Red, BodyMaterial.Star_White,
+            BodyMaterial.Star_Yellow
+        };
+        return starTypeBodyMaterials.Contains(material) ? BodyType.Star : BodyType.Planet;
     }
 
 }

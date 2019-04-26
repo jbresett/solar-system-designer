@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using Model.Util;
 using TMPro;
@@ -31,8 +32,10 @@ public class InsertInPlace : MonoBehaviour
 
     private UnitType unitType;
 
+    
 
-    public void Awake()
+
+public void Awake()
     {
         // Load Material List from BodyMaterial.cs
         List<string> matList = new List<string>();
@@ -103,12 +106,9 @@ public class InsertInPlace : MonoBehaviour
         script.Name = objName.text;
 
         script.Material = mat.options[mat.value].text.Enum<BodyMaterial>();
-        //string matPath = "Body/" + mat.options[mat.value].text;
-        //Debugger.log("Mat Path:" + matPath);
-        //Add Shader to Prefab
-        //Material newMat = Resources.Load(matPath, typeof(Material)) as Material;
-        //obj.GetComponent<Renderer>().material = newMat;
-
+        
+        
+        
         try
         {
             script.InitialPosition = new Vector3d(double.Parse(xPos.text.IfBlank("0")), double.Parse(yPos.text.IfBlank("0")), double.Parse(zPos.text.IfBlank("0")));
@@ -141,19 +141,6 @@ public class InsertInPlace : MonoBehaviour
         }
         
         script.Type = script.whatAmI();
-
-        if (script.Type == BodyType.Star)
-        {
-            if (obj.GetComponent<Light>() != null)
-            {
-                
-            }
-            else
-            {
-                Light light = obj.AddComponent<Light>() as Light;
-                light.range = 1000000;
-            }
-        }
 
         //obj.AddComponent<InsertParticleSystem>();
         //Instantiate(InsertParticleSystem);
