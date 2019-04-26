@@ -45,15 +45,20 @@ public class Gravity : MonoBehaviour
     ///
     /// This method may not account for binary star systems and may not represent the actual starting
     /// velocity of a planet. This method calculates a guess based on mass and distance.
+    ///
     /// </summary>
     public void calcInitialVelocities()
     {
         // list of all active bodies in the simulation
         List<Body> bodyList = Sim.Bodies.Active;
         
-        // This is the x position distance of a body from another body, which describes how far away
+        // This is the x/y position distance of a body from another body, which describes how far away
         // a body is from another body if you were to draw a line between them
+        //
+        // y distance was newly added to account fo if the solar system is in the (y,x) plane. This does not change
+        // how the actual calculation is performed, but rather prevents divide by zero errors if x is 0;
         double xDist = 0;
+        double yDist = 0;
         
         // Initializing our vector to add a new velocity to a body.
         Vector3d vec = new Vector3d(0, 0, 0);
@@ -70,37 +75,69 @@ public class Gravity : MonoBehaviour
                 // least 2 bodies active in the simulation.
                 if (bodyList.Count > 1)
                 {
-                    // Now we need to determine the x distance, by subtracting the body's x distance to the body
+                    // Now we need to determine the x and y distance, by subtracting the body's x/y distance to the body
                     // it is most attracted to, which is explained and determined in the updateForce() function.
                     xDist = body.MostPull.Pos.x - body.Pos.x;
-
+                    yDist = body.MostPull.Pos.y - body.Pos.y;
+                    
                     // In nature it is uncommon to have retrograde orbits, which means all bodies are orbiting in
                     // one natural direction and the retrograde is a body going in the opposite direction, so for
                     // an auto generated initial velocity, we want to avoid this retrograde orbit. Through the 
                     // calculation of distance, we can have a positive or negative number, so this is just a control
                     // variable to check for that.
-                    bool negative = false;
-
+                    bool xnegative = false;
+                    bool ynegative = false;
+                    
+                    // Newly added to help determine if the equation uses the x or y distance
+                    bool isY = false;
+                    
+                    
                     //If the distance calculated is less than zero we will
                     // multiply the xDist by negative 1 to make positive, so
                     // that we can protect from a divide by zero error.
                     //
                     // we set negative to true so we know this value needs to be
                     // altered after calculation
+                    //
+                    // We also want positive values so we can determine the greater distance
+                    // due to the newly added y distance
                     if (xDist < 0)
                     {
                         xDist = xDist * -1;
-                        negative = true;
+                        xnegative = true;
                     }
-
+                    if (yDist < 0)
+                    {
+                        yDist = yDist * -1;
+                        ynegative = true;
+                    }
+                    
+                    // Comparing the distance to determine if x or y will be used.
+                    if (xDist < yDist)
+                    {
+                        isY = true;
+                    }
                     // For our initial velocity equations, we are only giving it a z direction for initial
                     // velocity, once in the updateVelocity() function, both x and z velocity will be updated in
                     // accordance with the body and force applied. 
                     // Equation used: initial velocity = sqrt((gravity * Mass of large body)/distance))
-                    vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist)));
-
+                    //
+                    // Because of the newly added y distance we need control, which equation to use.
+                    if (!isY)
+                    {
+                        vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (xDist)));
+                    }
+                    else
+                    {
+                        vec.z = (Math.Sqrt((g * (body.MostPull.KG)) / (yDist)));
+                    }
+    
                     // here is where retrograde is handled.
-                    if (!negative)
+                    if (!xnegative && !isY)
+                    {
+                        vec.z = vec.z * -1;
+                    }
+                    else if(!ynegative && isY)
                     {
                         vec.z = vec.z * -1;
                     }
@@ -132,6 +169,14 @@ public class Gravity : MonoBehaviour
         // to the body
         Vector3d force;
         
+        // Recently added the ability to calculate the force applied in the y direction
+        // This will allow an accurate representation of a solar system built in the 
+        // (x,z) plane and the (y,x) plane. Calculations between these planes, such as varied x,y,z
+        // positions will still form orbits, need a physics expert to determine the accuracy.
+        double x = 0;
+        double y = 0;
+        
+        
         // For the gravitational force equation we need to know the distance
         // of the body to the other body and since we have a 3 dimensional position
         // we need to take the magnitude of the distance to yield a single double precision
@@ -139,6 +184,18 @@ public class Gravity : MonoBehaviour
         Vector3d distance = pullingBody.Pos - currentBody.Pos;
         double distMag = distance.magnitude;
         
+        // setting variables so we can determine the larger distance.
+        x = distance.x;
+        y = distance.y;
+        
+        if (x < 0)
+        {
+            x = x * -1;
+        }
+        if (y < 0)
+        {
+            y= y * -1;
+        }
         // As per the gravitational force equation
         // force = (gravity * mass1 * mass2)/ distance^2
         double aForce = (g * currentBody.KG * pullingBody.KG) / (distMag * distMag);
@@ -152,10 +209,28 @@ public class Gravity : MonoBehaviour
         // Now to find the angle we can take the opposite/adjacent for the tangent, which is z/x then the arctangent of
         // that value to get the angle in radians (Have to use Atan2, because atan is only quadrents 1 and 3, so this
         // will expand to cover all angles).
-        double radians = Math.Atan2(distance.z, distance.x);
+        double radianszx = Math.Atan2(distance.z, distance.x);
+        double radiansyx = Math.Atan2(distance.y, distance.x);
         
-        // Now we find fx and fz which is simply the cosine for z and sin for z, multiplied by the force.
-        force = new Vector3d(Math.Cos(radians) * aForce, 0, Math.Sin(radians) * aForce);
+        // Recently added to account for the y direction, this is basically the same as above except y is 
+        // calculated as if it were x and x if it were y.  This way we can determine the proper angle in 
+        // the (y,x) plane.
+        double radianszy = Math.Atan2(distance.z, distance.y);
+        double radiansxy = Math.Atan2(distance.x, distance.y);
+        
+        // we are determining how the force is calculated by, which plane we are in.
+        if (x >= y)
+        {
+            // Now we find fx and fz which is simply the cosine for z and sin for z, multiplied by the force.
+            force = new Vector3d(Math.Cos(radianszx) * aForce, Math.Sin(radiansyx) * aForce,
+                Math.Sin(radianszx) * aForce);
+        }
+        else
+        {
+            // we are doing the opposite to account for the yx plane as we did with the angle.
+            force = new Vector3d(Math.Sin(radiansxy) * aForce, Math.Cos(radiansxy) * aForce,
+                Math.Sin(radianszy) * aForce);
+        }
 
         return force;
     }
@@ -244,6 +319,7 @@ public class Gravity : MonoBehaviour
         // Initializing Acceleration 
         double xAcceleration = 0;
         double zAcceleration = 0;
+        double yAcceleration = 0;
         
         // Now we need to loop through all bodies to determine velocities
         foreach (Body bod in bodies)
@@ -257,16 +333,14 @@ public class Gravity : MonoBehaviour
             // of the body.
             xAcceleration = bod.totalForce.x / bod.KG;
             zAcceleration = bod.totalForce.z / bod.KG;
+            yAcceleration = bod.totalForce.y / bod.KG;
             
             // Now that we have calculated the acceleration, we can use the Kinematic equations to solve for a
             // new velocity, equation: Velocity final = velocity initial + acceleration * delta time.
             // We use Sim.Settings.Speed, which simulates elapsed time.
             velocity.x += xAcceleration* Sim.Settings.Speed*time;
             velocity.z += zAcceleration * Sim.Settings.Speed*time;
-            
-            // Since our simulation doesnt deal in the Y direction, I am just setting keeping the y velocity the sam
-            // to avoid errors that may occur.
-            velocity.y = bod.Vel.y;
+            velocity.y += yAcceleration * Sim.Settings.Speed*time;
             
             // Now we set the new velocity to the current body's velocity
             bod.Vel = velocity;
@@ -295,7 +369,8 @@ public class Gravity : MonoBehaviour
             // find our new position, we need to multiply the velocity by time, which will cancel out the seconds
             // and yield a value in meters, which will then be added to the original position, creating a new
             // position
-            newPos = new Vector3d(bod.Pos.x + bod.Vel.x * Sim.Settings.Speed*time, bod.Pos.y, 
+            newPos = new Vector3d(bod.Pos.x + bod.Vel.x * Sim.Settings.Speed*time, 
+                bod.Pos.y + bod.Vel.y * Sim.Settings.Speed*time, 
                 bod.Pos.z + bod.Vel.z * Sim.Settings.Speed*time);
             
             // we then set the new position to the associated body.
