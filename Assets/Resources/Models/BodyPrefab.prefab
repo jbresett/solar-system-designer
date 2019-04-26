@@ -174,7 +174,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 1e+10
+  m_Range: 1000000
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -232,17 +232,13 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-  initialPosition:
-    axis:
-    - 0
-    - 0
-    - 0
   rotation: 0
   velocity:
     axis:
     - 0
     - 0
     - 0
+  initialVelocity: 0
   material: 7
   isSelected: 0
   force:
@@ -251,7 +247,6 @@ MonoBehaviour:
     - 0
     - 0
   mostPull: {fileID: 0}
-  initialVelocity: 0
 --- !u!198 &198800412962475944
 ParticleSystem:
   m_ObjectHideFlags: 1

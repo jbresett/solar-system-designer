@@ -13192,6 +13192,11 @@ Prefab:
       propertyPath: InitialModule.maxNumParticles
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 108605467216914190, guid: df8d36286c0018b47b808d29000608cd,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df8d36286c0018b47b808d29000608cd, type: 2}
   m_IsPrefabAsset: 0
@@ -25944,6 +25949,11 @@ Prefab:
       propertyPath: rotation
       value: 0.0005
       objectReference: {fileID: 0}
+    - target: {fileID: 108605467216914190, guid: df8d36286c0018b47b808d29000608cd,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df8d36286c0018b47b808d29000608cd, type: 2}
   m_IsPrefabAsset: 0
@@ -29590,6 +29600,11 @@ Prefab:
         type: 2}
       propertyPath: rotation
       value: 0.0005
+      objectReference: {fileID: 0}
+    - target: {fileID: 108605467216914190, guid: df8d36286c0018b47b808d29000608cd,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df8d36286c0018b47b808d29000608cd, type: 2}
@@ -43723,8 +43738,6 @@ MonoBehaviour:
     - m_Text: Earths
       m_Image: {fileID: 0}
     - m_Text: Earth Moons
-      m_Image: {fileID: 0}
-    - m_Text: Jupiters
       m_Image: {fileID: 0}
     - m_Text: Suns
       m_Image: {fileID: 0}
