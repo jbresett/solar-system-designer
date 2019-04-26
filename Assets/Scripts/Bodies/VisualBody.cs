@@ -92,7 +92,6 @@ public class VisualBody : BaseBody {
         {
             float mult = Math.Max(1, (Camera.main.transform.position - transform.position).magnitude / 50);
             size = size * mult;
-            Debug.Log(Name + ":" + mult);
         }
         gameObject.transform.localScale = new Vector3(size, size, size);
     }
