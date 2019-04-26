@@ -44,6 +44,11 @@ public static class StringExtension
         return string.IsNullOrEmpty(primary) ? alternate : primary;
     }
 
+    public static string IfBlankOrDot(this string primary, string alternative)
+    {
+        return (string.IsNullOrEmpty(primary) || primary == ".") ? alternative : primary;
+    }
+
     /// <summary>
     /// Converts normal text to a URL friendly escape format.
     /// </summary>

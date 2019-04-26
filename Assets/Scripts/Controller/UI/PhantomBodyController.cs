@@ -88,10 +88,10 @@ namespace Controller.UI
         }
         private void updatePhantom()
         {
-            Vector3 pos = scalePos(new Vector3(float.Parse(xpos.text.IfBlank("0")), 
-                float.Parse(ypos.text.IfBlank("0")), float.Parse(zpos.text.IfBlank("0"))));
+            Vector3 pos = scalePos(new Vector3(float.Parse(xpos.text.IfBlankOrDot("0")), 
+                float.Parse(ypos.text.IfBlankOrDot("0")), float.Parse(zpos.text.IfBlankOrDot("0"))));
             bodyPrefab.transform.position = pos;
-            bodyPrefab.transform.localScale = Vector3.one * (float)scaleSize(double.Parse(size.text.IfBlank("0")));
+            bodyPrefab.transform.localScale = Vector3.one * (float)scaleSize(double.Parse(size.text.IfBlankOrDot("0")));
         }
 
         private Vector3 scalePos(Vector3 pos)
