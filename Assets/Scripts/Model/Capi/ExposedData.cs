@@ -18,13 +18,6 @@ public class ExposedData: Singleton<ExposedData> {
     public SimCapiBoolean capiPaused;
 
     /// <summary>
-    /// Body that currently has focus. Empty string ("") means no body is currently selected (free camera).
-    /// </summary>
-    public SimCapiString capiFocused;
-    
- 
-
-    /// <summary>
     /// Sets initial values.
     /// </summary>
     public void Init() {
@@ -67,17 +60,6 @@ public class ExposedData: Singleton<ExposedData> {
             }
         );
 
-        capiFocused = new SimCapiString("");
-        capiFocused.expose("Focused", false, false);
-        capiFocused.setChangeDelegate(
-            delegate (String value, ChangedBy changedBy)
-            {
-                if (changedBy == ChangedBy.AELP)
-                {
-                    capiFocused.setValue(value);
-                }
-            }
-        );
     }
 
     internal void BodyUpdate(PhysicsBody physicsBody)

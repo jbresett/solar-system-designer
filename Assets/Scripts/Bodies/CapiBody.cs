@@ -102,24 +102,6 @@ public class CapiBody : VisualBody {
     private SimCapiNumber capiDiameter;
 
     /// <summary>
-    /// Initial position of the Body. Using resetPosition() will move the Body back to it's initial position.
-    /// </summary>
-    new public Vector3d InitialPosition
-    {
-        get { return initialPosition; }
-        set
-        {
-            base.InitialPosition = value;
-            if (!Application.isPlaying) return; // No Capi interface during edit mode.
-            capiInitialPosition.setValue(value);
-
-            // Update Capi State immediatly if Simulation is paused.
-            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
-        }
-    }
-    private SimCapiVector capiInitialPosition;
-
-    /// <summary>
     /// Current Position of the object. Any changes will be reflected in Unity.
     /// </summary>
     new public Vector3d Position
@@ -201,7 +183,20 @@ public class CapiBody : VisualBody {
     }
     private SimCapiNumber capiRotation;
 
-    // Checks if CapiBody has been initated.
+
+    private SimCapiBoolean capiAutoVelocity;
+    new public bool InitialVelocity
+    {
+        get { return initialVelocity; }
+        set
+        {
+            base.InitialVelocity = value;
+            if (!Application.isPlaying) return; // No Capi interface during edit mode.
+            if (Sim.Settings.Paused) State.Instance.UpdateCapi();
+
+            capiAutoVelocity.setValue(!value); // Auto = opposite of set value.
+        }
+    }
 
     new public void Awake()
     {
@@ -300,9 +295,20 @@ public class CapiBody : VisualBody {
 
         // Set Capi Vectors. Exposure and Delegation are handled interally.
         capiPosition = new SimCapiVector(baseName + ".Position", Position);
-        capiInitialPosition = new SimCapiVector(baseName + ".InitialPosition", InitialPosition);
         capiVelocity = new SimCapiVector(baseName + ".Velocity", Velocity);
 
+        //Auto velocity
+        capiAutoVelocity = new SimCapiBoolean(!initialVelocity);
+        capiAutoVelocity.expose(baseName + ".Velocity.Auto", false, false);
+        capiAutoVelocity.setChangeDelegate(
+            delegate (bool value, SimCapi.ChangedBy changedBy)
+            {
+                if (changedBy == ChangedBy.AELP)
+                {
+                    InitialVelocity = !value;
+                }
+            }
+        );
     }
 
     // Use this for initialization

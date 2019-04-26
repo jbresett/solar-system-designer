@@ -71,10 +71,10 @@ public class PhysicsBody : CapiBody {
     public bool isInitialVel
     {
         get { return initialVelocity; }
-        set { initialVelocity = value; }  
+        set { InitialVelocity = value; }  
     }
 
-    [SerializeField] protected bool initialVelocity;
+
     new public void Awake()
     {
         base.Awake();

@@ -82,17 +82,6 @@ public class BaseBody : MonoBehaviour {
     protected Vector3d position = new Vector3d();
 
     /// <summary>
-    /// Initial position in AUs.
-    /// </summary>
-    public Vector3d InitialPosition
-    {
-        get { return initialPosition; }
-        set { initialPosition.Set(value); }
-    }
-    [SerializeField]
-    protected Vector3d initialPosition = new Vector3d();
-
-    /// <summary>
     /// Rotation in Earth Days.
     /// </summary>
     public double Rotation
@@ -113,6 +102,14 @@ public class BaseBody : MonoBehaviour {
     }
     [SerializeField]
     protected Vector3d velocity = new Vector3d();
+
+    public bool InitialVelocity
+    {
+        get { return initialVelocity; }
+        set { initialVelocity = value;}
+    }
+    [SerializeField] protected bool initialVelocity;
+
 
     public BodyMaterial Material
     {

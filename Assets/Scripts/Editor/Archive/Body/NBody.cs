@@ -65,22 +65,6 @@ static public class NBody {
     /// </summary>
     static public double Speed { get; set; }
 
-    /// <summary>
-    /// Name of the body that currently has focus.
-    /// 
-    /// If Null or empty string, focus is on coordinates (0,0,0).
-    /// </summary>
-    static public string Focused {
-        get { return focused; }
-        set
-        {
-            focused = value;
-            // Instantly updates Exposed value.
-            Sim.Capi.Exposed.capiFocused.setValue(value);
-        }
-    }
-    static private string focused;
-
 	/// <summary>
     /// Updates once per frame
     /// </summary>

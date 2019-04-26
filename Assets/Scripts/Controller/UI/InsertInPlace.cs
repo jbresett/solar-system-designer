@@ -111,19 +111,18 @@ public void Awake()
         
         try
         {
-            script.InitialPosition = new Vector3d(double.Parse(xPos.text.IfBlank("0")), double.Parse(yPos.text.IfBlank("0")), double.Parse(zPos.text.IfBlank("0")));
+            script.Position = new Vector3d(double.Parse(xPos.text.IfBlank("0")), double.Parse(yPos.text.IfBlank("0")), double.Parse(zPos.text.IfBlank("0")));
             if (!autoVel.isOn)
             {
                 script.Vel = new Vector3d(0, 0, double.Parse(initialVel.text.IfBlank("0")));
-                script.isInitialVel = true;
+                script.isInitialVel = !autoVel.enabled;
             }
         }
         catch (Exception)
         {
-            script.InitialPosition = new Vector3d(0.0, 0.0, 0.0);
+            script.Position = new Vector3d(0.0, 0.0, 0.0);
             Debugger.log("Invalid Position for Insert. Using base of (0,0,0)");
         }
-        script.Position = script.InitialPosition;
         
         if (double.Parse(radius.text.IfBlank("1")) > 0 || double.Parse(mass.text.IfBlank("1")) > 0)
         {
@@ -142,12 +141,6 @@ public void Awake()
         
         script.Type = script.whatAmI();
 
-        //obj.AddComponent<InsertParticleSystem>();
-        //Instantiate(InsertParticleSystem);
-        //InsertParticleSystem.
-        //Instantiate(UseParticleSystem, obj.transform);
-        //particleSystem.transform.parent = obj.transform;
-        //particleSystem.SetActive(true);
     }
 
     /// <summary>
