@@ -91,6 +91,7 @@ public class VisualBody : BaseBody {
     private void setBodyEffects()
     {
         
+        Light light = gameObject.GetComponent<Light>();
         double sizeFactor = (diameter / (position.Vec3 - Camera.main.transform.position).magnitude);
         if (type == BodyType.Star)
         {
