@@ -8,8 +8,7 @@ public class VisualBody : BaseBody {
 
     // Multiplers for standard Earths -> Unity
     static public float POSITION_MULT = 30492.3f;
-    static public float SIZE_MULT = .1f;     // 1 Earth = ~130 Unity units. 
-    
+    static public float SIZE_MULT = .1f;     // 1 Earth = ~130 Unity units.
 
 
     
@@ -86,6 +85,16 @@ public class VisualBody : BaseBody {
             transform.position -= offset;
         }
         setBodyEffects();
+
+        // Holding shift increases the size of all far planets.
+        float size = (float)Diameter * SIZE_MULT;
+        if (Input.GetKey(KeyCode.LeftShift) && Type != BodyType.Star)
+        {
+            float mult = Math.Max(1, (Camera.main.transform.position - transform.position).magnitude / 50);
+            size = size * mult;
+            Debug.Log(Name + ":" + mult);
+        }
+        gameObject.transform.localScale = new Vector3(size, size, size);
     }
 
     private void setBodyEffects()
