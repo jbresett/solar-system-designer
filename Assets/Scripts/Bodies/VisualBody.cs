@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,10 @@ public class VisualBody : BaseBody {
 
     // Multiplers for standard Earths -> Unity
     static public float POSITION_MULT = 30492.3f;
-    static public float SIZE_MULT = .1f;     // 1 Earth = ~130 Unity units.
+    static public float SIZE_MULT = .1f;     // 1 Earth = ~130 Unity units. 
+    
+
+
     
     new public Vector3d Position {
         get { return position; }
@@ -60,6 +64,7 @@ public class VisualBody : BaseBody {
 	new public void Start ()
     {
         base.Start();
+        
 	}
 
 	new public void Update ()
@@ -79,25 +84,21 @@ public class VisualBody : BaseBody {
             Vector3 offset = Sim.selectedBody.Position.Vec3 * POSITION_MULT;
             transform.position -= offset;
         }
-
+        setBodyEffects();
     }
 
-    private void OnEnable()
+    private void setBodyEffects()
     {
-        Light light = gameObject.GetComponent<Light>();
-        GameObject sunLighting = gameObject.transform.GetChild(1).gameObject;
+        
+        double sizeFactor = (diameter / (position.Vec3 - Camera.main.transform.position).magnitude);
         if (type == BodyType.Star)
         {
             light.enabled = true;
             sunLighting.SetActive(true);
         }
-        else if (transform.localScale.x <= 0.5)
-        {
-            light.enabled = false;
-            sunLighting.SetActive(true);
-        }
         else
         {
+            GetComponent<Renderer>().material.SetColor("_EmissionColor",Color.white*(float)(.0001/Math.Pow(sizeFactor,2)));
             light.enabled = false;
             sunLighting.SetActive(false);
         }

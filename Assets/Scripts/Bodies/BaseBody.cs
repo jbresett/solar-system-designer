@@ -122,8 +122,14 @@ public class BaseBody : MonoBehaviour {
     [SerializeField]
     protected BodyMaterial material = BodyMaterial.Star_Yellow;
 
+    protected GameObject sunLighting;
+    protected Light light;
+
     public void Awake()
     {
+        sunLighting = gameObject.transform.GetChild(1).gameObject;
+        light = gameObject.GetComponent<Light>();
+        
         // Leave in to ensure no issues with extended classes.
     }
 

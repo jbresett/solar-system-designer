@@ -14,13 +14,31 @@ namespace DefaultNamespace
         public TextMeshProUGUI mass;
         public TextMeshProUGUI pos;
         public Component viewPort;
+        private bool listEmptied = false;
 
         private void Start()
         {
             bodySelector.onValueChanged.AddListener(delegate { updateView(); });
+            populateList();
+            updateView();
         }
 
         private void Update()
+        {
+            populateList();
+            if (bodySelector.options.Count > 0)
+            {
+                if(listEmptied)
+                    updateView();
+                listStats();
+            }
+            else
+            {
+                viewPort.gameObject.SetActive(false);
+            }
+        }
+
+        private void populateList()
         {
             Body[] bodies = Sim.Bodies.All;
             List<string> options = new List<string>();
@@ -35,14 +53,6 @@ namespace DefaultNamespace
             }
             bodySelector.ClearOptions();
             bodySelector.AddOptions(options);
-            if (bodySelector.options.Count > 0)
-            {
-                listStats();
-            }
-            else
-            {
-                viewPort.gameObject.SetActive(false);
-            }
         }
 
         public void listStats()
@@ -60,6 +70,7 @@ namespace DefaultNamespace
             } else
             {
                 Debugger.log("Body No Longer Exists. No Stats Available.");
+                updateView();
             }
             
         }
